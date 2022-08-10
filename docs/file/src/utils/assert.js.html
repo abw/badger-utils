@@ -1,0 +1,164 @@
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/utils/assert.js | Badger Utils</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-badger.css"><meta name="description" content="Javascript utility modules"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="Badger Utils"><meta property="twitter:description" content="Javascript utility modules"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./" style="display: flex; align-items: center;"><img src="./image/brand_logo.svg" style="width:34px;"></a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/abw/badger-utils"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasValue">hasValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-haveValue">haveValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFunction">isFunction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNull">isNull</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isObject">isObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isUndefined">isUndefined</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-noValue">noValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fail">fail</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-rethrow">rethrow</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-doNothing">doNothing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-capitalise">capitalise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinList">joinList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinListAnd">joinListAnd</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinListOr">joinListOr</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToCamel">snakeToCamel</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToStudly">snakeToStudly</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/assert.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Determines if a value is a string
+ * @param {String} value - value to test
+ * @return {Boolean} true if `value` is a string or false if not
+ */
+export function isString(value) {
+  return typeof value === 'string';
+}
+
+/**
+ * Determines if a value is an Integer
+ * @param {Integer} value - value to test
+ * @return {Boolean} true if `value` is a string or false if not
+ */
+export function isInteger(value) {
+  return Number.isInteger(value);
+}
+
+/**
+ * Determines if a value is an array
+ * @param {Array} value - value to test
+ * @return {Boolean} true if `value` is an Array or false if not
+ */
+export function isArray(value) {
+  return Array.isArray(value);
+}
+
+/**
+ * Determines if a value is a Function
+ * @param {Function} value - value to test
+ * @return {Boolean} true if `value` is a Function or false if not
+ */
+export function isFunction(value) {
+  return typeof value === 'function'
+}
+
+/**
+ * Determines if a value is an Object (but not an Array)
+ * @param {Object} value - value to test
+ * @return {Boolean} true if `value` is an Object or false if not
+ */
+export function isObject(value) {
+  return typeof value === "object"
+    &amp;&amp; ! isArray(value)
+    &amp;&amp; ! isNull(value);
+}
+
+/**
+ * Determines if a value is `undefined`
+ * @param {any} value - value to test
+ * @return {Boolean} true if `value` is `undefined` or false if not
+ */
+export function isUndefined(value) {
+  return typeof value === 'undefined';
+}
+
+/**
+ * Determines if a value is `null`
+ * @param {any} value - value to test
+ * @return {Boolean} true if `value` is `null` or false if not
+ */
+export function isNull(value) {
+  return value === null;
+}
+
+/**
+ * Determines if a value is defined and not null
+ * @param {any} value - value to test
+ * @return {Boolean} true if `value` is not `undefined` or `null`
+ */
+export function hasValue(value) {
+  return ! (isUndefined(value) || isNull(value));
+}
+
+/**
+ * Determines if all values are defined and not null
+ * @param {any[]} values - values to test
+ * @return {Boolean} true if all values are not `undefined` or `null`
+ */
+export function haveValue(...values) {
+  return values.every( value =&gt; hasValue(value) );
+}
+
+/**
+ * Determines if a value is undefined or null
+ * @param {any} value - value to test
+ * @return {Boolean} true if `value` is `undefined` or `null`
+ */
+export function noValue(value) {
+  return ! hasValue(value);
+}
+
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+
+
+</body></html>
