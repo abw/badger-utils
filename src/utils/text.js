@@ -89,12 +89,11 @@ export function capitalise(word) {
 
 /**
  * Capitalise all words in a string by converting the first character of each word to upper case
- * @param {String} word - words to capitalise
+ * @param {String} string - words to capitalise
  * @return {String} capitalised string
  * @example
  * capitalise('badger fun');   // Badger Fun
  */
-
 export function capitaliseWords(string) {
   return string.replace(
     /(?:^|\s)\S/g,
