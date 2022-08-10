@@ -1,0 +1,1113 @@
+{
+  "type": "File",
+  "start": 0,
+  "end": 849,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0,
+      "index": 0
+    },
+    "end": {
+      "line": 27,
+      "column": 0,
+      "index": 849
+    }
+  },
+  "errors": [],
+  "program": {
+    "type": "Program",
+    "start": 0,
+    "end": 849,
+    "loc": {
+      "start": {
+        "line": 1,
+        "column": 0,
+        "index": 0
+      },
+      "end": {
+        "line": 27,
+        "column": 0,
+        "index": 849
+      }
+    },
+    "sourceType": "module",
+    "interpreter": null,
+    "body": [
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 396,
+        "end": 591,
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0,
+            "index": 396
+          },
+          "end": {
+            "line": 18,
+            "column": 1,
+            "index": 591
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "FunctionDeclaration",
+          "start": 403,
+          "end": 591,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 7,
+              "index": 403
+            },
+            "end": {
+              "line": 18,
+              "column": 1,
+              "index": 591
+            }
+          },
+          "id": {
+            "type": "Identifier",
+            "start": 412,
+            "end": 420,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 16,
+                "index": 412
+              },
+              "end": {
+                "line": 9,
+                "column": 24,
+                "index": 420
+              },
+              "identifierName": "debounce"
+            },
+            "name": "debounce"
+          },
+          "generator": false,
+          "async": false,
+          "params": [
+            {
+              "type": "Identifier",
+              "start": 421,
+              "end": 425,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 25,
+                  "index": 421
+                },
+                "end": {
+                  "line": 9,
+                  "column": 29,
+                  "index": 425
+                },
+                "identifierName": "func"
+              },
+              "name": "func"
+            },
+            {
+              "type": "AssignmentPattern",
+              "start": 427,
+              "end": 438,
+              "loc": {
+                "start": {
+                  "line": 9,
+                  "column": 31,
+                  "index": 427
+                },
+                "end": {
+                  "line": 9,
+                  "column": 42,
+                  "index": 438
+                }
+              },
+              "left": {
+                "type": "Identifier",
+                "start": 427,
+                "end": 434,
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 31,
+                    "index": 427
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 38,
+                    "index": 434
+                  },
+                  "identifierName": "timeout"
+                },
+                "name": "timeout"
+              },
+              "right": {
+                "type": "NumericLiteral",
+                "start": 435,
+                "end": 438,
+                "loc": {
+                  "start": {
+                    "line": 9,
+                    "column": 39,
+                    "index": 435
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 42,
+                    "index": 438
+                  }
+                },
+                "extra": {
+                  "rawValue": 300,
+                  "raw": "300"
+                },
+                "value": 300
+              }
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "start": 440,
+            "end": 591,
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 44,
+                "index": 440
+              },
+              "end": {
+                "line": 18,
+                "column": 1,
+                "index": 591
+              }
+            },
+            "body": [
+              {
+                "type": "VariableDeclaration",
+                "start": 444,
+                "end": 454,
+                "loc": {
+                  "start": {
+                    "line": 10,
+                    "column": 2,
+                    "index": 444
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 12,
+                    "index": 454
+                  }
+                },
+                "declarations": [
+                  {
+                    "type": "VariableDeclarator",
+                    "start": 448,
+                    "end": 453,
+                    "loc": {
+                      "start": {
+                        "line": 10,
+                        "column": 6,
+                        "index": 448
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 11,
+                        "index": 453
+                      }
+                    },
+                    "id": {
+                      "type": "Identifier",
+                      "start": 448,
+                      "end": 453,
+                      "loc": {
+                        "start": {
+                          "line": 10,
+                          "column": 6,
+                          "index": 448
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 11,
+                          "index": 453
+                        },
+                        "identifierName": "timer"
+                      },
+                      "name": "timer"
+                    },
+                    "init": null
+                  }
+                ],
+                "kind": "let"
+              },
+              {
+                "type": "ReturnStatement",
+                "start": 457,
+                "end": 589,
+                "loc": {
+                  "start": {
+                    "line": 11,
+                    "column": 2,
+                    "index": 457
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 4,
+                    "index": 589
+                  }
+                },
+                "argument": {
+                  "type": "ArrowFunctionExpression",
+                  "start": 464,
+                  "end": 588,
+                  "loc": {
+                    "start": {
+                      "line": 11,
+                      "column": 9,
+                      "index": 464
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 3,
+                      "index": 588
+                    }
+                  },
+                  "id": null,
+                  "generator": false,
+                  "async": false,
+                  "params": [
+                    {
+                      "type": "RestElement",
+                      "start": 465,
+                      "end": 472,
+                      "loc": {
+                        "start": {
+                          "line": 11,
+                          "column": 10,
+                          "index": 465
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 17,
+                          "index": 472
+                        }
+                      },
+                      "argument": {
+                        "type": "Identifier",
+                        "start": 468,
+                        "end": 472,
+                        "loc": {
+                          "start": {
+                            "line": 11,
+                            "column": 13,
+                            "index": 468
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 17,
+                            "index": 472
+                          },
+                          "identifierName": "args"
+                        },
+                        "name": "args"
+                      }
+                    }
+                  ],
+                  "body": {
+                    "type": "BlockStatement",
+                    "start": 477,
+                    "end": 588,
+                    "loc": {
+                      "start": {
+                        "line": 11,
+                        "column": 22,
+                        "index": 477
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 3,
+                        "index": 588
+                      }
+                    },
+                    "body": [
+                      {
+                        "type": "ExpressionStatement",
+                        "start": 483,
+                        "end": 503,
+                        "loc": {
+                          "start": {
+                            "line": 12,
+                            "column": 4,
+                            "index": 483
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 24,
+                            "index": 503
+                          }
+                        },
+                        "expression": {
+                          "type": "CallExpression",
+                          "start": 483,
+                          "end": 502,
+                          "loc": {
+                            "start": {
+                              "line": 12,
+                              "column": 4,
+                              "index": 483
+                            },
+                            "end": {
+                              "line": 12,
+                              "column": 23,
+                              "index": 502
+                            }
+                          },
+                          "callee": {
+                            "type": "Identifier",
+                            "start": 483,
+                            "end": 495,
+                            "loc": {
+                              "start": {
+                                "line": 12,
+                                "column": 4,
+                                "index": 483
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 16,
+                                "index": 495
+                              },
+                              "identifierName": "clearTimeout"
+                            },
+                            "name": "clearTimeout"
+                          },
+                          "arguments": [
+                            {
+                              "type": "Identifier",
+                              "start": 496,
+                              "end": 501,
+                              "loc": {
+                                "start": {
+                                  "line": 12,
+                                  "column": 17,
+                                  "index": 496
+                                },
+                                "end": {
+                                  "line": 12,
+                                  "column": 22,
+                                  "index": 501
+                                },
+                                "identifierName": "timer"
+                              },
+                              "name": "timer"
+                            }
+                          ]
+                        }
+                      },
+                      {
+                        "type": "ExpressionStatement",
+                        "start": 508,
+                        "end": 584,
+                        "loc": {
+                          "start": {
+                            "line": 13,
+                            "column": 4,
+                            "index": 508
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 6,
+                            "index": 584
+                          }
+                        },
+                        "expression": {
+                          "type": "AssignmentExpression",
+                          "start": 508,
+                          "end": 583,
+                          "loc": {
+                            "start": {
+                              "line": 13,
+                              "column": 4,
+                              "index": 508
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 5,
+                              "index": 583
+                            }
+                          },
+                          "operator": "=",
+                          "left": {
+                            "type": "Identifier",
+                            "start": 508,
+                            "end": 513,
+                            "loc": {
+                              "start": {
+                                "line": 13,
+                                "column": 4,
+                                "index": 508
+                              },
+                              "end": {
+                                "line": 13,
+                                "column": 9,
+                                "index": 513
+                              },
+                              "identifierName": "timer"
+                            },
+                            "name": "timer"
+                          },
+                          "right": {
+                            "type": "CallExpression",
+                            "start": 516,
+                            "end": 583,
+                            "loc": {
+                              "start": {
+                                "line": 13,
+                                "column": 12,
+                                "index": 516
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 5,
+                                "index": 583
+                              }
+                            },
+                            "callee": {
+                              "type": "Identifier",
+                              "start": 516,
+                              "end": 526,
+                              "loc": {
+                                "start": {
+                                  "line": 13,
+                                  "column": 12,
+                                  "index": 516
+                                },
+                                "end": {
+                                  "line": 13,
+                                  "column": 22,
+                                  "index": 526
+                                },
+                                "identifierName": "setTimeout"
+                              },
+                              "name": "setTimeout"
+                            },
+                            "arguments": [
+                              {
+                                "type": "ArrowFunctionExpression",
+                                "start": 534,
+                                "end": 562,
+                                "loc": {
+                                  "start": {
+                                    "line": 14,
+                                    "column": 6,
+                                    "index": 534
+                                  },
+                                  "end": {
+                                    "line": 14,
+                                    "column": 34,
+                                    "index": 562
+                                  }
+                                },
+                                "id": null,
+                                "generator": false,
+                                "async": false,
+                                "params": [],
+                                "body": {
+                                  "type": "CallExpression",
+                                  "start": 540,
+                                  "end": 562,
+                                  "loc": {
+                                    "start": {
+                                      "line": 14,
+                                      "column": 12,
+                                      "index": 540
+                                    },
+                                    "end": {
+                                      "line": 14,
+                                      "column": 34,
+                                      "index": 562
+                                    }
+                                  },
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "start": 540,
+                                    "end": 550,
+                                    "loc": {
+                                      "start": {
+                                        "line": 14,
+                                        "column": 12,
+                                        "index": 540
+                                      },
+                                      "end": {
+                                        "line": 14,
+                                        "column": 22,
+                                        "index": 550
+                                      }
+                                    },
+                                    "object": {
+                                      "type": "Identifier",
+                                      "start": 540,
+                                      "end": 544,
+                                      "loc": {
+                                        "start": {
+                                          "line": 14,
+                                          "column": 12,
+                                          "index": 540
+                                        },
+                                        "end": {
+                                          "line": 14,
+                                          "column": 16,
+                                          "index": 544
+                                        },
+                                        "identifierName": "func"
+                                      },
+                                      "name": "func"
+                                    },
+                                    "computed": false,
+                                    "property": {
+                                      "type": "Identifier",
+                                      "start": 545,
+                                      "end": 550,
+                                      "loc": {
+                                        "start": {
+                                          "line": 14,
+                                          "column": 17,
+                                          "index": 545
+                                        },
+                                        "end": {
+                                          "line": 14,
+                                          "column": 22,
+                                          "index": 550
+                                        },
+                                        "identifierName": "apply"
+                                      },
+                                      "name": "apply"
+                                    }
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "ThisExpression",
+                                      "start": 551,
+                                      "end": 555,
+                                      "loc": {
+                                        "start": {
+                                          "line": 14,
+                                          "column": 23,
+                                          "index": 551
+                                        },
+                                        "end": {
+                                          "line": 14,
+                                          "column": 27,
+                                          "index": 555
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "Identifier",
+                                      "start": 557,
+                                      "end": 561,
+                                      "loc": {
+                                        "start": {
+                                          "line": 14,
+                                          "column": 29,
+                                          "index": 557
+                                        },
+                                        "end": {
+                                          "line": 14,
+                                          "column": 33,
+                                          "index": 561
+                                        },
+                                        "identifierName": "args"
+                                      },
+                                      "name": "args"
+                                    }
+                                  ]
+                                }
+                              },
+                              {
+                                "type": "Identifier",
+                                "start": 570,
+                                "end": 577,
+                                "loc": {
+                                  "start": {
+                                    "line": 15,
+                                    "column": 6,
+                                    "index": 570
+                                  },
+                                  "end": {
+                                    "line": 15,
+                                    "column": 13,
+                                    "index": 577
+                                  },
+                                  "identifierName": "timeout"
+                                },
+                                "name": "timeout"
+                              }
+                            ]
+                          }
+                        }
+                      }
+                    ],
+                    "directives": []
+                  }
+                }
+              }
+            ],
+            "directives": []
+          },
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Function} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n ",
+              "start": 0,
+              "end": 395,
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0,
+                  "index": 0
+                },
+                "end": {
+                  "line": 8,
+                  "column": 3,
+                  "index": 395
+                }
+              }
+            }
+          ],
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n ",
+              "start": 593,
+              "end": 782,
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 0,
+                  "index": 593
+                },
+                "end": {
+                  "line": 24,
+                  "column": 3,
+                  "index": 782
+                }
+              }
+            }
+          ]
+        },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n ",
+            "start": 593,
+            "end": 782,
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 0,
+                "index": 593
+              },
+              "end": {
+                "line": 24,
+                "column": 3,
+                "index": 782
+              }
+            }
+          }
+        ],
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Function} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n ",
+            "start": 0,
+            "end": 395,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0,
+                "index": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 3,
+                "index": 395
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 783,
+        "end": 848,
+        "loc": {
+          "start": {
+            "line": 25,
+            "column": 0,
+            "index": 783
+          },
+          "end": {
+            "line": 26,
+            "column": 38,
+            "index": 848
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 790,
+          "end": 848,
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 7,
+              "index": 790
+            },
+            "end": {
+              "line": 26,
+              "column": 38,
+              "index": 848
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 796,
+              "end": 847,
+              "loc": {
+                "start": {
+                  "line": 25,
+                  "column": 13,
+                  "index": 796
+                },
+                "end": {
+                  "line": 26,
+                  "column": 37,
+                  "index": 847
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 796,
+                "end": 801,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 13,
+                    "index": 796
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 18,
+                    "index": 801
+                  },
+                  "identifierName": "sleep"
+                },
+                "name": "sleep"
+              },
+              "init": {
+                "type": "ArrowFunctionExpression",
+                "start": 804,
+                "end": 847,
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 21,
+                    "index": 804
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 37,
+                    "index": 847
+                  }
+                },
+                "id": {
+                  "type": "Identifier",
+                  "start": 796,
+                  "end": 801,
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 13,
+                      "index": 796
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 18,
+                      "index": 801
+                    },
+                    "identifierName": "sleep"
+                  },
+                  "name": "sleep"
+                },
+                "generator": false,
+                "async": false,
+                "params": [
+                  {
+                    "type": "Identifier",
+                    "start": 804,
+                    "end": 806,
+                    "loc": {
+                      "start": {
+                        "line": 25,
+                        "column": 21,
+                        "index": 804
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 23,
+                        "index": 806
+                      },
+                      "identifierName": "ms"
+                    },
+                    "name": "ms"
+                  }
+                ],
+                "body": {
+                  "type": "NewExpression",
+                  "start": 812,
+                  "end": 847,
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 2,
+                      "index": 812
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 37,
+                      "index": 847
+                    }
+                  },
+                  "callee": {
+                    "type": "Identifier",
+                    "start": 816,
+                    "end": 823,
+                    "loc": {
+                      "start": {
+                        "line": 26,
+                        "column": 6,
+                        "index": 816
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 13,
+                        "index": 823
+                      },
+                      "identifierName": "Promise"
+                    },
+                    "name": "Promise"
+                  },
+                  "arguments": [
+                    {
+                      "type": "ArrowFunctionExpression",
+                      "start": 824,
+                      "end": 846,
+                      "loc": {
+                        "start": {
+                          "line": 26,
+                          "column": 14,
+                          "index": 824
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 36,
+                          "index": 846
+                        }
+                      },
+                      "id": null,
+                      "generator": false,
+                      "async": false,
+                      "params": [
+                        {
+                          "type": "Identifier",
+                          "start": 824,
+                          "end": 825,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 14,
+                              "index": 824
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 15,
+                              "index": 825
+                            },
+                            "identifierName": "r"
+                          },
+                          "name": "r"
+                        }
+                      ],
+                      "body": {
+                        "type": "CallExpression",
+                        "start": 829,
+                        "end": 846,
+                        "loc": {
+                          "start": {
+                            "line": 26,
+                            "column": 19,
+                            "index": 829
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 36,
+                            "index": 846
+                          }
+                        },
+                        "callee": {
+                          "type": "Identifier",
+                          "start": 829,
+                          "end": 839,
+                          "loc": {
+                            "start": {
+                              "line": 26,
+                              "column": 19,
+                              "index": 829
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 29,
+                              "index": 839
+                            },
+                            "identifierName": "setTimeout"
+                          },
+                          "name": "setTimeout"
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 840,
+                            "end": 841,
+                            "loc": {
+                              "start": {
+                                "line": 26,
+                                "column": 30,
+                                "index": 840
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 31,
+                                "index": 841
+                              },
+                              "identifierName": "r"
+                            },
+                            "name": "r"
+                          },
+                          {
+                            "type": "Identifier",
+                            "start": 843,
+                            "end": 845,
+                            "loc": {
+                              "start": {
+                                "line": 26,
+                                "column": 33,
+                                "index": 843
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 35,
+                                "index": 845
+                              },
+                              "identifierName": "ms"
+                            },
+                            "name": "ms"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n ",
+              "start": 593,
+              "end": 782,
+              "loc": {
+                "start": {
+                  "line": 20,
+                  "column": 0,
+                  "index": 593
+                },
+                "end": {
+                  "line": 24,
+                  "column": 3,
+                  "index": 782
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        },
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n ",
+            "start": 593,
+            "end": 782,
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 0,
+                "index": 593
+              },
+              "end": {
+                "line": 24,
+                "column": 3,
+                "index": 782
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "directives": []
+  },
+  "comments": [
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Function} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n ",
+      "start": 0,
+      "end": 395,
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0,
+          "index": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 3,
+          "index": 395
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n ",
+      "start": 593,
+      "end": 782,
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 0,
+          "index": 593
+        },
+        "end": {
+          "line": 24,
+          "column": 3,
+          "index": 782
+        }
+      }
+    }
+  ]
+}

@@ -36,6 +36,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~debounce",
+    "function/index.html#static-function-debounce",
+    "<span>debounce</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~donothing",
     "function/index.html#static-function-doNothing",
     "<span>doNothing</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -162,9 +168,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~range",
+    "function/index.html#static-function-range",
+    "<span>range</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~rethrow",
     "function/index.html#static-function-rethrow",
     "<span>rethrow</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~sleep",
+    "function/index.html#static-function-sleep",
+    "<span>sleep</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -501,6 +519,12 @@ window.esdocSearchIndex = [
     "src/utils/text.js",
     "file/src/utils/text.js.html",
     "src/utils/text.js",
+    "file"
+  ],
+  [
+    "src/utils/time.js",
+    "file/src/utils/time.js.html",
+    "src/utils/time.js",
     "file"
   ]
 ]
