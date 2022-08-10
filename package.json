@@ -1,0 +1,55 @@
+{
+  "name": "@abw/badger-utils",
+  "version": "1.0.1",
+  "description": "Javascript utility modules",
+  "type": "module",
+  "main": "dist/badger-utils.cjs.js",
+  "module": "dist/badger-utils.esm.js",
+  "browser": "dist/badger-utils.umd.js",
+  "exports": {
+    ".": {
+      "require": "./dist/badger-utils.cjs.js",
+      "import": "./dist/badger-utils.esm.js"
+    }
+  },
+  "author": "Andy Wardley",
+  "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abw/badger-utils.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abw/badger-utils/issues"
+  },
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "lint": "eslint 'src/**/*'",
+    "docs:build": "esdoc",
+    "docs:serve": "serve docs",
+    "test": "ava --serial",
+    "pretest": "pnpm run build"
+  },
+  "keywords": [
+    "badger",
+    "utility"
+  ],
+  "devDependencies": {
+    "@itsjamie/esdoc-cli": "^0.5.0",
+    "@itsjamie/esdoc-core": "^0.5.0",
+    "@itsjamie/esdoc-importpath-plugin": "^0.5.0",
+    "@itsjamie/esdoc-inject-style-plugin": "^0.5.0",
+    "@itsjamie/esdoc-standard-plugin": "^0.5.0",
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "ava": "^4.3.0",
+    "eslint": "^8.20.0",
+    "rollup": "^2",
+    "rollup-plugin-terser": "^7.0.2"
+  },
+  "dependencies": {
+  }
+}
