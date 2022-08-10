@@ -106,3 +106,11 @@ export function pounds(money, options={ }) {
     : '';
 }
 
+/**
+ * Function to create an array with a range of numbers.  Note that this will
+ * include the last value.
+ * @param {Integer} first - first number
+ * @param {Integer} last - last number
+ */
+export const range = (first, last) =>
+  Array(1 + last - first).fill(first).map((x, y) => x + y)

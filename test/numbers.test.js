@@ -1,6 +1,6 @@
 import test from 'ava';
 import {
-  commas, price, priceOrPOA, priceOrZero, pounds
+  commas, price, priceOrPOA, priceOrZero, pounds, range
 } from '../src/index.js'
 
 // commas
@@ -111,3 +111,36 @@ test(
   t => t.is(pounds(12345, { currency: "$", thousands: " "}), '$12 345')
 );
 
+
+// range
+test(
+  'range(0, 1)',
+  t => {
+    const r = range(0, 1);
+    t.is(r.length, 2);
+    t.is(r[0], 0);
+    t.is(r[1], 1);
+  }
+)
+test(
+  'range(10, 11)',
+  t => {
+    const r = range(10, 11);
+    t.is(r.length, 2);
+    t.is(r[0], 10);
+    t.is(r[1], 11);
+  }
+)
+test(
+  'range(100, 105)',
+  t => {
+    const r = range(100, 105);
+    t.is(r.length, 6);
+    t.is(r[0], 100);
+    t.is(r[1], 101);
+    t.is(r[2], 102);
+    t.is(r[3], 103);
+    t.is(r[4], 104);
+    t.is(r[5], 105);
+  }
+)
