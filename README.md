@@ -13,7 +13,7 @@ Install `badger-utils` using your favourite package manager.
 
 ### pnpm
 
-    pnpm install @abw/badger-utils
+    pnpm add @abw/badger-utils
 
 ### yarn
 
