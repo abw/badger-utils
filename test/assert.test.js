@@ -1,5 +1,7 @@
 import test from 'ava';
-import { isString, isArray, isUndefined, isNull, hasValue, noValue } from '../src/index.js'
+import {
+  isString, isArray, isUndefined, isNull, hasValue, noValue
+} from '../src/index.js'
 
 // isString()
 test(
