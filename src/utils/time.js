@@ -3,7 +3,7 @@
  * a timeout.  If the debouncer function is called again before the wrapped function has
  * been called then the debounced will reset the timer.
  * @param {Function} func - function to be debounced
- * @param {Function} [timeout=300] - timeout in milliseconds
+ * @param {Integer} [timeout=300] - timeout in milliseconds
  * @return {Function} debounced function
  */
 export function debounce(func, timeout=300) {
