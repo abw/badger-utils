@@ -1,6 +1,7 @@
 import test from 'ava';
 import {
-  isString, isArray, isUndefined, isNull, hasValue, noValue
+  isString, isInteger, isFloat, isNumber, isObject,
+  isArray, isUndefined, isNull, hasValue, noValue
 } from '../src/index.js'
 
 // isString()
@@ -17,6 +18,69 @@ test(
   t => t.is(isString(), false)
 );
 
+// isNumber()
+test(
+  'isNumber() identifies integer',
+  t => t.is(isNumber(42), true)
+);
+test(
+  'isNumber() identifies float',
+  t => t.is(isNumber(42.43), true)
+);
+test(
+  'isNumber() identifies string',
+  t => t.is(isNumber('42'), false)
+);
+test(
+  'isNumber() identifies undefined',
+  t => t.is(isNumber(), false)
+);
+
+// isInteger()
+test(
+  'isInteger() identifies integer',
+  t => t.is(isInteger(42), true)
+);
+test(
+  'isInteger() identifies float',
+  t => t.is(isInteger(42.43), false)
+);
+test(
+  'isInteger() identifies float with zero decimal part',
+  t => t.is(isInteger(42.0), true)
+);
+test(
+  'isInteger() identifies string',
+  t => t.is(isInteger('42'), false)
+);
+test(
+  'isInteger() identifies undefined',
+  t => t.is(isInteger(), false)
+);
+
+
+// isFloat()
+test(
+  'isFloat() identifies integer',
+  t => t.is(isFloat(42), false)
+);
+test(
+  'isFloat() identifies float',
+  t => t.is(isFloat(42.43), true)
+);
+test(
+  'isFloat() identifies float with zero decimal part',
+  t => t.is(isFloat(42.0), false)
+);
+test(
+  'isFloat() identifies string',
+  t => t.is(isFloat('42'), false)
+);
+test(
+  'isFloat() identifies undefined',
+  t => t.is(isFloat(), false)
+);
+
 // isArray()
 test(
   'isArray() identifies arrays',
@@ -29,6 +93,24 @@ test(
 test(
   'isArray() identifies null',
   t => t.is(isArray(null), false)
+);
+
+// isObject()
+test(
+  'isObject() identifies class instance',
+  t => t.is(isObject(new Date()), true)
+);
+test(
+  'isObject() identifies "hash table"',
+  t => t.is(isObject({ b: 'badger' }), true)
+);
+test(
+  'isObject() identifies array',
+  t => t.is(isObject([10, 20]), false)
+);
+test(
+  'isObject() identifies null',
+  t => t.is(isObject(null), false)
 );
 
 // isUndefined()

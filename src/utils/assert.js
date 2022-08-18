@@ -8,12 +8,30 @@ export function isString(value) {
 }
 
 /**
+ * Determines if a value is a number
+ * @param {Number} value - value to test
+ * @return {Boolean} true if `value` is a number or false if not
+ */
+export function isNumber(value) {
+  return typeof value === 'number';
+}
+
+/**
  * Determines if a value is an Integer
  * @param {Integer} value - value to test
- * @return {Boolean} true if `value` is a string or false if not
+ * @return {Boolean} true if `value` is an integer or false if not
  */
 export function isInteger(value) {
   return Number.isInteger(value);
+}
+
+/**
+ * Determines if a value is a floating point number
+ * @param {Number} value - value to test
+ * @return {Boolean} true if `value` is an integer or false if not
+ */
+export function isFloat(value) {
+  return isNumber(value) && ! isInteger(value);
 }
 
 /**
