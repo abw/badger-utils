@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
-  capitalise, snakeToStudly, snakeToCamel,
-  splitList, joinList, joinListAnd, joinListOr
+  capitalise, capitaliseWords, snakeToStudly, snakeToCamel,
+  splitList, joinList, joinListAnd, joinListOr, splitLines
 } from '../src/index.js'
 
 // capitalise
@@ -12,6 +12,16 @@ test(
 test(
   'capitalise FOO => Foo',
   t => t.is(capitalise('FOO'), 'Foo')
+);
+
+// capitaliseWords
+test(
+  'capitaliseWords("foo bar")',
+  t => t.is(capitaliseWords('foo bar'), 'Foo Bar')
+);
+test(
+  'capitaliseWords("FOO BAR")',
+  t => t.is(capitaliseWords('FOO BAR'), 'Foo Bar')
 );
 
 // snakeToStudly
@@ -113,4 +123,30 @@ test(
 test(
   'joinListOr',
   t => t.is(joinListOr(["foo", "bar", "baz"]), "foo, bar or baz")
+)
+
+// splitLines
+test(
+  'splitLines no value',
+  t => {
+    const list = splitLines(undefined);
+    t.is( list.length, 0);
+  }
+)
+test(
+  'splitLines empty string',
+  t => {
+    const list = splitLines("");
+    t.is( list.length, 0);
+  }
+)
+test(
+  'splitLines with blank lines',
+  t => {
+    const list = splitLines("foo\nbar\n\nbaz");
+    t.is( list.length, 3);
+    t.is( list[0], 'foo');
+    t.is( list[1], 'bar');
+    t.is( list[2], 'baz');
+  }
 )
