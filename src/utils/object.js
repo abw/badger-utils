@@ -31,7 +31,7 @@ export function objMap(obj, fn) {
  * objSubset(
  *   { a: 'alpha', b: 'bravo', c: 'charlie' },
  *   'a b'
- * )                        // returns { a: 'alpha', b: 'bravo' }
+ * ) // => { a: 'alpha', b: 'bravo' }
  */
 export function objSubset(obj, keys) {
   return splitList(keys).reduce(
