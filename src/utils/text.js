@@ -28,6 +28,21 @@ export function splitList(value) {
 }
 
 /**
+ * Split a string into an Array of lines.
+ * @param {String} text - string to split
+ * @return {Array} array of lines
+*/
+export function splitLines(text) {
+  if (! isString(text) || text.length === 0) {
+    return [ ];
+  }
+  var lines = text.split(/\s*\n+\s*/).filter(
+    function(item) { return item.length > 0 }
+  );
+  return lines;
+}
+
+/**
  * Join an Array into a single string
  * @param {Array} array - array to join
  * @param {String} [joint=' '] - delimiter to join strings
@@ -92,19 +107,17 @@ export function capitalise(word) {
  * @param {String} string - words to capitalise
  * @return {String} capitalised string
  * @example
- * capitalise('badger fun');   // Badger Fun
+ * capitaliseWords('badger fun');   // Badger Fun
+ * @example
+ * capitaliseWords('BADGER FUN');   // Badger Fun
  */
 export function capitaliseWords(string) {
   return string.replace(
-    /(?:^|\s)\S/g,
-    a => a.toUpperCase()
+    // /(?:^|\s)\S/g,
+    /(\w+)/g,
+    capitalise
   );
 }
-
-// for the yanks
-export const capitalize = capitalise;
-export const capitalizeWords = capitaliseWords;
-
 
 /**
  * Convert a snake case string to studly caps
@@ -140,7 +153,7 @@ export function snakeToCamel(snake) {
 
 /**
  * A very primitive function to pluralise the singular form of a words.  It only
- * words on words with standard endings and plural forms, because pluralising
+ * works on words with standard endings and plural forms, because pluralising
  * words is notoriously difficult.
  * @param {String} singular - word to pluralise
  * @return {String} plural form
@@ -215,14 +228,9 @@ export function Inflect(n, singular, plural, no='No') {
 }
 
 
-export function splitParas() {
-  var text = Array.prototype.slice.call(arguments).join('');
-  if (text.length === 0) {
-    return [ ];
-  }
-  var rows = text.split(/\s*\n+\s*/).filter(
-    function(item) { return item.length > 0 }
-  );
-  return rows;
-}
+
+// for the yanks
+export const capitalize = capitalise;
+export const capitalizeWords = capitaliseWords;
+export const pluralize = pluralise;
 
