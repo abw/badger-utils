@@ -567,7 +567,7 @@
     "__docId__": 48,
     "kind": "file",
     "name": "src/utils/assert.js",
-    "content": "/**\n * Determines if a value is a string\n * @param {String} value - value to test\n * @return {Boolean} true if `value` is a string or false if not\n */\nexport function isString(value) {\n  return typeof value === 'string';\n}\n\n/**\n * Determines if a value is an Integer\n * @param {Integer} value - value to test\n * @return {Boolean} true if `value` is a string or false if not\n */\nexport function isInteger(value) {\n  return Number.isInteger(value);\n}\n\n/**\n * Determines if a value is an array\n * @param {Array} value - value to test\n * @return {Boolean} true if `value` is an Array or false if not\n */\nexport function isArray(value) {\n  return Array.isArray(value);\n}\n\n/**\n * Determines if a value is a Function\n * @param {Function} value - value to test\n * @return {Boolean} true if `value` is a Function or false if not\n */\nexport function isFunction(value) {\n  return typeof value === 'function'\n}\n\n/**\n * Determines if a value is an Object (but not an Array)\n * @param {Object} value - value to test\n * @return {Boolean} true if `value` is an Object or false if not\n */\nexport function isObject(value) {\n  return typeof value === \"object\"\n    && ! isArray(value)\n    && ! isNull(value);\n}\n\n/**\n * Determines if a value is `undefined`\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is `undefined` or false if not\n */\nexport function isUndefined(value) {\n  return typeof value === 'undefined';\n}\n\n/**\n * Determines if a value is `null`\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is `null` or false if not\n */\nexport function isNull(value) {\n  return value === null;\n}\n\n/**\n * Determines if a value is defined and not null\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is not `undefined` or `null`\n */\nexport function hasValue(value) {\n  return ! (isUndefined(value) || isNull(value));\n}\n\n/**\n * Determines if all values are defined and not null\n * @param {any[]} values - values to test\n * @return {Boolean} true if all values are not `undefined` or `null`\n */\nexport function haveValue(...values) {\n  return values.every( value => hasValue(value) );\n}\n\n/**\n * Determines if a value is undefined or null\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is `undefined` or `null`\n */\nexport function noValue(value) {\n  return ! hasValue(value);\n}\n\n",
+    "content": "/**\n * Determines if a value is a string\n * @param {String} value - value to test\n * @return {Boolean} true if `value` is a string or false if not\n */\nexport function isString(value) {\n  return typeof value === 'string';\n}\n\n/**\n * Determines if a value is a number\n * @param {Number} value - value to test\n * @return {Boolean} true if `value` is a number or false if not\n */\nexport function isNumber(value) {\n  return typeof value === 'number';\n}\n\n/**\n * Determines if a value is an Integer\n * @param {Integer} value - value to test\n * @return {Boolean} true if `value` is an integer or false if not\n */\nexport function isInteger(value) {\n  return Number.isInteger(value);\n}\n\n/**\n * Determines if a value is a floating point number\n * @param {Number} value - value to test\n * @return {Boolean} true if `value` is an integer or false if not\n */\nexport function isFloat(value) {\n  return isNumber(value) && ! isInteger(value);\n}\n\n/**\n * Determines if a value is an array\n * @param {Array} value - value to test\n * @return {Boolean} true if `value` is an Array or false if not\n */\nexport function isArray(value) {\n  return Array.isArray(value);\n}\n\n/**\n * Determines if a value is a Function\n * @param {Function} value - value to test\n * @return {Boolean} true if `value` is a Function or false if not\n */\nexport function isFunction(value) {\n  return typeof value === 'function'\n}\n\n/**\n * Determines if a value is an Object (but not an Array)\n * @param {Object} value - value to test\n * @return {Boolean} true if `value` is an Object or false if not\n */\nexport function isObject(value) {\n  return typeof value === \"object\"\n    && ! isArray(value)\n    && ! isNull(value);\n}\n\n/**\n * Determines if a value is `undefined`\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is `undefined` or false if not\n */\nexport function isUndefined(value) {\n  return typeof value === 'undefined';\n}\n\n/**\n * Determines if a value is `null`\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is `null` or false if not\n */\nexport function isNull(value) {\n  return value === null;\n}\n\n/**\n * Determines if a value is defined and not null\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is not `undefined` or `null`\n */\nexport function hasValue(value) {\n  return ! (isUndefined(value) || isNull(value));\n}\n\n/**\n * Determines if all values are defined and not null\n * @param {any[]} values - values to test\n * @return {Boolean} true if all values are not `undefined` or `null`\n */\nexport function haveValue(...values) {\n  return values.every( value => hasValue(value) );\n}\n\n/**\n * Determines if a value is undefined or null\n * @param {any} value - value to test\n * @return {Boolean} true if `value` is `undefined` or `null`\n */\nexport function noValue(value) {\n  return ! hasValue(value);\n}\n\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/assert.js",
     "access": "public",
@@ -613,6 +613,42 @@
   {
     "__docId__": 50,
     "kind": "function",
+    "name": "isNumber",
+    "memberof": "src/utils/assert.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/assert.js~isNumber",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{isNumber}",
+    "description": "Determines if a value is a number",
+    "lineNumber": 15,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "value to test"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": "true if `value` is a number or false if not"
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "function",
     "name": "isInteger",
     "memberof": "src/utils/assert.js",
     "generator": false,
@@ -624,7 +660,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{isInteger}",
     "description": "Determines if a value is an Integer",
-    "lineNumber": 15,
+    "lineNumber": 24,
     "params": [
       {
         "nullable": null,
@@ -643,11 +679,47 @@
         "Boolean"
       ],
       "spread": false,
-      "description": "true if `value` is a string or false if not"
+      "description": "true if `value` is an integer or false if not"
     }
   },
   {
-    "__docId__": 51,
+    "__docId__": 52,
+    "kind": "function",
+    "name": "isFloat",
+    "memberof": "src/utils/assert.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/assert.js~isFloat",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{isFloat}",
+    "description": "Determines if a value is a floating point number",
+    "lineNumber": 33,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "value to test"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Boolean"
+      ],
+      "spread": false,
+      "description": "true if `value` is an integer or false if not"
+    }
+  },
+  {
+    "__docId__": 53,
     "kind": "function",
     "name": "isArray",
     "memberof": "src/utils/assert.js",
@@ -660,7 +732,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{isArray}",
     "description": "Determines if a value is an array",
-    "lineNumber": 24,
+    "lineNumber": 42,
     "params": [
       {
         "nullable": null,
@@ -683,7 +755,7 @@
     }
   },
   {
-    "__docId__": 52,
+    "__docId__": 54,
     "kind": "function",
     "name": "isFunction",
     "memberof": "src/utils/assert.js",
@@ -696,7 +768,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{isFunction}",
     "description": "Determines if a value is a Function",
-    "lineNumber": 33,
+    "lineNumber": 51,
     "params": [
       {
         "nullable": null,
@@ -719,7 +791,7 @@
     }
   },
   {
-    "__docId__": 53,
+    "__docId__": 55,
     "kind": "function",
     "name": "isObject",
     "memberof": "src/utils/assert.js",
@@ -732,7 +804,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{isObject}",
     "description": "Determines if a value is an Object (but not an Array)",
-    "lineNumber": 42,
+    "lineNumber": 60,
     "params": [
       {
         "nullable": null,
@@ -755,7 +827,7 @@
     }
   },
   {
-    "__docId__": 54,
+    "__docId__": 56,
     "kind": "function",
     "name": "isUndefined",
     "memberof": "src/utils/assert.js",
@@ -768,7 +840,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{isUndefined}",
     "description": "Determines if a value is `undefined`",
-    "lineNumber": 53,
+    "lineNumber": 71,
     "params": [
       {
         "nullable": null,
@@ -791,7 +863,7 @@
     }
   },
   {
-    "__docId__": 55,
+    "__docId__": 57,
     "kind": "function",
     "name": "isNull",
     "memberof": "src/utils/assert.js",
@@ -804,7 +876,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{isNull}",
     "description": "Determines if a value is `null`",
-    "lineNumber": 62,
+    "lineNumber": 80,
     "params": [
       {
         "nullable": null,
@@ -827,7 +899,7 @@
     }
   },
   {
-    "__docId__": 56,
+    "__docId__": 58,
     "kind": "function",
     "name": "hasValue",
     "memberof": "src/utils/assert.js",
@@ -840,7 +912,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{hasValue}",
     "description": "Determines if a value is defined and not null",
-    "lineNumber": 71,
+    "lineNumber": 89,
     "params": [
       {
         "nullable": null,
@@ -863,7 +935,7 @@
     }
   },
   {
-    "__docId__": 57,
+    "__docId__": 59,
     "kind": "function",
     "name": "haveValue",
     "memberof": "src/utils/assert.js",
@@ -876,7 +948,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{haveValue}",
     "description": "Determines if all values are defined and not null",
-    "lineNumber": 80,
+    "lineNumber": 98,
     "params": [
       {
         "nullable": null,
@@ -899,7 +971,7 @@
     }
   },
   {
-    "__docId__": 58,
+    "__docId__": 60,
     "kind": "function",
     "name": "noValue",
     "memberof": "src/utils/assert.js",
@@ -912,7 +984,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{noValue}",
     "description": "Determines if a value is undefined or null",
-    "lineNumber": 89,
+    "lineNumber": 107,
     "params": [
       {
         "nullable": null,
@@ -935,7 +1007,7 @@
     }
   },
   {
-    "__docId__": 59,
+    "__docId__": 61,
     "kind": "file",
     "name": "src/utils/error.js",
     "content": "/**\n * Throws a new Error object\n * @param {String[]} message - error message string(s)\n * @throws {Error}\n */\nexport function fail(...message) {\n  throw new Error(message.join(''));\n}\n\n/**\n * Re-throw an existing Error object\n * @param {Error} error - error object\n * @throws {Error}\n */\nexport function rethrow(error) {\n  throw error;\n}\n\n",
@@ -946,7 +1018,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 60,
+    "__docId__": 62,
     "kind": "function",
     "name": "fail",
     "memberof": "src/utils/error.js",
@@ -983,7 +1055,7 @@
     "return": null
   },
   {
-    "__docId__": 61,
+    "__docId__": 63,
     "kind": "function",
     "name": "rethrow",
     "memberof": "src/utils/error.js",
@@ -1020,10 +1092,10 @@
     "return": null
   },
   {
-    "__docId__": 62,
+    "__docId__": 64,
     "kind": "file",
     "name": "src/utils/misc.js",
-    "content": "/**\n * Do nothing.  Nothing at all.\n */\nexport function doNothing() {\n  // speak again Cordelia\n}\n",
+    "content": "/**\n * Do nothing.  Nothing at all.\n */\nexport function doNothing() {\n  // speak again Cordelia\n}\n\n/**\n * Returns the default locale.\n */\nexport function defaultLocale() {\n  return Intl.DateTimeFormat().resolvedOptions().locale;\n}",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/misc.js",
     "access": "public",
@@ -1031,7 +1103,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 63,
+    "__docId__": 65,
     "kind": "function",
     "name": "doNothing",
     "memberof": "src/utils/misc.js",
@@ -1049,10 +1121,32 @@
     "return": null
   },
   {
-    "__docId__": 64,
+    "__docId__": 66,
+    "kind": "function",
+    "name": "defaultLocale",
+    "memberof": "src/utils/misc.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/misc.js~defaultLocale",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{defaultLocale}",
+    "description": "Returns the default locale.",
+    "lineNumber": 11,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 67,
     "kind": "file",
     "name": "src/utils/numbers.js",
-    "content": "import { noValue } from \"./assert.js\";\n\nlet numberDefaults = {\n  currency:  '£',\n  thousands: ',',\n  poa:       'POA'\n};\n\n/**\n * Function to add commas as thousand separators in a number.\n * @param {Integer} n - number of items\n * @param {String} [thousands=','] - optional thousands separator instead of a comma\n * @example\n * commas(12345)          # 12,345\n * commas(12345.67)       # 12,345.67\n * commas(12345.67, ' ')  # 12 345.67\n */\nexport function commas(n, thousands=numberDefaults.thousands) {\n  if (noValue(n)) {\n    return '';\n  }\n  var bits  = n.toString().split('.'),\n    rgx   = /(\\d+)(\\d{3})/;\n\n  while (rgx.test(bits[0])) {\n    bits[0] = bits[0].replace(rgx, `$1${thousands}$2`);\n  }\n  return bits.join('.');\n}\n\n/**\n * Function to format a number as a price with commas and a currency symbol.\n * Uses British pounds by default because that's what works for me.\n * @param {Integer} money - number of items\n * @param {String} [options] - configuration options\n * @param {String} [options.currency='£'] - currency prefix\n * @param {String} [options.thousands=','] - thousands separator\n * @example\n * price(12345)          # £12,345.00\n * price(12345.67)       # £12,345.67\n * price(12345.67, { thousands: ' ' })  # £12 345.67\n * price(12345.67, { currency: '$' })   # $12 345.67\n */\nexport function price(money, options={ }) {\n  const config = { ...numberDefaults, ...options };\n  return money\n    ? config.currency + commas(parseFloat(money).toFixed(2), config.thousands)\n    : '';\n}\n\n/**\n * Function to format a number as a price with commas and a currency symbol.\n * If the amount is zero, undefined or null then it returns \"£POA\".\n * @param {Integer} money - number of items\n * @param {String} [options] - configuration options\n * @param {String} [options.currency='£'] - currency prefix\n * @param {String} [options.thousands=','] - thousands separator\n * @example\n * priceOrPOA(12345)     # £12,345.00\n * priceOrPOA(undefined) # £POA\n * priceOrPOA(12345.67, { thousands: ' ' })  # 12 345.67\n */\nexport function priceOrPOA(money, options={ }) {\n  const config = { ...numberDefaults, ...options };\n  return config.currency +\n    (money\n      ? commas(parseFloat(money).toFixed(2), config.thousands)\n      : config.poa);\n}\n\n/**\n * Function to format a number as a price with commas and a currency symbol.\n * If the amount is zero, undefined or null then it returns \"£0\".\n * @param {Integer} money - number of items\n * @param {String} [options] - configuration options\n * @param {String} [options.currency='£'] - currency prefix\n * @param {String} [options.thousands=','] - thousands separator\n * @example\n * priceOrZero(12345)     # £12,345.00\n * priceOrZero(0)         # £0\n * priceOrZero(undefined) # £0\n * priceOrZero(12345.67, { thousands: ' ' })  # 12 345.67\n */\nexport function priceOrZero(money, options={ }) {\n  const config = { ...numberDefaults, ...options };\n  return config.currency + commas(parseFloat(money || 0).toFixed(2), config.thousands)\n}\n\n/**\n * Function to format a number as an inter price with commas and a currency symbol.\n * If the amount is zero or otherwise false then an empty string is returned.\n * @param {Integer} money - number of items\n * @param {String} [options] - configuration options\n * @param {String} [options.currency='£'] - currency prefix\n * @param {String} [options.thousands=','] - thousands separator\n * @example\n * pounds(12345)     # £12,345\n * pounds(12345.67)  # £12,345\n * pounds(0)         #\n * pounds(12345.67, { currency: '$', thousands: ' ' })  # $12 345\n */\nexport function pounds(money, options={ }) {\n  const config = { ...numberDefaults, ...options };\n  return money\n    ? config.currency + commas(Math.floor(parseFloat(money)).toString(), config.thousands)\n    : '';\n}\n\n/**\n * Function to create an array with a range of numbers.  Note that this will\n * include the last value.\n * @param {Integer} first - first number\n * @param {Integer} last - last number\n */\nexport const range = (first, last) =>\n  Array(1 + last - first).fill(first).map((x, y) => x + y)\n",
+    "content": "import { noValue } from \"./assert.js\";\nimport { defaultLocale } from \"./misc.js\";\n\n// this is an ugly hack to provide backwards compatibility\n// with some of my older utility functions that are very much\n// specific to me and my locale (e.g. formatting prices using\n// British pounds)\nlet numberDefaults = {\n  locale:       defaultLocale(),\n  currency:     'GBP',\n  currencySign: '£',\n  thousands:    ',',\n};\n\n/**\n * Function to set the default options for formatting numbers.\n * @param {Object} defaults - default options\n * @param {String} [defaults.locale] - default locale\n * @param {String} [defaults.currency] - default currency, e.g. `GBP`\n * @param {String} [defaults.currencySign] - default currency sign, e.g. `£`\n * @param {String} [defaults.thousands] - default separator for thousands, e.g. `,`\n */\nexport function setNumberDefaults(defaults={}) {\n  numberDefaults = { ...numberDefaults, ...defaults };\n}\n\n/**\n * Function to create an array with a range of numbers.  Note that this will\n * include the last value.\n * @param {Integer} first - first number\n * @param {Integer} last - last number\n * @param {Integer} [step=1] - step number\n */\nexport const range = (first, last, step=1) => {\n  const down = last < first;\n  const walk = down ? -Math.abs(step) : step;\n  return Array(1 + Math.floor(Math.abs((last - first) / step)))\n    .fill(first)\n    .map((x, y) => x + y * walk)\n}\n\n/**\n * Function to format a number with various options.\n * @param {Number} number - number to format\n * @param {Object} [options] - configuration options\n * @param {Object} [options.locale] - locale\n */\nexport function formatNumber(number, options={}) {\n  return new Intl.NumberFormat(\n    options.locale || numberDefaults.locale,\n    options\n  ).format(number)\n}\n\n/**\n * Function to format a number as a currency.\n * @param {Number} number - number to format\n * @param {Object} [options] - configuration options\n * @param {Object} [options.locale] - locale\n * @param {Object} [options.currency] - currency code, e.g. `GBP` or `USD`\n */\nexport function currency(number, options={}) {\n  return formatNumber(\n    number,\n    {\n      style: 'currency',\n      currency: numberDefaults.currency,\n      ...options\n    }\n  );\n}\n\n/**\n * Function to add commas as thousand separators in a number.\n * @param {Integer} n - number of items\n * @param {String} [thousands=','] - optional thousands separator instead of a comma\n * @example\n * commas(12345)          // 12,345\n * commas(12345.67)       // 12,345.67\n * commas(12345.67, ' ')  // 12 345.67\n */\nexport function commas(n, thousands=numberDefaults.thousands) {\n  if (noValue(n)) {\n    return '';\n  }\n  var bits  = n.toString().split('.'),\n    rgx   = /(\\d+)(\\d{3})/;\n\n  while (rgx.test(bits[0])) {\n    bits[0] = bits[0].replace(rgx, `$1${thousands}$2`);\n  }\n  return bits.join('.');\n}\n\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/numbers.js",
     "access": "public",
@@ -1060,7 +1154,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 65,
+    "__docId__": 68,
     "kind": "variable",
     "name": "numberDefaults",
     "memberof": "src/utils/numbers.js",
@@ -1071,17 +1165,257 @@
     "importPath": "@abw/badger-utils",
     "importStyle": null,
     "description": null,
-    "lineNumber": 3,
+    "lineNumber": 8,
     "undocument": true,
     "type": {
       "types": [
-        "{\"currency\": string, \"thousands\": string, \"poa\": string}"
+        "{\"locale\": *, \"currency\": string, \"currencySign\": string, \"thousands\": string}"
       ]
     },
     "ignore": true
   },
   {
-    "__docId__": 66,
+    "__docId__": 69,
+    "kind": "function",
+    "name": "setNumberDefaults",
+    "memberof": "src/utils/numbers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/numbers.js~setNumberDefaults",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{setNumberDefaults}",
+    "description": "Function to set the default options for formatting numbers.",
+    "lineNumber": 23,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "defaults",
+        "description": "default options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "defaults.locale",
+        "description": "default locale"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "defaults.currency",
+        "description": "default currency, e.g. `GBP`"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "defaults.currencySign",
+        "description": "default currency sign, e.g. `£`"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "defaults.thousands",
+        "description": "default separator for thousands, e.g. `,`"
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 70,
+    "kind": "function",
+    "name": "range",
+    "memberof": "src/utils/numbers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/numbers.js~range",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{range}",
+    "description": "Function to create an array with a range of numbers.  Note that this will\ninclude the last value.",
+    "lineNumber": 34,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "first",
+        "description": "first number"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "last",
+        "description": "last number"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Integer"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "1",
+        "defaultRaw": 1,
+        "name": "step",
+        "description": "step number"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 71,
+    "kind": "function",
+    "name": "formatNumber",
+    "memberof": "src/utils/numbers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/numbers.js~formatNumber",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{formatNumber}",
+    "description": "Function to format a number with various options.",
+    "lineNumber": 48,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": "number to format"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "configuration options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.locale",
+        "description": "locale"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 72,
+    "kind": "function",
+    "name": "currency",
+    "memberof": "src/utils/numbers.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/numbers.js~currency",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{currency}",
+    "description": "Function to format a number as a currency.",
+    "lineNumber": 62,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "number",
+        "description": "number to format"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options",
+        "description": "configuration options"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.locale",
+        "description": "locale"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "name": "options.currency",
+        "description": "currency code, e.g. `GBP` or `USD`"
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 73,
     "kind": "function",
     "name": "commas",
     "memberof": "src/utils/numbers.js",
@@ -1095,9 +1429,9 @@
     "importStyle": "{commas}",
     "description": "Function to add commas as thousand separators in a number.",
     "examples": [
-      "commas(12345)          # 12,345\ncommas(12345.67)       # 12,345.67\ncommas(12345.67, ' ')  # 12 345.67"
+      "commas(12345)          // 12,345\ncommas(12345.67)       // 12,345.67\ncommas(12345.67, ' ')  // 12 345.67"
     ],
-    "lineNumber": 18,
+    "lineNumber": 82,
     "params": [
       {
         "nullable": null,
@@ -1129,329 +1463,120 @@
     }
   },
   {
-    "__docId__": 67,
+    "__docId__": 74,
+    "kind": "file",
+    "name": "src/utils/object.js",
+    "content": "import { splitList } from './text.js';\n\n/**\n * Applies a function to each of the values of an object and returns\n * a new object.\n * @param {Object} obj - source object\n * @param {Function} fn - function to apply to each value\n * @return {Object} - new object with function applied to values\n * @example\n * objMap(\n *   { a: 'alpha', b: 'bravo' },\n *   v => v.toUpperCase()\n * )                        // returns { a: 'ALPHA', b: 'BRAVO' }\n */\nexport function objMap(obj, fn) {\n  return Object.keys(obj).reduce(\n    (result, key) => {\n      result[key] = fn(obj[key], key)\n      return result\n    },\n    {}\n  );\n}\n\n/**\n * Extracts a subset of items from an object.\n * @param {Object} obj - source object\n * @param {Array|String} keys - Array or string of keys to extract\n * @return {Object} - new object with function applied to values\n * @example\n * objSubset(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a b'\n * )                        // returns { a: 'alpha', b: 'bravo' }\n */\nexport function objSubset(obj, keys) {\n  return splitList(keys).reduce(\n    (result, key) => {\n      result[key] = obj[key];\n      return result\n    },\n    {}\n  );\n}\n",
+    "static": true,
+    "longname": "/Users/abw/js/badger-utils/src/utils/object.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 75,
     "kind": "function",
-    "name": "price",
-    "memberof": "src/utils/numbers.js",
+    "name": "objMap",
+    "memberof": "src/utils/object.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/utils/numbers.js~price",
+    "longname": "src/utils/object.js~objMap",
     "access": "public",
     "export": true,
     "importPath": "@abw/badger-utils",
-    "importStyle": "{price}",
-    "description": "Function to format a number as a price with commas and a currency symbol.\nUses British pounds by default because that's what works for me.",
+    "importStyle": "{objMap}",
+    "description": "Applies a function to each of the values of an object and returns\na new object.",
     "examples": [
-      "price(12345)          # £12,345.00\nprice(12345.67)       # £12,345.67\nprice(12345.67, { thousands: ' ' })  # £12 345.67\nprice(12345.67, { currency: '$' })   # $12 345.67"
+      "objMap(\n  { a: 'alpha', b: 'bravo' },\n  v => v.toUpperCase()\n)                        // returns { a: 'ALPHA', b: 'BRAVO' }"
     ],
-    "lineNumber": 44,
+    "lineNumber": 15,
     "params": [
       {
         "nullable": null,
         "types": [
-          "Integer"
+          "Object"
         ],
         "spread": false,
         "optional": false,
-        "name": "money",
-        "description": "number of items"
+        "name": "obj",
+        "description": "source object"
       },
       {
         "nullable": null,
         "types": [
-          "String"
+          "Function"
         ],
         "spread": false,
-        "optional": true,
-        "name": "options",
-        "description": "configuration options"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "'£'",
-        "defaultRaw": "'£'",
-        "name": "options.currency",
-        "description": "currency prefix"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "','",
-        "defaultRaw": "','",
-        "name": "options.thousands",
-        "description": "thousands separator"
+        "optional": false,
+        "name": "fn",
+        "description": "function to apply to each value"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": "new object with function applied to values"
     }
   },
   {
-    "__docId__": 68,
+    "__docId__": 76,
     "kind": "function",
-    "name": "priceOrPOA",
-    "memberof": "src/utils/numbers.js",
+    "name": "objSubset",
+    "memberof": "src/utils/object.js",
     "generator": false,
     "async": false,
     "static": true,
-    "longname": "src/utils/numbers.js~priceOrPOA",
+    "longname": "src/utils/object.js~objSubset",
     "access": "public",
     "export": true,
     "importPath": "@abw/badger-utils",
-    "importStyle": "{priceOrPOA}",
-    "description": "Function to format a number as a price with commas and a currency symbol.\nIf the amount is zero, undefined or null then it returns \"£POA\".",
+    "importStyle": "{objSubset}",
+    "description": "Extracts a subset of items from an object.",
     "examples": [
-      "priceOrPOA(12345)     # £12,345.00\npriceOrPOA(undefined) # £POA\npriceOrPOA(12345.67, { thousands: ' ' })  # 12 345.67"
+      "objSubset(\n  { a: 'alpha', b: 'bravo', c: 'charlie' },\n  'a b'\n)                        // returns { a: 'alpha', b: 'bravo' }"
     ],
-    "lineNumber": 63,
+    "lineNumber": 36,
     "params": [
       {
         "nullable": null,
         "types": [
-          "Integer"
+          "Object"
         ],
         "spread": false,
         "optional": false,
-        "name": "money",
-        "description": "number of items"
+        "name": "obj",
+        "description": "source object"
       },
       {
         "nullable": null,
         "types": [
+          "Array",
           "String"
         ],
         "spread": false,
-        "optional": true,
-        "name": "options",
-        "description": "configuration options"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "'£'",
-        "defaultRaw": "'£'",
-        "name": "options.currency",
-        "description": "currency prefix"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "','",
-        "defaultRaw": "','",
-        "name": "options.thousands",
-        "description": "thousands separator"
+        "optional": false,
+        "name": "keys",
+        "description": "Array or string of keys to extract"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": "new object with function applied to values"
     }
   },
   {
-    "__docId__": 69,
-    "kind": "function",
-    "name": "priceOrZero",
-    "memberof": "src/utils/numbers.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/utils/numbers.js~priceOrZero",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{priceOrZero}",
-    "description": "Function to format a number as a price with commas and a currency symbol.\nIf the amount is zero, undefined or null then it returns \"£0\".",
-    "examples": [
-      "priceOrZero(12345)     # £12,345.00\npriceOrZero(0)         # £0\npriceOrZero(undefined) # £0\npriceOrZero(12345.67, { thousands: ' ' })  # 12 345.67"
-    ],
-    "lineNumber": 84,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Integer"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "money",
-        "description": "number of items"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "name": "options",
-        "description": "configuration options"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "'£'",
-        "defaultRaw": "'£'",
-        "name": "options.currency",
-        "description": "currency prefix"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "','",
-        "defaultRaw": "','",
-        "name": "options.thousands",
-        "description": "thousands separator"
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 70,
-    "kind": "function",
-    "name": "pounds",
-    "memberof": "src/utils/numbers.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/utils/numbers.js~pounds",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{pounds}",
-    "description": "Function to format a number as an inter price with commas and a currency symbol.\nIf the amount is zero or otherwise false then an empty string is returned.",
-    "examples": [
-      "pounds(12345)     # £12,345\npounds(12345.67)  # £12,345\npounds(0)         #\npounds(12345.67, { currency: '$', thousands: ' ' })  # $12 345"
-    ],
-    "lineNumber": 102,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Integer"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "money",
-        "description": "number of items"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "name": "options",
-        "description": "configuration options"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "'£'",
-        "defaultRaw": "'£'",
-        "name": "options.currency",
-        "description": "currency prefix"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": true,
-        "defaultValue": "','",
-        "defaultRaw": "','",
-        "name": "options.thousands",
-        "description": "thousands separator"
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 71,
-    "kind": "function",
-    "name": "range",
-    "memberof": "src/utils/numbers.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/utils/numbers.js~range",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{range}",
-    "description": "Function to create an array with a range of numbers.  Note that this will\ninclude the last value.",
-    "lineNumber": 115,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "Integer"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "first",
-        "description": "first number"
-      },
-      {
-        "nullable": null,
-        "types": [
-          "Integer"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "last",
-        "description": "last number"
-      }
-    ],
-    "return": null
-  },
-  {
-    "__docId__": 72,
+    "__docId__": 77,
     "kind": "file",
     "name": "src/utils/text.js",
-    "content": "import { isString, isArray, noValue } from \"./assert.js\";\nimport { commas } from \"./numbers.js\";\n\n/**\n * Split a comma/whitespace delimited string into an Array\n * @param {String} value - string to split\n * @return {Array} array of split strings\n * @example\n * const strings = splitList('one two three')\n * @example\n * const strings = splitList('one,two,three')\n * @example\n * const strings = splitList('one, two, three')\n */\nexport function splitList(value) {\n  if (noValue(value)) {\n    return [ ];\n  }\n  else if (isString(value)) {\n    return value.length\n      ? value.split(/,\\s*|\\s+/)\n      : [ ]\n  }\n  else if (isArray(value)) {\n    return value;\n  }\n  return [value];\n}\n\n/**\n * Join an Array into a single string\n * @param {Array} array - array to join\n * @param {String} [joint=' '] - delimiter to join strings\n * @param {String} [lastJoint=joint] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinList(['one', 'two', 'three']);   // one two three\n * @example\n * joinList(['one', 'two', 'three'], ', ');   // one, two, three\n * @example\n * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three\n */\nexport function joinList(array, joint=' ', lastJoint=joint) {\n  let copy = [...array];\n  const last = copy.pop();\n  return copy.length\n    ? [copy.join(joint), last].join(lastJoint)\n    : last;\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` and ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' and '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListAnd(['one', 'two', 'three']);   // one, two and three\n */\nexport function joinListAnd(array, joint=', ', lastJoint=' and ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` or ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' or '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListOr(['one', 'two', 'three']);   // one, two or three\n */\nexport function joinListOr(array, joint=', ', lastJoint=' or ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Capitalise a string by converting the first character to upper case and other characters to lower case\n * @param {String} word - word to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger');   // Badger\n * @example\n * capitalise('BADGER');   // Badger\n */\nexport function capitalise(word) {\n  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n}\n\n/**\n * Capitalise all words in a string by converting the first character of each word to upper case\n * @param {String} string - words to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger fun');   // Badger Fun\n */\nexport function capitaliseWords(string) {\n  return string.replace(\n    /(?:^|\\s)\\S/g,\n    a => a.toUpperCase()\n  );\n}\n\n// for the yanks\nexport const capitalize = capitalise;\nexport const capitalizeWords = capitaliseWords;\n\n\n/**\n * Convert a snake case string to studly caps\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToStudly('happy_badger_dance');   // HappyBadgerDance\n * @example\n * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance\n */\nexport function snakeToStudly(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to FooBar\n    segment => segment.split('_').map(capitalise).join('')\n  ).join('/');\n}\n\n/**\n * Convert a snake case string to camel case\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToCamel('happy_badger_dance');   // happyBadgerDance\n * @example\n * snakeToCamel('happy_badger/dance');   // happyBadger/dance\n */\nexport function snakeToCamel(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to fooBar\n    segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')\n  ).join('/');\n}\n\n/**\n * A very primitive function to pluralise the singular form of a words.  It only\n * words on words with standard endings and plural forms, because pluralising\n * words is notoriously difficult.\n * @param {String} singular - word to pluralise\n * @return {String} plural form\n * @example\n * pluralise('box');     // boxes\n * @example\n * pluralise('doggy');   // doggies\n * @example\n * pluralise('badger');  // badgers\n * @example\n * pluralise('woman');   // womans\n */\nexport function pluralise(singular) {\n  let found;\n\n  if (singular.match(/(ss?|sh|ch|x)$/)) {\n    // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes\n    return singular + 'es';\n  }\n  else if ((found = singular.match(/(.*?[^aeiou])y$/))) {\n    // doggy/doggies\n    return found[1] + 'ies';\n  }\n  else if (singular.match(/([^s\\d\\W])$/)) {\n    // cat/cats\n    return singular + 's';\n  }\n  return singular;\n}\n\n/**\n * Utility function to inflect a string passed as the second argument to the singular/plural\n * form based on the number passed as the first argument.  Uses the {@link pluralise()} function\n * which only works on words with standard pluralisations.  The third argument can be provided\n * as the plural form where necessary.  The optional 4th argument can be used to provide a different\n * word for the case where n is 0.  The default is \"no\", e.g. \"no badgers\" when n is 0.\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='no'] - optional word to use when `n` is 0\n * @example\n * inflect(0, 'cat')     # no cats\n * @example\n * inflect(1, 'cat')     # 1 cat\n * @example\n * inflect(2, 'cat')     # 2 cats\n * @example\n * inflect(0, 'child', 'children')     # no children\n * @example\n * inflect(1, 'child', 'children')     # 1 child\n * @example\n * inflect(2, 'child', 'children')     # 2 children\n * @example\n * inflect(0, 'black', 'black', \"none, none more\")     # none, none more black\n */\nexport function inflect(n, singular, plural, no='no') {\n  return (n ? commas(n) : no)\n    + ' '\n    + (n === 1 ? singular : (plural || pluralise(singular)));\n}\n\n/**\n * Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\n * zero case, i.e. Inflect() is the capitalized form of inflect()\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='No'] - optional word to use when `n` is 0\n */\nexport function Inflect(n, singular, plural, no='No') {\n  return inflect(n, singular, plural, no);\n}\n\n\nexport function splitParas() {\n  var text = Array.prototype.slice.call(arguments).join('');\n  if (text.length === 0) {\n    return [ ];\n  }\n  var rows = text.split(/\\s*\\n+\\s*/).filter(\n    function(item) { return item.length > 0 }\n  );\n  return rows;\n}\n\n",
+    "content": "import { isString, isArray, noValue } from \"./assert.js\";\nimport { commas } from \"./numbers.js\";\n\n/**\n * Split a comma/whitespace delimited string into an Array\n * @param {String} value - string to split\n * @return {Array} array of split strings\n * @example\n * const strings = splitList('one two three')\n * @example\n * const strings = splitList('one,two,three')\n * @example\n * const strings = splitList('one, two, three')\n */\nexport function splitList(value) {\n  if (noValue(value)) {\n    return [ ];\n  }\n  else if (isString(value)) {\n    return value.length\n      ? value.split(/,\\s*|\\s+/)\n      : [ ]\n  }\n  else if (isArray(value)) {\n    return value;\n  }\n  return [value];\n}\n\n/**\n * Split a string into an Array of lines.\n * @param {String} text - string to split\n * @return {Array} array of lines\n*/\nexport function splitLines(text) {\n  if (! isString(text) || text.length === 0) {\n    return [ ];\n  }\n  var lines = text.split(/\\s*\\n+\\s*/).filter(\n    function(item) { return item.length > 0 }\n  );\n  return lines;\n}\n\n/**\n * Join an Array into a single string\n * @param {Array} array - array to join\n * @param {String} [joint=' '] - delimiter to join strings\n * @param {String} [lastJoint=joint] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinList(['one', 'two', 'three']);   // one two three\n * @example\n * joinList(['one', 'two', 'three'], ', ');   // one, two, three\n * @example\n * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three\n */\nexport function joinList(array, joint=' ', lastJoint=joint) {\n  let copy = [...array];\n  const last = copy.pop();\n  return copy.length\n    ? [copy.join(joint), last].join(lastJoint)\n    : last;\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` and ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' and '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListAnd(['one', 'two', 'three']);   // one, two and three\n */\nexport function joinListAnd(array, joint=', ', lastJoint=' and ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` or ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' or '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListOr(['one', 'two', 'three']);   // one, two or three\n */\nexport function joinListOr(array, joint=', ', lastJoint=' or ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Capitalise a string by converting the first character to upper case and other characters to lower case\n * @param {String} word - word to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger');   // Badger\n * @example\n * capitalise('BADGER');   // Badger\n */\nexport function capitalise(word) {\n  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n}\n\n/**\n * Capitalise all words in a string by converting the first character of each word to upper case\n * @param {String} string - words to capitalise\n * @return {String} capitalised string\n * @example\n * capitaliseWords('badger fun');   // Badger Fun\n * @example\n * capitaliseWords('BADGER FUN');   // Badger Fun\n */\nexport function capitaliseWords(string) {\n  return string.replace(\n    // /(?:^|\\s)\\S/g,\n    /(\\w+)/g,\n    capitalise\n  );\n}\n\n/**\n * Convert a snake case string to studly caps\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToStudly('happy_badger_dance');   // HappyBadgerDance\n * @example\n * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance\n */\nexport function snakeToStudly(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to FooBar\n    segment => segment.split('_').map(capitalise).join('')\n  ).join('/');\n}\n\n/**\n * Convert a snake case string to camel case\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToCamel('happy_badger_dance');   // happyBadgerDance\n * @example\n * snakeToCamel('happy_badger/dance');   // happyBadger/dance\n */\nexport function snakeToCamel(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to fooBar\n    segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')\n  ).join('/');\n}\n\n/**\n * A very primitive function to pluralise the singular form of a words.  It only\n * works on words with standard endings and plural forms, because pluralising\n * words is notoriously difficult.\n * @param {String} singular - word to pluralise\n * @return {String} plural form\n * @example\n * pluralise('box');     // boxes\n * @example\n * pluralise('doggy');   // doggies\n * @example\n * pluralise('badger');  // badgers\n * @example\n * pluralise('woman');   // womans\n */\nexport function pluralise(singular) {\n  let found;\n\n  if (singular.match(/(ss?|sh|ch|x)$/)) {\n    // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes\n    return singular + 'es';\n  }\n  else if ((found = singular.match(/(.*?[^aeiou])y$/))) {\n    // doggy/doggies\n    return found[1] + 'ies';\n  }\n  else if (singular.match(/([^s\\d\\W])$/)) {\n    // cat/cats\n    return singular + 's';\n  }\n  return singular;\n}\n\n/**\n * Utility function to inflect a string passed as the second argument to the singular/plural\n * form based on the number passed as the first argument.  Uses the {@link pluralise()} function\n * which only works on words with standard pluralisations.  The third argument can be provided\n * as the plural form where necessary.  The optional 4th argument can be used to provide a different\n * word for the case where n is 0.  The default is \"no\", e.g. \"no badgers\" when n is 0.\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='no'] - optional word to use when `n` is 0\n * @example\n * inflect(0, 'cat')     # no cats\n * @example\n * inflect(1, 'cat')     # 1 cat\n * @example\n * inflect(2, 'cat')     # 2 cats\n * @example\n * inflect(0, 'child', 'children')     # no children\n * @example\n * inflect(1, 'child', 'children')     # 1 child\n * @example\n * inflect(2, 'child', 'children')     # 2 children\n * @example\n * inflect(0, 'black', 'black', \"none, none more\")     # none, none more black\n */\nexport function inflect(n, singular, plural, no='no') {\n  return (n ? commas(n) : no)\n    + ' '\n    + (n === 1 ? singular : (plural || pluralise(singular)));\n}\n\n/**\n * Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\n * zero case, i.e. Inflect() is the capitalized form of inflect()\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='No'] - optional word to use when `n` is 0\n */\nexport function Inflect(n, singular, plural, no='No') {\n  return inflect(n, singular, plural, no);\n}\n\n\n\n// for the yanks\nexport const capitalize = capitalise;\nexport const capitalizeWords = capitaliseWords;\nexport const pluralize = pluralise;\n\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/text.js",
     "access": "public",
@@ -1459,7 +1584,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 73,
+    "__docId__": 78,
     "kind": "function",
     "name": "splitList",
     "memberof": "src/utils/text.js",
@@ -1500,7 +1625,43 @@
     }
   },
   {
-    "__docId__": 74,
+    "__docId__": 79,
+    "kind": "function",
+    "name": "splitLines",
+    "memberof": "src/utils/text.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/text.js~splitLines",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{splitLines}",
+    "description": "Split a string into an Array of lines.",
+    "lineNumber": 35,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "text",
+        "description": "string to split"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": "array of lines"
+    }
+  },
+  {
+    "__docId__": 80,
     "kind": "function",
     "name": "joinList",
     "memberof": "src/utils/text.js",
@@ -1518,7 +1679,7 @@
       "joinList(['one', 'two', 'three'], ', ');   // one, two, three",
       "joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three"
     ],
-    "lineNumber": 43,
+    "lineNumber": 58,
     "params": [
       {
         "nullable": null,
@@ -1565,7 +1726,7 @@
     }
   },
   {
-    "__docId__": 75,
+    "__docId__": 81,
     "kind": "function",
     "name": "joinListAnd",
     "memberof": "src/utils/text.js",
@@ -1581,7 +1742,7 @@
     "examples": [
       "joinListAnd(['one', 'two', 'three']);   // one, two and three"
     ],
-    "lineNumber": 60,
+    "lineNumber": 75,
     "params": [
       {
         "nullable": null,
@@ -1628,7 +1789,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 82,
     "kind": "function",
     "name": "joinListOr",
     "memberof": "src/utils/text.js",
@@ -1644,7 +1805,7 @@
     "examples": [
       "joinListOr(['one', 'two', 'three']);   // one, two or three"
     ],
-    "lineNumber": 73,
+    "lineNumber": 88,
     "params": [
       {
         "nullable": null,
@@ -1691,7 +1852,7 @@
     }
   },
   {
-    "__docId__": 77,
+    "__docId__": 83,
     "kind": "function",
     "name": "capitalise",
     "memberof": "src/utils/text.js",
@@ -1708,7 +1869,7 @@
       "capitalise('badger');   // Badger",
       "capitalise('BADGER');   // Badger"
     ],
-    "lineNumber": 86,
+    "lineNumber": 101,
     "params": [
       {
         "nullable": null,
@@ -1731,7 +1892,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 84,
     "kind": "function",
     "name": "capitaliseWords",
     "memberof": "src/utils/text.js",
@@ -1745,9 +1906,10 @@
     "importStyle": "{capitaliseWords}",
     "description": "Capitalise all words in a string by converting the first character of each word to upper case",
     "examples": [
-      "capitalise('badger fun');   // Badger Fun"
+      "capitaliseWords('badger fun');   // Badger Fun",
+      "capitaliseWords('BADGER FUN');   // Badger Fun"
     ],
-    "lineNumber": 97,
+    "lineNumber": 114,
     "params": [
       {
         "nullable": null,
@@ -1770,47 +1932,7 @@
     }
   },
   {
-    "__docId__": 79,
-    "kind": "variable",
-    "name": "capitalize",
-    "memberof": "src/utils/text.js",
-    "static": true,
-    "longname": "src/utils/text.js~capitalize",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{capitalize}",
-    "description": null,
-    "lineNumber": 105,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 80,
-    "kind": "variable",
-    "name": "capitalizeWords",
-    "memberof": "src/utils/text.js",
-    "static": true,
-    "longname": "src/utils/text.js~capitalizeWords",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{capitalizeWords}",
-    "description": null,
-    "lineNumber": 106,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 81,
+    "__docId__": 85,
     "kind": "function",
     "name": "snakeToStudly",
     "memberof": "src/utils/text.js",
@@ -1827,7 +1949,7 @@
       "snakeToStudly('happy_badger_dance');   // HappyBadgerDance",
       "snakeToStudly('happy_badger/dance');   // HappyBadger/Dance"
     ],
-    "lineNumber": 118,
+    "lineNumber": 131,
     "params": [
       {
         "nullable": null,
@@ -1850,7 +1972,7 @@
     }
   },
   {
-    "__docId__": 82,
+    "__docId__": 86,
     "kind": "function",
     "name": "snakeToCamel",
     "memberof": "src/utils/text.js",
@@ -1867,7 +1989,7 @@
       "snakeToCamel('happy_badger_dance');   // happyBadgerDance",
       "snakeToCamel('happy_badger/dance');   // happyBadger/dance"
     ],
-    "lineNumber": 134,
+    "lineNumber": 147,
     "params": [
       {
         "nullable": null,
@@ -1890,7 +2012,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 87,
     "kind": "function",
     "name": "pluralise",
     "memberof": "src/utils/text.js",
@@ -1902,14 +2024,14 @@
     "export": true,
     "importPath": "@abw/badger-utils",
     "importStyle": "{pluralise}",
-    "description": "A very primitive function to pluralise the singular form of a words.  It only\nwords on words with standard endings and plural forms, because pluralising\nwords is notoriously difficult.",
+    "description": "A very primitive function to pluralise the singular form of a words.  It only\nworks on words with standard endings and plural forms, because pluralising\nwords is notoriously difficult.",
     "examples": [
       "pluralise('box');     // boxes",
       "pluralise('doggy');   // doggies",
       "pluralise('badger');  // badgers",
       "pluralise('woman');   // womans"
     ],
-    "lineNumber": 156,
+    "lineNumber": 169,
     "params": [
       {
         "nullable": null,
@@ -1932,7 +2054,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 88,
     "kind": "function",
     "name": "inflect",
     "memberof": "src/utils/text.js",
@@ -1954,7 +2076,7 @@
       "inflect(2, 'child', 'children')     # 2 children",
       "inflect(0, 'black', 'black', \"none, none more\")     # none, none more black"
     ],
-    "lineNumber": 199,
+    "lineNumber": 212,
     "params": [
       {
         "nullable": null,
@@ -2006,7 +2128,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 89,
     "kind": "function",
     "name": "Inflect",
     "memberof": "src/utils/text.js",
@@ -2019,7 +2141,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{Inflect}",
     "description": "Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\nzero case, i.e. Inflect() is the capitalized form of inflect()",
-    "lineNumber": 213,
+    "lineNumber": 226,
     "params": [
       {
         "nullable": null,
@@ -2071,33 +2193,70 @@
     }
   },
   {
-    "__docId__": 86,
-    "kind": "function",
-    "name": "splitParas",
+    "__docId__": 90,
+    "kind": "variable",
+    "name": "capitalize",
     "memberof": "src/utils/text.js",
-    "generator": false,
-    "async": false,
     "static": true,
-    "longname": "src/utils/text.js~splitParas",
+    "longname": "src/utils/text.js~capitalize",
     "access": "public",
     "export": true,
     "importPath": "@abw/badger-utils",
-    "importStyle": "{splitParas}",
+    "importStyle": "{capitalize}",
     "description": null,
-    "lineNumber": 218,
+    "lineNumber": 233,
     "undocument": true,
-    "params": [],
-    "return": {
+    "type": {
       "types": [
         "*"
       ]
     }
   },
   {
-    "__docId__": 87,
+    "__docId__": 91,
+    "kind": "variable",
+    "name": "capitalizeWords",
+    "memberof": "src/utils/text.js",
+    "static": true,
+    "longname": "src/utils/text.js~capitalizeWords",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{capitalizeWords}",
+    "description": null,
+    "lineNumber": 234,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 92,
+    "kind": "variable",
+    "name": "pluralize",
+    "memberof": "src/utils/text.js",
+    "static": true,
+    "longname": "src/utils/text.js~pluralize",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{pluralize}",
+    "description": null,
+    "lineNumber": 235,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 93,
     "kind": "file",
     "name": "src/utils/time.js",
-    "content": "/**\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Function} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n */\nexport function debounce(func, timeout=300) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(\n      () => func.apply(this, args),\n      timeout\n    );\n  };\n}\n\n/**\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n */\nexport const sleep = ms =>\n  new Promise(r => setTimeout(r, ms));\n",
+    "content": "/**\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Integer} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n */\nexport function debounce(func, timeout=300) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(\n      () => func.apply(this, args),\n      timeout\n    );\n  };\n}\n\n/**\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n */\nexport function sleep(ms) {\n  return new Promise(r => setTimeout(r, ms))\n}\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/time.js",
     "access": "public",
@@ -2105,7 +2264,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 88,
+    "__docId__": 94,
     "kind": "function",
     "name": "debounce",
     "memberof": "src/utils/time.js",
@@ -2133,7 +2292,7 @@
       {
         "nullable": null,
         "types": [
-          "Function"
+          "Integer"
         ],
         "spread": false,
         "optional": true,
@@ -2153,7 +2312,7 @@
     }
   },
   {
-    "__docId__": 89,
+    "__docId__": 95,
     "kind": "function",
     "name": "sleep",
     "memberof": "src/utils/time.js",
@@ -2198,9 +2357,73 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@abw/badger-utils\",\n  \"version\": \"1.0.2\",\n  \"description\": \"Javascript utility modules\",\n  \"type\": \"module\",\n  \"main\": \"dist/badger-utils.cjs.js\",\n  \"module\": \"dist/badger-utils.esm.js\",\n  \"browser\": \"dist/badger-utils.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"require\": \"./dist/badger-utils.cjs.js\",\n      \"import\": \"./dist/badger-utils.esm.js\"\n    }\n  },\n  \"author\": \"Andy Wardley\",\n  \"license\": \"MIT\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/abw/badger-utils.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/abw/badger-utils/issues\"\n  },\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"dev\": \"rollup -c -w\",\n    \"lint\": \"eslint 'src/**/*'\",\n    \"docs:build\": \"esdoc\",\n    \"docs:serve\": \"serve docs\",\n    \"test\": \"ava\",\n    \"pretest\": \"pnpm run build\"\n  },\n  \"keywords\": [\n    \"badger\",\n    \"utility\"\n  ],\n  \"devDependencies\": {\n    \"@itsjamie/esdoc-cli\": \"^0.5.0\",\n    \"@itsjamie/esdoc-core\": \"^0.5.0\",\n    \"@itsjamie/esdoc-importpath-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-inject-style-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-standard-plugin\": \"^0.5.0\",\n    \"@rollup/plugin-commonjs\": \"^11.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^7.1.3\",\n    \"ava\": \"^4.3.0\",\n    \"eslint\": \"^8.20.0\",\n    \"rollup\": \"^2\",\n    \"rollup-plugin-terser\": \"^7.0.2\"\n  },\n  \"dependencies\": {\n  }\n}\n",
+    "content": "{\n  \"name\": \"@abw/badger-utils\",\n  \"version\": \"1.0.3\",\n  \"description\": \"Javascript utility modules\",\n  \"type\": \"module\",\n  \"main\": \"dist/badger-utils.cjs.js\",\n  \"module\": \"dist/badger-utils.esm.js\",\n  \"browser\": \"dist/badger-utils.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"require\": \"./dist/badger-utils.cjs.js\",\n      \"import\": \"./dist/badger-utils.esm.js\"\n    }\n  },\n  \"author\": \"Andy Wardley\",\n  \"license\": \"MIT\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/abw/badger-utils.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/abw/badger-utils/issues\"\n  },\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"dev\": \"rollup -c -w\",\n    \"lint\": \"eslint 'src/**/*'\",\n    \"docs:build\": \"esdoc\",\n    \"docs:serve\": \"serve docs\",\n    \"test\": \"ava\",\n    \"pretest\": \"pnpm run build\"\n  },\n  \"keywords\": [\n    \"badger\",\n    \"utility\"\n  ],\n  \"devDependencies\": {\n    \"@itsjamie/esdoc-cli\": \"^0.5.0\",\n    \"@itsjamie/esdoc-core\": \"^0.5.0\",\n    \"@itsjamie/esdoc-importpath-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-inject-style-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-standard-plugin\": \"^0.5.0\",\n    \"@rollup/plugin-commonjs\": \"^11.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^7.1.3\",\n    \"ava\": \"^4.3.0\",\n    \"eslint\": \"^8.20.0\",\n    \"rollup\": \"^2\",\n    \"rollup-plugin-terser\": \"^7.0.2\"\n  },\n  \"dependencies\": {\n  }\n}\n",
     "longname": "/Users/abw/js/badger-utils/package.json",
     "name": "package.json",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manualIndex",
+    "content": "# badger-utils\n\n<img src=\"./images/badger2.svg\" width=\"300\"/>\n\nThis is the manual for the `badger-utils` Javascript module.\n\n* [Getting Started](manual/getting_started.html)\n* [Assertions](manual/assertions.html)\n* [Number Functions](manual/numbers.html)\n* [Text Functions](manual/text.html)\n* [Object Functions](manual/objects.html)\n* [Timing Functions](manual/timing.html)\n* [Miscellaneous Functions](manual/misc.html)\n\n# Author\n[Andy Wardley](https://github.com/abw)\n",
+    "longname": "/Users/abw/js/badger-utils/manual/index.md",
+    "name": "./manual/index.md",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/getting_started.md",
+    "name": "./manual/getting_started.md",
+    "content": "# Getting Started\n\n- [Installation](#installation)\n- [Basic Use](#basic-use)\n\n## Installation\n\nUse your favourite package manager to install the module\nfrom `@abw/badger-utils`.\n\n### npm\n\n    npm install @abw/badger-utils\n\n### pnpm\n\n    pnpm add @abw/badger-utils\n\n### yarn\n\n    yarn add @abw/badger-utils\n\n## Basic Use\n\nImport any of the function using ESM syntax.\n\n```js\nimport { isString, objMap } from '@abw/badger-utils'\n```\n\nOr via `require()` if you're still using Common JS format.\n\n```js\nconst { isString, ObjMap } = require('@abw/badger-utils')\n```\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/assertions.md",
+    "name": "./manual/assertions.md",
+    "content": "# Assertions\n\n## isString(value)\n\nDetermines if a value is a string.  Returns Boolean `true` or `false`.\n\n```js\nisString('Hello World'); // true\nisString(42);            // false\n```\n\n## isNumber(value)\n\nDetermines if a value is a number.  Returns Boolean `true` or `false`.\n\n```js\nisNumber(42);      // true\nisNumber(42.43);   // true\nisNumber(\"42\");    // false\n```\n\n## isInteger(value)\n\nDetermines if a value is an integer.  Returns Boolean `true` or `false`.\n\n```js\nisInteger(42);      // true\nisInteger(42.0);    // true\nisInteger(42.43);   // false\nisInteger(\"42\");    // false\n```\n\n## isFloat(value)\n\nDetermines if a value is a floating point number.  Returns Boolean `true` or `false`.\n\n```js\nisInteger(42);      // false\nisInteger(42.0);    // false\nisInteger(42.43);   // true\nisInteger(\"42\");    // false\n```\n\n## isArray(value)\n\nDetermines if a value is an array.  Returns Boolean `true` or `false`.\n\n```js\nisArray([42, 43]);  // true\nisArray(\"42, 43\");  // false\n```\n\n## isFunction(value)\n\nDetermines if a value is a function.  Returns Boolean `true` or `false`.\n\n```js\nisFunction( a => a + 1 );     // true\nisFunction(\"badger badger\");  // false\n```\n\n## isObject(value)\n\nDetermines if a value is an object.\n\nJavascript's concept of an object is ambiguous because a number of\ndifferent data types are considered to be objects, including `Array`\nand `null`.  This function will return `false` for arrays and null\nvalues and only return `true` for values that are objects in the\nmore traditional sense: an instance of a class (e.g. `new Date()`)\nor a data structure created with curly braces (e.g. `{ b: 'badger' }`).\n\nReturns Boolean `true` or `false`.\n\n```js\nisObject(new Date());        // true\nisObject({ b: 'badger' });   // true\nisObject([10, 20]);          // false\nisObject(null);              // false\n```\n\n## isUndefined(value)\n\nDetermines if a value has the `undefined` value.  Returns Boolean `true` or `false`.\n\nNote that this does **not** include `null`.  Use [hasValue(value)](#hasValue) or\n[noValue(value)](#noValue) to test for a value being `undefined` or `null`.\n\n```js\nisUndefined(undefined); // true\nisUndefined(null);      // false\nisUndefined(0);         // false\n```\n\n## isNull(value)\n\nDetermines if a value has the `null` value.  Returns Boolean `true` or `false`.\n\nNote that this does **not** include `undefined` values.\nUse [hasValue(value)](#hasvalue-value-) or [noValue(value)](#novalue-value-) to test for a value\nbeing `undefined` or `null`.\n\n```js\nisNull(null);      // true\nisNull(undefined); // false\nisNull(0);         // false\n```\n\n## hasValue(value)\n\nDetermines if a value has a defined and non-null value.  Returns Boolean `true` or `false`.\n\nNote that this is subtly different from Javascript's idea of truth.  This function\nwill return `true` if the value is a boolean `false` or the number `0`.\n\n```js\nhasValue(0);         // true\nhasValue(false);     // true\nhasValue(null);      // false\nhasValue(undefined); // false\n```\n\n## noValue(value)\n\nDetermines if a value does not have a defined and non-null value.\nIt is the logical negation of [hasValue()](#hasvalue-value-)\nReturns Boolean `true` or `false`.\n\n```js\nnoValue(null);      // true\nnoValue(undefined); // true\nnoValue(0);         // true\nnoValue(false);     // true\n```\n\n## haveValue(values)\n\nDetermines if all the values passed as arguments have defined and non-null value.\nReturns Boolean `true` or `false`.\n\n```js\nhaveValues(0, 1, 2);         // true\nhaveValues(0, 1, undefined); // false\n```\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/numbers.md",
+    "name": "./manual/numbers.md",
+    "content": "# Numbers\n\nVarious utility functions for working with numbers.\n\n## range(from, to, step=1)\n\nReturns an array of sequential numbers from the starting value, `from`, up to\n**and including** to the end value, `to`.\n\n```js\nrange(1, 3);  // [1, 2, 3]\n```\n\nIt handles negative numbers correctly, including cases where the range is\ndecreasing in value.\n\n```js\nrange(-2, 2); // [-2, -1, 0, 1, 2]\nrange(2, -2); // [2, 1, 0, -1, -2]\n```\n\nAn optional third argument can be provided as a stepping value.\n\n```js\nrange(2, 8, 2);   // [2, 4, 6, 8]\nrange(-4, 4, 2);  // [-4, -2, 0, 2, 4]\nrange(4, -4, -2); // [4, 2, 0, -2, -4]\n```\n\nIt will also correctly handle the case where you are a numpty and\nprovide a step that has the wrong sign.\n\n```js\nrange(4, -4, -2); // [4, 2, 0, -2, -4]\nrange(4, -4, 2);  // [4, 2, 0, -2, -4]\n```\n\n## formatNumber(number, options)\n\nThis function is for formatting numbers.  It is implemented as a\nwrapper around the\n[Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) `format()` function.\n\nThe first argument is the number to format.  The second optional argument is\nan object containing configuration options.  These can include `locale` and\nany of the other options supported by [Intl.NumberFormat](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat).\n\nIf no options are provided then it will format the number according to the default locale.\nFor my locale (`en-GB`), the convention is to use commas to separate thousands.\n\n```js\n// this works in my locale but might be different in yours\nformatNumber(12345); // 12,345\n```\n\nAn explicit locale can be provided as a configuration option.\n\n```js\nformatNumber(12345, { locale: 'en-GB'});    // 12,345\n```\n\nOther options include `style` and `currency`, e.g. for formatting a number\nas a currency.\n\n```js\nformatNumber(12345, { locale: 'en-GB', style: 'currency', currency: 'GBP' })\n  // => £12,345.00\n```\n\n## currency(number, options)\n\nThis is a wrapper around the [formatNumber()](#formatnumber-n--options-) function\nfor formatting currencies.\n\n```js\ncurrency(12345, { locale: 'en-GB', currency: 'GBP' }) // £12,345.00\ncurrency(12345, { locale: 'en-US', currency: 'USD' }) // $12,345.00\n```\n\n## commas(n)\n\nThis function will add commas as thousand separators in a number.\n\n```js\ncommas(12345); // 12,345\n```\n\nAn optional second argument can be provided to change the separator.\n\n```js\ncommas(12345, ' '); // 12 345\n```\n\nFor locale-specific number formatting it is recommended that you use\n[formatNumber()](#formatnumber-n--options-).\n\n## setNumberDefaults(defaults)\n\nThis function can be used to set the default options for various number\nformatting functions.\n\n```js\nsetNumberDefaults({\n  locale: 'en-US',    // default locale\n  currency: 'USD',    // default currency\n  thousands: ','      // default thousands separator\n});\n\n// defaults applied in various functions\nnumberFormat(12345) // 12,345\ncurrency(12345)     // $12,345.00\ncommas(12345)       // 12,345\n\n// defaults can be overridden when functions are called\ncurrency(12345, { locale: 'en-GB', currency: 'GBP' }) // £12,345.00\n```\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/text.md",
+    "name": "./manual/text.md",
+    "content": "# Text\n\nVarious utility functions for working with text.\n\n## splitList(value)\n\nFunction to split a string of words into an array.  Words can\nbe delimited by commas and/or spaces.\n\n```js\nsplitList(\"foo bar baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo,bar,baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo, bar, baz\")  // [\"foo\", \"bar\", \"baz\"]\n```\n\n## joinList(array, joint=' ', lastJoint=joint)\n\nFunction to join an array of strings into a single string.  The\ndefault delimiter is a single space.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"])\n    // => \"Tom Dick Harry\"\n```\n\nA delimiter can be provided as a second argument.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \")\n    // \"Tom, Dick, Harry\"\n```\n\nA final delimiter can be provided as a third argument\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \", \" and \")\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListAnd(array, joint=', ', lastJoint=' and ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' and '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListOr(array, joint=', ', lastJoint=' or ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' or '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick or Harry\"\n```\n\n## capitalise(word) / capitalize(word)\n\nThis function (provided with spellings in both British and American English)\ncapitalises a word.  The first character will be convert to upper case and\nthe remaining characters to lower case.\n\n```js\ncapitalise(\"badger\")    // => Badger\ncapitalise(\"BADGER\")    // => Badger\n```\n\n## capitaliseWords(string) / capitalizeWords(string)\n\nThis function (provided with spellings in both British and American English)\ncapitalises all words in a string.\n\n```js\ncapitalise(\"badger mushroom snake\")    // => Badger Mushroom Snake\ncapitalise(\"BADGER MUSHROOM SNAKE\")    // => Badger Mushroom Snake\n```\n\n## snakeToStudly(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto studly caps (e.g. `BadgerMushroomSnake`)\n\n```js\nsnakeToStudly(\"badger_mushroom_snake\") // => BadgerMushroomSnake\n```\n\n## snakeToCamel(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto camel case (e.g. `badgerMushroomSnake`)\n\n```js\nsnakeToCamel(\"badger_mushroom_snake\") // => badgerMushroomSnake\n```\n\n## pluralise(singular) / pluralize(singular)\n\nThis is a **very** simple function for pluralising English words.\n\nIt only works on words with standard endings and plural forms,\nbecause pluralising words is notoriously difficult.  So don't\nexpect words like `woman`, `goose` or `sheep` to pluralise correctly.\n\n```js\npluralise(\"badger\") // => \"badgers\"\npluralise(\"doggy\")  // => \"doggies\"\npluralise(\"grass\")  // => \"grasses\"\npluralise(\"lash\")   // => \"lashes\"\npluralise(\"watch\")  // => \"watches\"\npluralise(\"box\")    // => \"boxes\"\n```\n\n## inflect(n, singular, plural, no='no')\n\nThis function takes a number and a singular noun and attempts to\nconstruct a correct plural form.  It is only likely to work with\nEnglish or languages that work similar to English in using the plural\nform for zero or more than one item (e.g. \"no badger**s**\", \"2 badger**s**\")\nand singular form for exactly one item (e.g. \"1 badger\").\n\n```js\ninflect(0, \"badger\")   // \"no badgers\"\ninflect(1, \"badger\")   // \"1 badger\"\ninflect(2, \"badger\")   // \"2 badgers\"\n```\n\nIt uses the [pluralise()](#pluralise-singular----pluralize-singular-) function\nto construct the plural form.  The plural form can be provided as an optional\nthird argument if that fails to do the right thing.\n\n```js\ninflect(0, \"goose\", \"geese\")   // \"no geese\"\ninflect(1, \"goose\", \"geese\")   // \"1 goose\"\ninflect(2, \"goose\", \"geese\")   // \"2 geese\"\n```\n\nWhen `n` is zero, it will use `no` instead of the number `0`.  An optional\nfourth argument can be provided to change this.\n\n```js\ninflect(0, \"goose\", \"geese\", \"none more\")   // \"none more geese\"\n```\n\n## Inflect(n, singular, plural, no='No')\n\nThis is a wrapper around the [inflect()](#inflect-n--singular--plural--no---39-no--39--)\nfunction which capitalised the first letter, e.g. returning `\"No badgers\"` rather\nthan `\"no badgers\"`.\n\n```js\nInflect(0, \"badger\")   // \"No badgers\"\n```\n\n## splitLines(text)\n\nThis function splits a text string into lines.  Any blank lines are ignored.\n\n```js\nsplitLines(\"foo\\nbar\\n\\n\\nbaz\")\n    // => [\"foo\", \"bar\", \"baz\"]\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/objects.md",
+    "name": "./manual/objects.md",
+    "content": "# Objects\n\nVarious utility functions for working with objects.\n\n## objMap(obj, fn)\n\nApplies a function to each value of an object and returns a new object.\n\n```js\nobjMap(\n    { a: 'alpha', b: 'bravo' },\n    v => v.toUpperCase()\n)\n// => { a: 'ALPHA', b: 'BRAVO' }\n```\n\n## objSubset(obj, keys)\n\nExtracts a subset of the keys and values from an object and returns a new object.\n\n```js\nobjSubset(\n    { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' },\n    ['a', 'c', 'e']\n)\n// => { a: 'alpha', c: 'charlie', e: 'echo' }\n```\n\nIf the keys are all simple word strings (e.g. don't contain any non-word characters\nor spaces) then they can be specified as a string.\n\n```js\nobjSubset(\n    { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' },\n    'a c e'\n)\n// => { a: 'alpha', c: 'charlie', e: 'echo' }\n```\n\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/timing.md",
+    "name": "./manual/timing.md",
+    "content": "# Timing Function\n\nVarious utility functions for working with timers.\n\n## debounce(func, timeout=300)\n\nFunction to generate a debouncer function which will call the wrapped function after\na timeout.  If the debouncer function is called again before the wrapped function has\nbeen called then the debounced will reset the timer.\n\n```js\nfunction foo() {\n    console.log(\"foo was called\");\n}\n\nconst callFooSoon = debounce(foo, 1000);\n\ncallFooSoon();  // starts 1s timer\ncallFooSoon();  // resets timer\ncallFooSoon();  // resets timer\n    // => foo() will be called once, 1s after last reset\n```\n\n## sleep(ms)\n\nFunction which returns a Promise which will resolve after a delay.\n\n```js\nsleep(1000).then( () => console.log(\"Called one second later\") )\n```\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/misc.md",
+    "name": "./manual/misc.md",
+    "content": "# Miscellaneous Functions\n\nMiscellaneous utility functions.\n\n## doNothing()\n\nThis function does nothing.  Nothing at all.  None more functionality.\n\nIt can be used when you want to explicitly set a handler which does\nnothing.\n\n```js\n// debugging flag\nconst DEBUGGING = false;\n\n// debug function which calls console.log() or does nothing,\n// depending on the value of DEBUGGING\nconst debug = DEBUGGING\n  ? msg => console.log(msg)\n  : doNothing\n\n// call the debug function\ndebug(\"Hello World!\")\n```\n\n## defaultLocale()\n\nReturns the default locale.\n",
     "static": true,
     "access": "public"
   }

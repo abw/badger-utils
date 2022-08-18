@@ -1,11 +1,11 @@
 {
-  "coverage": "88.88%",
-  "expectCount": 36,
-  "actualCount": 32,
+  "coverage": "90.24%",
+  "expectCount": 41,
+  "actualCount": 37,
   "files": {
     "src/utils/assert.js": {
-      "expectCount": 10,
-      "actualCount": 10,
+      "expectCount": 12,
+      "actualCount": 12,
       "undocumentLines": []
     },
     "src/utils/error.js": {
@@ -14,24 +14,29 @@
       "undocumentLines": []
     },
     "src/utils/misc.js": {
-      "expectCount": 1,
-      "actualCount": 1,
+      "expectCount": 2,
+      "actualCount": 2,
       "undocumentLines": []
     },
     "src/utils/numbers.js": {
-      "expectCount": 7,
-      "actualCount": 6,
+      "expectCount": 6,
+      "actualCount": 5,
       "undocumentLines": [
-        3
+        8
       ]
     },
+    "src/utils/object.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
     "src/utils/text.js": {
-      "expectCount": 14,
-      "actualCount": 11,
+      "expectCount": 15,
+      "actualCount": 12,
       "undocumentLines": [
-        105,
-        106,
-        218
+        233,
+        234,
+        235
       ]
     },
     "src/utils/time.js": {

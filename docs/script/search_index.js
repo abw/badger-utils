@@ -36,9 +36,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~currency",
+    "function/index.html#static-function-currency",
+    "<span>currency</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~debounce",
     "function/index.html#static-function-debounce",
     "<span>debounce</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~defaultlocale",
+    "function/index.html#static-function-defaultLocale",
+    "<span>defaultLocale</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -51,6 +63,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~fail",
     "function/index.html#static-function-fail",
     "<span>fail</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~formatnumber",
+    "function/index.html#static-function-formatNumber",
+    "<span>formatNumber</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -78,6 +96,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~isfloat",
+    "function/index.html#static-function-isFloat",
+    "<span>isFloat</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~isfunction",
     "function/index.html#static-function-isFunction",
     "<span>isFunction</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -93,6 +117,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~isnull",
     "function/index.html#static-function-isNull",
     "<span>isNull</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~isnumber",
+    "function/index.html#static-function-isNumber",
+    "<span>isNumber</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -138,34 +168,28 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~objmap",
+    "function/index.html#static-function-objMap",
+    "<span>objMap</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~objsubset",
+    "function/index.html#static-function-objSubset",
+    "<span>objSubset</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~pluralise",
     "function/index.html#static-function-pluralise",
     "<span>pluralise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
-    "@abw/badger-utils~pounds",
-    "function/index.html#static-function-pounds",
-    "<span>pounds</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
-    "function"
-  ],
-  [
-    "@abw/badger-utils~price",
-    "function/index.html#static-function-price",
-    "<span>price</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
-    "function"
-  ],
-  [
-    "@abw/badger-utils~priceorpoa",
-    "function/index.html#static-function-priceOrPOA",
-    "<span>priceOrPOA</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
-    "function"
-  ],
-  [
-    "@abw/badger-utils~priceorzero",
-    "function/index.html#static-function-priceOrZero",
-    "<span>priceOrZero</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
-    "function"
+    "@abw/badger-utils~pluralize",
+    "variable/index.html#static-variable-pluralize",
+    "<span>pluralize</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
   ],
   [
     "@abw/badger-utils~range",
@@ -177,6 +201,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~rethrow",
     "function/index.html#static-function-rethrow",
     "<span>rethrow</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~setnumberdefaults",
+    "function/index.html#static-function-setNumberDefaults",
+    "<span>setNumberDefaults</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -198,15 +228,15 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@abw/badger-utils~splitlist",
-    "function/index.html#static-function-splitList",
-    "<span>splitList</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "@abw/badger-utils~splitlines",
+    "function/index.html#static-function-splitLines",
+    "<span>splitLines</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
-    "@abw/badger-utils~splitparas",
-    "function/index.html#static-function-splitParas",
-    "<span>splitParas</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "@abw/badger-utils~splitlist",
+    "function/index.html#static-function-splitList",
+    "<span>splitList</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -513,6 +543,12 @@ window.esdocSearchIndex = [
     "src/utils/numbers.js",
     "file/src/utils/numbers.js.html",
     "src/utils/numbers.js",
+    "file"
+  ],
+  [
+    "src/utils/object.js",
+    "file/src/utils/object.js.html",
+    "src/utils/object.js",
     "file"
   ],
   [

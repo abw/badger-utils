@@ -12,6 +12,18 @@
         "brand": {
           "title": "Badger Utils",
           "logo": "./docs/images/badger2.svg"
+        },
+        "manual": {
+          "index": "./manual/index.md",
+          "files": [
+            "./manual/getting_started.md",
+            "./manual/assertions.md",
+            "./manual/numbers.md",
+            "./manual/text.md",
+            "./manual/objects.md",
+            "./manual/timing.md",
+            "./manual/misc.md"
+          ]
         }
       }
     },
