@@ -22,5 +22,6 @@ export function debounce(func, timeout=300) {
  * @param {Integer} ms - delay in millseconds
  * @return {Promise} - promise which will resolve after the delay
  */
-export const sleep = ms =>
-  new Promise(r => setTimeout(r, ms));
+export function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms))
+}
