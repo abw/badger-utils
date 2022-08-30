@@ -71,6 +71,7 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/text.html"><a href="manual/text.html" data-ice="link">Text</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splitlist-value-" data-ice="link">splitList(value)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splithash-value--set-true--hash----" data-ice="link">splitHash(value, set=true, hash={})</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#joinlist-array--joint---39----39---lastjoint-joint-" data-ice="link">joinList(array, joint=' ', lastJoint=joint)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#joinlistand-array--joint---39-----39---lastjoint---39--and---39--" data-ice="link">joinListAnd(array, joint=', ', lastJoint=' and ')</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#joinlistor-array--joint---39-----39---lastjoint---39--or---39--" data-ice="link">joinListOr(array, joint=', ', lastJoint=' or ')</a></li>
@@ -113,10 +114,27 @@
 
 <div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="text">Text</h1><p>Various utility functions for working with text.</p>
 <h2 id="splitlist-value-">splitList(value)</h2><p>Function to split a string of words into an array.  Words can
-be delimited by commas and/or spaces.</p>
+be delimited by commas and/or spaces. If the argument is already
+an array then the array is returned unmodified.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">splitList("foo bar baz")    // ["foo", "bar", "baz"]
 splitList("foo,bar,baz")    // ["foo", "bar", "baz"]
 splitList("foo, bar, baz")  // ["foo", "bar", "baz"]</code></code></pre>
+<h2 id="splithash-value--set-true--hash----">splitHash(value, set=true, hash={})</h2><p>Function to split a string of whitespace delimited words, or an array of
+words, into an object which can be used as a hash table for quick lookups.
+The input is first passed to the <a href="#splitlist-value-">splitList()</a> function.
+It returns an object where the keys are the words extracted from the input
+and the values are set to be <code>true</code>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">splitHash("foo bar baz")    // { foo: true, bar: true, baz: true }</code></code></pre>
+<p>An optional second argument can be passed to set the value to be used for
+the hash table values.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">splitHash("foo bar baz", 1)    // { foo: 1, bar: 1, baz: 1 }</code></code></pre>
+<p>This can be a function which will be passed the key and should return the
+corresponding value.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">splitHash("foo bar baz", k =&gt; k)    // { foo: "foo", bar: "bar", baz: "baz" }</code></code></pre>
+<p>A third optional argument can be passed which is an object to populate with the
+results.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">let stuff = { foo: "foo" }
+splitHash("bar baz", k =&gt; k, stuff)    // { foo: "foo", bar: "bar", baz: "baz" }</code></code></pre>
 <h2 id="joinlist-array--joint---39----39---lastjoint-joint-">joinList(array, joint=' ', lastJoint=joint)</h2><p>Function to join an array of strings into a single string.  The
 default delimiter is a single space.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">joinList(["Tom", "Dick", "Harry"])

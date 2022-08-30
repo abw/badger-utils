@@ -5,12 +5,47 @@ Various utility functions for working with text.
 ## splitList(value)
 
 Function to split a string of words into an array.  Words can
-be delimited by commas and/or spaces.
+be delimited by commas and/or spaces. If the argument is already
+an array then the array is returned unmodified.
 
 ```js
 splitList("foo bar baz")    // ["foo", "bar", "baz"]
 splitList("foo,bar,baz")    // ["foo", "bar", "baz"]
 splitList("foo, bar, baz")  // ["foo", "bar", "baz"]
+```
+
+## splitHash(value, set=true, hash={})
+
+Function to split a string of whitespace delimited words, or an array of
+words, into an object which can be used as a hash table for quick lookups.
+The input is first passed to the [splitList()](#splitlist-value-) function.
+It returns an object where the keys are the words extracted from the input
+and the values are set to be `true`.
+
+```js
+splitHash("foo bar baz")    // { foo: true, bar: true, baz: true }
+```
+
+An optional second argument can be passed to set the value to be used for
+the hash table values.
+
+```js
+splitHash("foo bar baz", 1)    // { foo: 1, bar: 1, baz: 1 }
+```
+
+This can be a function which will be passed the key and should return the
+corresponding value.
+
+```js
+splitHash("foo bar baz", k => k)    // { foo: "foo", bar: "bar", baz: "baz" }
+```
+
+A third optional argument can be passed which is an object to populate with the
+results.
+
+```js
+let stuff = { foo: "foo" }
+splitHash("bar baz", k => k, stuff)    // { foo: "foo", bar: "bar", baz: "baz" }
 ```
 
 ## joinList(array, joint=' ', lastJoint=joint)

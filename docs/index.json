@@ -1466,7 +1466,7 @@
     "__docId__": 74,
     "kind": "file",
     "name": "src/utils/object.js",
-    "content": "import { splitList } from './text.js';\n\n/**\n * Applies a function to each of the values of an object and returns\n * a new object.\n * @param {Object} obj - source object\n * @param {Function} fn - function to apply to each value\n * @return {Object} - new object with function applied to values\n * @example\n * objMap(\n *   { a: 'alpha', b: 'bravo' },\n *   v => v.toUpperCase()\n * )                        // returns { a: 'ALPHA', b: 'BRAVO' }\n */\nexport function objMap(obj, fn) {\n  return Object.keys(obj).reduce(\n    (result, key) => {\n      result[key] = fn(obj[key], key)\n      return result\n    },\n    {}\n  );\n}\n\n/**\n * Extracts a subset of items from an object.\n * @param {Object} obj - source object\n * @param {Array|String} keys - Array or string of keys to extract\n * @return {Object} - new object with function applied to values\n * @example\n * objSubset(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a b'\n * )                        // returns { a: 'alpha', b: 'bravo' }\n */\nexport function objSubset(obj, keys) {\n  return splitList(keys).reduce(\n    (result, key) => {\n      result[key] = obj[key];\n      return result\n    },\n    {}\n  );\n}\n",
+    "content": "import { splitList } from './text.js';\n\n/**\n * Applies a function to each of the values of an object and returns\n * a new object.\n * @param {Object} obj - source object\n * @param {Function} fn - function to apply to each value\n * @return {Object} - new object with function applied to values\n * @example\n * objMap(\n *   { a: 'alpha', b: 'bravo' },\n *   v => v.toUpperCase()\n * )                        // returns { a: 'ALPHA', b: 'BRAVO' }\n */\nexport function objMap(obj, fn) {\n  return Object.keys(obj).reduce(\n    (result, key) => {\n      result[key] = fn(obj[key], key)\n      return result\n    },\n    {}\n  );\n}\n\n/**\n * Extracts a subset of items from an object.\n * @param {Object} obj - source object\n * @param {Array|String} keys - Array or string of keys to extract\n * @return {Object} - new object with function applied to values\n * @example\n * objSubset(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a b'\n * ) // => { a: 'alpha', b: 'bravo' }\n */\nexport function objSubset(obj, keys) {\n  return splitList(keys).reduce(\n    (result, key) => {\n      result[key] = obj[key];\n      return result\n    },\n    {}\n  );\n}\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/object.js",
     "access": "public",
@@ -1537,7 +1537,7 @@
     "importStyle": "{objSubset}",
     "description": "Extracts a subset of items from an object.",
     "examples": [
-      "objSubset(\n  { a: 'alpha', b: 'bravo', c: 'charlie' },\n  'a b'\n)                        // returns { a: 'alpha', b: 'bravo' }"
+      "objSubset(\n  { a: 'alpha', b: 'bravo', c: 'charlie' },\n  'a b'\n) // => { a: 'alpha', b: 'bravo' }"
     ],
     "lineNumber": 36,
     "params": [
@@ -1576,7 +1576,7 @@
     "__docId__": 77,
     "kind": "file",
     "name": "src/utils/text.js",
-    "content": "import { isString, isArray, noValue } from \"./assert.js\";\nimport { commas } from \"./numbers.js\";\n\n/**\n * Split a comma/whitespace delimited string into an Array\n * @param {String} value - string to split\n * @return {Array} array of split strings\n * @example\n * const strings = splitList('one two three')\n * @example\n * const strings = splitList('one,two,three')\n * @example\n * const strings = splitList('one, two, three')\n */\nexport function splitList(value) {\n  if (noValue(value)) {\n    return [ ];\n  }\n  else if (isString(value)) {\n    return value.length\n      ? value.split(/,\\s*|\\s+/)\n      : [ ]\n  }\n  else if (isArray(value)) {\n    return value;\n  }\n  return [value];\n}\n\n/**\n * Split a string into an Array of lines.\n * @param {String} text - string to split\n * @return {Array} array of lines\n*/\nexport function splitLines(text) {\n  if (! isString(text) || text.length === 0) {\n    return [ ];\n  }\n  var lines = text.split(/\\s*\\n+\\s*/).filter(\n    function(item) { return item.length > 0 }\n  );\n  return lines;\n}\n\n/**\n * Join an Array into a single string\n * @param {Array} array - array to join\n * @param {String} [joint=' '] - delimiter to join strings\n * @param {String} [lastJoint=joint] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinList(['one', 'two', 'three']);   // one two three\n * @example\n * joinList(['one', 'two', 'three'], ', ');   // one, two, three\n * @example\n * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three\n */\nexport function joinList(array, joint=' ', lastJoint=joint) {\n  let copy = [...array];\n  const last = copy.pop();\n  return copy.length\n    ? [copy.join(joint), last].join(lastJoint)\n    : last;\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` and ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' and '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListAnd(['one', 'two', 'three']);   // one, two and three\n */\nexport function joinListAnd(array, joint=', ', lastJoint=' and ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` or ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' or '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListOr(['one', 'two', 'three']);   // one, two or three\n */\nexport function joinListOr(array, joint=', ', lastJoint=' or ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Capitalise a string by converting the first character to upper case and other characters to lower case\n * @param {String} word - word to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger');   // Badger\n * @example\n * capitalise('BADGER');   // Badger\n */\nexport function capitalise(word) {\n  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n}\n\n/**\n * Capitalise all words in a string by converting the first character of each word to upper case\n * @param {String} string - words to capitalise\n * @return {String} capitalised string\n * @example\n * capitaliseWords('badger fun');   // Badger Fun\n * @example\n * capitaliseWords('BADGER FUN');   // Badger Fun\n */\nexport function capitaliseWords(string) {\n  return string.replace(\n    // /(?:^|\\s)\\S/g,\n    /(\\w+)/g,\n    capitalise\n  );\n}\n\n/**\n * Convert a snake case string to studly caps\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToStudly('happy_badger_dance');   // HappyBadgerDance\n * @example\n * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance\n */\nexport function snakeToStudly(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to FooBar\n    segment => segment.split('_').map(capitalise).join('')\n  ).join('/');\n}\n\n/**\n * Convert a snake case string to camel case\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToCamel('happy_badger_dance');   // happyBadgerDance\n * @example\n * snakeToCamel('happy_badger/dance');   // happyBadger/dance\n */\nexport function snakeToCamel(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to fooBar\n    segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')\n  ).join('/');\n}\n\n/**\n * A very primitive function to pluralise the singular form of a words.  It only\n * works on words with standard endings and plural forms, because pluralising\n * words is notoriously difficult.\n * @param {String} singular - word to pluralise\n * @return {String} plural form\n * @example\n * pluralise('box');     // boxes\n * @example\n * pluralise('doggy');   // doggies\n * @example\n * pluralise('badger');  // badgers\n * @example\n * pluralise('woman');   // womans\n */\nexport function pluralise(singular) {\n  let found;\n\n  if (singular.match(/(ss?|sh|ch|x)$/)) {\n    // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes\n    return singular + 'es';\n  }\n  else if ((found = singular.match(/(.*?[^aeiou])y$/))) {\n    // doggy/doggies\n    return found[1] + 'ies';\n  }\n  else if (singular.match(/([^s\\d\\W])$/)) {\n    // cat/cats\n    return singular + 's';\n  }\n  return singular;\n}\n\n/**\n * Utility function to inflect a string passed as the second argument to the singular/plural\n * form based on the number passed as the first argument.  Uses the {@link pluralise()} function\n * which only works on words with standard pluralisations.  The third argument can be provided\n * as the plural form where necessary.  The optional 4th argument can be used to provide a different\n * word for the case where n is 0.  The default is \"no\", e.g. \"no badgers\" when n is 0.\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='no'] - optional word to use when `n` is 0\n * @example\n * inflect(0, 'cat')     # no cats\n * @example\n * inflect(1, 'cat')     # 1 cat\n * @example\n * inflect(2, 'cat')     # 2 cats\n * @example\n * inflect(0, 'child', 'children')     # no children\n * @example\n * inflect(1, 'child', 'children')     # 1 child\n * @example\n * inflect(2, 'child', 'children')     # 2 children\n * @example\n * inflect(0, 'black', 'black', \"none, none more\")     # none, none more black\n */\nexport function inflect(n, singular, plural, no='no') {\n  return (n ? commas(n) : no)\n    + ' '\n    + (n === 1 ? singular : (plural || pluralise(singular)));\n}\n\n/**\n * Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\n * zero case, i.e. Inflect() is the capitalized form of inflect()\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='No'] - optional word to use when `n` is 0\n */\nexport function Inflect(n, singular, plural, no='No') {\n  return inflect(n, singular, plural, no);\n}\n\n\n\n// for the yanks\nexport const capitalize = capitalise;\nexport const capitalizeWords = capitaliseWords;\nexport const pluralize = pluralise;\n\n",
+    "content": "import { isString, isArray, noValue, isObject, isFunction } from \"./assert.js\";\nimport { commas } from \"./numbers.js\";\n\n/**\n * Split a comma/whitespace delimited string into an Array\n * @param {String} value - string to split\n * @return {Array} array of split strings\n * @example\n * const strings = splitList('one two three')\n * @example\n * const strings = splitList('one,two,three')\n * @example\n * const strings = splitList('one, two, three')\n */\nexport function splitList(value) {\n  if (noValue(value)) {\n    return [ ];\n  }\n  else if (isString(value)) {\n    return value.length\n      ? value.split(/,\\s*|\\s+/)\n      : [ ]\n  }\n  else if (isArray(value)) {\n    return value;\n  }\n  return [value];\n}\n\n\n/**\n * Split a comma/whitespace delimited string or Array into a hash object\n * @param {String} value - string to split\n * @param {Boolean|String|Number|Function} [set=true] - value to set for each key\n * @param {Object} [hash={}] - object to set keys in\n * @return {Object} hash object mapping keys to values\n * @example\n * const items = splitHash('one two')  // { one: true, two: true }\n * @example\n * const items = splitList('one two', 1)  // { one: 1, two: 1 }\n * @example\n * const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }\n */\nexport function splitHash(value, set=true, hash={ }) {\n  // if it's already a hash object then return it unchanged\n  if (isObject(value)) {\n    return value;\n  }\n  // split a string into an array (or leave an array unchanged)\n  const items = splitList(value);\n\n  return items.reduce(\n    (result, key) => {\n      result[key] = isFunction(set)\n        ? set(key)\n        : set;\n      return result\n    },\n    hash\n  );\n}\n\n\n/**\n * Split a string into an Array of lines.\n * @param {String} text - string to split\n * @return {Array} array of lines\n*/\nexport function splitLines(text) {\n  if (! isString(text) || text.length === 0) {\n    return [ ];\n  }\n  var lines = text.split(/\\s*\\n+\\s*/).filter(\n    function(item) { return item.length > 0 }\n  );\n  return lines;\n}\n\n/**\n * Join an Array into a single string\n * @param {Array} array - array to join\n * @param {String} [joint=' '] - delimiter to join strings\n * @param {String} [lastJoint=joint] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinList(['one', 'two', 'three']);   // one two three\n * @example\n * joinList(['one', 'two', 'three'], ', ');   // one, two, three\n * @example\n * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three\n */\nexport function joinList(array, joint=' ', lastJoint=joint) {\n  let copy = [...array];\n  const last = copy.pop();\n  return copy.length\n    ? [copy.join(joint), last].join(lastJoint)\n    : last;\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` and ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' and '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListAnd(['one', 'two', 'three']);   // one, two and three\n */\nexport function joinListAnd(array, joint=', ', lastJoint=' and ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` or ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' or '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListOr(['one', 'two', 'three']);   // one, two or three\n */\nexport function joinListOr(array, joint=', ', lastJoint=' or ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Capitalise a string by converting the first character to upper case and other characters to lower case\n * @param {String} word - word to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger');   // Badger\n * @example\n * capitalise('BADGER');   // Badger\n */\nexport function capitalise(word) {\n  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n}\n\n/**\n * Capitalise all words in a string by converting the first character of each word to upper case\n * @param {String} string - words to capitalise\n * @return {String} capitalised string\n * @example\n * capitaliseWords('badger fun');   // Badger Fun\n * @example\n * capitaliseWords('BADGER FUN');   // Badger Fun\n */\nexport function capitaliseWords(string) {\n  return string.replace(\n    // /(?:^|\\s)\\S/g,\n    /(\\w+)/g,\n    capitalise\n  );\n}\n\n/**\n * Convert a snake case string to studly caps\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToStudly('happy_badger_dance');   // HappyBadgerDance\n * @example\n * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance\n */\nexport function snakeToStudly(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to FooBar\n    segment => segment.split('_').map(capitalise).join('')\n  ).join('/');\n}\n\n/**\n * Convert a snake case string to camel case\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToCamel('happy_badger_dance');   // happyBadgerDance\n * @example\n * snakeToCamel('happy_badger/dance');   // happyBadger/dance\n */\nexport function snakeToCamel(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to fooBar\n    segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')\n  ).join('/');\n}\n\n/**\n * A very primitive function to pluralise the singular form of a words.  It only\n * works on words with standard endings and plural forms, because pluralising\n * words is notoriously difficult.\n * @param {String} singular - word to pluralise\n * @return {String} plural form\n * @example\n * pluralise('box');     // boxes\n * @example\n * pluralise('doggy');   // doggies\n * @example\n * pluralise('badger');  // badgers\n * @example\n * pluralise('woman');   // womans\n */\nexport function pluralise(singular) {\n  let found;\n\n  if (singular.match(/(ss?|sh|ch|x)$/)) {\n    // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes\n    return singular + 'es';\n  }\n  else if ((found = singular.match(/(.*?[^aeiou])y$/))) {\n    // doggy/doggies\n    return found[1] + 'ies';\n  }\n  else if (singular.match(/([^s\\d\\W])$/)) {\n    // cat/cats\n    return singular + 's';\n  }\n  return singular;\n}\n\n/**\n * Utility function to inflect a string passed as the second argument to the singular/plural\n * form based on the number passed as the first argument.  Uses the {@link pluralise()} function\n * which only works on words with standard pluralisations.  The third argument can be provided\n * as the plural form where necessary.  The optional 4th argument can be used to provide a different\n * word for the case where n is 0.  The default is \"no\", e.g. \"no badgers\" when n is 0.\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='no'] - optional word to use when `n` is 0\n * @example\n * inflect(0, 'cat')     # no cats\n * @example\n * inflect(1, 'cat')     # 1 cat\n * @example\n * inflect(2, 'cat')     # 2 cats\n * @example\n * inflect(0, 'child', 'children')     # no children\n * @example\n * inflect(1, 'child', 'children')     # 1 child\n * @example\n * inflect(2, 'child', 'children')     # 2 children\n * @example\n * inflect(0, 'black', 'black', \"none, none more\")     # none, none more black\n */\nexport function inflect(n, singular, plural, no='no') {\n  return (n ? commas(n) : no)\n    + ' '\n    + (n === 1 ? singular : (plural || pluralise(singular)));\n}\n\n/**\n * Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\n * zero case, i.e. Inflect() is the capitalized form of inflect()\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='No'] - optional word to use when `n` is 0\n */\nexport function Inflect(n, singular, plural, no='No') {\n  return inflect(n, singular, plural, no);\n}\n\n\n\n// for the yanks\nexport const capitalize = capitalise;\nexport const capitalizeWords = capitaliseWords;\nexport const pluralize = pluralise;\n\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/text.js",
     "access": "public",
@@ -1627,6 +1627,74 @@
   {
     "__docId__": 79,
     "kind": "function",
+    "name": "splitHash",
+    "memberof": "src/utils/text.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/text.js~splitHash",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{splitHash}",
+    "description": "Split a comma/whitespace delimited string or Array into a hash object",
+    "examples": [
+      "const items = splitHash('one two')  // { one: true, two: true }",
+      "const items = splitList('one two', 1)  // { one: 1, two: 1 }",
+      "const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }"
+    ],
+    "lineNumber": 44,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "string to split"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Boolean",
+          "String",
+          "Number",
+          "Function"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "true",
+        "defaultRaw": true,
+        "name": "set",
+        "description": "value to set for each key"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": true,
+        "defaultValue": "{}",
+        "defaultRaw": {},
+        "name": "hash",
+        "description": "object to set keys in"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Object"
+      ],
+      "spread": false,
+      "description": "hash object mapping keys to values"
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
     "name": "splitLines",
     "memberof": "src/utils/text.js",
     "generator": false,
@@ -1638,7 +1706,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{splitLines}",
     "description": "Split a string into an Array of lines.",
-    "lineNumber": 35,
+    "lineNumber": 69,
     "params": [
       {
         "nullable": null,
@@ -1661,7 +1729,7 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 81,
     "kind": "function",
     "name": "joinList",
     "memberof": "src/utils/text.js",
@@ -1679,7 +1747,7 @@
       "joinList(['one', 'two', 'three'], ', ');   // one, two, three",
       "joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three"
     ],
-    "lineNumber": 58,
+    "lineNumber": 92,
     "params": [
       {
         "nullable": null,
@@ -1726,7 +1794,7 @@
     }
   },
   {
-    "__docId__": 81,
+    "__docId__": 82,
     "kind": "function",
     "name": "joinListAnd",
     "memberof": "src/utils/text.js",
@@ -1742,7 +1810,7 @@
     "examples": [
       "joinListAnd(['one', 'two', 'three']);   // one, two and three"
     ],
-    "lineNumber": 75,
+    "lineNumber": 109,
     "params": [
       {
         "nullable": null,
@@ -1789,7 +1857,7 @@
     }
   },
   {
-    "__docId__": 82,
+    "__docId__": 83,
     "kind": "function",
     "name": "joinListOr",
     "memberof": "src/utils/text.js",
@@ -1805,7 +1873,7 @@
     "examples": [
       "joinListOr(['one', 'two', 'three']);   // one, two or three"
     ],
-    "lineNumber": 88,
+    "lineNumber": 122,
     "params": [
       {
         "nullable": null,
@@ -1852,7 +1920,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 84,
     "kind": "function",
     "name": "capitalise",
     "memberof": "src/utils/text.js",
@@ -1869,7 +1937,7 @@
       "capitalise('badger');   // Badger",
       "capitalise('BADGER');   // Badger"
     ],
-    "lineNumber": 101,
+    "lineNumber": 135,
     "params": [
       {
         "nullable": null,
@@ -1892,7 +1960,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 85,
     "kind": "function",
     "name": "capitaliseWords",
     "memberof": "src/utils/text.js",
@@ -1909,7 +1977,7 @@
       "capitaliseWords('badger fun');   // Badger Fun",
       "capitaliseWords('BADGER FUN');   // Badger Fun"
     ],
-    "lineNumber": 114,
+    "lineNumber": 148,
     "params": [
       {
         "nullable": null,
@@ -1932,7 +2000,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 86,
     "kind": "function",
     "name": "snakeToStudly",
     "memberof": "src/utils/text.js",
@@ -1949,47 +2017,7 @@
       "snakeToStudly('happy_badger_dance');   // HappyBadgerDance",
       "snakeToStudly('happy_badger/dance');   // HappyBadger/Dance"
     ],
-    "lineNumber": 131,
-    "params": [
-      {
-        "nullable": null,
-        "types": [
-          "String"
-        ],
-        "spread": false,
-        "optional": false,
-        "name": "snake",
-        "description": "word to capitalise"
-      }
-    ],
-    "return": {
-      "nullable": null,
-      "types": [
-        "String"
-      ],
-      "spread": false,
-      "description": "capitalised string"
-    }
-  },
-  {
-    "__docId__": 86,
-    "kind": "function",
-    "name": "snakeToCamel",
-    "memberof": "src/utils/text.js",
-    "generator": false,
-    "async": false,
-    "static": true,
-    "longname": "src/utils/text.js~snakeToCamel",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{snakeToCamel}",
-    "description": "Convert a snake case string to camel case",
-    "examples": [
-      "snakeToCamel('happy_badger_dance');   // happyBadgerDance",
-      "snakeToCamel('happy_badger/dance');   // happyBadger/dance"
-    ],
-    "lineNumber": 147,
+    "lineNumber": 165,
     "params": [
       {
         "nullable": null,
@@ -2014,6 +2042,46 @@
   {
     "__docId__": 87,
     "kind": "function",
+    "name": "snakeToCamel",
+    "memberof": "src/utils/text.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/text.js~snakeToCamel",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{snakeToCamel}",
+    "description": "Convert a snake case string to camel case",
+    "examples": [
+      "snakeToCamel('happy_badger_dance');   // happyBadgerDance",
+      "snakeToCamel('happy_badger/dance');   // happyBadger/dance"
+    ],
+    "lineNumber": 181,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "snake",
+        "description": "word to capitalise"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "capitalised string"
+    }
+  },
+  {
+    "__docId__": 88,
+    "kind": "function",
     "name": "pluralise",
     "memberof": "src/utils/text.js",
     "generator": false,
@@ -2031,7 +2099,7 @@
       "pluralise('badger');  // badgers",
       "pluralise('woman');   // womans"
     ],
-    "lineNumber": 169,
+    "lineNumber": 203,
     "params": [
       {
         "nullable": null,
@@ -2054,7 +2122,7 @@
     }
   },
   {
-    "__docId__": 88,
+    "__docId__": 89,
     "kind": "function",
     "name": "inflect",
     "memberof": "src/utils/text.js",
@@ -2076,7 +2144,7 @@
       "inflect(2, 'child', 'children')     # 2 children",
       "inflect(0, 'black', 'black', \"none, none more\")     # none, none more black"
     ],
-    "lineNumber": 212,
+    "lineNumber": 246,
     "params": [
       {
         "nullable": null,
@@ -2128,7 +2196,7 @@
     }
   },
   {
-    "__docId__": 89,
+    "__docId__": 90,
     "kind": "function",
     "name": "Inflect",
     "memberof": "src/utils/text.js",
@@ -2141,7 +2209,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{Inflect}",
     "description": "Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\nzero case, i.e. Inflect() is the capitalized form of inflect()",
-    "lineNumber": 226,
+    "lineNumber": 260,
     "params": [
       {
         "nullable": null,
@@ -2193,7 +2261,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 91,
     "kind": "variable",
     "name": "capitalize",
     "memberof": "src/utils/text.js",
@@ -2204,27 +2272,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{capitalize}",
     "description": null,
-    "lineNumber": 233,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 91,
-    "kind": "variable",
-    "name": "capitalizeWords",
-    "memberof": "src/utils/text.js",
-    "static": true,
-    "longname": "src/utils/text.js~capitalizeWords",
-    "access": "public",
-    "export": true,
-    "importPath": "@abw/badger-utils",
-    "importStyle": "{capitalizeWords}",
-    "description": null,
-    "lineNumber": 234,
+    "lineNumber": 267,
     "undocument": true,
     "type": {
       "types": [
@@ -2235,16 +2283,16 @@
   {
     "__docId__": 92,
     "kind": "variable",
-    "name": "pluralize",
+    "name": "capitalizeWords",
     "memberof": "src/utils/text.js",
     "static": true,
-    "longname": "src/utils/text.js~pluralize",
+    "longname": "src/utils/text.js~capitalizeWords",
     "access": "public",
     "export": true,
     "importPath": "@abw/badger-utils",
-    "importStyle": "{pluralize}",
+    "importStyle": "{capitalizeWords}",
     "description": null,
-    "lineNumber": 235,
+    "lineNumber": 268,
     "undocument": true,
     "type": {
       "types": [
@@ -2254,6 +2302,26 @@
   },
   {
     "__docId__": 93,
+    "kind": "variable",
+    "name": "pluralize",
+    "memberof": "src/utils/text.js",
+    "static": true,
+    "longname": "src/utils/text.js~pluralize",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{pluralize}",
+    "description": null,
+    "lineNumber": 269,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 94,
     "kind": "file",
     "name": "src/utils/time.js",
     "content": "/**\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Integer} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n */\nexport function debounce(func, timeout=300) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(\n      () => func.apply(this, args),\n      timeout\n    );\n  };\n}\n\n/**\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n */\nexport function sleep(ms) {\n  return new Promise(r => setTimeout(r, ms))\n}\n",
@@ -2264,7 +2332,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 94,
+    "__docId__": 95,
     "kind": "function",
     "name": "debounce",
     "memberof": "src/utils/time.js",
@@ -2312,7 +2380,7 @@
     }
   },
   {
-    "__docId__": 95,
+    "__docId__": 96,
     "kind": "function",
     "name": "sleep",
     "memberof": "src/utils/time.js",
@@ -2357,7 +2425,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@abw/badger-utils\",\n  \"version\": \"1.0.4\",\n  \"description\": \"Javascript utility modules\",\n  \"type\": \"module\",\n  \"main\": \"dist/badger-utils.cjs.js\",\n  \"module\": \"dist/badger-utils.esm.js\",\n  \"browser\": \"dist/badger-utils.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"require\": \"./dist/badger-utils.cjs.js\",\n      \"import\": \"./dist/badger-utils.esm.js\"\n    }\n  },\n  \"author\": \"Andy Wardley\",\n  \"license\": \"MIT\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/abw/badger-utils.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/abw/badger-utils/issues\"\n  },\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"dev\": \"rollup -c -w\",\n    \"lint\": \"eslint 'src/**/*'\",\n    \"docs:build\": \"esdoc\",\n    \"docs:serve\": \"serve docs\",\n    \"test\": \"ava\",\n    \"pretest\": \"pnpm run build\"\n  },\n  \"keywords\": [\n    \"badger\",\n    \"utility\"\n  ],\n  \"devDependencies\": {\n    \"@itsjamie/esdoc-cli\": \"^0.5.0\",\n    \"@itsjamie/esdoc-core\": \"^0.5.0\",\n    \"@itsjamie/esdoc-importpath-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-inject-style-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-standard-plugin\": \"^0.5.0\",\n    \"@rollup/plugin-commonjs\": \"^11.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^7.1.3\",\n    \"ava\": \"^4.3.0\",\n    \"eslint\": \"^8.20.0\",\n    \"rollup\": \"^2\",\n    \"rollup-plugin-terser\": \"^7.0.2\"\n  },\n  \"dependencies\": {\n  }\n}\n",
+    "content": "{\n  \"name\": \"@abw/badger-utils\",\n  \"version\": \"1.0.5\",\n  \"description\": \"Javascript utility modules\",\n  \"type\": \"module\",\n  \"main\": \"dist/badger-utils.cjs.js\",\n  \"module\": \"dist/badger-utils.esm.js\",\n  \"browser\": \"dist/badger-utils.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"require\": \"./dist/badger-utils.cjs.js\",\n      \"import\": \"./dist/badger-utils.esm.js\"\n    }\n  },\n  \"author\": \"Andy Wardley\",\n  \"license\": \"MIT\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/abw/badger-utils.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/abw/badger-utils/issues\"\n  },\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"dev\": \"rollup -c -w\",\n    \"lint\": \"eslint 'src/**/*'\",\n    \"docs:build\": \"esdoc\",\n    \"docs:serve\": \"serve docs\",\n    \"test\": \"ava\",\n    \"pretest\": \"pnpm run build\"\n  },\n  \"keywords\": [\n    \"badger\",\n    \"utility\"\n  ],\n  \"devDependencies\": {\n    \"@itsjamie/esdoc-cli\": \"^0.5.0\",\n    \"@itsjamie/esdoc-core\": \"^0.5.0\",\n    \"@itsjamie/esdoc-importpath-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-inject-style-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-standard-plugin\": \"^0.5.0\",\n    \"@rollup/plugin-commonjs\": \"^11.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^7.1.3\",\n    \"ava\": \"^4.3.0\",\n    \"eslint\": \"^8.20.0\",\n    \"rollup\": \"^2\",\n    \"rollup-plugin-terser\": \"^7.0.2\"\n  },\n  \"dependencies\": {\n  }\n}\n",
     "longname": "/Users/abw/js/badger-utils/package.json",
     "name": "package.json",
     "static": true,
@@ -2399,7 +2467,7 @@
     "kind": "manual",
     "longname": "/Users/abw/js/badger-utils/manual/text.md",
     "name": "./manual/text.md",
-    "content": "# Text\n\nVarious utility functions for working with text.\n\n## splitList(value)\n\nFunction to split a string of words into an array.  Words can\nbe delimited by commas and/or spaces.\n\n```js\nsplitList(\"foo bar baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo,bar,baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo, bar, baz\")  // [\"foo\", \"bar\", \"baz\"]\n```\n\n## joinList(array, joint=' ', lastJoint=joint)\n\nFunction to join an array of strings into a single string.  The\ndefault delimiter is a single space.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"])\n    // => \"Tom Dick Harry\"\n```\n\nA delimiter can be provided as a second argument.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \")\n    // \"Tom, Dick, Harry\"\n```\n\nA final delimiter can be provided as a third argument\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \", \" and \")\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListAnd(array, joint=', ', lastJoint=' and ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' and '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListOr(array, joint=', ', lastJoint=' or ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' or '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick or Harry\"\n```\n\n## capitalise(word) / capitalize(word)\n\nThis function (provided with spellings in both British and American English)\ncapitalises a word.  The first character will be convert to upper case and\nthe remaining characters to lower case.\n\n```js\ncapitalise(\"badger\")    // => Badger\ncapitalise(\"BADGER\")    // => Badger\n```\n\n## capitaliseWords(string) / capitalizeWords(string)\n\nThis function (provided with spellings in both British and American English)\ncapitalises all words in a string.\n\n```js\ncapitalise(\"badger mushroom snake\")    // => Badger Mushroom Snake\ncapitalise(\"BADGER MUSHROOM SNAKE\")    // => Badger Mushroom Snake\n```\n\n## snakeToStudly(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto studly caps (e.g. `BadgerMushroomSnake`)\n\n```js\nsnakeToStudly(\"badger_mushroom_snake\") // => BadgerMushroomSnake\n```\n\n## snakeToCamel(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto camel case (e.g. `badgerMushroomSnake`)\n\n```js\nsnakeToCamel(\"badger_mushroom_snake\") // => badgerMushroomSnake\n```\n\n## pluralise(singular) / pluralize(singular)\n\nThis is a **very** simple function for pluralising English words.\n\nIt only works on words with standard endings and plural forms,\nbecause pluralising words is notoriously difficult.  So don't\nexpect words like `woman`, `goose` or `sheep` to pluralise correctly.\n\n```js\npluralise(\"badger\") // => \"badgers\"\npluralise(\"doggy\")  // => \"doggies\"\npluralise(\"grass\")  // => \"grasses\"\npluralise(\"lash\")   // => \"lashes\"\npluralise(\"watch\")  // => \"watches\"\npluralise(\"box\")    // => \"boxes\"\n```\n\n## inflect(n, singular, plural, no='no')\n\nThis function takes a number and a singular noun and attempts to\nconstruct a correct plural form.  It is only likely to work with\nEnglish or languages that work similar to English in using the plural\nform for zero or more than one item (e.g. \"no badger**s**\", \"2 badger**s**\")\nand singular form for exactly one item (e.g. \"1 badger\").\n\n```js\ninflect(0, \"badger\")   // \"no badgers\"\ninflect(1, \"badger\")   // \"1 badger\"\ninflect(2, \"badger\")   // \"2 badgers\"\n```\n\nIt uses the [pluralise()](#pluralise-singular----pluralize-singular-) function\nto construct the plural form.  The plural form can be provided as an optional\nthird argument if that fails to do the right thing.\n\n```js\ninflect(0, \"goose\", \"geese\")   // \"no geese\"\ninflect(1, \"goose\", \"geese\")   // \"1 goose\"\ninflect(2, \"goose\", \"geese\")   // \"2 geese\"\n```\n\nWhen `n` is zero, it will use `no` instead of the number `0`.  An optional\nfourth argument can be provided to change this.\n\n```js\ninflect(0, \"goose\", \"geese\", \"none more\")   // \"none more geese\"\n```\n\n## Inflect(n, singular, plural, no='No')\n\nThis is a wrapper around the [inflect()](#inflect-n--singular--plural--no---39-no--39--)\nfunction which capitalised the first letter, e.g. returning `\"No badgers\"` rather\nthan `\"no badgers\"`.\n\n```js\nInflect(0, \"badger\")   // \"No badgers\"\n```\n\n## splitLines(text)\n\nThis function splits a text string into lines.  Any blank lines are ignored.\n\n```js\nsplitLines(\"foo\\nbar\\n\\n\\nbaz\")\n    // => [\"foo\", \"bar\", \"baz\"]\n",
+    "content": "# Text\n\nVarious utility functions for working with text.\n\n## splitList(value)\n\nFunction to split a string of words into an array.  Words can\nbe delimited by commas and/or spaces. If the argument is already\nan array then the array is returned unmodified.\n\n```js\nsplitList(\"foo bar baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo,bar,baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo, bar, baz\")  // [\"foo\", \"bar\", \"baz\"]\n```\n\n## splitHash(value, set=true, hash={})\n\nFunction to split a string of whitespace delimited words, or an array of\nwords, into an object which can be used as a hash table for quick lookups.\nThe input is first passed to the [splitList()](#splitlist-value-) function.\nIt returns an object where the keys are the words extracted from the input\nand the values are set to be `true`.\n\n```js\nsplitHash(\"foo bar baz\")    // { foo: true, bar: true, baz: true }\n```\n\nAn optional second argument can be passed to set the value to be used for\nthe hash table values.\n\n```js\nsplitHash(\"foo bar baz\", 1)    // { foo: 1, bar: 1, baz: 1 }\n```\n\nThis can be a function which will be passed the key and should return the\ncorresponding value.\n\n```js\nsplitHash(\"foo bar baz\", k => k)    // { foo: \"foo\", bar: \"bar\", baz: \"baz\" }\n```\n\nA third optional argument can be passed which is an object to populate with the\nresults.\n\n```js\nlet stuff = { foo: \"foo\" }\nsplitHash(\"bar baz\", k => k, stuff)    // { foo: \"foo\", bar: \"bar\", baz: \"baz\" }\n```\n\n## joinList(array, joint=' ', lastJoint=joint)\n\nFunction to join an array of strings into a single string.  The\ndefault delimiter is a single space.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"])\n    // => \"Tom Dick Harry\"\n```\n\nA delimiter can be provided as a second argument.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \")\n    // \"Tom, Dick, Harry\"\n```\n\nA final delimiter can be provided as a third argument\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \", \" and \")\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListAnd(array, joint=', ', lastJoint=' and ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' and '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListOr(array, joint=', ', lastJoint=' or ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' or '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick or Harry\"\n```\n\n## capitalise(word) / capitalize(word)\n\nThis function (provided with spellings in both British and American English)\ncapitalises a word.  The first character will be convert to upper case and\nthe remaining characters to lower case.\n\n```js\ncapitalise(\"badger\")    // => Badger\ncapitalise(\"BADGER\")    // => Badger\n```\n\n## capitaliseWords(string) / capitalizeWords(string)\n\nThis function (provided with spellings in both British and American English)\ncapitalises all words in a string.\n\n```js\ncapitalise(\"badger mushroom snake\")    // => Badger Mushroom Snake\ncapitalise(\"BADGER MUSHROOM SNAKE\")    // => Badger Mushroom Snake\n```\n\n## snakeToStudly(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto studly caps (e.g. `BadgerMushroomSnake`)\n\n```js\nsnakeToStudly(\"badger_mushroom_snake\") // => BadgerMushroomSnake\n```\n\n## snakeToCamel(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto camel case (e.g. `badgerMushroomSnake`)\n\n```js\nsnakeToCamel(\"badger_mushroom_snake\") // => badgerMushroomSnake\n```\n\n## pluralise(singular) / pluralize(singular)\n\nThis is a **very** simple function for pluralising English words.\n\nIt only works on words with standard endings and plural forms,\nbecause pluralising words is notoriously difficult.  So don't\nexpect words like `woman`, `goose` or `sheep` to pluralise correctly.\n\n```js\npluralise(\"badger\") // => \"badgers\"\npluralise(\"doggy\")  // => \"doggies\"\npluralise(\"grass\")  // => \"grasses\"\npluralise(\"lash\")   // => \"lashes\"\npluralise(\"watch\")  // => \"watches\"\npluralise(\"box\")    // => \"boxes\"\n```\n\n## inflect(n, singular, plural, no='no')\n\nThis function takes a number and a singular noun and attempts to\nconstruct a correct plural form.  It is only likely to work with\nEnglish or languages that work similar to English in using the plural\nform for zero or more than one item (e.g. \"no badger**s**\", \"2 badger**s**\")\nand singular form for exactly one item (e.g. \"1 badger\").\n\n```js\ninflect(0, \"badger\")   // \"no badgers\"\ninflect(1, \"badger\")   // \"1 badger\"\ninflect(2, \"badger\")   // \"2 badgers\"\n```\n\nIt uses the [pluralise()](#pluralise-singular----pluralize-singular-) function\nto construct the plural form.  The plural form can be provided as an optional\nthird argument if that fails to do the right thing.\n\n```js\ninflect(0, \"goose\", \"geese\")   // \"no geese\"\ninflect(1, \"goose\", \"geese\")   // \"1 goose\"\ninflect(2, \"goose\", \"geese\")   // \"2 geese\"\n```\n\nWhen `n` is zero, it will use `no` instead of the number `0`.  An optional\nfourth argument can be provided to change this.\n\n```js\ninflect(0, \"goose\", \"geese\", \"none more\")   // \"none more geese\"\n```\n\n## Inflect(n, singular, plural, no='No')\n\nThis is a wrapper around the [inflect()](#inflect-n--singular--plural--no---39-no--39--)\nfunction which capitalised the first letter, e.g. returning `\"No badgers\"` rather\nthan `\"no badgers\"`.\n\n```js\nInflect(0, \"badger\")   // \"No badgers\"\n```\n\n## splitLines(text)\n\nThis function splits a text string into lines.  Any blank lines are ignored.\n\n```js\nsplitLines(\"foo\\nbar\\n\\n\\nbaz\")\n    // => [\"foo\", \"bar\", \"baz\"]\n",
     "static": true,
     "access": "public"
   },

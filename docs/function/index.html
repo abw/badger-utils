@@ -60,6 +60,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pluralise">pluralise</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToCamel">snakeToCamel</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToStudly">snakeToStudly</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitHash">splitHash</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitLines">splitLines</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
@@ -1109,6 +1110,35 @@ a new object.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-splitHash">splitHash</a></span></span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, set: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, hash: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Split a comma/whitespace delimited string or Array into a hash object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-splitLines">splitLines</a></span></span><span class="code" data-ice="signature">(text: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">Array</a></span></span>
         </p>
       </div>
@@ -1170,11 +1200,11 @@ a new object.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber226">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber260">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber226">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber260">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Wrapper around {@link inflect()} which uses the word "No" instead of "no" for the
@@ -1266,11 +1296,11 @@ zero case, i.e. Inflect() is the capitalized form of inflect()</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber101">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber135">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {capitalise} from '<span><a href="file/src/utils/text.js.html#lineNumber101">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {capitalise} from '<span><a href="file/src/utils/text.js.html#lineNumber135">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Capitalise a string by converting the first character to upper case and other characters to lower case</p>
@@ -1351,11 +1381,11 @@ zero case, i.e. Inflect() is the capitalized form of inflect()</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber114">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber148">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {capitaliseWords} from '<span><a href="file/src/utils/text.js.html#lineNumber114">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {capitaliseWords} from '<span><a href="file/src/utils/text.js.html#lineNumber148">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Capitalise all words in a string by converting the first character of each word to upper case</p>
@@ -2111,11 +2141,11 @@ been called then the debounced will reset the timer.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber212">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber246">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber212">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber246">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Utility function to inflect a string passed as the second argument to the singular/plural
@@ -2907,11 +2937,11 @@ word for the case where n is 0.  The default is "no", e.g. "no badgers" when n i
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber58">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {joinList} from '<span><a href="file/src/utils/text.js.html#lineNumber58">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {joinList} from '<span><a href="file/src/utils/text.js.html#lineNumber92">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Join an Array into a single string</p>
@@ -3012,11 +3042,11 @@ word for the case where n is 0.  The default is "no", e.g. "no badgers" when n i
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber109">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {joinListAnd} from '<span><a href="file/src/utils/text.js.html#lineNumber75">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {joinListAnd} from '<span><a href="file/src/utils/text.js.html#lineNumber109">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Join an Array into a single string using commas for delimiters and <code>and</code> for the final item</p>
@@ -3109,11 +3139,11 @@ word for the case where n is 0.  The default is "no", e.g. "no badgers" when n i
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber88">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber122">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {joinListOr} from '<span><a href="file/src/utils/text.js.html#lineNumber88">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {joinListOr} from '<span><a href="file/src/utils/text.js.html#lineNumber122">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Join an Array into a single string using commas for delimiters and <code>or</code> for the final item</p>
@@ -3442,7 +3472,7 @@ a new object.</p>
       <pre class="prettyprint source-code"><code data-ice="exampleCode">objSubset(
   { a: 'alpha', b: 'bravo', c: 'charlie' },
   'a b'
-)                        // returns { a: 'alpha', b: 'bravo' }</code></pre>
+) // =&gt; { a: 'alpha', b: 'bravo' }</code></pre>
     </div>
 </div>
 
@@ -3463,11 +3493,11 @@ a new object.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber169">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber203">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {pluralise} from '<span><a href="file/src/utils/text.js.html#lineNumber169">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {pluralise} from '<span><a href="file/src/utils/text.js.html#lineNumber203">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>A very primitive function to pluralise the singular form of a words.  It only
@@ -3882,11 +3912,11 @@ include the last value.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber147">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber181">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {snakeToCamel} from '<span><a href="file/src/utils/text.js.html#lineNumber147">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {snakeToCamel} from '<span><a href="file/src/utils/text.js.html#lineNumber181">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Convert a snake case string to camel case</p>
@@ -3967,11 +3997,11 @@ include the last value.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber131">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber165">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {snakeToStudly} from '<span><a href="file/src/utils/text.js.html#lineNumber131">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {snakeToStudly} from '<span><a href="file/src/utils/text.js.html#lineNumber165">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Convert a snake case string to studly caps</p>
@@ -4041,6 +4071,111 @@ include the last value.</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-splitHash">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">splitHash</span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, set: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>, hash: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber44">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {splitHash} from '<span><a href="file/src/utils/text.js.html#lineNumber44">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Split a comma/whitespace delimited string or Array into a hash object</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">value</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>string to split</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">set</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"><p>value to set for each key</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">hash</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: {}</li></ul></td>
+      <td data-ice="description"><p>object to set keys in</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>hash object mapping keys to values</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const items = splitHash('one two')  // { one: true, two: true }</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const items = splitList('one two', 1)  // { one: 1, two: 1 }</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const items = splitList('one two', i =&gt; i)  // { one: 'one', two: 'two' }</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-function-splitLines">
     <span class="access" data-ice="access">public</span>
     
@@ -4052,11 +4187,11 @@ include the last value.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {splitLines} from '<span><a href="file/src/utils/text.js.html#lineNumber35">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {splitLines} from '<span><a href="file/src/utils/text.js.html#lineNumber69">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Split a string into an Array of lines.</p>

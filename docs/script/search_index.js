@@ -228,6 +228,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~splithash",
+    "function/index.html#static-function-splitHash",
+    "<span>splitHash</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~splitlines",
     "function/index.html#static-function-splitLines",
     "<span>splitLines</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
