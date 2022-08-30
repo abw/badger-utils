@@ -1,4 +1,4 @@
-import { isString, isArray, noValue } from "./assert.js";
+import { isString, isArray, noValue, isObject, isFunction } from "./assert.js";
 import { commas } from "./numbers.js";
 
 /**
@@ -26,6 +26,40 @@ export function splitList(value) {
   }
   return [value];
 }
+
+
+/**
+ * Split a comma/whitespace delimited string or Array into a hash object
+ * @param {String} value - string to split
+ * @param {Boolean|String|Number|Function} [set=true] - value to set for each key
+ * @param {Object} [hash={}] - object to set keys in
+ * @return {Object} hash object mapping keys to values
+ * @example
+ * const items = splitHash('one two')  // { one: true, two: true }
+ * @example
+ * const items = splitList('one two', 1)  // { one: 1, two: 1 }
+ * @example
+ * const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }
+ */
+export function splitHash(value, set=true, hash={ }) {
+  // if it's already a hash object then return it unchanged
+  if (isObject(value)) {
+    return value;
+  }
+  // split a string into an array (or leave an array unchanged)
+  const items = splitList(value);
+
+  return items.reduce(
+    (result, key) => {
+      result[key] = isFunction(set)
+        ? set(key)
+        : set;
+      return result
+    },
+    hash
+  );
+}
+
 
 /**
  * Split a string into an Array of lines.
