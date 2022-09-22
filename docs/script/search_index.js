@@ -174,6 +174,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~multisort",
+    "function/index.html#static-function-multiSort",
+    "<span>multiSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~novalue",
     "function/index.html#static-function-noValue",
     "<span>noValue</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -202,6 +208,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-objSubset",
     "<span>objSubset</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
+  ],
+  [
+    "@abw/badger-utils~orders",
+    "variable/index.html#static-variable-orders",
+    "<span>orders</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
   ],
   [
     "@abw/badger-utils~pluralise",
@@ -250,6 +262,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-snakeToStudly",
     "<span>snakeToStudly</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
+  ],
+  [
+    "@abw/badger-utils~sorters",
+    "variable/index.html#static-variable-sorters",
+    "<span>sorters</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
   ],
   [
     "@abw/badger-utils~splithash",

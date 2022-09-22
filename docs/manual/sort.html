@@ -100,6 +100,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#stringsort-field-" data-ice="link">stringSort(field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#numbersort-field-" data-ice="link">numberSort(field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#integersort-field-" data-ice="link">integerSort(field)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#multisort-fields-" data-ice="link">multiSort(fields)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#stringfield-obj-field-" data-ice="link">stringField(obj,field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#numberfield-obj-field-" data-ice="link">numberField(obj,field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#integerfield-obj-field-" data-ice="link">integerField(obj,field)</a></li>
@@ -170,6 +171,45 @@ const sorted = people.sort(sortByAge);
 //   { name: "Daphne", age: 16 },
 //   { name: "Shaggy", age: 17 },
 //   { name: "Fred",   age: 18 },
+// ]</code></code></pre>
+<h2 id="multisort-fields-">multiSort(fields)</h2><p>Function to return a function that will sort an array of objects by
+comparing a sequence of fields.  In the simplest case the <code>fields</code>
+specification can be a whitespace delimited string containing field
+names, e.g. <code>surname forename</code>.  This assumes that each field is a
+string and is sorted in ascending order.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const people = [
+  { forename: "John", surname: "Smith" },
+  { forename: "Jack", surname: "Smith" },
+  { forename: "John", surname: "Jones" },
+];
+const sortByName = multiSort('surname forename');
+const sorted = people.sort(sortByName);
+// Returns: [
+//   { forename: "John", surname: "Jones" },
+//   { forename: "Jack", surname: "Smith" },
+//   { forename: "John", surname: "Smith" },
+// ]</code></code></pre>
+<p>For non-string fields, the data type can be appended to the field name,
+separated by a colon, e.g. <code>surname:string</code>, <code>age:integer</code>.
+The valid data types are <code>string</code> (default), <code>number</code> and <code>integer</code>.</p>
+<p>An optional third element on each component can be <code>asc</code> for an ascending
+sort (default) or <code>desc</code> for a descending sort, e.g.
+<code>surname:string:asc forename:string:asc age:integer:desc</code>.  Given that
+<code>string</code> is the default type and <code>asc</code> is the default order, that can be
+expressed more succinctly as <code>surname forename age:integer:desc</code>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const people = [
+  { forename: "John", surname: "Smith", age: 28 },
+  { forename: "Jack", surname: "Smith", age: 30 },
+  { forename: "John", surname: "Smith", age: 25 },
+  { forename: "John", surname: "Jones", age: 32 },
+];
+const sortByNameAndAge multiSort('surname forename age:integer:desc');
+const sorted = people.sort(sortByNameAndAge);
+// Returns: [
+//   { forename: "John", surname: "Jones", age: 32 },
+//   { forename: "Jack", surname: "Smith", age: 30 },
+//   { forename: "John", surname: "Smith", age: 28 },
+//   { forename: "John", surname: "Smith", age: 25 },
 // ]</code></code></pre>
 <h2 id="stringfield-obj-field-">stringField(obj,field)</h2><p>Helper function used by <code>stringSort()</code> to extract a field from an object
 and coerce to a string.</p>
