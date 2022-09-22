@@ -90,6 +90,18 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~integerfield",
+    "function/index.html#static-function-integerField",
+    "<span>integerField</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~integersort",
+    "function/index.html#static-function-integerSort",
+    "<span>integerSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~isarray",
     "function/index.html#static-function-isArray",
     "<span>isArray</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -168,6 +180,18 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~numberfield",
+    "function/index.html#static-function-numberField",
+    "<span>numberField</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~numbersort",
+    "function/index.html#static-function-numberSort",
+    "<span>numberSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~objmap",
     "function/index.html#static-function-objMap",
     "<span>objMap</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -243,6 +267,18 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~splitlist",
     "function/index.html#static-function-splitList",
     "<span>splitList</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~stringfield",
+    "function/index.html#static-function-stringField",
+    "<span>stringField</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~stringsort",
+    "function/index.html#static-function-stringSort",
+    "<span>stringSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -555,6 +591,12 @@ window.esdocSearchIndex = [
     "src/utils/object.js",
     "file/src/utils/object.js.html",
     "src/utils/object.js",
+    "file"
+  ],
+  [
+    "src/utils/sort.js",
+    "file/src/utils/sort.js.html",
+    "src/utils/sort.js",
     "file"
   ],
   [

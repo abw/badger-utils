@@ -1575,6 +1575,281 @@
   {
     "__docId__": 77,
     "kind": "file",
+    "name": "src/utils/sort.js",
+    "content": "/**\n * Function to extract an integer field from an object.  Uses `parseInt()` to\n * coerce non-integer values (e.g. numbers in strings) to an integer.\n * @param {Object} obj - object containing data\n * @param {String} field - field to return as integer\n * @return {Integer} - integer value from object\n * @example\n * integerField({ a: \"10\" }, \"a\");     // 10\n */\nexport const integerField = (obj, field) =>\n  parseInt(obj[field]||0)\n\n/**\n * Function to extract a number field from an object.  Uses `parseFloat()` to\n * coerce non-number values (e.g. numbers in strings) to floats.\n * @param {Object} obj - object containing data\n * @param {String} field - field to return as float\n * @return {Float} - floating point number from object\n * @example\n * numberField({ pi: \"3.14\" }, \"pi\");     // 3.14\n */\nexport const numberField = (obj, field) =>\n  parseFloat(obj[field]||0)\n\n/**\n * Function to extract a string field from an object.  Uses `toString()` to\n * coerce non-string values (e.g. numbers) to strings.\n * @param {Object} obj - object containing data\n * @param {String} field - field to return as string\n * @return {Float} - string value from object\n * @example\n * numberField({ pi: 3.14 }, \"pi\");     // \"3.14\"\n */\nexport const stringField = (obj, field) =>\n  (obj[field]||'').toString()\n\n/**\n * Sort function generator for sorting objects by an integer field.\n * Takes a single field name and returns a sort function which will sort\n * objects by that field.\n * @param {String} field - field to return as string\n * @return {Function} - sort function to sort objects by the named integer field\n * @example\n * const people = [\n *   { name: \"Fred\",   age: 18 },\n *   { name: \"Shaggy\", age: 17 },\n *   { name: \"Daphne\", age: 16 },\n *   { name: \"Velma\",  age: 15 },\n * ];\n * const sortByAge = integerSort('age');\n * const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred\n */\nexport const integerSort = field => (a, b) => {\n  return integerField(a, field) - integerField(b, field);\n}\n\n/**\n * Sort function generator for sorting objects by a number field.\n * Takes a single field name and returns a sort function which will sort\n * objects by that field.\n * @param {String} field - field to return as string\n * @return {Function} - sort function to sort objects by the named number field\n * @example\n * const constants = [\n *   { name: \"pi\",   value: 3.14  },\n *   { name: \"e\",    value: 2.718 },\n *   { name: \"phi\",  value: 1.618 },\n * ];\n * const sortByValue = numberSort('value');\n * const sorted = constants.sort(sortByValue); // phi, e, pi\n */\nexport const numberSort = field => (a, b) => {\n  return numberField(a, field) - numberField(b, field);\n}\n\n/**\n * Sort function generator for sorting objects by a string field.\n * Takes a single field name and returns a sort function which will sort\n * objects by that field.\n * @param {String} field - field to return as string\n * @return {Function} - sort function to sort objects by the named string field\n * @example\n * const constants = [\n *   { name: \"pi\",   value: 3.14  },\n *   { name: \"e\",    value: 2.718 },\n *   { name: \"phi\",  value: 1.618 },\n * ];\n * const sortByName = stringSort('name');\n * const sorted = constants.sort(sortByName); // e, phi, pi\n */\nexport const stringSort = field => (a, b) => {\n  let c = stringField(a, field).toLowerCase();\n  let d = stringField(b, field).toLowerCase();\n  return c > d ? 1 : d > c ? -1 : 0;\n}\n\n",
+    "static": true,
+    "longname": "/Users/abw/js/badger-utils/src/utils/sort.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 78,
+    "kind": "function",
+    "name": "integerField",
+    "memberof": "src/utils/sort.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/sort.js~integerField",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{integerField}",
+    "description": "Function to extract an integer field from an object.  Uses `parseInt()` to\ncoerce non-integer values (e.g. numbers in strings) to an integer.",
+    "examples": [
+      "integerField({ a: \"10\" }, \"a\");     // 10"
+    ],
+    "lineNumber": 10,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "object containing data"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "field",
+        "description": "field to return as integer"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Integer"
+      ],
+      "spread": false,
+      "description": "integer value from object"
+    }
+  },
+  {
+    "__docId__": 79,
+    "kind": "function",
+    "name": "numberField",
+    "memberof": "src/utils/sort.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/sort.js~numberField",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{numberField}",
+    "description": "Function to extract a number field from an object.  Uses `parseFloat()` to\ncoerce non-number values (e.g. numbers in strings) to floats.",
+    "examples": [
+      "numberField({ pi: \"3.14\" }, \"pi\");     // 3.14"
+    ],
+    "lineNumber": 22,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "object containing data"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "field",
+        "description": "field to return as float"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Float"
+      ],
+      "spread": false,
+      "description": "floating point number from object"
+    }
+  },
+  {
+    "__docId__": 80,
+    "kind": "function",
+    "name": "stringField",
+    "memberof": "src/utils/sort.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/sort.js~stringField",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{stringField}",
+    "description": "Function to extract a string field from an object.  Uses `toString()` to\ncoerce non-string values (e.g. numbers) to strings.",
+    "examples": [
+      "numberField({ pi: 3.14 }, \"pi\");     // \"3.14\""
+    ],
+    "lineNumber": 34,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "object containing data"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "field",
+        "description": "field to return as string"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Float"
+      ],
+      "spread": false,
+      "description": "string value from object"
+    }
+  },
+  {
+    "__docId__": 81,
+    "kind": "function",
+    "name": "integerSort",
+    "memberof": "src/utils/sort.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/sort.js~integerSort",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{integerSort}",
+    "description": "Sort function generator for sorting objects by an integer field.\nTakes a single field name and returns a sort function which will sort\nobjects by that field.",
+    "examples": [
+      "const people = [\n  { name: \"Fred\",   age: 18 },\n  { name: \"Shaggy\", age: 17 },\n  { name: \"Daphne\", age: 16 },\n  { name: \"Velma\",  age: 15 },\n];\nconst sortByAge = integerSort('age');\nconst sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred"
+    ],
+    "lineNumber": 53,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "field",
+        "description": "field to return as string"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "sort function to sort objects by the named integer field"
+    }
+  },
+  {
+    "__docId__": 82,
+    "kind": "function",
+    "name": "numberSort",
+    "memberof": "src/utils/sort.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/sort.js~numberSort",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{numberSort}",
+    "description": "Sort function generator for sorting objects by a number field.\nTakes a single field name and returns a sort function which will sort\nobjects by that field.",
+    "examples": [
+      "const constants = [\n  { name: \"pi\",   value: 3.14  },\n  { name: \"e\",    value: 2.718 },\n  { name: \"phi\",  value: 1.618 },\n];\nconst sortByValue = numberSort('value');\nconst sorted = constants.sort(sortByValue); // phi, e, pi"
+    ],
+    "lineNumber": 72,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "field",
+        "description": "field to return as string"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "sort function to sort objects by the named number field"
+    }
+  },
+  {
+    "__docId__": 83,
+    "kind": "function",
+    "name": "stringSort",
+    "memberof": "src/utils/sort.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/sort.js~stringSort",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{stringSort}",
+    "description": "Sort function generator for sorting objects by a string field.\nTakes a single field name and returns a sort function which will sort\nobjects by that field.",
+    "examples": [
+      "const constants = [\n  { name: \"pi\",   value: 3.14  },\n  { name: \"e\",    value: 2.718 },\n  { name: \"phi\",  value: 1.618 },\n];\nconst sortByName = stringSort('name');\nconst sorted = constants.sort(sortByName); // e, phi, pi"
+    ],
+    "lineNumber": 91,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "field",
+        "description": "field to return as string"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Function"
+      ],
+      "spread": false,
+      "description": "sort function to sort objects by the named string field"
+    }
+  },
+  {
+    "__docId__": 84,
+    "kind": "file",
     "name": "src/utils/text.js",
     "content": "import { isString, isArray, noValue, isObject, isFunction } from \"./assert.js\";\nimport { commas } from \"./numbers.js\";\n\n/**\n * Split a comma/whitespace delimited string into an Array\n * @param {String} value - string to split\n * @return {Array} array of split strings\n * @example\n * const strings = splitList('one two three')\n * @example\n * const strings = splitList('one,two,three')\n * @example\n * const strings = splitList('one, two, three')\n */\nexport function splitList(value) {\n  if (noValue(value)) {\n    return [ ];\n  }\n  else if (isString(value)) {\n    return value.length\n      ? value.split(/,\\s*|\\s+/)\n      : [ ]\n  }\n  else if (isArray(value)) {\n    return value;\n  }\n  return [value];\n}\n\n\n/**\n * Split a comma/whitespace delimited string or Array into a hash object\n * @param {String} value - string to split\n * @param {Boolean|String|Number|Function} [set=true] - value to set for each key\n * @param {Object} [hash={}] - object to set keys in\n * @return {Object} hash object mapping keys to values\n * @example\n * const items = splitHash('one two')  // { one: true, two: true }\n * @example\n * const items = splitList('one two', 1)  // { one: 1, two: 1 }\n * @example\n * const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }\n */\nexport function splitHash(value, set=true, hash={ }) {\n  // if it's already a hash object then return it unchanged\n  if (isObject(value)) {\n    return value;\n  }\n  // split a string into an array (or leave an array unchanged)\n  const items = splitList(value);\n\n  return items.reduce(\n    (result, key) => {\n      result[key] = isFunction(set)\n        ? set(key)\n        : set;\n      return result\n    },\n    hash\n  );\n}\n\n\n/**\n * Split a string into an Array of lines.\n * @param {String} text - string to split\n * @return {Array} array of lines\n*/\nexport function splitLines(text) {\n  if (! isString(text) || text.length === 0) {\n    return [ ];\n  }\n  var lines = text.split(/\\s*\\n+\\s*/).filter(\n    function(item) { return item.length > 0 }\n  );\n  return lines;\n}\n\n/**\n * Join an Array into a single string\n * @param {Array} array - array to join\n * @param {String} [joint=' '] - delimiter to join strings\n * @param {String} [lastJoint=joint] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinList(['one', 'two', 'three']);   // one two three\n * @example\n * joinList(['one', 'two', 'three'], ', ');   // one, two, three\n * @example\n * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three\n */\nexport function joinList(array, joint=' ', lastJoint=joint) {\n  let copy = [...array];\n  const last = copy.pop();\n  return copy.length\n    ? [copy.join(joint), last].join(lastJoint)\n    : last;\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` and ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' and '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListAnd(['one', 'two', 'three']);   // one, two and three\n */\nexport function joinListAnd(array, joint=', ', lastJoint=' and ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` or ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' or '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListOr(['one', 'two', 'three']);   // one, two or three\n */\nexport function joinListOr(array, joint=', ', lastJoint=' or ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Capitalise a string by converting the first character to upper case and other characters to lower case\n * @param {String} word - word to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger');   // Badger\n * @example\n * capitalise('BADGER');   // Badger\n */\nexport function capitalise(word) {\n  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n}\n\n/**\n * Capitalise all words in a string by converting the first character of each word to upper case\n * @param {String} string - words to capitalise\n * @return {String} capitalised string\n * @example\n * capitaliseWords('badger fun');   // Badger Fun\n * @example\n * capitaliseWords('BADGER FUN');   // Badger Fun\n */\nexport function capitaliseWords(string) {\n  return string.replace(\n    // /(?:^|\\s)\\S/g,\n    /(\\w+)/g,\n    capitalise\n  );\n}\n\n/**\n * Convert a snake case string to studly caps\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToStudly('happy_badger_dance');   // HappyBadgerDance\n * @example\n * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance\n */\nexport function snakeToStudly(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to FooBar\n    segment => segment.split('_').map(capitalise).join('')\n  ).join('/');\n}\n\n/**\n * Convert a snake case string to camel case\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToCamel('happy_badger_dance');   // happyBadgerDance\n * @example\n * snakeToCamel('happy_badger/dance');   // happyBadger/dance\n */\nexport function snakeToCamel(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to fooBar\n    segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')\n  ).join('/');\n}\n\n/**\n * A very primitive function to pluralise the singular form of a words.  It only\n * works on words with standard endings and plural forms, because pluralising\n * words is notoriously difficult.\n * @param {String} singular - word to pluralise\n * @return {String} plural form\n * @example\n * pluralise('box');     // boxes\n * @example\n * pluralise('doggy');   // doggies\n * @example\n * pluralise('badger');  // badgers\n * @example\n * pluralise('woman');   // womans\n */\nexport function pluralise(singular) {\n  let found;\n\n  if (singular.match(/(ss?|sh|ch|x)$/)) {\n    // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes\n    return singular + 'es';\n  }\n  else if ((found = singular.match(/(.*?[^aeiou])y$/))) {\n    // doggy/doggies\n    return found[1] + 'ies';\n  }\n  else if (singular.match(/([^s\\d\\W])$/)) {\n    // cat/cats\n    return singular + 's';\n  }\n  return singular;\n}\n\n/**\n * Utility function to inflect a string passed as the second argument to the singular/plural\n * form based on the number passed as the first argument.  Uses the {@link pluralise()} function\n * which only works on words with standard pluralisations.  The third argument can be provided\n * as the plural form where necessary.  The optional 4th argument can be used to provide a different\n * word for the case where n is 0.  The default is \"no\", e.g. \"no badgers\" when n is 0.\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='no'] - optional word to use when `n` is 0\n * @example\n * inflect(0, 'cat')     # no cats\n * @example\n * inflect(1, 'cat')     # 1 cat\n * @example\n * inflect(2, 'cat')     # 2 cats\n * @example\n * inflect(0, 'child', 'children')     # no children\n * @example\n * inflect(1, 'child', 'children')     # 1 child\n * @example\n * inflect(2, 'child', 'children')     # 2 children\n * @example\n * inflect(0, 'black', 'black', \"none, none more\")     # none, none more black\n */\nexport function inflect(n, singular, plural, no='no') {\n  return (n ? commas(n) : no)\n    + ' '\n    + (n === 1 ? singular : (plural || pluralise(singular)));\n}\n\n/**\n * Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\n * zero case, i.e. Inflect() is the capitalized form of inflect()\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='No'] - optional word to use when `n` is 0\n */\nexport function Inflect(n, singular, plural, no='No') {\n  return inflect(n, singular, plural, no);\n}\n\n\n\n// for the yanks\nexport const capitalize = capitalise;\nexport const capitalizeWords = capitaliseWords;\nexport const pluralize = pluralise;\n\n",
     "static": true,
@@ -1584,7 +1859,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 78,
+    "__docId__": 85,
     "kind": "function",
     "name": "splitList",
     "memberof": "src/utils/text.js",
@@ -1625,7 +1900,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 86,
     "kind": "function",
     "name": "splitHash",
     "memberof": "src/utils/text.js",
@@ -1693,7 +1968,7 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 87,
     "kind": "function",
     "name": "splitLines",
     "memberof": "src/utils/text.js",
@@ -1729,7 +2004,7 @@
     }
   },
   {
-    "__docId__": 81,
+    "__docId__": 88,
     "kind": "function",
     "name": "joinList",
     "memberof": "src/utils/text.js",
@@ -1794,7 +2069,7 @@
     }
   },
   {
-    "__docId__": 82,
+    "__docId__": 89,
     "kind": "function",
     "name": "joinListAnd",
     "memberof": "src/utils/text.js",
@@ -1857,7 +2132,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 90,
     "kind": "function",
     "name": "joinListOr",
     "memberof": "src/utils/text.js",
@@ -1920,7 +2195,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 91,
     "kind": "function",
     "name": "capitalise",
     "memberof": "src/utils/text.js",
@@ -1960,7 +2235,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 92,
     "kind": "function",
     "name": "capitaliseWords",
     "memberof": "src/utils/text.js",
@@ -2000,7 +2275,7 @@
     }
   },
   {
-    "__docId__": 86,
+    "__docId__": 93,
     "kind": "function",
     "name": "snakeToStudly",
     "memberof": "src/utils/text.js",
@@ -2040,7 +2315,7 @@
     }
   },
   {
-    "__docId__": 87,
+    "__docId__": 94,
     "kind": "function",
     "name": "snakeToCamel",
     "memberof": "src/utils/text.js",
@@ -2080,7 +2355,7 @@
     }
   },
   {
-    "__docId__": 88,
+    "__docId__": 95,
     "kind": "function",
     "name": "pluralise",
     "memberof": "src/utils/text.js",
@@ -2122,7 +2397,7 @@
     }
   },
   {
-    "__docId__": 89,
+    "__docId__": 96,
     "kind": "function",
     "name": "inflect",
     "memberof": "src/utils/text.js",
@@ -2196,7 +2471,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 97,
     "kind": "function",
     "name": "Inflect",
     "memberof": "src/utils/text.js",
@@ -2261,7 +2536,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 98,
     "kind": "variable",
     "name": "capitalize",
     "memberof": "src/utils/text.js",
@@ -2281,7 +2556,7 @@
     }
   },
   {
-    "__docId__": 92,
+    "__docId__": 99,
     "kind": "variable",
     "name": "capitalizeWords",
     "memberof": "src/utils/text.js",
@@ -2301,7 +2576,7 @@
     }
   },
   {
-    "__docId__": 93,
+    "__docId__": 100,
     "kind": "variable",
     "name": "pluralize",
     "memberof": "src/utils/text.js",
@@ -2321,7 +2596,7 @@
     }
   },
   {
-    "__docId__": 94,
+    "__docId__": 101,
     "kind": "file",
     "name": "src/utils/time.js",
     "content": "/**\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Integer} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n */\nexport function debounce(func, timeout=300) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(\n      () => func.apply(this, args),\n      timeout\n    );\n  };\n}\n\n/**\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n */\nexport function sleep(ms) {\n  return new Promise(r => setTimeout(r, ms))\n}\n",
@@ -2332,7 +2607,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 95,
+    "__docId__": 102,
     "kind": "function",
     "name": "debounce",
     "memberof": "src/utils/time.js",
@@ -2380,7 +2655,7 @@
     }
   },
   {
-    "__docId__": 96,
+    "__docId__": 103,
     "kind": "function",
     "name": "sleep",
     "memberof": "src/utils/time.js",
@@ -2433,7 +2708,7 @@
   },
   {
     "kind": "manualIndex",
-    "content": "# badger-utils\n\n<img src=\"./images/badger2.svg\" width=\"300\"/>\n\nThis is the manual for the `badger-utils` Javascript module.\n\n* [Getting Started](manual/getting_started.html)\n* [Assertions](manual/assertions.html)\n* [Number Functions](manual/numbers.html)\n* [Text Functions](manual/text.html)\n* [Object Functions](manual/objects.html)\n* [Timing Functions](manual/timing.html)\n* [Miscellaneous Functions](manual/misc.html)\n\n# Author\n[Andy Wardley](https://github.com/abw)\n",
+    "content": "# badger-utils\n\n<img src=\"./images/badger2.svg\" width=\"300\"/>\n\nThis is the manual for the `badger-utils` Javascript module.\n\n* [Getting Started](manual/getting_started.html)\n* [Assertions](manual/assertions.html)\n* [Number Functions](manual/numbers.html)\n* [Text Functions](manual/text.html)\n* [Object Functions](manual/objects.html)\n* [Sorting Functions](manual/sort.html)\n* [Timing Functions](manual/timing.html)\n* [Miscellaneous Functions](manual/misc.html)\n\n# Author\n[Andy Wardley](https://github.com/abw)\n",
     "longname": "/Users/abw/js/badger-utils/manual/index.md",
     "name": "./manual/index.md",
     "static": true,
@@ -2476,6 +2751,14 @@
     "longname": "/Users/abw/js/badger-utils/manual/objects.md",
     "name": "./manual/objects.md",
     "content": "# Objects\n\nVarious utility functions for working with objects.\n\n## objMap(obj, fn)\n\nApplies a function to each value of an object and returns a new object.\n\n```js\nobjMap(\n    { a: 'alpha', b: 'bravo' },\n    v => v.toUpperCase()\n)\n// => { a: 'ALPHA', b: 'BRAVO' }\n```\n\n## objSubset(obj, keys)\n\nExtracts a subset of the keys and values from an object and returns a new object.\n\n```js\nobjSubset(\n    { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' },\n    ['a', 'c', 'e']\n)\n// => { a: 'alpha', c: 'charlie', e: 'echo' }\n```\n\nIf the keys are all simple word strings (e.g. don't contain any non-word characters\nor spaces) then they can be specified as a string.\n\n```js\nobjSubset(\n    { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' },\n    'a c e'\n)\n// => { a: 'alpha', c: 'charlie', e: 'echo' }\n```\n\n",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "/Users/abw/js/badger-utils/manual/sort.md",
+    "name": "./manual/sort.md",
+    "content": "# Sort\n\nVarious utility functions for sorting objects.\n\n## stringSort(field)\n\nFunction to return a function that will sort an array of objects by\ncomparing the `field` property of each and comparing as lower case strings.\n\n```js\nconst constants = [\n  { name: \"pi\",   value: 3.14  },\n  { name: \"e\",    value: 2.718 },\n  { name: \"phi\",  value: 1.618 },\n];\nconst sortByName = stringSort('name');\nconst sorted = constants.sort(sortByName);\n// Returns: [\n//   { name: \"e\",    value: 2.718 },\n//   { name: \"phi\",  value: 1.618 },\n//   { name: \"pi\",   value: 3.14  },\n// ]\n```\n\n## numberSort(field)\n\nFunction to return a function that will sort an array of objects by\ncomparing the `field` property of each and comparing as floating point\nnumbers.\n\n```js\nconst constants = [\n  { name: \"pi\",   value: 3.14  },\n  { name: \"e\",    value: 2.718 },\n  { name: \"phi\",  value: 1.618 },\n];\nconst sortByValue = numberSort('value');\nconst sorted = constants.sort(sortByValue);\n// Returns: [\n//   { name: \"phi\",  value: 1.618 },\n//   { name: \"e\",    value: 2.718 },\n//   { name: \"pi\",   value: 3.14  },\n// ]\n```\n\n## integerSort(field)\n\nFunction to return a function that will sort an array of objects by\ncomparing the `field` property of each and comparing as integers.\n\n```js\nconst people = [\n  { name: \"Fred\",   age: 18 },\n  { name: \"Fred\",   age: 18 },\n  { name: \"Shaggy\", age: 17 },\n  { name: \"Daphne\", age: 16 },\n  { name: \"Velma\",  age: 15 },\n];\nconst sortByAge = integerSort('age');\nconst sorted = people.sort(sortByAge);\n// Returns: [\n//   { name: \"Velma\",  age: 15 },\n//   { name: \"Daphne\", age: 16 },\n//   { name: \"Shaggy\", age: 17 },\n//   { name: \"Fred\",   age: 18 },\n// ]\n```\n\n## stringField(obj,field)\n\nHelper function used by `stringSort()` to extract a field from an object\nand coerce to a string.\n\n```js\nconst a = stringField({ a: \"ten\" }, \"a\");     // \"ten\"\nconst a = stringField({ a: \"10\"  }, \"a\");     // \"10\"\n```\n\n## numberField(obj,field)\n\nHelper function used by `numberSort()` to extract a field from an object\nand coerce to a floating point number.\n\n```js\nconst a = numberField({ pi: 3.14  }, \"pi\");     // 3.14\nconst a = numberField({ a: \"3.14\" }, \"pi\");     // 3.14\n```\n\n## integerField(obj,field)\n\nHelper function used by `integerSort()` to extract a field from an object\nand coerce to an integer.\n\n```js\nconst a = integerField({ a:  10  }, \"a\");     // 10\nconst a = integerField({ a: \"10\" }, \"a\");     // 10\n```\n",
     "static": true,
     "access": "public"
   },

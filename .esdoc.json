@@ -21,6 +21,7 @@
             "./manual/numbers.md",
             "./manual/text.md",
             "./manual/objects.md",
+            "./manual/sort.md",
             "./manual/timing.md",
             "./manual/misc.md"
           ]

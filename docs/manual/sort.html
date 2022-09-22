@@ -124,22 +124,65 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="timing-function">Timing Function</h1><p>Various utility functions for working with timers.</p>
-<h2 id="debounce-func--timeout-300-">debounce(func, timeout=300)</h2><p>Function to generate a debouncer function which will call the wrapped function after
-a timeout.  If the debouncer function is called again before the wrapped function has
-been called then the debounced will reset the timer.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">function foo() {
-    console.log("foo was called");
-}
-
-const callFooSoon = debounce(foo, 1000);
-
-callFooSoon();  // starts 1s timer
-callFooSoon();  // resets timer
-callFooSoon();  // resets timer
-    // =&gt; foo() will be called once, 1s after last reset</code></code></pre>
-<h2 id="sleep-ms-">sleep(ms)</h2><p>Function which returns a Promise which will resolve after a delay.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">sleep(1000).then( () =&gt; console.log("Called one second later") )</code></code></pre>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="sort">Sort</h1><p>Various utility functions for sorting objects.</p>
+<h2 id="stringsort-field-">stringSort(field)</h2><p>Function to return a function that will sort an array of objects by
+comparing the <code>field</code> property of each and comparing as lower case strings.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const constants = [
+  { name: "pi",   value: 3.14  },
+  { name: "e",    value: 2.718 },
+  { name: "phi",  value: 1.618 },
+];
+const sortByName = stringSort('name');
+const sorted = constants.sort(sortByName);
+// Returns: [
+//   { name: "e",    value: 2.718 },
+//   { name: "phi",  value: 1.618 },
+//   { name: "pi",   value: 3.14  },
+// ]</code></code></pre>
+<h2 id="numbersort-field-">numberSort(field)</h2><p>Function to return a function that will sort an array of objects by
+comparing the <code>field</code> property of each and comparing as floating point
+numbers.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const constants = [
+  { name: "pi",   value: 3.14  },
+  { name: "e",    value: 2.718 },
+  { name: "phi",  value: 1.618 },
+];
+const sortByValue = numberSort('value');
+const sorted = constants.sort(sortByValue);
+// Returns: [
+//   { name: "phi",  value: 1.618 },
+//   { name: "e",    value: 2.718 },
+//   { name: "pi",   value: 3.14  },
+// ]</code></code></pre>
+<h2 id="integersort-field-">integerSort(field)</h2><p>Function to return a function that will sort an array of objects by
+comparing the <code>field</code> property of each and comparing as integers.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const people = [
+  { name: "Fred",   age: 18 },
+  { name: "Fred",   age: 18 },
+  { name: "Shaggy", age: 17 },
+  { name: "Daphne", age: 16 },
+  { name: "Velma",  age: 15 },
+];
+const sortByAge = integerSort('age');
+const sorted = people.sort(sortByAge);
+// Returns: [
+//   { name: "Velma",  age: 15 },
+//   { name: "Daphne", age: 16 },
+//   { name: "Shaggy", age: 17 },
+//   { name: "Fred",   age: 18 },
+// ]</code></code></pre>
+<h2 id="stringfield-obj-field-">stringField(obj,field)</h2><p>Helper function used by <code>stringSort()</code> to extract a field from an object
+and coerce to a string.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const a = stringField({ a: "ten" }, "a");     // "ten"
+const a = stringField({ a: "10"  }, "a");     // "10"</code></code></pre>
+<h2 id="numberfield-obj-field-">numberField(obj,field)</h2><p>Helper function used by <code>numberSort()</code> to extract a field from an object
+and coerce to a floating point number.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const a = numberField({ pi: 3.14  }, "pi");     // 3.14
+const a = numberField({ a: "3.14" }, "pi");     // 3.14</code></code></pre>
+<h2 id="integerfield-obj-field-">integerField(obj,field)</h2><p>Helper function used by <code>integerSort()</code> to extract a field from an object
+and coerce to an integer.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const a = integerField({ a:  10  }, "a");     // 10
+const a = integerField({ a: "10" }, "a");     // 10</code></code></pre>
 </div>
 </div>
 

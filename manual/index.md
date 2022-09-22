@@ -9,6 +9,7 @@ This is the manual for the `badger-utils` Javascript module.
 * [Number Functions](manual/numbers.html)
 * [Text Functions](manual/text.html)
 * [Object Functions](manual/objects.html)
+* [Sorting Functions](manual/sort.html)
 * [Timing Functions](manual/timing.html)
 * [Miscellaneous Functions](manual/misc.html)
 
