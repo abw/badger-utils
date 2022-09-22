@@ -1,3 +1,6 @@
+import { fail } from "./error.js";
+import { splitList } from "./text.js";
+
 /**
  * Function to extract an integer field from an object.  Uses `parseInt()` to
  * coerce non-integer values (e.g. numbers in strings) to an integer.
@@ -94,3 +97,61 @@ export const stringSort = field => (a, b) => {
   return c > d ? 1 : d > c ? -1 : 0;
 }
 
+export const sorters = {
+  number:  numberSort,
+  integer: integerSort,
+  string:  stringSort,
+};
+export const orders = {
+  asc:  fn => (a, b) => fn(a, b),
+  desc: fn => (a, b) => fn(b, a),
+};
+
+
+/**
+ * Sort function generator for sorting objects by multiple fields.
+ * The specification should be a whitespace delimited string in which each
+ * component is the field name, optional data type and optional sort order,
+ * each separated by a colon.
+ * In the simple case, the data type is assumed be be `string` and the sort
+ * order defaults to `asc`.  e.g. `surname forename` is the short form of
+ * `surname:string:asc forename:string:asc`.  The data type can be one of
+ * `string` (default), `integer` or `number` and the sort order can be `asc`
+ * (default) for ascending order or `desc` for descending.
+ * Returns a function which sorts an array of object by those fields.
+ * @param {String} spec - sort specification
+ * @return {Function} - sort function to sort objects by the named string field
+ * @example
+ * const people = [
+ *   { forename: "John", surname: "Smith", age: 28 },
+ *   { forename: "Jack", surname: "Smith", age: 30 },
+ *   { forename: "John", surname: "Smith", age: 25 },
+ *   { forename: "John", surname: "Jones", age: 32 },
+ * ];
+ * const sortByNameAndAge = multiSort('surname forename age:integer:desc');
+ * const sorted = people.sort(sortByNameAndAge); // John Jones 32, Jack Smith 30, John Smith 28, John Smith 25
+ */
+export const multiSort = spec => {
+  const sorts = splitList(spec);
+  const funcs = sorts.map(
+    sort => {
+      const match = sort.match(/^(\w+)(?::(\w+))?(?::(\w+))?$/)
+        || fail(`Invalid sort field: ${sort}`);
+      const sorter = sorters[match[2] || 'string']
+        || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`);
+      const order = orders[match[3] || 'asc']
+        || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`);
+      return order(sorter(match[1]));
+    }
+  );
+  return (a, b) => {
+    for (let i = 0; i < funcs.length; i++) {
+      const sortFunc = funcs[i];
+      const cmp = sortFunc(a, b);
+      if (cmp !== 0) {
+        return cmp;
+      }
+    }
+    return 0;
+  }
+}

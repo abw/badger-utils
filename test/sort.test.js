@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
   stringField, numberField, integerField,
-  stringSort, numberSort, integerSort
+  stringSort, numberSort, integerSort, multiSort
 } from '../src/utils/sort.js'
 
 test(
@@ -91,6 +91,48 @@ test(
         { name: "e",    value: 2.718 },
         { name: "phi",  value: 1.618 },
         { name: "pi",   value: 3.14  },
+      ]
+    )
+  }
+);
+
+test(
+  'multiSort() strings',
+  t => {
+    const people = [
+      { forename: "John", surname: "Smith" },
+      { forename: "Jack", surname: "Smith" },
+      { forename: "John", surname: "Jones" },
+    ];
+    const sorted = people.sort(multiSort('surname forename'));
+    t.deepEqual(
+      sorted,
+      [
+        { forename: "John", surname: "Jones" },
+        { forename: "Jack", surname: "Smith" },
+        { forename: "John", surname: "Smith" },
+      ]
+    )
+  }
+);
+
+test(
+  'multiSort() with types and order',
+  t => {
+    const people = [
+      { forename: "John", surname: "Smith", age: 28 },
+      { forename: "Jack", surname: "Smith", age: 30 },
+      { forename: "John", surname: "Smith", age: 25 },
+      { forename: "John", surname: "Jones", age: 32 },
+    ];
+    const sorted = people.sort(multiSort('surname:string forename:string:asc age:integer:desc'));
+    t.deepEqual(
+      sorted,
+      [
+        { forename: "John", surname: "Jones", age: 32 },
+        { forename: "Jack", surname: "Smith", age: 30 },
+        { forename: "John", surname: "Smith", age: 28 },
+        { forename: "John", surname: "Smith", age: 25 },
       ]
     )
   }

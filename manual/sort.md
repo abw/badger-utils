@@ -66,6 +66,56 @@ const sorted = people.sort(sortByAge);
 // ]
 ```
 
+## multiSort(fields)
+
+Function to return a function that will sort an array of objects by
+comparing a sequence of fields.  In the simplest case the `fields`
+specification can be a whitespace delimited string containing field
+names, e.g. `surname forename`.  This assumes that each field is a
+string and is sorted in ascending order.
+
+```js
+const people = [
+  { forename: "John", surname: "Smith" },
+  { forename: "Jack", surname: "Smith" },
+  { forename: "John", surname: "Jones" },
+];
+const sortByName = multiSort('surname forename');
+const sorted = people.sort(sortByName);
+// Returns: [
+//   { forename: "John", surname: "Jones" },
+//   { forename: "Jack", surname: "Smith" },
+//   { forename: "John", surname: "Smith" },
+// ]
+```
+
+For non-string fields, the data type can be appended to the field name,
+separated by a colon, e.g. `surname:string`, `age:integer`.
+The valid data types are `string` (default), `number` and `integer`.
+
+An optional third element on each component can be `asc` for an ascending
+sort (default) or `desc` for a descending sort, e.g.
+`surname:string:asc forename:string:asc age:integer:desc`.  Given that
+`string` is the default type and `asc` is the default order, that can be
+expressed more succinctly as `surname forename age:integer:desc`.
+
+```js
+const people = [
+  { forename: "John", surname: "Smith", age: 28 },
+  { forename: "Jack", surname: "Smith", age: 30 },
+  { forename: "John", surname: "Smith", age: 25 },
+  { forename: "John", surname: "Jones", age: 32 },
+];
+const sortByNameAndAge multiSort('surname forename age:integer:desc');
+const sorted = people.sort(sortByNameAndAge);
+// Returns: [
+//   { forename: "John", surname: "Jones", age: 32 },
+//   { forename: "Jack", surname: "Smith", age: 30 },
+//   { forename: "John", surname: "Smith", age: 28 },
+//   { forename: "John", surname: "Smith", age: 25 },
+// ]
+```
+
 ## stringField(obj,field)
 
 Helper function used by `stringSort()` to extract a field from an object
