@@ -5,7 +5,7 @@ Various utility functions for sorting objects.
 ## stringSort(field)
 
 Function to return a function that will sort an array of objects by
-comparing the `field` property of each and comparing as lower case strings.
+comparing the `field` property of each object as lower case strings.
 
 ```js
 const constants = [
@@ -25,7 +25,7 @@ const sorted = constants.sort(sortByName);
 ## numberSort(field)
 
 Function to return a function that will sort an array of objects by
-comparing the `field` property of each and comparing as floating point
+comparing the `field` property of each as floating point
 numbers.
 
 ```js
@@ -46,7 +46,7 @@ const sorted = constants.sort(sortByValue);
 ## integerSort(field)
 
 Function to return a function that will sort an array of objects by
-comparing the `field` property of each and comparing as integers.
+comparing the `field` property of each as integers.
 
 ```js
 const people = [
@@ -68,11 +68,10 @@ const sorted = people.sort(sortByAge);
 
 ## multiSort(fields)
 
-Function to return a function that will sort an array of objects by
-comparing a sequence of fields.  In the simplest case the `fields`
-specification can be a whitespace delimited string containing field
-names, e.g. `surname forename`.  This assumes that each field is a
-string and is sorted in ascending order.
+This function can be used to compose a sorting function from a number
+of other sorting functions.  For example, suppose you have an array of
+objects that you want to sort by `surname` first, and if they have the
+same surname, then by `forename`.
 
 ```js
 const people = [
@@ -80,7 +79,16 @@ const people = [
   { forename: "Jack", surname: "Smith" },
   { forename: "John", surname: "Jones" },
 ];
-const sortByName = multiSort('surname forename');
+```
+
+You can compose a sort function by passing an array of sort functions
+to `multisort()`, like so:
+
+```js
+const sortByName = multiSort([
+  stringSort('surname'),
+  stringSort('forename')
+]);
 const sorted = people.sort(sortByName);
 // Returns: [
 //   { forename: "John", surname: "Jones" },
@@ -89,15 +97,28 @@ const sorted = people.sort(sortByName);
 // ]
 ```
 
-For non-string fields, the data type can be appended to the field name,
-separated by a colon, e.g. `surname:string`, `age:integer`.
-The valid data types are `string` (default), `number` and `integer`.
+The shorthand form allows you to specify the field names as a
+whitespace delimited string.  It will construct the sort function
+from that specification.  If you don't specify otherwise (more on that
+below), it will assume that they're string fields to be sorted in ascending
+(alphabetical) order.
 
-An optional third element on each component can be `asc` for an ascending
-sort (default) or `desc` for a descending sort, e.g.
-`surname:string:asc forename:string:asc age:integer:desc`.  Given that
-`string` is the default type and `asc` is the default order, that can be
-expressed more succinctly as `surname forename age:integer:desc`.
+```js
+// short form:
+const sortByName = multiSort('surname forename');
+
+// same as:
+const sortByName = multiSort([
+  stringSort('surname'),
+  stringSort('forename')
+]);
+```
+
+Here's a slightly more complex example where we want to sort by
+`surname`, `forename` (both in ascending order) and `age` in
+descending order (i.e. oldest first).  The `descendingOrder` wrapper
+function can be used to convert an ascending order sort function into
+one that sorts in descending order.
 
 ```js
 const people = [
@@ -106,7 +127,11 @@ const people = [
   { forename: "John", surname: "Smith", age: 25 },
   { forename: "John", surname: "Jones", age: 32 },
 ];
-const sortByNameAndAge multiSort('surname forename age:integer:desc');
+const sortByNameAndAge = multiSort([
+  stringSort('surname'),
+  stringSort('forename'),
+  descendingOrder(integerSort('age'))
+]);
 const sorted = people.sort(sortByNameAndAge);
 // Returns: [
 //   { forename: "John", surname: "Jones", age: 32 },
@@ -115,6 +140,46 @@ const sorted = people.sort(sortByNameAndAge);
 //   { forename: "John", surname: "Smith", age: 25 },
 // ]
 ```
+
+You can also use the shorthand form here.  The field name,
+optional field type and optional sort order should be joined
+by colons.
+
+```js
+// short form:
+const sortByName = multiSort('surname forename age:integer:desc');
+
+// long form:
+const sortByNameAndAge = multiSort([
+  stringSort('surname'),
+  stringSort('forename'),
+  descendingOrder(integerSort('forename'))
+]);
+```
+
+For the field types you can use the long names `string` (default),
+`number` and `integer` or their abbreviations `str`, `num` and `int`.
+You can specify the sort order as `ascending` (default) or `descending`
+if verbosity is your thing, or using the shorter `asc` and `desc` forms.
+
+Here are some examples of the mappings from strings to functions to clarify.
+
+| Short Form                 | Expansion                              |
+|----------------------------|----------------------------------------|
+| surname                    | stringSort('surname')                  |
+| surname:str                | stringSort('surname')                  |
+| surname:string             | stringSort('surname')                  |
+| surname:str:desc           | descendingOrder(stringSort('surname')) |
+| surname:string:descending  | descendingOrder(stringSort('surname')) |
+| age:int                    | integerSort('age')                     |
+| age:integer                | integerSort('age')                     |
+| age:int:desc               | descendingOrder(integerSort('age'))    |
+| age:integer:descending     | descendingOrder(integerSort('age'))    |
+| price:num                  | numberSort('age')                      |
+| price:number               | numberSort('price')                    |
+| price:num:desc             | descendingOrder(numberSort('price'))   |
+| price:number:descending    | descendingOrder(numberSort('price'))   |
+
 
 ## stringField(obj,field)
 
@@ -144,4 +209,25 @@ and coerce to an integer.
 ```js
 const a = integerField({ a:  10  }, "a");     // 10
 const a = integerField({ a: "10" }, "a");     // 10
+```
+
+## descendingOrder(sortFn)
+
+Helper function used by `multiSort()` to convert a sort function that sorts
+by ascending order into one that sorts by descending order.
+
+```js
+const ageAsc  = integerSort('age');
+const ageDesc = descendingOrder(ageAsc);
+```
+
+## ascendingOrder(sortFn)
+
+Helper function used by `multiSort()` provided for completeness.  Given that
+sort functions sort in ascending order by default, this function simply returns
+the function passed to it.
+
+```js
+const ageAsc1 = integerSort('age');
+const ageAsc2 = ascendingOrder(ageAsc1);    // returns ageAsc1
 ```

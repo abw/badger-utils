@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
   stringField, numberField, integerField,
-  stringSort, numberSort, integerSort, multiSort
+  stringSort, numberSort, integerSort, multiSort, descendingOrder
 } from '../src/utils/sort.js'
 
 test(
@@ -138,4 +138,78 @@ test(
   }
 );
 
+test(
+  'multiSort() with abbreviated types and order',
+  t => {
+    const people = [
+      { forename: "John", surname: "Smith", age: 28 },
+      { forename: "Jack", surname: "Smith", age: 30 },
+      { forename: "John", surname: "Smith", age: 25 },
+      { forename: "John", surname: "Jones", age: 32 },
+    ];
+    const sorted = people.sort(multiSort('surname:str forename:str:asc age:int:desc'));
+    t.deepEqual(
+      sorted,
+      [
+        { forename: "John", surname: "Jones", age: 32 },
+        { forename: "Jack", surname: "Smith", age: 30 },
+        { forename: "John", surname: "Smith", age: 28 },
+        { forename: "John", surname: "Smith", age: 25 },
+      ]
+    )
+  }
+);
 
+test(
+  'multiSort() with functions',
+  t => {
+    const people = [
+      { forename: "John", surname: "Smith", age: 28 },
+      { forename: "Jack", surname: "Smith", age: 30 },
+      { forename: "John", surname: "Smith", age: 25 },
+      { forename: "John", surname: "Jones", age: 32 },
+    ];
+    const sortByNameAndAge = multiSort([
+      stringSort('surname'),
+      stringSort('forename'),
+      descendingOrder(integerSort('age'))
+    ]);
+    const sorted = people.sort(sortByNameAndAge);
+    t.deepEqual(
+      sorted,
+      [
+        { forename: "John", surname: "Jones", age: 32 },
+        { forename: "Jack", surname: "Smith", age: 30 },
+        { forename: "John", surname: "Smith", age: 28 },
+        { forename: "John", surname: "Smith", age: 25 },
+      ]
+    )
+  }
+);
+
+
+test(
+  'multiSort() invalid type',
+  t => {
+    const error = t.throws(
+      () => multiSort('surname:strong')
+    )
+    t.is(
+      error.message,
+      'Invalid sort type "strong" in sort field: surname:strong'
+    )
+  }
+);
+
+test(
+  'multiSort() invalid order',
+  t => {
+    const error = t.throws(
+      () => multiSort('surname:str:des')
+    )
+    t.is(
+      error.message,
+      'Invalid sort order "des" in sort field: surname:str:des'
+    )
+  }
+);

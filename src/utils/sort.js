@@ -1,3 +1,4 @@
+import { isFunction, isString } from "./assert.js";
 import { fail } from "./error.js";
 import { splitList } from "./text.js";
 
@@ -97,20 +98,58 @@ export const stringSort = field => (a, b) => {
   return c > d ? 1 : d > c ? -1 : 0;
 }
 
-export const sorters = {
-  number:  numberSort,
-  integer: integerSort,
-  string:  stringSort,
+/**
+ * Lookup table mapping sort types to their functions.
+ */
+export const sortTypes = {
+  num:      numberSort,
+  int:      integerSort,
+  str:      stringSort,
+  number:   numberSort,
+  integer:  integerSort,
+  string:   stringSort,
 };
-export const orders = {
-  asc:  fn => (a, b) => fn(a, b),
-  desc: fn => (a, b) => fn(b, a),
+
+/**
+ * Do-nothing function provided for completeness.  It expects to be passed a sort
+ * function that, by default, sorts in ascending order and it simply returns that
+ * function unmodified.
+ * @param {Function} fn - sort function
+ * @return {Function} - the same sort function
+ * @example
+ * const sortByName = stringSort('name');
+ * const sortByNameAsc = ascendingOrder(sortByName);
+ */
+export const ascendingOrder  = fn => fn
+
+/**
+ * Inverting function that converts a sort function that sorts in ascending order to
+ * one that sorts in descending order.  It does this by swapping the `a` and `b`
+ * arguments passed to the function.
+ * @param {Function} fn - function to sort in ascending order
+ * @return {Function} - wrapper around the function to sort in descending order
+ * @example
+ * const sortByName = stringSort('name');
+ * const sortByNameDesc = descendingOrder(sortByName);
+ */
+export const descendingOrder = fn => (a, b) => fn(b, a)
+
+/**
+ * Lookup table mapping sort orders to their functions.
+ */
+export const sortOrders = {
+  asc:        ascendingOrder,
+  desc:       descendingOrder,
+  ascending:  ascendingOrder,
+  descending: descendingOrder,
 };
 
 
 /**
  * Sort function generator for sorting objects by multiple fields.
- * The specification should be a whitespace delimited string in which each
+ * The specification can be either an array of sort functions, or be
+ * specification used to construct those functions.  The specification
+ * should be a whitespace delimited string in which each
  * component is the field name, optional data type and optional sort order,
  * each separated by a colon.
  * In the simple case, the data type is assumed be be `string` and the sort
@@ -135,13 +174,21 @@ export const multiSort = spec => {
   const sorts = splitList(spec);
   const funcs = sorts.map(
     sort => {
-      const match = sort.match(/^(\w+)(?::(\w+))?(?::(\w+))?$/)
-        || fail(`Invalid sort field: ${sort}`);
-      const sorter = sorters[match[2] || 'string']
-        || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`);
-      const order = orders[match[3] || 'asc']
-        || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`);
-      return order(sorter(match[1]));
+      if (isFunction(sort)) {
+        return sort;
+      }
+      else if (isString(sort)) {
+        const match = sort.match(/^(\w+)(?::(\w+))?(?::(\w+))?$/)
+          || fail(`Invalid sort field: ${sort}`);
+        const sorter = sortTypes[match[2] || 'string']
+          || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`);
+        const order = sortOrders[match[3] || 'asc']
+          || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`);
+        return order(sorter(match[1]));
+      }
+      else {
+        fail(`Invalid sort field: ${sort}`);
+      }
     }
   );
   return (a, b) => {
