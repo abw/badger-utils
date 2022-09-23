@@ -50,6 +50,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNumberDefaults">setNumberDefaults</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objMap">objMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objSubset">objSubset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-descendingOrder">descendingOrder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerField">integerField</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerSort">integerSort</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-multiSort">multiSort</a></span></span></li>
@@ -72,8 +74,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sleep">sleep</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-orders">orders</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sorters">sorters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalizeWords">capitalizeWords</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span></span></li>
@@ -156,34 +158,6 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-orders">orders</a></span></span><span class="code" data-ice="signature">: {"asc": <span>*</span>, "desc": <span>*</span>}</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
           <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
@@ -212,13 +186,43 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-sorters">sorters</a></span></span><span class="code" data-ice="signature">: {"number": <span>*</span>, "integer": <span>*</span>, "string": <span>*</span>}</span>
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span><span class="code" data-ice="signature">: {"asc": <span>*</span>, "desc": <span>*</span>, "ascending": <span>*</span>, "descending": <span>*</span>}</span>
         </p>
       </div>
       <div>
         
         
+        <div data-ice="description"><p>Lookup table mapping sort orders to their functions.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span><span class="code" data-ice="signature">: {"num": <span>*</span>, "int": <span>*</span>, "str": <span>*</span>, "number": <span>*</span>, "integer": <span>*</span>, "string": <span>*</span>}</span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Lookup table mapping sort types to their functions.</p>
+</div>
       </div>
     </td>
     <td>
@@ -318,49 +322,6 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-variable-orders">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">orders</span><span class="code" data-ice="signature">: {"asc": <span>*</span>, "desc": <span>*</span>}</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber105">source</a></span></span>
-    </span>
-  </h3>
-
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {orders} from '<span><a href="file/src/utils/sort.js.html#lineNumber105">@abw/badger-utils</a></span>'</code></pre></div>
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-variable-pluralize">
     <span class="access" data-ice="access">public</span>
     
@@ -404,25 +365,70 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-variable-sorters">
+  <h3 data-ice="anchor" id="static-variable-sortOrders">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">sorters</span><span class="code" data-ice="signature">: {"number": <span>*</span>, "integer": <span>*</span>, "string": <span>*</span>}</span>
+    <span class="code" data-ice="name">sortOrders</span><span class="code" data-ice="signature">: {"asc": <span>*</span>, "desc": <span>*</span>, "ascending": <span>*</span>, "descending": <span>*</span>}</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber100">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber140">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {sorters} from '<span><a href="file/src/utils/sort.js.html#lineNumber100">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {sortOrders} from '<span><a href="file/src/utils/sort.js.html#lineNumber140">@abw/badger-utils</a></span>'</code></pre></div>
   
   
+  <div data-ice="description"><p>Lookup table mapping sort orders to their functions.</p>
+</div>
+
   
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-variable-sortTypes">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">sortTypes</span><span class="code" data-ice="signature">: {"num": <span>*</span>, "int": <span>*</span>, "str": <span>*</span>, "number": <span>*</span>, "integer": <span>*</span>, "string": <span>*</span>}</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber104">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {sortTypes} from '<span><a href="file/src/utils/sort.js.html#lineNumber104">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Lookup table mapping sort types to their functions.</p>
+</div>
 
   
 

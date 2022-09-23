@@ -50,6 +50,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNumberDefaults">setNumberDefaults</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objMap">objMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objSubset">objSubset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-descendingOrder">descendingOrder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerField">integerField</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerSort">integerSort</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-multiSort">multiSort</a></span></span></li>
@@ -72,8 +74,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sleep">sleep</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-orders">orders</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sorters">sorters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalizeWords">capitalizeWords</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span></span></li>
@@ -108,6 +110,35 @@
         
         <div data-ice="description"><p>Wrapper around {@link inflect()} which uses the word "No" instead of "no" for the
 zero case, i.e.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span></span><span class="code" data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Do-nothing function provided for completeness.</p>
 </div>
       </div>
     </td>
@@ -283,6 +314,36 @@ a timeout.</p>
         
         
         <div data-ice="description"><p>Returns the default locale.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-descendingOrder">descendingOrder</a></span></span><span class="code" data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Inverting function that converts a sort function that sorts in ascending order to
+one that sorts in descending order.</p>
 </div>
       </div>
     </td>
@@ -1497,6 +1558,90 @@ zero case, i.e. Inflect() is the capitalized form of inflect()</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-ascendingOrder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">ascendingOrder</span><span class="code" data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber123">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {ascendingOrder} from '<span><a href="file/src/utils/sort.js.html#lineNumber123">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Do-nothing function provided for completeness.  It expects to be passed a sort
+function that, by default, sorts in ascending order and it simply returns that
+function unmodified.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">fn</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>sort function</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>the same sort function</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const sortByName = stringSort('name');
+const sortByNameAsc = ascendingOrder(sortByName);</code></pre>
+    </div>
+</div>
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-function-capitalise">
     <span class="access" data-ice="access">public</span>
     
@@ -1984,6 +2129,90 @@ been called then the debounced will reset the timer.</p>
   
 
   
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-descendingOrder">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">descendingOrder</span><span class="code" data-ice="signature">(fn: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber135">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {descendingOrder} from '<span><a href="file/src/utils/sort.js.html#lineNumber135">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Inverting function that converts a sort function that sorts in ascending order to
+one that sorts in descending order.  It does this by swapping the <code>a</code> and <code>b</code>
+arguments passed to the function.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">fn</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>function to sort in ascending order</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function">Function</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>wrapper around the function to sort in descending order</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">const sortByName = stringSort('name');
+const sortByNameDesc = descendingOrder(sortByName);</code></pre>
+    </div>
+</div>
 
   
 
@@ -2483,11 +2712,11 @@ word for the case where n is 0.  The default is "no", e.g. "no badgers" when n i
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber14">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {integerField} from '<span><a href="file/src/utils/sort.js.html#lineNumber13">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {integerField} from '<span><a href="file/src/utils/sort.js.html#lineNumber14">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Function to extract an integer field from an object.  Uses <code>parseInt()</code> to
@@ -2572,11 +2801,11 @@ coerce non-integer values (e.g. numbers in strings) to an integer.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {integerSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber56">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {integerSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber57">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Sort function generator for sorting objects by an integer field.
@@ -3627,15 +3856,17 @@ const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred</code></pr
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber134">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber173">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {multiSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber134">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {multiSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber173">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Sort function generator for sorting objects by multiple fields.
-The specification should be a whitespace delimited string in which each
+The specification can be either an array of sort functions, or be
+specification used to construct those functions.  The specification
+should be a whitespace delimited string in which each
 component is the field name, optional data type and optional sort order,
 each separated by a colon.
 In the simple case, the data type is assumed be be <code>string</code> and the sort
@@ -3798,11 +4029,11 @@ const sorted = people.sort(sortByNameAndAge); // John Jones 32, Jack Smith 30, J
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {numberField} from '<span><a href="file/src/utils/sort.js.html#lineNumber25">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {numberField} from '<span><a href="file/src/utils/sort.js.html#lineNumber26">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Function to extract a number field from an object.  Uses <code>parseFloat()</code> to
@@ -3887,11 +4118,11 @@ coerce non-number values (e.g. numbers in strings) to floats.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber76">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {numberSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber75">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {numberSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber76">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Sort function generator for sorting objects by a number field.
@@ -5016,11 +5247,11 @@ include the last value.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber38">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {stringField} from '<span><a href="file/src/utils/sort.js.html#lineNumber37">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {stringField} from '<span><a href="file/src/utils/sort.js.html#lineNumber38">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Function to extract a string field from an object.  Uses <code>toString()</code> to
@@ -5105,11 +5336,11 @@ coerce non-string values (e.g. numbers) to strings.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber94">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/sort.js.html#lineNumber95">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {stringSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber94">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {stringSort} from '<span><a href="file/src/utils/sort.js.html#lineNumber95">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Sort function generator for sorting objects by a string field.

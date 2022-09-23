@@ -50,6 +50,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNumberDefaults">setNumberDefaults</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objMap">objMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objSubset">objSubset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-descendingOrder">descendingOrder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerField">integerField</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerSort">integerSort</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-multiSort">multiSort</a></span></span></li>
@@ -72,8 +74,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sleep">sleep</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-orders">orders</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sorters">sorters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalizeWords">capitalizeWords</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span></span></li>
@@ -82,7 +84,8 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils/sort.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { fail } from "./error.js";
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isFunction, isString } from "./assert.js";
+import { fail } from "./error.js";
 import { splitList } from "./text.js";
 
 /**
@@ -181,20 +184,58 @@ export const stringSort = field =&gt; (a, b) =&gt; {
   return c &gt; d ? 1 : d &gt; c ? -1 : 0;
 }
 
-export const sorters = {
-  number:  numberSort,
-  integer: integerSort,
-  string:  stringSort,
+/**
+ * Lookup table mapping sort types to their functions.
+ */
+export const sortTypes = {
+  num:      numberSort,
+  int:      integerSort,
+  str:      stringSort,
+  number:   numberSort,
+  integer:  integerSort,
+  string:   stringSort,
 };
-export const orders = {
-  asc:  fn =&gt; (a, b) =&gt; fn(a, b),
-  desc: fn =&gt; (a, b) =&gt; fn(b, a),
+
+/**
+ * Do-nothing function provided for completeness.  It expects to be passed a sort
+ * function that, by default, sorts in ascending order and it simply returns that
+ * function unmodified.
+ * @param {Function} fn - sort function
+ * @return {Function} - the same sort function
+ * @example
+ * const sortByName = stringSort('name');
+ * const sortByNameAsc = ascendingOrder(sortByName);
+ */
+export const ascendingOrder  = fn =&gt; fn
+
+/**
+ * Inverting function that converts a sort function that sorts in ascending order to
+ * one that sorts in descending order.  It does this by swapping the `a` and `b`
+ * arguments passed to the function.
+ * @param {Function} fn - function to sort in ascending order
+ * @return {Function} - wrapper around the function to sort in descending order
+ * @example
+ * const sortByName = stringSort('name');
+ * const sortByNameDesc = descendingOrder(sortByName);
+ */
+export const descendingOrder = fn =&gt; (a, b) =&gt; fn(b, a)
+
+/**
+ * Lookup table mapping sort orders to their functions.
+ */
+export const sortOrders = {
+  asc:        ascendingOrder,
+  desc:       descendingOrder,
+  ascending:  ascendingOrder,
+  descending: descendingOrder,
 };
 
 
 /**
  * Sort function generator for sorting objects by multiple fields.
- * The specification should be a whitespace delimited string in which each
+ * The specification can be either an array of sort functions, or be
+ * specification used to construct those functions.  The specification
+ * should be a whitespace delimited string in which each
  * component is the field name, optional data type and optional sort order,
  * each separated by a colon.
  * In the simple case, the data type is assumed be be `string` and the sort
@@ -219,13 +260,21 @@ export const multiSort = spec =&gt; {
   const sorts = splitList(spec);
   const funcs = sorts.map(
     sort =&gt; {
-      const match = sort.match(/^(\w+)(?::(\w+))?(?::(\w+))?$/)
-        || fail(`Invalid sort field: ${sort}`);
-      const sorter = sorters[match[2] || 'string']
-        || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`);
-      const order = orders[match[3] || 'asc']
-        || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`);
-      return order(sorter(match[1]));
+      if (isFunction(sort)) {
+        return sort;
+      }
+      else if (isString(sort)) {
+        const match = sort.match(/^(\w+)(?::(\w+))?(?::(\w+))?$/)
+          || fail(`Invalid sort field: ${sort}`);
+        const sorter = sortTypes[match[2] || 'string']
+          || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`);
+        const order = sortOrders[match[3] || 'asc']
+          || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`);
+        return order(sorter(match[1]));
+      }
+      else {
+        fail(`Invalid sort field: ${sort}`);
+      }
     }
   );
   return (a, b) =&gt; {

@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~ascendingorder",
+    "function/index.html#static-function-ascendingOrder",
+    "<span>ascendingOrder</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~capitalise",
     "function/index.html#static-function-capitalise",
     "<span>capitalise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -51,6 +57,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~defaultlocale",
     "function/index.html#static-function-defaultLocale",
     "<span>defaultLocale</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~descendingorder",
+    "function/index.html#static-function-descendingOrder",
+    "<span>descendingOrder</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -210,12 +222,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@abw/badger-utils~orders",
-    "variable/index.html#static-variable-orders",
-    "<span>orders</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
-    "variable"
-  ],
-  [
     "@abw/badger-utils~pluralise",
     "function/index.html#static-function-pluralise",
     "<span>pluralise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -264,9 +270,15 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@abw/badger-utils~sorters",
-    "variable/index.html#static-variable-sorters",
-    "<span>sorters</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "@abw/badger-utils~sortorders",
+    "variable/index.html#static-variable-sortOrders",
+    "<span>sortOrders</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
+  ],
+  [
+    "@abw/badger-utils~sorttypes",
+    "variable/index.html#static-variable-sortTypes",
+    "<span>sortTypes</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "variable"
   ],
   [

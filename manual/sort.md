@@ -51,7 +51,6 @@ comparing the `field` property of each as integers.
 ```js
 const people = [
   { name: "Fred",   age: 18 },
-  { name: "Fred",   age: 18 },
   { name: "Shaggy", age: 17 },
   { name: "Daphne", age: 16 },
   { name: "Velma",  age: 15 },
