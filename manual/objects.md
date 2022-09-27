@@ -14,7 +14,7 @@ objMap(
 // => { a: 'ALPHA', b: 'BRAVO' }
 ```
 
-## extract(obj, keys, del=true)
+## extract(object, keys, del=true)
 
 Extracts a subset of the keys and values from an object and returns a new object.
 By default the keys and corresponding values will be deleted from the source object.
@@ -82,7 +82,7 @@ let subset = extract(
 // subset = { a: 'alpha', c: 'charlie', e: 'echo' }
 ```
 
-## remove(obj, key)
+## remove(object, key)
 
 Removes an item from an object and returns the corresponding value.
 

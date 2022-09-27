@@ -72,6 +72,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~extract",
+    "function/index.html#static-function-extract",
+    "<span>extract</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~fail",
     "function/index.html#static-function-fail",
     "<span>fail</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -216,12 +222,6 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@abw/badger-utils~objsubset",
-    "function/index.html#static-function-objSubset",
-    "<span>objSubset</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
-    "function"
-  ],
-  [
     "@abw/badger-utils~pluralise",
     "function/index.html#static-function-pluralise",
     "<span>pluralise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -237,6 +237,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~range",
     "function/index.html#static-function-range",
     "<span>range</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~remove",
+    "function/index.html#static-function-remove",
+    "<span>remove</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [

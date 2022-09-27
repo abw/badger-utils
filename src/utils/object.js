@@ -26,7 +26,7 @@ export function objMap(obj, fn) {
 
 /**
  * Extracts a subset of items from an object.
- * @param {Object} obj - source object
+ * @param {Object} object - source object
  * @param {Object|Array|String|RegExp|Function} keys - keys to extract
  * @param {Boolean} [del=true] - delete keys from source object
  * @return {Object} - new object with extracted values
@@ -56,26 +56,25 @@ export function objMap(obj, fn) {
  *   key => key === 'a' || key === 'b'
  * ) // => { a: 'alpha', b: 'bravo' }
  */
-
-export const extract = (object, spec, del=true) => {
+export const extract = (object, keys, del=true) => {
   let matcher;
   let extracted = { };
 
-  if (isFunction(spec)) {
-    matcher = spec;
+  if (isFunction(keys)) {
+    matcher = keys;
   }
-  else if (spec instanceof RegExp) {
-    matcher = key => spec.test(key);
+  else if (keys instanceof RegExp) {
+    matcher = key => keys.test(key);
   }
-  else if (isObject(spec)) {
-    matcher = key => spec[key];
+  else if (isObject(keys)) {
+    matcher = key => keys[key];
   }
-  else if (isArray(spec) || isString(spec)) {
-    const specHash = splitHash(spec);
-    matcher = key => specHash[key];
+  else if (isArray(keys) || isString(keys)) {
+    const keysHash = splitHash(keys);
+    matcher = key => keysHash[key];
   }
   else {
-    fail("Invalid specification for extract(): " + spec);
+    fail("Invalid specification for extract(): " + keys);
   }
   Object.keys(object).map(
     key => {
@@ -92,7 +91,7 @@ export const extract = (object, spec, del=true) => {
 
 /**
  * Removes an item from an object and returns the value.
- * @param {Object} obj - source object
+ * @param {Object} object - source object
  * @param {String} key - item to remove
  * @return {Any} - value of removed item
  * @example
@@ -101,9 +100,9 @@ export const extract = (object, spec, del=true) => {
  *   'a'
  * ) // => { a: 'alpha', b: 'bravo' }
  */
-export const remove = (object, item) => {
-  const value = object[item];
-  delete object[item];
+export const remove = (object, key) => {
+  const value = object[key];
+  delete object[key];
   return value;
 }
 

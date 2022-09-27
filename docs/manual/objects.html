@@ -90,7 +90,8 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/objects.html"><a href="manual/objects.html" data-ice="link">Objects</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#objmap-obj--fn-" data-ice="link">objMap(obj, fn)</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#objsubset-obj--keys-" data-ice="link">objSubset(obj, keys)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#extract-object--keys--del-true-" data-ice="link">extract(object, keys, del=true)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#remove-object--key-" data-ice="link">remove(object, key)</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -134,19 +135,56 @@
     v =&gt; v.toUpperCase()
 )
 // =&gt; { a: 'ALPHA', b: 'BRAVO' }</code></code></pre>
-<h2 id="objsubset-obj--keys-">objSubset(obj, keys)</h2><p>Extracts a subset of the keys and values from an object and returns a new object.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">objSubset(
-    { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' },
-    ['a', 'c', 'e']
+<h2 id="extract-object--keys--del-true-">extract(object, keys, del=true)</h2><p>Extracts a subset of the keys and values from an object and returns a new object.
+By default the keys and corresponding values will be deleted from the source object.
+Set the third argument, <code>del</code>, to <code>false</code> to suppress this.</p>
+<p>The keys to extract can be specified in a number of ways.  They can be the keys
+in an object that have a corresponding true value.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">let source = { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' };
+let subset = extract(
+  source,
+  { a: true, c: true, e: true }
 )
-// =&gt; { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
+// source = { b: 'bravo', d: 'delta' }
+// subset = { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
+<p>The <code>keys</code> can also be specified as an array.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">let source = { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' };
+let subset = extract(
+  source,
+  ['a', 'c', 'e']
+)
+// source = { b: 'bravo', d: 'delta' }
+// subset = { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
 <p>If the keys are all simple word strings (e.g. don't contain any non-word characters
 or spaces) then they can be specified as a string.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">objSubset(
-    { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' },
-    'a c e'
+<pre><code class="lang-js"><code class="source-code prettyprint">let source = { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' };
+let subset = extract(
+  source,
+  'a c e'
 )
-// =&gt; { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
+// source = { b: 'bravo', d: 'delta' }
+// subset = { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
+<p>A regular expression can also be used.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">let source = { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' };
+let subset = extract(
+  source,
+  /^[ace]$/
+)
+// source = { b: 'bravo', d: 'delta' }
+// subset = { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
+<p>Or a function can be provided to select the items to extract.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">let source = { a: 'alpha', b: 'bravo', c: 'charlie', d: 'delta', e: 'echo' };
+let subset = extract(
+  source,
+  key =&gt; key === 'a' || key === 'c' || key === 'e'
+)
+// source = { b: 'bravo', d: 'delta' }
+// subset = { a: 'alpha', c: 'charlie', e: 'echo' }</code></code></pre>
+<h2 id="remove-object--key-">remove(object, key)</h2><p>Removes an item from an object and returns the corresponding value.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">let source  = { a: 'alpha', b: 'bravo', c: 'charlie' };
+let removed = remove(source, 'a');
+// source  = { b: 'bravo', c: 'charlie' }
+// removed = 'alpha'</code></code></pre>
 </div>
 </div>
 
