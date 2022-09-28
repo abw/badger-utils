@@ -40,7 +40,7 @@ extract(
 // => { a: 'alpha', c: 'charlie', e: 'echo' }
 ```
 
-The `keys` can also be specified as an array.
+The keys can also be specified as an array.
 
 ```js
 extract(
