@@ -28,7 +28,10 @@ export function objMap(obj, fn) {
  * Extracts a subset of items from an object.
  * @param {Object} object - source object
  * @param {Object|Array|String|RegExp|Function} keys - keys to extract
- * @param {Boolean} [del=true] - delete keys from source object
+ * @param {Object} [options] -
+ * @param {Boolean} [options.delete=false] - delete keys from source object
+ * @param {Function} [options.key] - function to transform key
+ * @param {Function} [options.value] - function to transform value
  * @return {Object} - new object with extracted values
  * @example
  * extract(
@@ -56,9 +59,10 @@ export function objMap(obj, fn) {
  *   key => key === 'a' || key === 'b'
  * ) // => { a: 'alpha', b: 'bravo' }
  */
-export const extract = (object, keys, del=true) => {
+export const extract = (object, keys, options={}) => {
   let matcher;
-  let extracted = { };
+  let extract = { };
+  let actions = { delete: false, ...options };
 
   if (isFunction(keys)) {
     matcher = keys;
@@ -79,14 +83,21 @@ export const extract = (object, keys, del=true) => {
   Object.keys(object).map(
     key => {
       if (matcher(key)) {
-        extracted[key] = object[key];
-        if (del) {
+        let value = object[key];
+        if (actions.delete) {
           delete object[key];
         }
+        if (actions.key) {
+          key = actions.key(key);
+        }
+        if (actions.value) {
+          value = actions.value(value);
+        }
+        extract[key] = value;
       }
     }
   )
-  return extracted;
+  return extract;
 }
 
 /**
