@@ -1,8 +1,22 @@
 import test from 'ava';
 import {
-  isString, isInteger, isFloat, isNumber, isObject,
-  isArray, isUndefined, isNull, hasValue, noValue
+  isBoolean, isString, isInteger, isFloat, isNumber,
+  isObject, isArray, isUndefined, isNull, hasValue, noValue,
 } from '../src/index.js'
+
+// isBoolean()
+test(
+  'isBoolean() identifies true',
+  t => t.is(isBoolean(true), true)
+);
+test(
+  'isBoolean() identifies false',
+  t => t.is(isBoolean(false), true)
+);
+test(
+  'isBoolean() identifies number',
+  t => t.is(isBoolean(1), false)
+);
 
 // isString()
 test(

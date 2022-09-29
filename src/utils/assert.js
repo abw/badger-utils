@@ -1,4 +1,13 @@
 /**
+ * Determines if a value is a boolean
+ * @param {Boolean} value - value to test
+ * @return {Boolean} true if `value` is a string or false if not
+ */
+export function isBoolean(value) {
+  return typeof value === 'boolean';
+}
+
+/**
  * Determines if a value is a string
  * @param {String} value - value to test
  * @return {Boolean} true if `value` is a string or false if not

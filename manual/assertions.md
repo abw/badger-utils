@@ -1,5 +1,21 @@
 # Assertions
 
+## isBoolean(value)
+
+Determines if a value is a boolean. Returns `true` if the value is
+`true` or `false`.  Otherwise it returns false.
+
+```js
+isBoolean(true);         // true
+isBoolean(false);        // true
+isBoolean(1);            // false
+isBoolean(0);            // false
+```
+
+Values that can be coerced to boolean values (e.g. the numbers `0`
+and `1`) are NOT considered booleans and the function will return
+`false`.
+
 ## isString(value)
 
 Determines if a value is a string.  Returns Boolean `true` or `false`.
@@ -30,16 +46,22 @@ isInteger(42.43);   // false
 isInteger("42");    // false
 ```
 
+Note that numbers with decimal parts that are zero (e.g. `42.0`) are considered
+to be integers.
+
 ## isFloat(value)
 
 Determines if a value is a floating point number.  Returns Boolean `true` or `false`.
 
 ```js
-isInteger(42);      // false
-isInteger(42.0);    // false
-isInteger(42.43);   // true
-isInteger("42");    // false
+isFloat(42);      // false
+isFloat(42.0);    // false
+isFloat(42.43);   // true
+isFloat("42");    // false
 ```
+
+Note that numbers with decimal parts that are zero (e.g. `42.0`) are considered
+to be integers and the function will return `false` in those cases.
 
 ## isArray(value)
 
