@@ -126,6 +126,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~isboolean",
+    "function/index.html#static-function-isBoolean",
+    "<span>isBoolean</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~isfloat",
     "function/index.html#static-function-isFloat",
     "<span>isFloat</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",

@@ -30,6 +30,7 @@
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#utils">utils</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hasValue">hasValue</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-haveValue">haveValue</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isArray">isArray</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isBoolean">isBoolean</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFloat">isFloat</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isFunction">isFunction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isInteger">isInteger</a></span></span></li>
@@ -86,6 +87,15 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils/assert.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Determines if a value is a boolean
+ * @param {Boolean} value - value to test
+ * @return {Boolean} true if `value` is a string or false if not
+ */
+export function isBoolean(value) {
+  return typeof value === 'boolean';
+}
+
+/**
  * Determines if a value is a string
  * @param {String} value - value to test
  * @return {Boolean} true if `value` is a string or false if not

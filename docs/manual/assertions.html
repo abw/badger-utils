@@ -41,6 +41,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/assertions.html"><a href="manual/assertions.html" data-ice="link">Assertions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isboolean-value-" data-ice="link">isBoolean(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isstring-value-" data-ice="link">isString(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isnumber-value-" data-ice="link">isNumber(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isinteger-value-" data-ice="link">isInteger(value)</a></li>
@@ -128,7 +129,16 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="assertions">Assertions</h1><h2 id="isstring-value-">isString(value)</h2><p>Determines if a value is a string.  Returns Boolean <code>true</code> or <code>false</code>.</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="assertions">Assertions</h1><h2 id="isboolean-value-">isBoolean(value)</h2><p>Determines if a value is a boolean. Returns <code>true</code> if the value is
+<code>true</code> or <code>false</code>.  Otherwise it returns false.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">isBoolean(true);         // true
+isBoolean(false);        // true
+isBoolean(1);            // false
+isBoolean(0);            // false</code></code></pre>
+<p>Values that can be coerced to boolean values (e.g. the numbers <code>0</code>
+and <code>1</code>) are NOT considered booleans and the function will return
+<code>false</code>.</p>
+<h2 id="isstring-value-">isString(value)</h2><p>Determines if a value is a string.  Returns Boolean <code>true</code> or <code>false</code>.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">isString('Hello World'); // true
 isString(42);            // false</code></code></pre>
 <h2 id="isnumber-value-">isNumber(value)</h2><p>Determines if a value is a number.  Returns Boolean <code>true</code> or <code>false</code>.</p>
@@ -140,11 +150,15 @@ isNumber("42");    // false</code></code></pre>
 isInteger(42.0);    // true
 isInteger(42.43);   // false
 isInteger("42");    // false</code></code></pre>
+<p>Note that numbers with decimal parts that are zero (e.g. <code>42.0</code>) are considered
+to be integers.</p>
 <h2 id="isfloat-value-">isFloat(value)</h2><p>Determines if a value is a floating point number.  Returns Boolean <code>true</code> or <code>false</code>.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">isInteger(42);      // false
-isInteger(42.0);    // false
-isInteger(42.43);   // true
-isInteger("42");    // false</code></code></pre>
+<pre><code class="lang-js"><code class="source-code prettyprint">isFloat(42);      // false
+isFloat(42.0);    // false
+isFloat(42.43);   // true
+isFloat("42");    // false</code></code></pre>
+<p>Note that numbers with decimal parts that are zero (e.g. <code>42.0</code>) are considered
+to be integers and the function will return <code>false</code> in those cases.</p>
 <h2 id="isarray-value-">isArray(value)</h2><p>Determines if a value is an array.  Returns Boolean <code>true</code> or <code>false</code>.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">isArray([42, 43]);  // true
 isArray("42, 43");  // false</code></code></pre>
