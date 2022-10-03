@@ -117,3 +117,12 @@ export function noValue(value) {
   return ! hasValue(value);
 }
 
+/**
+ * Returns the first argument that has a value
+ * @param {any[]} values - values to test
+ * @return {any} first argument that has a value that is not `undefined` or `null`
+ */
+export function firstValue(...values) {
+  return values.find( value => hasValue(value) );
+}
+

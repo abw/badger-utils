@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
   isBoolean, isString, isInteger, isFloat, isNumber,
-  isObject, isArray, isUndefined, isNull, hasValue, noValue,
+  isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue,
 } from '../src/index.js'
 
 // isBoolean()
@@ -198,3 +198,30 @@ test(
   'noValue identifies 0 = true',
   t => t.is(noValue(0), false)
 );
+
+// firstValue()
+test(
+  'firstValue returns 0',
+  t => t.is(firstValue(0, 1, 2), 0)
+);
+test(
+  'firstValue returns 0 after undefined',
+  t => t.is(firstValue(undefined, 0, 1, 2), 0)
+);
+test(
+  'firstValue returns 1',
+  t => t.is(firstValue(1, 2, 3), 1)
+);
+test(
+  'firstValue returns 1 after null',
+  t => t.is(firstValue(null, 1, 2, 3), 1)
+);
+test(
+  'firstValue returns false',
+  t => t.is(firstValue(false, 1, 2, 3), false)
+);
+test(
+  'firstValue returns empty string',
+  t => t.is(firstValue("", 1, 2, 3), "")
+);
+
