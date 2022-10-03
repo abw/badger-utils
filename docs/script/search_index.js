@@ -84,6 +84,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~firstvalue",
+    "function/index.html#static-function-firstValue",
+    "<span>firstValue</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~formatnumber",
     "function/index.html#static-function-formatNumber",
     "<span>formatNumber</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",

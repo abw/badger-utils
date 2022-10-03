@@ -155,12 +155,23 @@ noValue(0);         // true
 noValue(false);     // true
 ```
 
-## haveValue(values)
+## haveValue(...values)
 
 Determines if all the values passed as arguments have defined and non-null value.
 Returns Boolean `true` or `false`.
 
 ```js
-haveValues(0, 1, 2);         // true
-haveValues(0, 1, undefined); // false
+haveValue(0, 1, 2);         // true
+haveValue(0, 1, undefined); // false
+```
+
+## firstValue(...values)
+
+Returns the first argument that has a defined and non-null value.
+
+```js
+firstValues(0, 1, 2);         // 0
+firstValues(undefined, 1, 2); // 1
+firstValues(null, 2, 3);      // 2
+firstValues(false, 3, 4);     // false
 ```

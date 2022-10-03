@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 3067,
+  "end": 3340,
   "loc": {
     "start": {
       "line": 1,
@@ -9,16 +9,16 @@
       "index": 0
     },
     "end": {
-      "line": 120,
+      "line": 129,
       "column": 0,
-      "index": 3067
+      "index": 3340
     }
   },
   "errors": [],
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 3067,
+    "end": 3340,
     "loc": {
       "start": {
         "line": 1,
@@ -26,9 +26,9 @@
         "index": 0
       },
       "end": {
-        "line": 120,
+        "line": 129,
         "column": 0,
-        "index": 3067
+        "index": 3340
       }
     },
     "sourceType": "module",
@@ -3977,8 +3977,47 @@
               }
             }
           ],
-          "trailingComments": []
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Returns the first argument that has a value\n * @param {any[]} values - values to test\n * @return {any} first argument that has a value that is not `undefined` or `null`\n ",
+              "start": 3067,
+              "end": 3246,
+              "loc": {
+                "start": {
+                  "line": 120,
+                  "column": 0,
+                  "index": 3067
+                },
+                "end": {
+                  "line": 124,
+                  "column": 3,
+                  "index": 3246
+                }
+              }
+            }
+          ]
         },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Returns the first argument that has a value\n * @param {any[]} values - values to test\n * @return {any} first argument that has a value that is not `undefined` or `null`\n ",
+            "start": 3067,
+            "end": 3246,
+            "loc": {
+              "start": {
+                "line": 120,
+                "column": 0,
+                "index": 3067
+              },
+              "end": {
+                "line": 124,
+                "column": 3,
+                "index": 3246
+              }
+            }
+          }
+        ],
         "leadingComments": [
           {
             "type": "CommentBlock",
@@ -3995,6 +4034,352 @@
                 "line": 115,
                 "column": 3,
                 "index": 3002
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 3247,
+        "end": 3338,
+        "loc": {
+          "start": {
+            "line": 125,
+            "column": 0,
+            "index": 3247
+          },
+          "end": {
+            "line": 127,
+            "column": 1,
+            "index": 3338
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "FunctionDeclaration",
+          "start": 3254,
+          "end": 3338,
+          "loc": {
+            "start": {
+              "line": 125,
+              "column": 7,
+              "index": 3254
+            },
+            "end": {
+              "line": 127,
+              "column": 1,
+              "index": 3338
+            }
+          },
+          "id": {
+            "type": "Identifier",
+            "start": 3263,
+            "end": 3273,
+            "loc": {
+              "start": {
+                "line": 125,
+                "column": 16,
+                "index": 3263
+              },
+              "end": {
+                "line": 125,
+                "column": 26,
+                "index": 3273
+              },
+              "identifierName": "firstValue"
+            },
+            "name": "firstValue"
+          },
+          "generator": false,
+          "async": false,
+          "params": [
+            {
+              "type": "RestElement",
+              "start": 3274,
+              "end": 3283,
+              "loc": {
+                "start": {
+                  "line": 125,
+                  "column": 27,
+                  "index": 3274
+                },
+                "end": {
+                  "line": 125,
+                  "column": 36,
+                  "index": 3283
+                }
+              },
+              "argument": {
+                "type": "Identifier",
+                "start": 3277,
+                "end": 3283,
+                "loc": {
+                  "start": {
+                    "line": 125,
+                    "column": 30,
+                    "index": 3277
+                  },
+                  "end": {
+                    "line": 125,
+                    "column": 36,
+                    "index": 3283
+                  },
+                  "identifierName": "values"
+                },
+                "name": "values"
+              }
+            }
+          ],
+          "body": {
+            "type": "BlockStatement",
+            "start": 3285,
+            "end": 3338,
+            "loc": {
+              "start": {
+                "line": 125,
+                "column": 38,
+                "index": 3285
+              },
+              "end": {
+                "line": 127,
+                "column": 1,
+                "index": 3338
+              }
+            },
+            "body": [
+              {
+                "type": "ReturnStatement",
+                "start": 3289,
+                "end": 3336,
+                "loc": {
+                  "start": {
+                    "line": 126,
+                    "column": 2,
+                    "index": 3289
+                  },
+                  "end": {
+                    "line": 126,
+                    "column": 49,
+                    "index": 3336
+                  }
+                },
+                "argument": {
+                  "type": "CallExpression",
+                  "start": 3296,
+                  "end": 3335,
+                  "loc": {
+                    "start": {
+                      "line": 126,
+                      "column": 9,
+                      "index": 3296
+                    },
+                    "end": {
+                      "line": 126,
+                      "column": 48,
+                      "index": 3335
+                    }
+                  },
+                  "callee": {
+                    "type": "MemberExpression",
+                    "start": 3296,
+                    "end": 3307,
+                    "loc": {
+                      "start": {
+                        "line": 126,
+                        "column": 9,
+                        "index": 3296
+                      },
+                      "end": {
+                        "line": 126,
+                        "column": 20,
+                        "index": 3307
+                      }
+                    },
+                    "object": {
+                      "type": "Identifier",
+                      "start": 3296,
+                      "end": 3302,
+                      "loc": {
+                        "start": {
+                          "line": 126,
+                          "column": 9,
+                          "index": 3296
+                        },
+                        "end": {
+                          "line": 126,
+                          "column": 15,
+                          "index": 3302
+                        },
+                        "identifierName": "values"
+                      },
+                      "name": "values"
+                    },
+                    "computed": false,
+                    "property": {
+                      "type": "Identifier",
+                      "start": 3303,
+                      "end": 3307,
+                      "loc": {
+                        "start": {
+                          "line": 126,
+                          "column": 16,
+                          "index": 3303
+                        },
+                        "end": {
+                          "line": 126,
+                          "column": 20,
+                          "index": 3307
+                        },
+                        "identifierName": "find"
+                      },
+                      "name": "find"
+                    }
+                  },
+                  "arguments": [
+                    {
+                      "type": "ArrowFunctionExpression",
+                      "start": 3309,
+                      "end": 3333,
+                      "loc": {
+                        "start": {
+                          "line": 126,
+                          "column": 22,
+                          "index": 3309
+                        },
+                        "end": {
+                          "line": 126,
+                          "column": 46,
+                          "index": 3333
+                        }
+                      },
+                      "id": null,
+                      "generator": false,
+                      "async": false,
+                      "params": [
+                        {
+                          "type": "Identifier",
+                          "start": 3309,
+                          "end": 3314,
+                          "loc": {
+                            "start": {
+                              "line": 126,
+                              "column": 22,
+                              "index": 3309
+                            },
+                            "end": {
+                              "line": 126,
+                              "column": 27,
+                              "index": 3314
+                            },
+                            "identifierName": "value"
+                          },
+                          "name": "value"
+                        }
+                      ],
+                      "body": {
+                        "type": "CallExpression",
+                        "start": 3318,
+                        "end": 3333,
+                        "loc": {
+                          "start": {
+                            "line": 126,
+                            "column": 31,
+                            "index": 3318
+                          },
+                          "end": {
+                            "line": 126,
+                            "column": 46,
+                            "index": 3333
+                          }
+                        },
+                        "callee": {
+                          "type": "Identifier",
+                          "start": 3318,
+                          "end": 3326,
+                          "loc": {
+                            "start": {
+                              "line": 126,
+                              "column": 31,
+                              "index": 3318
+                            },
+                            "end": {
+                              "line": 126,
+                              "column": 39,
+                              "index": 3326
+                            },
+                            "identifierName": "hasValue"
+                          },
+                          "name": "hasValue"
+                        },
+                        "arguments": [
+                          {
+                            "type": "Identifier",
+                            "start": 3327,
+                            "end": 3332,
+                            "loc": {
+                              "start": {
+                                "line": 126,
+                                "column": 40,
+                                "index": 3327
+                              },
+                              "end": {
+                                "line": 126,
+                                "column": 45,
+                                "index": 3332
+                              },
+                              "identifierName": "value"
+                            },
+                            "name": "value"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "directives": []
+          },
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Returns the first argument that has a value\n * @param {any[]} values - values to test\n * @return {any} first argument that has a value that is not `undefined` or `null`\n ",
+              "start": 3067,
+              "end": 3246,
+              "loc": {
+                "start": {
+                  "line": 120,
+                  "column": 0,
+                  "index": 3067
+                },
+                "end": {
+                  "line": 124,
+                  "column": 3,
+                  "index": 3246
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        },
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Returns the first argument that has a value\n * @param {any[]} values - values to test\n * @return {any} first argument that has a value that is not `undefined` or `null`\n ",
+            "start": 3067,
+            "end": 3246,
+            "loc": {
+              "start": {
+                "line": 120,
+                "column": 0,
+                "index": 3067
+              },
+              "end": {
+                "line": 124,
+                "column": 3,
+                "index": 3246
               }
             }
           }
@@ -4235,6 +4620,24 @@
           "line": 115,
           "column": 3,
           "index": 3002
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Returns the first argument that has a value\n * @param {any[]} values - values to test\n * @return {any} first argument that has a value that is not `undefined` or `null`\n ",
+      "start": 3067,
+      "end": 3246,
+      "loc": {
+        "start": {
+          "line": 120,
+          "column": 0,
+          "index": 3067
+        },
+        "end": {
+          "line": 124,
+          "column": 3,
+          "index": 3246
         }
       }
     }

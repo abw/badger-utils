@@ -53,7 +53,8 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isnull-value-" data-ice="link">isNull(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#hasvalue-value-" data-ice="link">hasValue(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#novalue-value-" data-ice="link">noValue(value)</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#havevalue-values-" data-ice="link">haveValue(values)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#havevalue----values-" data-ice="link">haveValue(...values)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#firstvalue----values-" data-ice="link">firstValue(...values)</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -204,10 +205,15 @@ Returns Boolean <code>true</code> or <code>false</code>.</p>
 noValue(undefined); // true
 noValue(0);         // true
 noValue(false);     // true</code></code></pre>
-<h2 id="havevalue-values-">haveValue(values)</h2><p>Determines if all the values passed as arguments have defined and non-null value.
+<h2 id="havevalue----values-">haveValue(...values)</h2><p>Determines if all the values passed as arguments have defined and non-null value.
 Returns Boolean <code>true</code> or <code>false</code>.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">haveValues(0, 1, 2);         // true
-haveValues(0, 1, undefined); // false</code></code></pre>
+<pre><code class="lang-js"><code class="source-code prettyprint">haveValue(0, 1, 2);         // true
+haveValue(0, 1, undefined); // false</code></code></pre>
+<h2 id="firstvalue----values-">firstValue(...values)</h2><p>Returns the first argument that has a defined and non-null value.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">firstValues(0, 1, 2);         // 0
+firstValues(undefined, 1, 2); // 1
+firstValues(null, 2, 3);      // 2
+firstValues(false, 3, 4);     // false</code></code></pre>
 </div>
 </div>
 
