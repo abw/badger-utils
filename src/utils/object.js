@@ -99,6 +99,7 @@ export const extract = (object, keys, options={}) => {
   )
   return extract;
 }
+export const objSubset = extract;
 
 /**
  * Removes an item from an object and returns the value.
