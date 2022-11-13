@@ -1,7 +1,8 @@
 import test from 'ava';
 import {
   capitalise, capitaliseWords, snakeToStudly, snakeToCamel,
-  splitList, joinList, joinListAnd, joinListOr, splitLines, splitHash
+  splitList, joinList, joinListAnd, joinListOr, splitLines, splitHash,
+  plural, singular, inflect
 } from '../src/index.js'
 
 // capitalise
@@ -215,3 +216,110 @@ test(
     { a: true, b: true, c: "hello" }
   )
 );
+
+// plural
+test(
+  "plural('badger')",
+  t => t.is( plural('badger'), 'badgers' )
+);
+test(
+  "plural('grass')",
+  t => t.is( plural('grass'), 'grasses' )
+);
+test(
+  "plural('bush')",
+  t => t.is( plural('bush'), 'bushes' )
+);
+test(
+  "plural('church')",
+  t => t.is( plural('church'), 'churches' )
+);
+test(
+  "plural('box')",
+  t => t.is( plural('box'), 'boxes' )
+);
+test(
+  "plural('lorry')",
+  t => t.is( plural('lorry'), 'lorries' )
+);
+test(
+  "plural('toy')",
+  t => t.is( plural('toy'), 'toys' )
+);
+test(
+  "plural('woman')",
+  t => t.is( plural('woman'), 'womans' )
+);
+test(
+  "plural('woman') with special case",
+  t => t.is( plural('woman', { woman: 'women' }), 'women' )
+);
+
+// singular
+test(
+  "singular('badgers')",
+  t => t.is( singular('badgers'), 'badger' )
+);
+test(
+  "singular('grasses')",
+  t => t.is( singular('grasses'), 'grass' )
+);
+test(
+  "singular('bushes')",
+  t => t.is( singular('bushes'), 'bush' )
+);
+test(
+  "singular('churches')",
+  t => t.is( singular('churches'), 'church' )
+);
+test(
+  "singular('boxes')",
+  t => t.is( singular('boxes'), 'box' )
+);
+test(
+  "singular('lorries')",
+  t => t.is( singular('lorries'), 'lorry' )
+);
+test(
+  "singular('toys')",
+  t => t.is( singular('toys'), 'toy' )
+);
+test(
+  "singular('women')",
+  t => t.is( singular('women'), 'women' )
+);
+test(
+  "singular('women') with special case",
+  t => t.is( singular('women', { women: 'woman' }), 'woman' )
+);
+
+// inflect
+test(
+  'inflect(0, "badger")',
+  t => t.is( inflect(0, 'badger'), 'no badgers' )
+);
+test(
+  'inflect(1, "badger")',
+  t => t.is( inflect(1, 'badger'), '1 badger' )
+)
+test(
+  'inflect(2, "badger")',
+  t => t.is( inflect(2, 'badger'), '2 badgers' )
+)
+test(
+  'inflect(0, "child", "children")',
+  t => t.is( inflect(0, 'child', 'children'), 'no children' )
+)
+test(
+  'inflect(1, "child", "children")',
+  t => t.is( inflect(1, 'child', 'children'), '1 child' )
+)
+test(
+  'inflect(2, "child", "children")',
+  t => t.is( inflect(2, 'child', 'children'), '2 children' )
+)
+test(
+  'inflect(0, "black", "black", "none, none more")',
+  t => t.is( inflect(0, 'black', 'black', 'none, none more'), 'none, none more black' )
+);
+

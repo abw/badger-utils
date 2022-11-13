@@ -131,7 +131,7 @@ to camel case (e.g. `badgerMushroomSnake`)
 snakeToCamel("badger_mushroom_snake") // => badgerMushroomSnake
 ```
 
-## pluralise(singular) / pluralize(singular)
+## plural(singular)
 
 This is a **very** simple function for pluralising English words.
 
@@ -140,12 +140,62 @@ because pluralising words is notoriously difficult.  So don't
 expect words like `woman`, `goose` or `sheep` to pluralise correctly.
 
 ```js
-pluralise("badger") // => "badgers"
-pluralise("doggy")  // => "doggies"
-pluralise("grass")  // => "grasses"
-pluralise("lash")   // => "lashes"
-pluralise("watch")  // => "watches"
-pluralise("box")    // => "boxes"
+plural("badger") // => "badgers"
+plural("doggy")  // => "doggies"
+plural("grass")  // => "grasses"
+plural("lash")   // => "lashes"
+plural("watch")  // => "watches"
+plural("box")    // => "boxes"
+```
+
+If you do have special cases then you can pass them as the second
+argument.  This is a simple lookup table mapping singular forms to
+their plural forms for words that you might need to pluralise that
+the basic function can't handle.
+
+```js
+const specialCases = {
+  woman: "women",
+  goose: "geese",
+  sheep: "sheep"
+}
+plural("woman", specialCases) // => "women"
+```
+
+**DEPRECATION NOTE**: This function was originally called `pluralise()`
+with an alias of `pluralize()` for our American friends who like the
+letter z.  It has been renamed to `plural()`.  The `pluralise()`
+and `pluralize()` aliases still exist but will be deprecated in a future
+version.
+
+## singular(plural)
+
+This is another **very** simple function for reversing the action
+of the `plural()` function to return the singular form of a plural
+noun.
+
+It only works on words with standard endings and plural forms,
+for the same reasons that `plural()` is limited.
+
+```js
+singular("badgers")  // => "badger"
+singular("doggies")  // => "doggy"
+singular("grasses")  // => "grass"
+singular("lashes")   // => "lash"
+singular("watches")  // => "watch"
+singular("boxes")    // => "box"
+```
+
+It also supports a second argument for providing special cases to help
+it out with words that have irregular pluralisations.
+
+```js
+const specialCases = {
+  women: "woman",
+  geese: "goose",
+  sheep: "sheep"
+}
+singular("women", specialCases) // => "woman"
 ```
 
 ## inflect(n, singular, plural, no='no')
