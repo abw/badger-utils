@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 3164,
+  "end": 3198,
   "loc": {
     "start": {
       "line": 1,
@@ -9,16 +9,16 @@
       "index": 0
     },
     "end": {
-      "line": 121,
+      "line": 122,
       "column": 0,
-      "index": 3164
+      "index": 3198
     }
   },
   "errors": [],
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 3164,
+    "end": 3198,
     "loc": {
       "start": {
         "line": 1,
@@ -26,9 +26,9 @@
         "index": 0
       },
       "end": {
-        "line": 121,
+        "line": 122,
         "column": 0,
-        "index": 3164
+        "index": 3198
       }
     },
     "sourceType": "module",
@@ -4265,47 +4265,8 @@
               }
             }
           ],
-          "trailingComments": [
-            {
-              "type": "CommentBlock",
-              "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
-              "start": 2747,
-              "end": 3051,
-              "loc": {
-                "start": {
-                  "line": 103,
-                  "column": 0,
-                  "index": 2747
-                },
-                "end": {
-                  "line": 113,
-                  "column": 3,
-                  "index": 3051
-                }
-              }
-            }
-          ]
+          "trailingComments": []
         },
-        "trailingComments": [
-          {
-            "type": "CommentBlock",
-            "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
-            "start": 2747,
-            "end": 3051,
-            "loc": {
-              "start": {
-                "line": 103,
-                "column": 0,
-                "index": 2747
-              },
-              "end": {
-                "line": 113,
-                "column": 3,
-                "index": 3051
-              }
-            }
-          }
-        ],
         "leadingComments": [
           {
             "type": "CommentBlock",
@@ -4329,69 +4290,204 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 3052,
-        "end": 3161,
+        "start": 2746,
+        "end": 2779,
         "loc": {
           "start": {
-            "line": 114,
+            "line": 102,
             "column": 0,
-            "index": 3052
+            "index": 2746
           },
           "end": {
-            "line": 118,
-            "column": 1,
-            "index": 3161
+            "line": 102,
+            "column": 33,
+            "index": 2779
           }
         },
         "specifiers": [],
         "source": null,
         "declaration": {
           "type": "VariableDeclaration",
-          "start": 3059,
-          "end": 3161,
+          "start": 2753,
+          "end": 2779,
           "loc": {
             "start": {
-              "line": 114,
+              "line": 102,
               "column": 7,
-              "index": 3059
+              "index": 2753
             },
             "end": {
-              "line": 118,
-              "column": 1,
-              "index": 3161
+              "line": 102,
+              "column": 33,
+              "index": 2779
             }
           },
           "declarations": [
             {
               "type": "VariableDeclarator",
-              "start": 3065,
-              "end": 3161,
+              "start": 2759,
+              "end": 2778,
               "loc": {
                 "start": {
-                  "line": 114,
+                  "line": 102,
                   "column": 13,
-                  "index": 3065
+                  "index": 2759
                 },
                 "end": {
-                  "line": 118,
-                  "column": 1,
-                  "index": 3161
+                  "line": 102,
+                  "column": 32,
+                  "index": 2778
                 }
               },
               "id": {
                 "type": "Identifier",
-                "start": 3065,
-                "end": 3071,
+                "start": 2759,
+                "end": 2768,
                 "loc": {
                   "start": {
-                    "line": 114,
+                    "line": 102,
                     "column": 13,
-                    "index": 3065
+                    "index": 2759
                   },
                   "end": {
-                    "line": 114,
+                    "line": 102,
+                    "column": 22,
+                    "index": 2768
+                  },
+                  "identifierName": "objSubset"
+                },
+                "name": "objSubset"
+              },
+              "init": {
+                "type": "Identifier",
+                "start": 2771,
+                "end": 2778,
+                "loc": {
+                  "start": {
+                    "line": 102,
+                    "column": 25,
+                    "index": 2771
+                  },
+                  "end": {
+                    "line": 102,
+                    "column": 32,
+                    "index": 2778
+                  },
+                  "identifierName": "extract"
+                },
+                "name": "extract"
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [],
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
+              "start": 2781,
+              "end": 3085,
+              "loc": {
+                "start": {
+                  "line": 104,
+                  "column": 0,
+                  "index": 2781
+                },
+                "end": {
+                  "line": 114,
+                  "column": 3,
+                  "index": 3085
+                }
+              }
+            }
+          ]
+        },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
+            "start": 2781,
+            "end": 3085,
+            "loc": {
+              "start": {
+                "line": 104,
+                "column": 0,
+                "index": 2781
+              },
+              "end": {
+                "line": 114,
+                "column": 3,
+                "index": 3085
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 3086,
+        "end": 3195,
+        "loc": {
+          "start": {
+            "line": 115,
+            "column": 0,
+            "index": 3086
+          },
+          "end": {
+            "line": 119,
+            "column": 1,
+            "index": 3195
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 3093,
+          "end": 3195,
+          "loc": {
+            "start": {
+              "line": 115,
+              "column": 7,
+              "index": 3093
+            },
+            "end": {
+              "line": 119,
+              "column": 1,
+              "index": 3195
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 3099,
+              "end": 3195,
+              "loc": {
+                "start": {
+                  "line": 115,
+                  "column": 13,
+                  "index": 3099
+                },
+                "end": {
+                  "line": 119,
+                  "column": 1,
+                  "index": 3195
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 3099,
+                "end": 3105,
+                "loc": {
+                  "start": {
+                    "line": 115,
+                    "column": 13,
+                    "index": 3099
+                  },
+                  "end": {
+                    "line": 115,
                     "column": 19,
-                    "index": 3071
+                    "index": 3105
                   },
                   "identifierName": "remove"
                 },
@@ -4399,34 +4495,34 @@
               },
               "init": {
                 "type": "ArrowFunctionExpression",
-                "start": 3074,
-                "end": 3161,
+                "start": 3108,
+                "end": 3195,
                 "loc": {
                   "start": {
-                    "line": 114,
+                    "line": 115,
                     "column": 22,
-                    "index": 3074
+                    "index": 3108
                   },
                   "end": {
-                    "line": 118,
+                    "line": 119,
                     "column": 1,
-                    "index": 3161
+                    "index": 3195
                   }
                 },
                 "id": {
                   "type": "Identifier",
-                  "start": 3065,
-                  "end": 3071,
+                  "start": 3099,
+                  "end": 3105,
                   "loc": {
                     "start": {
-                      "line": 114,
+                      "line": 115,
                       "column": 13,
-                      "index": 3065
+                      "index": 3099
                     },
                     "end": {
-                      "line": 114,
+                      "line": 115,
                       "column": 19,
-                      "index": 3071
+                      "index": 3105
                     },
                     "identifierName": "remove"
                   },
@@ -4437,18 +4533,18 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 3075,
-                    "end": 3081,
+                    "start": 3109,
+                    "end": 3115,
                     "loc": {
                       "start": {
-                        "line": 114,
+                        "line": 115,
                         "column": 23,
-                        "index": 3075
+                        "index": 3109
                       },
                       "end": {
-                        "line": 114,
+                        "line": 115,
                         "column": 29,
-                        "index": 3081
+                        "index": 3115
                       },
                       "identifierName": "object"
                     },
@@ -4456,18 +4552,18 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 3083,
-                    "end": 3086,
+                    "start": 3117,
+                    "end": 3120,
                     "loc": {
                       "start": {
-                        "line": 114,
+                        "line": 115,
                         "column": 31,
-                        "index": 3083
+                        "index": 3117
                       },
                       "end": {
-                        "line": 114,
+                        "line": 115,
                         "column": 34,
-                        "index": 3086
+                        "index": 3120
                       },
                       "identifierName": "key"
                     },
@@ -4476,68 +4572,68 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 3091,
-                  "end": 3161,
+                  "start": 3125,
+                  "end": 3195,
                   "loc": {
                     "start": {
-                      "line": 114,
+                      "line": 115,
                       "column": 39,
-                      "index": 3091
+                      "index": 3125
                     },
                     "end": {
-                      "line": 118,
+                      "line": 119,
                       "column": 1,
-                      "index": 3161
+                      "index": 3195
                     }
                   },
                   "body": [
                     {
                       "type": "VariableDeclaration",
-                      "start": 3095,
-                      "end": 3121,
+                      "start": 3129,
+                      "end": 3155,
                       "loc": {
                         "start": {
-                          "line": 115,
+                          "line": 116,
                           "column": 2,
-                          "index": 3095
+                          "index": 3129
                         },
                         "end": {
-                          "line": 115,
+                          "line": 116,
                           "column": 28,
-                          "index": 3121
+                          "index": 3155
                         }
                       },
                       "declarations": [
                         {
                           "type": "VariableDeclarator",
-                          "start": 3101,
-                          "end": 3120,
+                          "start": 3135,
+                          "end": 3154,
                           "loc": {
                             "start": {
-                              "line": 115,
+                              "line": 116,
                               "column": 8,
-                              "index": 3101
+                              "index": 3135
                             },
                             "end": {
-                              "line": 115,
+                              "line": 116,
                               "column": 27,
-                              "index": 3120
+                              "index": 3154
                             }
                           },
                           "id": {
                             "type": "Identifier",
-                            "start": 3101,
-                            "end": 3106,
+                            "start": 3135,
+                            "end": 3140,
                             "loc": {
                               "start": {
-                                "line": 115,
+                                "line": 116,
                                 "column": 8,
-                                "index": 3101
+                                "index": 3135
                               },
                               "end": {
-                                "line": 115,
+                                "line": 116,
                                 "column": 13,
-                                "index": 3106
+                                "index": 3140
                               },
                               "identifierName": "value"
                             },
@@ -4545,34 +4641,34 @@
                           },
                           "init": {
                             "type": "MemberExpression",
-                            "start": 3109,
-                            "end": 3120,
+                            "start": 3143,
+                            "end": 3154,
                             "loc": {
                               "start": {
-                                "line": 115,
+                                "line": 116,
                                 "column": 16,
-                                "index": 3109
+                                "index": 3143
                               },
                               "end": {
-                                "line": 115,
+                                "line": 116,
                                 "column": 27,
-                                "index": 3120
+                                "index": 3154
                               }
                             },
                             "object": {
                               "type": "Identifier",
-                              "start": 3109,
-                              "end": 3115,
+                              "start": 3143,
+                              "end": 3149,
                               "loc": {
                                 "start": {
-                                  "line": 115,
+                                  "line": 116,
                                   "column": 16,
-                                  "index": 3109
+                                  "index": 3143
                                 },
                                 "end": {
-                                  "line": 115,
+                                  "line": 116,
                                   "column": 22,
-                                  "index": 3115
+                                  "index": 3149
                                 },
                                 "identifierName": "object"
                               },
@@ -4581,18 +4677,18 @@
                             "computed": true,
                             "property": {
                               "type": "Identifier",
-                              "start": 3116,
-                              "end": 3119,
+                              "start": 3150,
+                              "end": 3153,
                               "loc": {
                                 "start": {
-                                  "line": 115,
+                                  "line": 116,
                                   "column": 23,
-                                  "index": 3116
+                                  "index": 3150
                                 },
                                 "end": {
-                                  "line": 115,
+                                  "line": 116,
                                   "column": 26,
-                                  "index": 3119
+                                  "index": 3153
                                 },
                                 "identifierName": "key"
                               },
@@ -4605,68 +4701,68 @@
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 3124,
-                      "end": 3143,
+                      "start": 3158,
+                      "end": 3177,
                       "loc": {
                         "start": {
-                          "line": 116,
+                          "line": 117,
                           "column": 2,
-                          "index": 3124
+                          "index": 3158
                         },
                         "end": {
-                          "line": 116,
+                          "line": 117,
                           "column": 21,
-                          "index": 3143
+                          "index": 3177
                         }
                       },
                       "expression": {
                         "type": "UnaryExpression",
-                        "start": 3124,
-                        "end": 3142,
+                        "start": 3158,
+                        "end": 3176,
                         "loc": {
                           "start": {
-                            "line": 116,
+                            "line": 117,
                             "column": 2,
-                            "index": 3124
+                            "index": 3158
                           },
                           "end": {
-                            "line": 116,
+                            "line": 117,
                             "column": 20,
-                            "index": 3142
+                            "index": 3176
                           }
                         },
                         "operator": "delete",
                         "prefix": true,
                         "argument": {
                           "type": "MemberExpression",
-                          "start": 3131,
-                          "end": 3142,
+                          "start": 3165,
+                          "end": 3176,
                           "loc": {
                             "start": {
-                              "line": 116,
+                              "line": 117,
                               "column": 9,
-                              "index": 3131
+                              "index": 3165
                             },
                             "end": {
-                              "line": 116,
+                              "line": 117,
                               "column": 20,
-                              "index": 3142
+                              "index": 3176
                             }
                           },
                           "object": {
                             "type": "Identifier",
-                            "start": 3131,
-                            "end": 3137,
+                            "start": 3165,
+                            "end": 3171,
                             "loc": {
                               "start": {
-                                "line": 116,
+                                "line": 117,
                                 "column": 9,
-                                "index": 3131
+                                "index": 3165
                               },
                               "end": {
-                                "line": 116,
+                                "line": 117,
                                 "column": 15,
-                                "index": 3137
+                                "index": 3171
                               },
                               "identifierName": "object"
                             },
@@ -4675,18 +4771,18 @@
                           "computed": true,
                           "property": {
                             "type": "Identifier",
-                            "start": 3138,
-                            "end": 3141,
+                            "start": 3172,
+                            "end": 3175,
                             "loc": {
                               "start": {
-                                "line": 116,
+                                "line": 117,
                                 "column": 16,
-                                "index": 3138
+                                "index": 3172
                               },
                               "end": {
-                                "line": 116,
+                                "line": 117,
                                 "column": 19,
-                                "index": 3141
+                                "index": 3175
                               },
                               "identifierName": "key"
                             },
@@ -4697,34 +4793,34 @@
                     },
                     {
                       "type": "ReturnStatement",
-                      "start": 3146,
-                      "end": 3159,
+                      "start": 3180,
+                      "end": 3193,
                       "loc": {
                         "start": {
-                          "line": 117,
+                          "line": 118,
                           "column": 2,
-                          "index": 3146
+                          "index": 3180
                         },
                         "end": {
-                          "line": 117,
+                          "line": 118,
                           "column": 15,
-                          "index": 3159
+                          "index": 3193
                         }
                       },
                       "argument": {
                         "type": "Identifier",
-                        "start": 3153,
-                        "end": 3158,
+                        "start": 3187,
+                        "end": 3192,
                         "loc": {
                           "start": {
-                            "line": 117,
+                            "line": 118,
                             "column": 9,
-                            "index": 3153
+                            "index": 3187
                           },
                           "end": {
-                            "line": 117,
+                            "line": 118,
                             "column": 14,
-                            "index": 3158
+                            "index": 3192
                           },
                           "identifierName": "value"
                         },
@@ -4742,18 +4838,18 @@
             {
               "type": "CommentBlock",
               "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
-              "start": 2747,
-              "end": 3051,
+              "start": 2781,
+              "end": 3085,
               "loc": {
                 "start": {
-                  "line": 103,
+                  "line": 104,
                   "column": 0,
-                  "index": 2747
+                  "index": 2781
                 },
                 "end": {
-                  "line": 113,
+                  "line": 114,
                   "column": 3,
-                  "index": 3051
+                  "index": 3085
                 }
               }
             }
@@ -4764,18 +4860,18 @@
           {
             "type": "CommentBlock",
             "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
-            "start": 2747,
-            "end": 3051,
+            "start": 2781,
+            "end": 3085,
             "loc": {
               "start": {
-                "line": 103,
+                "line": 104,
                 "column": 0,
-                "index": 2747
+                "index": 2781
               },
               "end": {
-                "line": 113,
+                "line": 114,
                 "column": 3,
-                "index": 3051
+                "index": 3085
               }
             }
           }
@@ -4824,18 +4920,18 @@
     {
       "type": "CommentBlock",
       "value": "*\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n ",
-      "start": 2747,
-      "end": 3051,
+      "start": 2781,
+      "end": 3085,
       "loc": {
         "start": {
-          "line": 103,
+          "line": 104,
           "column": 0,
-          "index": 2747
+          "index": 2781
         },
         "end": {
-          "line": 113,
+          "line": 114,
           "column": 3,
-          "index": 3051
+          "index": 3085
         }
       }
     }

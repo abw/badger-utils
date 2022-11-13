@@ -69,7 +69,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinList">joinList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinListAnd">joinListAnd</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinListOr">joinListOr</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pluralise">pluralise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-plural">plural</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-singular">singular</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToCamel">snakeToCamel</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToStudly">snakeToStudly</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitHash">splitHash</a></span></span></li>
@@ -77,10 +78,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sleep">sleep</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-objSubset">objSubset</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalizeWords">capitalizeWords</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralise">pluralise</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span></span></li>
 </ul>
 </div>
@@ -572,7 +575,7 @@ one that sorts in descending order.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-inflect">inflect</a></span></span><span class="code" data-ice="signature">(n: <span>Integer</span>, singular: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, plural: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, no: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-inflect">inflect</a></span></span><span class="code" data-ice="signature">(n: <span>Integer</span>, singularForm: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, pluralForm: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, no: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -1183,7 +1186,7 @@ a new object.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-pluralise">pluralise</a></span></span><span class="code" data-ice="signature">(singular: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-plural">plural</a></span></span><span class="code" data-ice="signature">(singular: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, specialCases: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
         </p>
       </div>
       <div>
@@ -1306,6 +1309,35 @@ a new object.</p>
         
         
         <div data-ice="description"><p>Function to set the default options for formatting numbers.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-singular">singular</a></span></span><span class="code" data-ice="signature">(plural: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, specialCases: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>A very primitive function to return the singular form of a plural noun.</p>
 </div>
       </div>
     </td>
@@ -1563,11 +1595,11 @@ a new object.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber260">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber299">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber260">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber299">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Wrapper around {@link inflect()} which uses the word "No" instead of "no" for the
@@ -2889,19 +2921,19 @@ const sortByNameDesc = descendingOrder(sortByName);</code></pre>
     
     
     
-    <span class="code" data-ice="name">inflect</span><span class="code" data-ice="signature">(n: <span>Integer</span>, singular: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, plural: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, no: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">inflect</span><span class="code" data-ice="signature">(n: <span>Integer</span>, singularForm: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, pluralForm: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, no: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber246">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber285">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber246">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {inflect} from '<span><a href="file/src/utils/text.js.html#lineNumber285">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Utility function to inflect a string passed as the second argument to the singular/plural
-form based on the number passed as the first argument.  Uses the {@link pluralise()} function
+form based on the number passed as the first argument.  Uses the {@link plural()} function
 which only works on words with standard pluralisations.  The third argument can be provided
 as the plural form where necessary.  The optional 4th argument can be used to provide a different
 word for the case where n is 0.  The default is "no", e.g. "no badgers" when n is 0.</p>
@@ -2925,14 +2957,14 @@ word for the case where n is 0.  The default is "no", e.g. "no badgers" when n i
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">singular</td>
+      <td data-ice="name" class="code" data-depth="0">singularForm</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>singular form</p>
 </td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">plural</td>
+      <td data-ice="name" class="code" data-depth="0">pluralForm</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li></ul></td>
       <td data-ice="description"><p>optional plural form</p>
@@ -2978,31 +3010,31 @@ word for the case where n is 0.  The default is "no", e.g. "no badgers" when n i
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(0, 'cat')     # no cats</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(0, 'cat')     // no cats</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(1, 'cat')     # 1 cat</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(1, 'cat')     // 1 cat</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(2, 'cat')     # 2 cats</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(2, 'cat')     // 2 cats</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(0, 'child', 'children')     # no children</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(0, 'child', 'children')     // no children</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(1, 'child', 'children')     # 1 child</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(1, 'child', 'children')     // 1 child</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(2, 'child', 'children')     # 2 children</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(2, 'child', 'children')     // 2 children</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(0, 'black', 'black', "none, none more")     # none, none more black</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">inflect(0, 'black', 'black', 'none, none more')     // none, none more black</code></pre>
     </div>
 </div>
 
@@ -4673,22 +4705,22 @@ a new object.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-pluralise">
+  <h3 data-ice="anchor" id="static-function-plural">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">pluralise</span><span class="code" data-ice="signature">(singular: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+    <span class="code" data-ice="name">plural</span><span class="code" data-ice="signature">(singular: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, specialCases: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber203">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber204">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {pluralise} from '<span><a href="file/src/utils/text.js.html#lineNumber203">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {plural} from '<span><a href="file/src/utils/text.js.html#lineNumber204">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>A very primitive function to pluralise the singular form of a words.  It only
@@ -4711,6 +4743,14 @@ words is notoriously difficult.</p>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>word to pluralise</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">specialCases</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: {}</li></ul></td>
+      <td data-ice="description"><p>special cases</p>
 </td>
     </tr>
 </tbody>
@@ -4746,19 +4786,19 @@ words is notoriously difficult.</p>
     
   <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">pluralise('box');     // boxes</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">plural('box');     // boxes</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">pluralise('doggy');   // doggies</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">plural('doggy');   // doggies</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">pluralise('badger');  // badgers</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">plural('badger');  // badgers</code></pre>
     </div>
 <div class="example-doc" data-ice="exampleDoc">
       
-      <pre class="prettyprint source-code"><code data-ice="exampleCode">pluralise('woman');   // womans</code></pre>
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">plural('woman');   // womans</code></pre>
     </div>
 </div>
 
@@ -4868,11 +4908,11 @@ include the last value.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber114">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {remove} from '<span><a href="file/src/utils/object.js.html#lineNumber114">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {remove} from '<span><a href="file/src/utils/object.js.html#lineNumber115">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Removes an item from an object and returns the value.</p>
@@ -5102,6 +5142,109 @@ include the last value.</p>
   
 
   
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-singular">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">singular</span><span class="code" data-ice="signature">(plural: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>, specialCases: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/text.js.html#lineNumber242">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {singular} from '<span><a href="file/src/utils/text.js.html#lineNumber242">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  <div data-ice="description"><p>A very primitive function to return the singular form of a plural noun.  It
+only works on words with standard endings and plural forms that, using the
+reverse algorithm of {@link plural()}.</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">plural</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>plural form</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">specialCases</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: {}</li></ul></td>
+      <td data-ice="description"><p>special cases</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>singular form</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  <div data-ice="example">
+    <h4>Example:</h4>
+    
+  <div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">singular('boxes');     // box</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">singular('doggies');   // doggy</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">singular('badgers');   // badger</code></pre>
+    </div>
+<div class="example-doc" data-ice="exampleDoc">
+      
+      <pre class="prettyprint source-code"><code data-ice="exampleCode">singular('women');     // women - FAIL!</code></pre>
+    </div>
+</div>
 
   
 

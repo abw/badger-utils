@@ -69,7 +69,8 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinList">joinList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinListAnd">joinListAnd</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-joinListOr">joinListOr</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pluralise">pluralise</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-plural">plural</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-singular">singular</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToCamel">snakeToCamel</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-snakeToStudly">snakeToStudly</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitHash">splitHash</a></span></span></li>
@@ -77,17 +78,19 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sleep">sleep</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-objSubset">objSubset</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalizeWords">capitalizeWords</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralise">pluralise</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/utils/text.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isString, isArray, noValue, isObject, isFunction } from "./assert.js";
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isString, isArray, noValue, isObject, isFunction, hasValue } from "./assert.js";
 import { commas } from "./numbers.js";
 
 /**
@@ -279,17 +282,22 @@ export function snakeToCamel(snake) {
  * works on words with standard endings and plural forms, because pluralising
  * words is notoriously difficult.
  * @param {String} singular - word to pluralise
+ * @param {Object} [specialCases={}] - special cases
  * @return {String} plural form
  * @example
- * pluralise('box');     // boxes
+ * plural('box');     // boxes
  * @example
- * pluralise('doggy');   // doggies
+ * plural('doggy');   // doggies
  * @example
- * pluralise('badger');  // badgers
+ * plural('badger');  // badgers
  * @example
- * pluralise('woman');   // womans
+ * plural('woman');   // womans
  */
-export function pluralise(singular) {
+export function plural(singular, specialCases={}) {
+  const special = specialCases[singular];
+  if (hasValue(special)) {
+    return special
+  }
   let found;
 
   if (singular.match(/(ss?|sh|ch|x)$/)) {
@@ -308,34 +316,68 @@ export function pluralise(singular) {
 }
 
 /**
+ * A very primitive function to return the singular form of a plural noun.  It
+ * only works on words with standard endings and plural forms that, using the
+ * reverse algorithm of {@link plural()}.
+ * @param {String} plural - plural form
+ * @param {Object} [specialCases={}] - special cases
+ * @return {String} singular form
+ * @example
+ * singular('boxes');     // box
+ * @example
+ * singular('doggies');   // doggy
+ * @example
+ * singular('badgers');   // badger
+ * @example
+ * singular('women');     // women - FAIL!
+ */
+export function singular(plural, specialCases={}) {
+  const special = specialCases[plural];
+  if (hasValue(special)) {
+    return special
+  }
+
+  if (plural.match(/(ss|sh|ch|x)es$/)) {
+    return plural.replace(/es$/, '')
+  }
+  else if (plural.match(/([^aeiou])ies$/)) {
+    return plural.replace(/ies$/, 'y');
+  }
+  else if (plural.match(/([^s\d\W])s$/)) {
+    return plural.replace(/s$/, '');
+  }
+  return plural;
+}
+
+/**
  * Utility function to inflect a string passed as the second argument to the singular/plural
- * form based on the number passed as the first argument.  Uses the {@link pluralise()} function
+ * form based on the number passed as the first argument.  Uses the {@link plural()} function
  * which only works on words with standard pluralisations.  The third argument can be provided
  * as the plural form where necessary.  The optional 4th argument can be used to provide a different
  * word for the case where n is 0.  The default is "no", e.g. "no badgers" when n is 0.
  * @param {Integer} n - number of items
- * @param {String} singular - singular form
- * @param {String} [plural] - optional plural form
+ * @param {String} singularForm - singular form
+ * @param {String} [pluralForm] - optional plural form
  * @param {String} [no='no'] - optional word to use when `n` is 0
  * @example
- * inflect(0, 'cat')     # no cats
+ * inflect(0, 'cat')     // no cats
  * @example
- * inflect(1, 'cat')     # 1 cat
+ * inflect(1, 'cat')     // 1 cat
  * @example
- * inflect(2, 'cat')     # 2 cats
+ * inflect(2, 'cat')     // 2 cats
  * @example
- * inflect(0, 'child', 'children')     # no children
+ * inflect(0, 'child', 'children')     // no children
  * @example
- * inflect(1, 'child', 'children')     # 1 child
+ * inflect(1, 'child', 'children')     // 1 child
  * @example
- * inflect(2, 'child', 'children')     # 2 children
+ * inflect(2, 'child', 'children')     // 2 children
  * @example
- * inflect(0, 'black', 'black', "none, none more")     # none, none more black
+ * inflect(0, 'black', 'black', 'none, none more')     // none, none more black
  */
-export function inflect(n, singular, plural, no='no') {
+export function inflect(n, singularForm, pluralForm, no='no') {
   return (n ? commas(n) : no)
     + ' '
-    + (n === 1 ? singular : (plural || pluralise(singular)));
+    + (n === 1 ? singularForm : (pluralForm || plural(singularForm)));
 }
 
 /**
@@ -355,7 +397,8 @@ export function Inflect(n, singular, plural, no='No') {
 // for the yanks
 export const capitalize = capitalise;
 export const capitalizeWords = capitaliseWords;
-export const pluralize = pluralise;
+export const pluralise = plural;
+export const pluralize = plural;
 
 </code></pre>
 

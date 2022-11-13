@@ -81,7 +81,8 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#capitalisewords-string----capitalizewords-string-" data-ice="link">capitaliseWords(string) / capitalizeWords(string)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#snaketostudly-snake-" data-ice="link">snakeToStudly(snake)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#snaketocamel-snake-" data-ice="link">snakeToCamel(snake)</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#pluralise-singular----pluralize-singular-" data-ice="link">pluralise(singular) / pluralize(singular)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#plural-singular-" data-ice="link">plural(singular)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#singular-plural-" data-ice="link">singular(plural)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#inflect-n--singular--plural--no---39-no--39--" data-ice="link">inflect(n, singular, plural, no='no')</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#inflect-n--singular--plural--no---39-no--39--" data-ice="link">Inflect(n, singular, plural, no='No')</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splitlines-text-" data-ice="link">splitLines(text)</a></li>
@@ -186,16 +187,50 @@ to studly caps (e.g. <code>BadgerMushroomSnake</code>)</p>
 <h2 id="snaketocamel-snake-">snakeToCamel(snake)</h2><p>This function converts a snake case string (e.g. <code>badger_mushroom_snake</code>)
 to camel case (e.g. <code>badgerMushroomSnake</code>)</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">snakeToCamel("badger_mushroom_snake") // =&gt; badgerMushroomSnake</code></code></pre>
-<h2 id="pluralise-singular----pluralize-singular-">pluralise(singular) / pluralize(singular)</h2><p>This is a <strong>very</strong> simple function for pluralising English words.</p>
+<h2 id="plural-singular-">plural(singular)</h2><p>This is a <strong>very</strong> simple function for pluralising English words.</p>
 <p>It only works on words with standard endings and plural forms,
 because pluralising words is notoriously difficult.  So don't
 expect words like <code>woman</code>, <code>goose</code> or <code>sheep</code> to pluralise correctly.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">pluralise("badger") // =&gt; "badgers"
-pluralise("doggy")  // =&gt; "doggies"
-pluralise("grass")  // =&gt; "grasses"
-pluralise("lash")   // =&gt; "lashes"
-pluralise("watch")  // =&gt; "watches"
-pluralise("box")    // =&gt; "boxes"</code></code></pre>
+<pre><code class="lang-js"><code class="source-code prettyprint">plural("badger") // =&gt; "badgers"
+plural("doggy")  // =&gt; "doggies"
+plural("grass")  // =&gt; "grasses"
+plural("lash")   // =&gt; "lashes"
+plural("watch")  // =&gt; "watches"
+plural("box")    // =&gt; "boxes"</code></code></pre>
+<p>If you do have special cases then you can pass them as the second
+argument.  This is a simple lookup table mapping singular forms to
+their plural forms for words that you might need to pluralise that
+the basic function can't handle.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const specialCases = {
+  woman: "women",
+  goose: "geese",
+  sheep: "sheep"
+}
+plural("woman", specialCases) // =&gt; "women"</code></code></pre>
+<p><strong>DEPRECATION NOTE</strong>: This function was originally called <code>pluralise()</code>
+with an alias of <code>pluralize()</code> for our American friends who like the
+letter z.  It has been renamed to <code>plural()</code>.  The <code>pluralise()</code>
+and <code>pluralize()</code> aliases still exist but will be deprecated in a future
+version.</p>
+<h2 id="singular-plural-">singular(plural)</h2><p>This is another <strong>very</strong> simple function for reversing the action
+of the <code>plural()</code> function to return the singular form of a plural
+noun.</p>
+<p>It only works on words with standard endings and plural forms,
+for the same reasons that <code>plural()</code> is limited.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">singular("badgers")  // =&gt; "badger"
+singular("doggies")  // =&gt; "doggy"
+singular("grasses")  // =&gt; "grass"
+singular("lashes")   // =&gt; "lash"
+singular("watches")  // =&gt; "watch"
+singular("boxes")    // =&gt; "box"</code></code></pre>
+<p>It also supports a second argument for providing special cases to help
+it out with words that have irregular pluralisations.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const specialCases = {
+  women: "woman",
+  geese: "goose",
+  sheep: "sheep"
+}
+singular("women", specialCases) // =&gt; "woman"</code></code></pre>
 <h2 id="inflect-n--singular--plural--no---39-no--39--">inflect(n, singular, plural, no='no')</h2><p>This function takes a number and a singular noun and attempts to
 construct a correct plural form.  It is only likely to work with
 English or languages that work similar to English in using the plural

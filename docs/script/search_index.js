@@ -234,10 +234,22 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "@abw/badger-utils~pluralise",
-    "function/index.html#static-function-pluralise",
-    "<span>pluralise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "@abw/badger-utils~objsubset",
+    "variable/index.html#static-variable-objSubset",
+    "<span>objSubset</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
+  ],
+  [
+    "@abw/badger-utils~plural",
+    "function/index.html#static-function-plural",
+    "<span>plural</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
+  ],
+  [
+    "@abw/badger-utils~pluralise",
+    "variable/index.html#static-variable-pluralise",
+    "<span>pluralise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
   ],
   [
     "@abw/badger-utils~pluralize",
@@ -267,6 +279,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~setnumberdefaults",
     "function/index.html#static-function-setNumberDefaults",
     "<span>setNumberDefaults</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~singular",
+    "function/index.html#static-function-singular",
+    "<span>singular</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
