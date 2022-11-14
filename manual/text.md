@@ -212,7 +212,7 @@ inflect(1, "badger")   // "1 badger"
 inflect(2, "badger")   // "2 badgers"
 ```
 
-It uses the [pluralise()](#pluralise-singular----pluralize-singular-) function
+It uses the [plural()](#plural-singular-) function
 to construct the plural form.  The plural form can be provided as an optional
 third argument if that fails to do the right thing.
 

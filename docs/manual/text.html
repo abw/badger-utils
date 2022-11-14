@@ -239,7 +239,7 @@ and singular form for exactly one item (e.g. "1 badger").</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">inflect(0, "badger")   // "no badgers"
 inflect(1, "badger")   // "1 badger"
 inflect(2, "badger")   // "2 badgers"</code></code></pre>
-<p>It uses the <a href="#pluralise-singular----pluralize-singular-">pluralise()</a> function
+<p>It uses the <a href="#plural-singular-">plural()</a> function
 to construct the plural form.  The plural form can be provided as an optional
 third argument if that fails to do the right thing.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">inflect(0, "goose", "geese")   // "no geese"
