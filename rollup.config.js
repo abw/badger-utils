@@ -5,6 +5,7 @@ import pkg from './package.json';
 
 // Silence circular dependency warnings
 const ignoreWarnings = {
+  'Circular dependency: src/utils/error.js -> src/utils/format.js -> src/utils/error.js': true
 };
 
 const onwarn = (warning, warn) => {
@@ -28,6 +29,7 @@ export default [
       exports: 'named',
       plugins: [terser()]
     },
+    onwarn,
     plugins: [
       resolve(),
       commonjs()
