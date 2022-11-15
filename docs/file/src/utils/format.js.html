@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/utils/error.js | Badger Utils</title>
+  <title data-ice="title">src/utils/format.js | Badger Utils</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -91,39 +91,29 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/utils/error.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { format } from "./format.js";
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/format.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { noValue } from "./assert.js";
+import { fail } from "./error.js";
 
 /**
- * Throws a new Error object
- * @param {String[]} message - error message string(s)
- * @throws {Error}
+ * Function to format strings by inserting values into placeholder locations.
+ * @param {!String} msg - the source string
+ * @param {Object} data - data items to insert into the string
+ * @returns {String} - the expanded string
+ * @example
+ * format('Hello &lt;name&gt;!', { name: 'World'});  // Hello World!
  */
-export function fail(...message) {
-  throw new Error(message.join(''));
-}
-
-/**
- * Throws a new Error object with a message generated from a format string.
- * @param {String} message - message format
- * @param {Object} data - data items to embed in message
- * @throws {Error}
- */
-export function failMsg(message, data) {
-  throw new Error(
-    format(message, data)
+export const format = (msg, data) =&gt;
+  msg.replace(
+    /&lt;(\w+)&gt;/g,
+    (_, key) =&gt; {
+      const val = data[key];
+      if (noValue(val)) {
+        fail(`Invalid variable expansion &lt;${key}&gt; in message format: ${msg}`);
+      }
+      return val;
+    }
   );
-}
-
-/**
- * Re-throw an existing Error object
- * @param {Error} error - error object
- * @throws {Error}
- */
-export function rethrow(error) {
-  throw error;
-}
-
 </code></pre>
 
 </div>

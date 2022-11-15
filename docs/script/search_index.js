@@ -84,9 +84,21 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~failmsg",
+    "function/index.html#static-function-failMsg",
+    "<span>failMsg</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~firstvalue",
     "function/index.html#static-function-firstValue",
     "<span>firstValue</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~format",
+    "function/index.html#static-function-format",
+    "<span>format</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -639,6 +651,12 @@ window.esdocSearchIndex = [
     "src/utils/error.js",
     "file/src/utils/error.js.html",
     "src/utils/error.js",
+    "file"
+  ],
+  [
+    "src/utils/format.js",
+    "file/src/utils/format.js.html",
+    "src/utils/format.js",
     "file"
   ],
   [

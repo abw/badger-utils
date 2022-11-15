@@ -72,6 +72,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/text.html"><a href="manual/text.html" data-ice="link">Text</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splitlines-text-" data-ice="link">splitLines(text)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splitlist-value-" data-ice="link">splitList(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splithash-value--set-true--hash----" data-ice="link">splitHash(value, set=true, hash={})</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#joinlist-array--joint---39----39---lastjoint-joint-" data-ice="link">joinList(array, joint=' ', lastJoint=joint)</a></li>
@@ -85,7 +86,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#singular-plural-" data-ice="link">singular(plural)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#inflect-n--singular--plural--no---39-no--39--" data-ice="link">inflect(n, singular, plural, no='no')</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#inflect-n--singular--plural--no---39-no--39--" data-ice="link">Inflect(n, singular, plural, no='No')</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#splitlines-text-" data-ice="link">splitLines(text)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/text.html"><a href="manual/text.html#format-message--data-" data-ice="link">format(message, data)</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -132,6 +133,9 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="text">Text</h1><p>Various utility functions for working with text.</p>
+<h2 id="splitlines-text-">splitLines(text)</h2><p>This function splits a text string into lines.  Any blank lines are ignored.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">splitLines("foo\nbar\n\n\nbaz")
+    // =&gt; ["foo", "bar", "baz"]</code></code></pre>
 <h2 id="splitlist-value-">splitList(value)</h2><p>Function to split a string of words into an array.  Words can
 be delimited by commas and/or spaces. If the argument is already
 an array then the array is returned unmodified.</p>
@@ -252,9 +256,11 @@ fourth argument can be provided to change this.</p>
 function which capitalised the first letter, e.g. returning <code>"No badgers"</code> rather
 than <code>"no badgers"</code>.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">Inflect(0, "badger")   // "No badgers"</code></code></pre>
-<h2 id="splitlines-text-">splitLines(text)</h2><p>This function splits a text string into lines.  Any blank lines are ignored.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">splitLines("foo\nbar\n\n\nbaz")
-    // =&gt; ["foo", "bar", "baz"]</code></code></pre>
+<h2 id="format-message--data-">format(message, data)</h2><p>This implements a minimal template expansion function that inserts
+data items into a message string.  Placeholders should be embedded
+in the message string in angle brackets.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const message = format('Hello !', { name: 'World' });
+// -&gt; Hello World!</code></code></pre>
 </div>
 </div>
 

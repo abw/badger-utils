@@ -1082,7 +1082,7 @@
     "__docId__": 63,
     "kind": "file",
     "name": "src/utils/error.js",
-    "content": "/**\n * Throws a new Error object\n * @param {String[]} message - error message string(s)\n * @throws {Error}\n */\nexport function fail(...message) {\n  throw new Error(message.join(''));\n}\n\n/**\n * Re-throw an existing Error object\n * @param {Error} error - error object\n * @throws {Error}\n */\nexport function rethrow(error) {\n  throw error;\n}\n\n",
+    "content": "import { format } from \"./format.js\";\n\n/**\n * Throws a new Error object\n * @param {String[]} message - error message string(s)\n * @throws {Error}\n */\nexport function fail(...message) {\n  throw new Error(message.join(''));\n}\n\n/**\n * Throws a new Error object with a message generated from a format string.\n * @param {String} message - message format\n * @param {Object} data - data items to embed in message\n * @throws {Error}\n */\nexport function failMsg(message, data) {\n  throw new Error(\n    format(message, data)\n  );\n}\n\n/**\n * Re-throw an existing Error object\n * @param {Error} error - error object\n * @throws {Error}\n */\nexport function rethrow(error) {\n  throw error;\n}\n\n",
     "static": true,
     "longname": "/Users/abw/js/badger-utils/src/utils/error.js",
     "access": "public",
@@ -1103,7 +1103,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{fail}",
     "description": "Throws a new Error object",
-    "lineNumber": 6,
+    "lineNumber": 8,
     "params": [
       {
         "nullable": null,
@@ -1129,6 +1129,53 @@
   {
     "__docId__": 65,
     "kind": "function",
+    "name": "failMsg",
+    "memberof": "src/utils/error.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/error.js~failMsg",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{failMsg}",
+    "description": "Throws a new Error object with a message generated from a format string.",
+    "lineNumber": 18,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "message",
+        "description": "message format"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "data items to embed in message"
+      }
+    ],
+    "throws": [
+      {
+        "types": [
+          "Error"
+        ],
+        "description": ""
+      }
+    ],
+    "return": null
+  },
+  {
+    "__docId__": 66,
+    "kind": "function",
     "name": "rethrow",
     "memberof": "src/utils/error.js",
     "generator": false,
@@ -1140,7 +1187,7 @@
     "importPath": "@abw/badger-utils",
     "importStyle": "{rethrow}",
     "description": "Re-throw an existing Error object",
-    "lineNumber": 15,
+    "lineNumber": 29,
     "params": [
       {
         "nullable": null,
@@ -1164,7 +1211,73 @@
     "return": null
   },
   {
-    "__docId__": 66,
+    "__docId__": 67,
+    "kind": "file",
+    "name": "src/utils/format.js",
+    "content": "import { noValue } from \"./assert.js\";\nimport { fail } from \"./error.js\";\n\n/**\n * Function to format strings by inserting values into placeholder locations.\n * @param {!String} msg - the source string\n * @param {Object} data - data items to insert into the string\n * @returns {String} - the expanded string\n * @example\n * format('Hello <name>!', { name: 'World'});  // Hello World!\n */\nexport const format = (msg, data) =>\n  msg.replace(\n    /<(\\w+)>/g,\n    (_, key) => {\n      const val = data[key];\n      if (noValue(val)) {\n        fail(`Invalid variable expansion <${key}> in message format: ${msg}`);\n      }\n      return val;\n    }\n  );\n",
+    "static": true,
+    "longname": "/Users/abw/js/badger-utils/src/utils/format.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 68,
+    "kind": "function",
+    "name": "format",
+    "memberof": "src/utils/format.js",
+    "generator": false,
+    "async": false,
+    "static": true,
+    "longname": "src/utils/format.js~format",
+    "access": "public",
+    "export": true,
+    "importPath": "@abw/badger-utils",
+    "importStyle": "{format}",
+    "description": "Function to format strings by inserting values into placeholder locations.",
+    "examples": [
+      "format('Hello <name>!', { name: 'World'});  // Hello World!"
+    ],
+    "lineNumber": 12,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{String} - the expanded string"
+      }
+    ],
+    "params": [
+      {
+        "nullable": false,
+        "types": [
+          "String"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "msg",
+        "description": "the source string"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "data",
+        "description": "data items to insert into the string"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "String"
+      ],
+      "spread": false,
+      "description": "the expanded string"
+    }
+  },
+  {
+    "__docId__": 69,
     "kind": "file",
     "name": "src/utils/misc.js",
     "content": "/**\n * Do nothing.  Nothing at all.\n */\nexport function doNothing() {\n  // speak again Cordelia\n}\n\n/**\n * Returns the default locale.\n */\nexport function defaultLocale() {\n  return Intl.DateTimeFormat().resolvedOptions().locale;\n}",
@@ -1175,7 +1288,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 67,
+    "__docId__": 70,
     "kind": "function",
     "name": "doNothing",
     "memberof": "src/utils/misc.js",
@@ -1193,7 +1306,7 @@
     "return": null
   },
   {
-    "__docId__": 68,
+    "__docId__": 71,
     "kind": "function",
     "name": "defaultLocale",
     "memberof": "src/utils/misc.js",
@@ -1215,7 +1328,7 @@
     }
   },
   {
-    "__docId__": 69,
+    "__docId__": 72,
     "kind": "file",
     "name": "src/utils/numbers.js",
     "content": "import { noValue } from \"./assert.js\";\nimport { defaultLocale } from \"./misc.js\";\n\n// this is an ugly hack to provide backwards compatibility\n// with some of my older utility functions that are very much\n// specific to me and my locale (e.g. formatting prices using\n// British pounds)\nlet numberDefaults = {\n  locale:       defaultLocale(),\n  currency:     'GBP',\n  currencySign: '£',\n  thousands:    ',',\n};\n\n/**\n * Function to set the default options for formatting numbers.\n * @param {Object} defaults - default options\n * @param {String} [defaults.locale] - default locale\n * @param {String} [defaults.currency] - default currency, e.g. `GBP`\n * @param {String} [defaults.currencySign] - default currency sign, e.g. `£`\n * @param {String} [defaults.thousands] - default separator for thousands, e.g. `,`\n */\nexport function setNumberDefaults(defaults={}) {\n  numberDefaults = { ...numberDefaults, ...defaults };\n}\n\n/**\n * Function to create an array with a range of numbers.  Note that this will\n * include the last value.\n * @param {Integer} first - first number\n * @param {Integer} last - last number\n * @param {Integer} [step=1] - step number\n */\nexport const range = (first, last, step=1) => {\n  const down = last < first;\n  const walk = down ? -Math.abs(step) : step;\n  return Array(1 + Math.floor(Math.abs((last - first) / step)))\n    .fill(first)\n    .map((x, y) => x + y * walk)\n}\n\n/**\n * Function to format a number with various options.\n * @param {Number} number - number to format\n * @param {Object} [options] - configuration options\n * @param {Object} [options.locale] - locale\n */\nexport function formatNumber(number, options={}) {\n  return new Intl.NumberFormat(\n    options.locale || numberDefaults.locale,\n    options\n  ).format(number)\n}\n\n/**\n * Function to format a number as a currency.\n * @param {Number} number - number to format\n * @param {Object} [options] - configuration options\n * @param {Object} [options.locale] - locale\n * @param {Object} [options.currency] - currency code, e.g. `GBP` or `USD`\n */\nexport function currency(number, options={}) {\n  return formatNumber(\n    number,\n    {\n      style: 'currency',\n      currency: numberDefaults.currency,\n      ...options\n    }\n  );\n}\n\n/**\n * Function to add commas as thousand separators in a number.\n * @param {Integer} n - number of items\n * @param {String} [thousands=','] - optional thousands separator instead of a comma\n * @example\n * commas(12345)          // 12,345\n * commas(12345.67)       // 12,345.67\n * commas(12345.67, ' ')  // 12 345.67\n */\nexport function commas(n, thousands=numberDefaults.thousands) {\n  if (noValue(n)) {\n    return '';\n  }\n  var bits  = n.toString().split('.'),\n    rgx   = /(\\d+)(\\d{3})/;\n\n  while (rgx.test(bits[0])) {\n    bits[0] = bits[0].replace(rgx, `$1${thousands}$2`);\n  }\n  return bits.join('.');\n}\n\n",
@@ -1226,7 +1339,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 70,
+    "__docId__": 73,
     "kind": "variable",
     "name": "numberDefaults",
     "memberof": "src/utils/numbers.js",
@@ -1247,7 +1360,7 @@
     "ignore": true
   },
   {
-    "__docId__": 71,
+    "__docId__": 74,
     "kind": "function",
     "name": "setNumberDefaults",
     "memberof": "src/utils/numbers.js",
@@ -1316,7 +1429,7 @@
     "return": null
   },
   {
-    "__docId__": 72,
+    "__docId__": 75,
     "kind": "function",
     "name": "range",
     "memberof": "src/utils/numbers.js",
@@ -1371,7 +1484,7 @@
     }
   },
   {
-    "__docId__": 73,
+    "__docId__": 76,
     "kind": "function",
     "name": "formatNumber",
     "memberof": "src/utils/numbers.js",
@@ -1424,7 +1537,7 @@
     }
   },
   {
-    "__docId__": 74,
+    "__docId__": 77,
     "kind": "function",
     "name": "currency",
     "memberof": "src/utils/numbers.js",
@@ -1487,7 +1600,7 @@
     }
   },
   {
-    "__docId__": 75,
+    "__docId__": 78,
     "kind": "function",
     "name": "commas",
     "memberof": "src/utils/numbers.js",
@@ -1535,7 +1648,7 @@
     }
   },
   {
-    "__docId__": 76,
+    "__docId__": 79,
     "kind": "file",
     "name": "src/utils/object.js",
     "content": "import { isArray, isFunction, isObject, isString } from './assert.js';\nimport { fail } from './error.js';\nimport { splitHash } from './text.js';\n\n/**\n * Applies a function to each of the values of an object and returns\n * a new object.\n * @param {Object} obj - source object\n * @param {Function} fn - function to apply to each value\n * @return {Object} - new object with function applied to values\n * @example\n * objMap(\n *   { a: 'alpha', b: 'bravo' },\n *   v => v.toUpperCase()\n * )                        // returns { a: 'ALPHA', b: 'BRAVO' }\n */\nexport function objMap(obj, fn) {\n  return Object.keys(obj).reduce(\n    (result, key) => {\n      result[key] = fn(obj[key], key)\n      return result\n    },\n    {}\n  );\n}\n\n/**\n * Extracts a subset of items from an object.\n * @param {Object} object - source object\n * @param {Object|Array|String|RegExp|Function} keys - keys to extract\n * @param {Object} [options] -\n * @param {Boolean} [options.delete=false] - delete keys from source object\n * @param {Function} [options.key] - function to transform key\n * @param {Function} [options.value] - function to transform value\n * @return {Object} - new object with extracted values\n * @example\n * extract(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   { a: true, b: true }\n * ) // => { a: 'alpha', b: 'bravo' }\n * @example\n * extract(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   ['a', 'b']\n * ) // => { a: 'alpha', b: 'bravo' }\n * @example\n * extract(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a b'\n * ) // => { a: 'alpha', b: 'bravo' }\n * @example\n * extract(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   /^[a|b]$/\n * ) // => { a: 'alpha', b: 'bravo' }\n * @example\n * extract(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   key => key === 'a' || key === 'b'\n * ) // => { a: 'alpha', b: 'bravo' }\n */\nexport const extract = (object, keys, options={}) => {\n  let matcher;\n  let extract = { };\n  let actions = { delete: false, ...options };\n\n  if (isFunction(keys)) {\n    matcher = keys;\n  }\n  else if (keys instanceof RegExp) {\n    matcher = key => keys.test(key);\n  }\n  else if (isObject(keys)) {\n    matcher = key => keys[key];\n  }\n  else if (isArray(keys) || isString(keys)) {\n    const keysHash = splitHash(keys);\n    matcher = key => keysHash[key];\n  }\n  else {\n    fail(\"Invalid specification for extract(): \" + keys);\n  }\n  Object.keys(object).map(\n    key => {\n      if (matcher(key)) {\n        let value = object[key];\n        if (actions.delete) {\n          delete object[key];\n        }\n        if (actions.key) {\n          key = actions.key(key);\n        }\n        if (actions.value) {\n          value = actions.value(value);\n        }\n        extract[key] = value;\n      }\n    }\n  )\n  return extract;\n}\nexport const objSubset = extract;\n\n/**\n * Removes an item from an object and returns the value.\n * @param {Object} object - source object\n * @param {String} key - item to remove\n * @return {Any} - value of removed item\n * @example\n * remove(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n *   'a'\n * ) // => { a: 'alpha', b: 'bravo' }\n */\nexport const remove = (object, key) => {\n  const value = object[key];\n  delete object[key];\n  return value;\n}\n\n\n",
@@ -1546,7 +1659,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 77,
+    "__docId__": 80,
     "kind": "function",
     "name": "objMap",
     "memberof": "src/utils/object.js",
@@ -1595,7 +1708,7 @@
     }
   },
   {
-    "__docId__": 78,
+    "__docId__": 81,
     "kind": "function",
     "name": "extract",
     "memberof": "src/utils/object.js",
@@ -1694,7 +1807,7 @@
     }
   },
   {
-    "__docId__": 79,
+    "__docId__": 82,
     "kind": "variable",
     "name": "objSubset",
     "memberof": "src/utils/object.js",
@@ -1714,7 +1827,7 @@
     }
   },
   {
-    "__docId__": 80,
+    "__docId__": 83,
     "kind": "function",
     "name": "remove",
     "memberof": "src/utils/object.js",
@@ -1763,7 +1876,7 @@
     }
   },
   {
-    "__docId__": 81,
+    "__docId__": 84,
     "kind": "file",
     "name": "src/utils/sort.js",
     "content": "import { isFunction, isString } from \"./assert.js\";\nimport { fail } from \"./error.js\";\nimport { splitList } from \"./text.js\";\n\n/**\n * Function to extract an integer field from an object.  Uses `parseInt()` to\n * coerce non-integer values (e.g. numbers in strings) to an integer.\n * @param {Object} obj - object containing data\n * @param {String} field - field to return as integer\n * @return {Integer} - integer value from object\n * @example\n * integerField({ a: \"10\" }, \"a\");     // 10\n */\nexport const integerField = (obj, field) =>\n  parseInt(obj[field]||0)\n\n/**\n * Function to extract a number field from an object.  Uses `parseFloat()` to\n * coerce non-number values (e.g. numbers in strings) to floats.\n * @param {Object} obj - object containing data\n * @param {String} field - field to return as float\n * @return {Float} - floating point number from object\n * @example\n * numberField({ pi: \"3.14\" }, \"pi\");     // 3.14\n */\nexport const numberField = (obj, field) =>\n  parseFloat(obj[field]||0)\n\n/**\n * Function to extract a string field from an object.  Uses `toString()` to\n * coerce non-string values (e.g. numbers) to strings.\n * @param {Object} obj - object containing data\n * @param {String} field - field to return as string\n * @return {Float} - string value from object\n * @example\n * numberField({ pi: 3.14 }, \"pi\");     // \"3.14\"\n */\nexport const stringField = (obj, field) =>\n  (obj[field]||'').toString()\n\n/**\n * Sort function generator for sorting objects by an integer field.\n * Takes a single field name and returns a sort function which will sort\n * objects by that field.\n * @param {String} field - field to return as string\n * @return {Function} - sort function to sort objects by the named integer field\n * @example\n * const people = [\n *   { name: \"Fred\",   age: 18 },\n *   { name: \"Shaggy\", age: 17 },\n *   { name: \"Daphne\", age: 16 },\n *   { name: \"Velma\",  age: 15 },\n * ];\n * const sortByAge = integerSort('age');\n * const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred\n */\nexport const integerSort = field => (a, b) => {\n  return integerField(a, field) - integerField(b, field);\n}\n\n/**\n * Sort function generator for sorting objects by a number field.\n * Takes a single field name and returns a sort function which will sort\n * objects by that field.\n * @param {String} field - field to return as string\n * @return {Function} - sort function to sort objects by the named number field\n * @example\n * const constants = [\n *   { name: \"pi\",   value: 3.14  },\n *   { name: \"e\",    value: 2.718 },\n *   { name: \"phi\",  value: 1.618 },\n * ];\n * const sortByValue = numberSort('value');\n * const sorted = constants.sort(sortByValue); // phi, e, pi\n */\nexport const numberSort = field => (a, b) => {\n  return numberField(a, field) - numberField(b, field);\n}\n\n/**\n * Sort function generator for sorting objects by a string field.\n * Takes a single field name and returns a sort function which will sort\n * objects by that field.\n * @param {String} field - field to return as string\n * @return {Function} - sort function to sort objects by the named string field\n * @example\n * const constants = [\n *   { name: \"pi\",   value: 3.14  },\n *   { name: \"e\",    value: 2.718 },\n *   { name: \"phi\",  value: 1.618 },\n * ];\n * const sortByName = stringSort('name');\n * const sorted = constants.sort(sortByName); // e, phi, pi\n */\nexport const stringSort = field => (a, b) => {\n  let c = stringField(a, field).toLowerCase();\n  let d = stringField(b, field).toLowerCase();\n  return c > d ? 1 : d > c ? -1 : 0;\n}\n\n/**\n * Lookup table mapping sort types to their functions.\n */\nexport const sortTypes = {\n  num:      numberSort,\n  int:      integerSort,\n  str:      stringSort,\n  number:   numberSort,\n  integer:  integerSort,\n  string:   stringSort,\n};\n\n/**\n * Do-nothing function provided for completeness.  It expects to be passed a sort\n * function that, by default, sorts in ascending order and it simply returns that\n * function unmodified.\n * @param {Function} fn - sort function\n * @return {Function} - the same sort function\n * @example\n * const sortByName = stringSort('name');\n * const sortByNameAsc = ascendingOrder(sortByName);\n */\nexport const ascendingOrder  = fn => fn\n\n/**\n * Inverting function that converts a sort function that sorts in ascending order to\n * one that sorts in descending order.  It does this by swapping the `a` and `b`\n * arguments passed to the function.\n * @param {Function} fn - function to sort in ascending order\n * @return {Function} - wrapper around the function to sort in descending order\n * @example\n * const sortByName = stringSort('name');\n * const sortByNameDesc = descendingOrder(sortByName);\n */\nexport const descendingOrder = fn => (a, b) => fn(b, a)\n\n/**\n * Lookup table mapping sort orders to their functions.\n */\nexport const sortOrders = {\n  asc:        ascendingOrder,\n  desc:       descendingOrder,\n  ascending:  ascendingOrder,\n  descending: descendingOrder,\n};\n\n\n/**\n * Sort function generator for sorting objects by multiple fields.\n * The specification can be either an array of sort functions, or be\n * specification used to construct those functions.  The specification\n * should be a whitespace delimited string in which each\n * component is the field name, optional data type and optional sort order,\n * each separated by a colon.\n * In the simple case, the data type is assumed be be `string` and the sort\n * order defaults to `asc`.  e.g. `surname forename` is the short form of\n * `surname:string:asc forename:string:asc`.  The data type can be one of\n * `string` (default), `integer` or `number` and the sort order can be `asc`\n * (default) for ascending order or `desc` for descending.\n * Returns a function which sorts an array of object by those fields.\n * @param {String} spec - sort specification\n * @return {Function} - sort function to sort objects by the named string field\n * @example\n * const people = [\n *   { forename: \"John\", surname: \"Smith\", age: 28 },\n *   { forename: \"Jack\", surname: \"Smith\", age: 30 },\n *   { forename: \"John\", surname: \"Smith\", age: 25 },\n *   { forename: \"John\", surname: \"Jones\", age: 32 },\n * ];\n * const sortByNameAndAge = multiSort('surname forename age:integer:desc');\n * const sorted = people.sort(sortByNameAndAge); // John Jones 32, Jack Smith 30, John Smith 28, John Smith 25\n */\nexport const multiSort = spec => {\n  const sorts = splitList(spec);\n  const funcs = sorts.map(\n    sort => {\n      if (isFunction(sort)) {\n        return sort;\n      }\n      else if (isString(sort)) {\n        const match = sort.match(/^(\\w+)(?::(\\w+))?(?::(\\w+))?$/)\n          || fail(`Invalid sort field: ${sort}`);\n        const sorter = sortTypes[match[2] || 'string']\n          || fail(`Invalid sort type \"${match[2]}\" in sort field: ${sort}`);\n        const order = sortOrders[match[3] || 'asc']\n          || fail(`Invalid sort order \"${match[3]}\" in sort field: ${sort}`);\n        return order(sorter(match[1]));\n      }\n      else {\n        fail(`Invalid sort field: ${sort}`);\n      }\n    }\n  );\n  return (a, b) => {\n    for (let i = 0; i < funcs.length; i++) {\n      const sortFunc = funcs[i];\n      const cmp = sortFunc(a, b);\n      if (cmp !== 0) {\n        return cmp;\n      }\n    }\n    return 0;\n  }\n}",
@@ -1774,7 +1887,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 82,
+    "__docId__": 85,
     "kind": "function",
     "name": "integerField",
     "memberof": "src/utils/sort.js",
@@ -1823,7 +1936,7 @@
     }
   },
   {
-    "__docId__": 83,
+    "__docId__": 86,
     "kind": "function",
     "name": "numberField",
     "memberof": "src/utils/sort.js",
@@ -1872,7 +1985,7 @@
     }
   },
   {
-    "__docId__": 84,
+    "__docId__": 87,
     "kind": "function",
     "name": "stringField",
     "memberof": "src/utils/sort.js",
@@ -1921,7 +2034,7 @@
     }
   },
   {
-    "__docId__": 85,
+    "__docId__": 88,
     "kind": "function",
     "name": "integerSort",
     "memberof": "src/utils/sort.js",
@@ -1960,7 +2073,7 @@
     }
   },
   {
-    "__docId__": 86,
+    "__docId__": 89,
     "kind": "function",
     "name": "numberSort",
     "memberof": "src/utils/sort.js",
@@ -1999,7 +2112,7 @@
     }
   },
   {
-    "__docId__": 87,
+    "__docId__": 90,
     "kind": "function",
     "name": "stringSort",
     "memberof": "src/utils/sort.js",
@@ -2038,7 +2151,7 @@
     }
   },
   {
-    "__docId__": 88,
+    "__docId__": 91,
     "kind": "variable",
     "name": "sortTypes",
     "memberof": "src/utils/sort.js",
@@ -2057,7 +2170,7 @@
     }
   },
   {
-    "__docId__": 89,
+    "__docId__": 92,
     "kind": "function",
     "name": "ascendingOrder",
     "memberof": "src/utils/sort.js",
@@ -2096,7 +2209,7 @@
     }
   },
   {
-    "__docId__": 90,
+    "__docId__": 93,
     "kind": "function",
     "name": "descendingOrder",
     "memberof": "src/utils/sort.js",
@@ -2135,7 +2248,7 @@
     }
   },
   {
-    "__docId__": 91,
+    "__docId__": 94,
     "kind": "variable",
     "name": "sortOrders",
     "memberof": "src/utils/sort.js",
@@ -2154,7 +2267,7 @@
     }
   },
   {
-    "__docId__": 92,
+    "__docId__": 95,
     "kind": "function",
     "name": "multiSort",
     "memberof": "src/utils/sort.js",
@@ -2193,7 +2306,7 @@
     }
   },
   {
-    "__docId__": 93,
+    "__docId__": 96,
     "kind": "file",
     "name": "src/utils/text.js",
     "content": "import { isString, isArray, noValue, isObject, isFunction, hasValue } from \"./assert.js\";\nimport { commas } from \"./numbers.js\";\n\n/**\n * Split a comma/whitespace delimited string into an Array\n * @param {String} value - string to split\n * @return {Array} array of split strings\n * @example\n * const strings = splitList('one two three')\n * @example\n * const strings = splitList('one,two,three')\n * @example\n * const strings = splitList('one, two, three')\n */\nexport function splitList(value) {\n  if (noValue(value)) {\n    return [ ];\n  }\n  else if (isString(value)) {\n    return value.length\n      ? value.split(/,\\s*|\\s+/)\n      : [ ]\n  }\n  else if (isArray(value)) {\n    return value;\n  }\n  return [value];\n}\n\n\n/**\n * Split a comma/whitespace delimited string or Array into a hash object\n * @param {String} value - string to split\n * @param {Boolean|String|Number|Function} [set=true] - value to set for each key\n * @param {Object} [hash={}] - object to set keys in\n * @return {Object} hash object mapping keys to values\n * @example\n * const items = splitHash('one two')  // { one: true, two: true }\n * @example\n * const items = splitList('one two', 1)  // { one: 1, two: 1 }\n * @example\n * const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }\n */\nexport function splitHash(value, set=true, hash={ }) {\n  // if it's already a hash object then return it unchanged\n  if (isObject(value)) {\n    return value;\n  }\n  // split a string into an array (or leave an array unchanged)\n  const items = splitList(value);\n\n  return items.reduce(\n    (result, key) => {\n      result[key] = isFunction(set)\n        ? set(key)\n        : set;\n      return result\n    },\n    hash\n  );\n}\n\n\n/**\n * Split a string into an Array of lines.\n * @param {String} text - string to split\n * @return {Array} array of lines\n*/\nexport function splitLines(text) {\n  if (! isString(text) || text.length === 0) {\n    return [ ];\n  }\n  var lines = text.split(/\\s*\\n+\\s*/).filter(\n    function(item) { return item.length > 0 }\n  );\n  return lines;\n}\n\n/**\n * Join an Array into a single string\n * @param {Array} array - array to join\n * @param {String} [joint=' '] - delimiter to join strings\n * @param {String} [lastJoint=joint] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinList(['one', 'two', 'three']);   // one two three\n * @example\n * joinList(['one', 'two', 'three'], ', ');   // one, two, three\n * @example\n * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three\n */\nexport function joinList(array, joint=' ', lastJoint=joint) {\n  let copy = [...array];\n  const last = copy.pop();\n  return copy.length\n    ? [copy.join(joint), last].join(lastJoint)\n    : last;\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` and ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' and '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListAnd(['one', 'two', 'three']);   // one, two and three\n */\nexport function joinListAnd(array, joint=', ', lastJoint=' and ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Join an Array into a single string using commas for delimiters and ` or ` for the final item\n * @param {Array} array - array to join\n * @param {String} [joint=', '] - delimiter to join strings\n * @param {String} [lastJoint=' or '] - delimiter for final item\n * @return {String} joined string\n * @example\n * joinListOr(['one', 'two', 'three']);   // one, two or three\n */\nexport function joinListOr(array, joint=', ', lastJoint=' or ') {\n  return joinList(array, joint, lastJoint);\n}\n\n/**\n * Capitalise a string by converting the first character to upper case and other characters to lower case\n * @param {String} word - word to capitalise\n * @return {String} capitalised string\n * @example\n * capitalise('badger');   // Badger\n * @example\n * capitalise('BADGER');   // Badger\n */\nexport function capitalise(word) {\n  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();\n}\n\n/**\n * Capitalise all words in a string by converting the first character of each word to upper case\n * @param {String} string - words to capitalise\n * @return {String} capitalised string\n * @example\n * capitaliseWords('badger fun');   // Badger Fun\n * @example\n * capitaliseWords('BADGER FUN');   // Badger Fun\n */\nexport function capitaliseWords(string) {\n  return string.replace(\n    // /(?:^|\\s)\\S/g,\n    /(\\w+)/g,\n    capitalise\n  );\n}\n\n/**\n * Convert a snake case string to studly caps\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToStudly('happy_badger_dance');   // HappyBadgerDance\n * @example\n * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance\n */\nexport function snakeToStudly(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to FooBar\n    segment => segment.split('_').map(capitalise).join('')\n  ).join('/');\n}\n\n/**\n * Convert a snake case string to camel case\n * @param {String} snake - word to capitalise\n * @return {String} capitalised string\n * @example\n * snakeToCamel('happy_badger_dance');   // happyBadgerDance\n * @example\n * snakeToCamel('happy_badger/dance');   // happyBadger/dance\n */\nexport function snakeToCamel(snake) {\n  return snake.split('/').map(\n    // each segment can be like foo_bar which we convert to fooBar\n    segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')\n  ).join('/');\n}\n\n/**\n * A very primitive function to pluralise the singular form of a words.  It only\n * works on words with standard endings and plural forms, because pluralising\n * words is notoriously difficult.\n * @param {String} singular - word to pluralise\n * @param {Object} [specialCases={}] - special cases\n * @return {String} plural form\n * @example\n * plural('box');     // boxes\n * @example\n * plural('doggy');   // doggies\n * @example\n * plural('badger');  // badgers\n * @example\n * plural('woman');   // womans\n */\nexport function plural(singular, specialCases={}) {\n  const special = specialCases[singular];\n  if (hasValue(special)) {\n    return special\n  }\n  let found;\n\n  if (singular.match(/(ss?|sh|ch|x)$/)) {\n    // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes\n    return singular + 'es';\n  }\n  else if ((found = singular.match(/(.*?[^aeiou])y$/))) {\n    // doggy/doggies\n    return found[1] + 'ies';\n  }\n  else if (singular.match(/([^s\\d\\W])$/)) {\n    // cat/cats\n    return singular + 's';\n  }\n  return singular;\n}\n\n/**\n * A very primitive function to return the singular form of a plural noun.  It\n * only works on words with standard endings and plural forms that, using the\n * reverse algorithm of {@link plural()}.\n * @param {String} plural - plural form\n * @param {Object} [specialCases={}] - special cases\n * @return {String} singular form\n * @example\n * singular('boxes');     // box\n * @example\n * singular('doggies');   // doggy\n * @example\n * singular('badgers');   // badger\n * @example\n * singular('women');     // women - FAIL!\n */\nexport function singular(plural, specialCases={}) {\n  const special = specialCases[plural];\n  if (hasValue(special)) {\n    return special\n  }\n\n  if (plural.match(/(ss|sh|ch|x)es$/)) {\n    return plural.replace(/es$/, '')\n  }\n  else if (plural.match(/([^aeiou])ies$/)) {\n    return plural.replace(/ies$/, 'y');\n  }\n  else if (plural.match(/([^s\\d\\W])s$/)) {\n    return plural.replace(/s$/, '');\n  }\n  return plural;\n}\n\n/**\n * Utility function to inflect a string passed as the second argument to the singular/plural\n * form based on the number passed as the first argument.  Uses the {@link plural()} function\n * which only works on words with standard pluralisations.  The third argument can be provided\n * as the plural form where necessary.  The optional 4th argument can be used to provide a different\n * word for the case where n is 0.  The default is \"no\", e.g. \"no badgers\" when n is 0.\n * @param {Integer} n - number of items\n * @param {String} singularForm - singular form\n * @param {String} [pluralForm] - optional plural form\n * @param {String} [no='no'] - optional word to use when `n` is 0\n * @example\n * inflect(0, 'cat')     // no cats\n * @example\n * inflect(1, 'cat')     // 1 cat\n * @example\n * inflect(2, 'cat')     // 2 cats\n * @example\n * inflect(0, 'child', 'children')     // no children\n * @example\n * inflect(1, 'child', 'children')     // 1 child\n * @example\n * inflect(2, 'child', 'children')     // 2 children\n * @example\n * inflect(0, 'black', 'black', 'none, none more')     // none, none more black\n */\nexport function inflect(n, singularForm, pluralForm, no='no') {\n  return (n ? commas(n) : no)\n    + ' '\n    + (n === 1 ? singularForm : (pluralForm || plural(singularForm)));\n}\n\n/**\n * Wrapper around {@link inflect()} which uses the word \"No\" instead of \"no\" for the\n * zero case, i.e. Inflect() is the capitalized form of inflect()\n * @param {Integer} n - number of items\n * @param {String} singular - singular form\n * @param {String} [plural] - optional plural form\n * @param {String} [no='No'] - optional word to use when `n` is 0\n */\nexport function Inflect(n, singular, plural, no='No') {\n  return inflect(n, singular, plural, no);\n}\n\n\n\n// for the yanks\nexport const capitalize = capitalise;\nexport const capitalizeWords = capitaliseWords;\nexport const pluralise = plural;\nexport const pluralize = plural;\n\n",
@@ -2204,7 +2317,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 94,
+    "__docId__": 97,
     "kind": "function",
     "name": "splitList",
     "memberof": "src/utils/text.js",
@@ -2245,7 +2358,7 @@
     }
   },
   {
-    "__docId__": 95,
+    "__docId__": 98,
     "kind": "function",
     "name": "splitHash",
     "memberof": "src/utils/text.js",
@@ -2313,7 +2426,7 @@
     }
   },
   {
-    "__docId__": 96,
+    "__docId__": 99,
     "kind": "function",
     "name": "splitLines",
     "memberof": "src/utils/text.js",
@@ -2349,7 +2462,7 @@
     }
   },
   {
-    "__docId__": 97,
+    "__docId__": 100,
     "kind": "function",
     "name": "joinList",
     "memberof": "src/utils/text.js",
@@ -2414,7 +2527,7 @@
     }
   },
   {
-    "__docId__": 98,
+    "__docId__": 101,
     "kind": "function",
     "name": "joinListAnd",
     "memberof": "src/utils/text.js",
@@ -2477,7 +2590,7 @@
     }
   },
   {
-    "__docId__": 99,
+    "__docId__": 102,
     "kind": "function",
     "name": "joinListOr",
     "memberof": "src/utils/text.js",
@@ -2540,7 +2653,7 @@
     }
   },
   {
-    "__docId__": 100,
+    "__docId__": 103,
     "kind": "function",
     "name": "capitalise",
     "memberof": "src/utils/text.js",
@@ -2580,7 +2693,7 @@
     }
   },
   {
-    "__docId__": 101,
+    "__docId__": 104,
     "kind": "function",
     "name": "capitaliseWords",
     "memberof": "src/utils/text.js",
@@ -2620,7 +2733,7 @@
     }
   },
   {
-    "__docId__": 102,
+    "__docId__": 105,
     "kind": "function",
     "name": "snakeToStudly",
     "memberof": "src/utils/text.js",
@@ -2660,7 +2773,7 @@
     }
   },
   {
-    "__docId__": 103,
+    "__docId__": 106,
     "kind": "function",
     "name": "snakeToCamel",
     "memberof": "src/utils/text.js",
@@ -2700,7 +2813,7 @@
     }
   },
   {
-    "__docId__": 104,
+    "__docId__": 107,
     "kind": "function",
     "name": "plural",
     "memberof": "src/utils/text.js",
@@ -2754,7 +2867,7 @@
     }
   },
   {
-    "__docId__": 105,
+    "__docId__": 108,
     "kind": "function",
     "name": "singular",
     "memberof": "src/utils/text.js",
@@ -2808,7 +2921,7 @@
     }
   },
   {
-    "__docId__": 106,
+    "__docId__": 109,
     "kind": "function",
     "name": "inflect",
     "memberof": "src/utils/text.js",
@@ -2882,7 +2995,7 @@
     }
   },
   {
-    "__docId__": 107,
+    "__docId__": 110,
     "kind": "function",
     "name": "Inflect",
     "memberof": "src/utils/text.js",
@@ -2947,7 +3060,7 @@
     }
   },
   {
-    "__docId__": 108,
+    "__docId__": 111,
     "kind": "variable",
     "name": "capitalize",
     "memberof": "src/utils/text.js",
@@ -2967,7 +3080,7 @@
     }
   },
   {
-    "__docId__": 109,
+    "__docId__": 112,
     "kind": "variable",
     "name": "capitalizeWords",
     "memberof": "src/utils/text.js",
@@ -2987,7 +3100,7 @@
     }
   },
   {
-    "__docId__": 110,
+    "__docId__": 113,
     "kind": "variable",
     "name": "pluralise",
     "memberof": "src/utils/text.js",
@@ -3007,7 +3120,7 @@
     }
   },
   {
-    "__docId__": 111,
+    "__docId__": 114,
     "kind": "variable",
     "name": "pluralize",
     "memberof": "src/utils/text.js",
@@ -3027,7 +3140,7 @@
     }
   },
   {
-    "__docId__": 112,
+    "__docId__": 115,
     "kind": "file",
     "name": "src/utils/time.js",
     "content": "/**\n * Function to generate a debouncer function which will call the wrapped function after\n * a timeout.  If the debouncer function is called again before the wrapped function has\n * been called then the debounced will reset the timer.\n * @param {Function} func - function to be debounced\n * @param {Integer} [timeout=300] - timeout in milliseconds\n * @return {Function} debounced function\n */\nexport function debounce(func, timeout=300) {\n  let timer;\n  return (...args) => {\n    clearTimeout(timer);\n    timer = setTimeout(\n      () => func.apply(this, args),\n      timeout\n    );\n  };\n}\n\n/**\n * Function which returns a Promise which will resolve after a delay.\n * @param {Integer} ms - delay in millseconds\n * @return {Promise} - promise which will resolve after the delay\n */\nexport function sleep(ms) {\n  return new Promise(r => setTimeout(r, ms))\n}\n",
@@ -3038,7 +3151,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 113,
+    "__docId__": 116,
     "kind": "function",
     "name": "debounce",
     "memberof": "src/utils/time.js",
@@ -3086,7 +3199,7 @@
     }
   },
   {
-    "__docId__": 114,
+    "__docId__": 117,
     "kind": "function",
     "name": "sleep",
     "memberof": "src/utils/time.js",
@@ -3131,7 +3244,7 @@
   },
   {
     "kind": "packageJSON",
-    "content": "{\n  \"name\": \"@abw/badger-utils\",\n  \"version\": \"1.0.14\",\n  \"description\": \"Javascript utility modules\",\n  \"type\": \"module\",\n  \"main\": \"dist/badger-utils.cjs.js\",\n  \"module\": \"dist/badger-utils.esm.js\",\n  \"browser\": \"dist/badger-utils.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"require\": \"./dist/badger-utils.cjs.js\",\n      \"import\": \"./dist/badger-utils.esm.js\"\n    }\n  },\n  \"author\": \"Andy Wardley\",\n  \"license\": \"MIT\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/abw/badger-utils.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/abw/badger-utils/issues\"\n  },\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"dev\": \"rollup -c -w\",\n    \"lint\": \"eslint 'src/**/*'\",\n    \"docs:build\": \"esdoc\",\n    \"docs:serve\": \"serve docs\",\n    \"test\": \"ava\",\n    \"pretest\": \"pnpm run build\"\n  },\n  \"keywords\": [\n    \"badger\",\n    \"utility\"\n  ],\n  \"devDependencies\": {\n    \"@itsjamie/esdoc-cli\": \"^0.5.0\",\n    \"@itsjamie/esdoc-core\": \"^0.5.0\",\n    \"@itsjamie/esdoc-importpath-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-inject-style-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-standard-plugin\": \"^0.5.0\",\n    \"@rollup/plugin-commonjs\": \"^11.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^7.1.3\",\n    \"ava\": \"^4.3.0\",\n    \"eslint\": \"^8.20.0\",\n    \"rollup\": \"^2\",\n    \"rollup-plugin-terser\": \"^7.0.2\"\n  },\n  \"dependencies\": {\n  }\n}\n",
+    "content": "{\n  \"name\": \"@abw/badger-utils\",\n  \"version\": \"1.0.15\",\n  \"description\": \"Javascript utility modules\",\n  \"type\": \"module\",\n  \"main\": \"dist/badger-utils.cjs.js\",\n  \"module\": \"dist/badger-utils.esm.js\",\n  \"browser\": \"dist/badger-utils.umd.js\",\n  \"exports\": {\n    \".\": {\n      \"require\": \"./dist/badger-utils.cjs.js\",\n      \"import\": \"./dist/badger-utils.esm.js\"\n    }\n  },\n  \"author\": \"Andy Wardley\",\n  \"license\": \"MIT\",\n  \"files\": [\n    \"dist\"\n  ],\n  \"repository\": {\n    \"type\": \"git\",\n    \"url\": \"git+https://github.com/abw/badger-utils.git\"\n  },\n  \"bugs\": {\n    \"url\": \"https://github.com/abw/badger-utils/issues\"\n  },\n  \"scripts\": {\n    \"build\": \"rollup -c\",\n    \"dev\": \"rollup -c -w\",\n    \"lint\": \"eslint 'src/**/*'\",\n    \"docs:build\": \"esdoc\",\n    \"docs:serve\": \"serve docs\",\n    \"test\": \"ava\",\n    \"pretest\": \"pnpm run build\"\n  },\n  \"keywords\": [\n    \"badger\",\n    \"utility\"\n  ],\n  \"devDependencies\": {\n    \"@itsjamie/esdoc-cli\": \"^0.5.0\",\n    \"@itsjamie/esdoc-core\": \"^0.5.0\",\n    \"@itsjamie/esdoc-importpath-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-inject-style-plugin\": \"^0.5.0\",\n    \"@itsjamie/esdoc-standard-plugin\": \"^0.5.0\",\n    \"@rollup/plugin-commonjs\": \"^11.0.1\",\n    \"@rollup/plugin-node-resolve\": \"^7.1.3\",\n    \"ava\": \"^4.3.0\",\n    \"eslint\": \"^8.20.0\",\n    \"rollup\": \"^2\",\n    \"rollup-plugin-terser\": \"^7.0.2\"\n  },\n  \"dependencies\": {\n  }\n}\n",
     "longname": "/Users/abw/js/badger-utils/package.json",
     "name": "package.json",
     "static": true,
@@ -3139,7 +3252,7 @@
   },
   {
     "kind": "manualIndex",
-    "content": "# badger-utils\n\n<img src=\"./images/badger2.svg\" width=\"300\"/>\n\nThis is the manual for the `badger-utils` Javascript module.\n\n* [Getting Started](manual/getting_started.html)\n* [Assertions](manual/assertions.html)\n* [Number Functions](manual/numbers.html)\n* [Text Functions](manual/text.html)\n* [Object Functions](manual/objects.html)\n* [Sorting Functions](manual/sort.html)\n* [Timing Functions](manual/timing.html)\n* [Miscellaneous Functions](manual/misc.html)\n\n# Author\n[Andy Wardley](https://github.com/abw)\n",
+    "content": "# badger-utils\n\n<img src=\"./images/badger2.svg\" width=\"300\"/>\n\nThis is the manual for the `badger-utils` Javascript module.\n\n* [Getting Started](manual/getting_started.html)\n* [Assertions](manual/assertions.html)\n* [Number Functions](manual/numbers.html)\n* [Text Functions](manual/text.html)\n* [Object Functions](manual/objects.html)\n* [Sorting Functions](manual/sort.html)\n* [Timing Functions](manual/timing.html)\n* [Error Functions](manual/errors.html)\n* [Miscellaneous Functions](manual/misc.html)\n\n# Author\n[Andy Wardley](https://github.com/abw)\n",
     "longname": "/Users/abw/js/badger-utils/manual/index.md",
     "name": "./manual/index.md",
     "static": true,
@@ -3173,7 +3286,7 @@
     "kind": "manual",
     "longname": "/Users/abw/js/badger-utils/manual/text.md",
     "name": "./manual/text.md",
-    "content": "# Text\n\nVarious utility functions for working with text.\n\n## splitList(value)\n\nFunction to split a string of words into an array.  Words can\nbe delimited by commas and/or spaces. If the argument is already\nan array then the array is returned unmodified.\n\n```js\nsplitList(\"foo bar baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo,bar,baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo, bar, baz\")  // [\"foo\", \"bar\", \"baz\"]\n```\n\n## splitHash(value, set=true, hash={})\n\nFunction to split a string of whitespace delimited words, or an array of\nwords, into an object which can be used as a hash table for quick lookups.\nThe input is first passed to the [splitList()](#splitlist-value-) function.\nIt returns an object where the keys are the words extracted from the input\nand the values are set to be `true`.\n\n```js\nsplitHash(\"foo bar baz\")    // { foo: true, bar: true, baz: true }\n```\n\nAn optional second argument can be passed to set the value to be used for\nthe hash table values.\n\n```js\nsplitHash(\"foo bar baz\", 1)    // { foo: 1, bar: 1, baz: 1 }\n```\n\nThis can be a function which will be passed the key and should return the\ncorresponding value.\n\n```js\nsplitHash(\"foo bar baz\", k => k)    // { foo: \"foo\", bar: \"bar\", baz: \"baz\" }\n```\n\nA third optional argument can be passed which is an object to populate with the\nresults.\n\n```js\nlet stuff = { foo: \"foo\" }\nsplitHash(\"bar baz\", k => k, stuff)    // { foo: \"foo\", bar: \"bar\", baz: \"baz\" }\n```\n\n## joinList(array, joint=' ', lastJoint=joint)\n\nFunction to join an array of strings into a single string.  The\ndefault delimiter is a single space.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"])\n    // => \"Tom Dick Harry\"\n```\n\nA delimiter can be provided as a second argument.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \")\n    // \"Tom, Dick, Harry\"\n```\n\nA final delimiter can be provided as a third argument\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \", \" and \")\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListAnd(array, joint=', ', lastJoint=' and ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' and '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListOr(array, joint=', ', lastJoint=' or ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' or '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick or Harry\"\n```\n\n## capitalise(word) / capitalize(word)\n\nThis function (provided with spellings in both British and American English)\ncapitalises a word.  The first character will be convert to upper case and\nthe remaining characters to lower case.\n\n```js\ncapitalise(\"badger\")    // => Badger\ncapitalise(\"BADGER\")    // => Badger\n```\n\n## capitaliseWords(string) / capitalizeWords(string)\n\nThis function (provided with spellings in both British and American English)\ncapitalises all words in a string.\n\n```js\ncapitalise(\"badger mushroom snake\")    // => Badger Mushroom Snake\ncapitalise(\"BADGER MUSHROOM SNAKE\")    // => Badger Mushroom Snake\n```\n\n## snakeToStudly(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto studly caps (e.g. `BadgerMushroomSnake`)\n\n```js\nsnakeToStudly(\"badger_mushroom_snake\") // => BadgerMushroomSnake\n```\n\n## snakeToCamel(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto camel case (e.g. `badgerMushroomSnake`)\n\n```js\nsnakeToCamel(\"badger_mushroom_snake\") // => badgerMushroomSnake\n```\n\n## plural(singular)\n\nThis is a **very** simple function for pluralising English words.\n\nIt only works on words with standard endings and plural forms,\nbecause pluralising words is notoriously difficult.  So don't\nexpect words like `woman`, `goose` or `sheep` to pluralise correctly.\n\n```js\nplural(\"badger\") // => \"badgers\"\nplural(\"doggy\")  // => \"doggies\"\nplural(\"grass\")  // => \"grasses\"\nplural(\"lash\")   // => \"lashes\"\nplural(\"watch\")  // => \"watches\"\nplural(\"box\")    // => \"boxes\"\n```\n\nIf you do have special cases then you can pass them as the second\nargument.  This is a simple lookup table mapping singular forms to\ntheir plural forms for words that you might need to pluralise that\nthe basic function can't handle.\n\n```js\nconst specialCases = {\n  woman: \"women\",\n  goose: \"geese\",\n  sheep: \"sheep\"\n}\nplural(\"woman\", specialCases) // => \"women\"\n```\n\n**DEPRECATION NOTE**: This function was originally called `pluralise()`\nwith an alias of `pluralize()` for our American friends who like the\nletter z.  It has been renamed to `plural()`.  The `pluralise()`\nand `pluralize()` aliases still exist but will be deprecated in a future\nversion.\n\n## singular(plural)\n\nThis is another **very** simple function for reversing the action\nof the `plural()` function to return the singular form of a plural\nnoun.\n\nIt only works on words with standard endings and plural forms,\nfor the same reasons that `plural()` is limited.\n\n```js\nsingular(\"badgers\")  // => \"badger\"\nsingular(\"doggies\")  // => \"doggy\"\nsingular(\"grasses\")  // => \"grass\"\nsingular(\"lashes\")   // => \"lash\"\nsingular(\"watches\")  // => \"watch\"\nsingular(\"boxes\")    // => \"box\"\n```\n\nIt also supports a second argument for providing special cases to help\nit out with words that have irregular pluralisations.\n\n```js\nconst specialCases = {\n  women: \"woman\",\n  geese: \"goose\",\n  sheep: \"sheep\"\n}\nsingular(\"women\", specialCases) // => \"woman\"\n```\n\n## inflect(n, singular, plural, no='no')\n\nThis function takes a number and a singular noun and attempts to\nconstruct a correct plural form.  It is only likely to work with\nEnglish or languages that work similar to English in using the plural\nform for zero or more than one item (e.g. \"no badger**s**\", \"2 badger**s**\")\nand singular form for exactly one item (e.g. \"1 badger\").\n\n```js\ninflect(0, \"badger\")   // \"no badgers\"\ninflect(1, \"badger\")   // \"1 badger\"\ninflect(2, \"badger\")   // \"2 badgers\"\n```\n\nIt uses the [plural()](#plural-singular-) function\nto construct the plural form.  The plural form can be provided as an optional\nthird argument if that fails to do the right thing.\n\n```js\ninflect(0, \"goose\", \"geese\")   // \"no geese\"\ninflect(1, \"goose\", \"geese\")   // \"1 goose\"\ninflect(2, \"goose\", \"geese\")   // \"2 geese\"\n```\n\nWhen `n` is zero, it will use `no` instead of the number `0`.  An optional\nfourth argument can be provided to change this.\n\n```js\ninflect(0, \"goose\", \"geese\", \"none more\")   // \"none more geese\"\n```\n\n## Inflect(n, singular, plural, no='No')\n\nThis is a wrapper around the [inflect()](#inflect-n--singular--plural--no---39-no--39--)\nfunction which capitalised the first letter, e.g. returning `\"No badgers\"` rather\nthan `\"no badgers\"`.\n\n```js\nInflect(0, \"badger\")   // \"No badgers\"\n```\n\n## splitLines(text)\n\nThis function splits a text string into lines.  Any blank lines are ignored.\n\n```js\nsplitLines(\"foo\\nbar\\n\\n\\nbaz\")\n    // => [\"foo\", \"bar\", \"baz\"]\n",
+    "content": "# Text\n\nVarious utility functions for working with text.\n\n## splitLines(text)\n\nThis function splits a text string into lines.  Any blank lines are ignored.\n\n```js\nsplitLines(\"foo\\nbar\\n\\n\\nbaz\")\n    // => [\"foo\", \"bar\", \"baz\"]\n```\n\n## splitList(value)\n\nFunction to split a string of words into an array.  Words can\nbe delimited by commas and/or spaces. If the argument is already\nan array then the array is returned unmodified.\n\n```js\nsplitList(\"foo bar baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo,bar,baz\")    // [\"foo\", \"bar\", \"baz\"]\nsplitList(\"foo, bar, baz\")  // [\"foo\", \"bar\", \"baz\"]\n```\n\n## splitHash(value, set=true, hash={})\n\nFunction to split a string of whitespace delimited words, or an array of\nwords, into an object which can be used as a hash table for quick lookups.\nThe input is first passed to the [splitList()](#splitlist-value-) function.\nIt returns an object where the keys are the words extracted from the input\nand the values are set to be `true`.\n\n```js\nsplitHash(\"foo bar baz\")    // { foo: true, bar: true, baz: true }\n```\n\nAn optional second argument can be passed to set the value to be used for\nthe hash table values.\n\n```js\nsplitHash(\"foo bar baz\", 1)    // { foo: 1, bar: 1, baz: 1 }\n```\n\nThis can be a function which will be passed the key and should return the\ncorresponding value.\n\n```js\nsplitHash(\"foo bar baz\", k => k)    // { foo: \"foo\", bar: \"bar\", baz: \"baz\" }\n```\n\nA third optional argument can be passed which is an object to populate with the\nresults.\n\n```js\nlet stuff = { foo: \"foo\" }\nsplitHash(\"bar baz\", k => k, stuff)    // { foo: \"foo\", bar: \"bar\", baz: \"baz\" }\n```\n\n## joinList(array, joint=' ', lastJoint=joint)\n\nFunction to join an array of strings into a single string.  The\ndefault delimiter is a single space.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"])\n    // => \"Tom Dick Harry\"\n```\n\nA delimiter can be provided as a second argument.\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \")\n    // \"Tom, Dick, Harry\"\n```\n\nA final delimiter can be provided as a third argument\n\n```js\njoinList([\"Tom\", \"Dick\", \"Harry\"], \", \", \" and \")\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListAnd(array, joint=', ', lastJoint=' and ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' and '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick and Harry\"\n```\n\n## joinListOr(array, joint=', ', lastJoint=' or ')\n\nA wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)\nfunction which defaults the `joint` to `', '` and the `lastJoint` to `' or '`\n\n```js\njoinListAnd([\"Tom\", \"Dick\", \"Harry\"])\n    // \"Tom, Dick or Harry\"\n```\n\n## capitalise(word) / capitalize(word)\n\nThis function (provided with spellings in both British and American English)\ncapitalises a word.  The first character will be convert to upper case and\nthe remaining characters to lower case.\n\n```js\ncapitalise(\"badger\")    // => Badger\ncapitalise(\"BADGER\")    // => Badger\n```\n\n## capitaliseWords(string) / capitalizeWords(string)\n\nThis function (provided with spellings in both British and American English)\ncapitalises all words in a string.\n\n```js\ncapitalise(\"badger mushroom snake\")    // => Badger Mushroom Snake\ncapitalise(\"BADGER MUSHROOM SNAKE\")    // => Badger Mushroom Snake\n```\n\n## snakeToStudly(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto studly caps (e.g. `BadgerMushroomSnake`)\n\n```js\nsnakeToStudly(\"badger_mushroom_snake\") // => BadgerMushroomSnake\n```\n\n## snakeToCamel(snake)\n\nThis function converts a snake case string (e.g. `badger_mushroom_snake`)\nto camel case (e.g. `badgerMushroomSnake`)\n\n```js\nsnakeToCamel(\"badger_mushroom_snake\") // => badgerMushroomSnake\n```\n\n## plural(singular)\n\nThis is a **very** simple function for pluralising English words.\n\nIt only works on words with standard endings and plural forms,\nbecause pluralising words is notoriously difficult.  So don't\nexpect words like `woman`, `goose` or `sheep` to pluralise correctly.\n\n```js\nplural(\"badger\") // => \"badgers\"\nplural(\"doggy\")  // => \"doggies\"\nplural(\"grass\")  // => \"grasses\"\nplural(\"lash\")   // => \"lashes\"\nplural(\"watch\")  // => \"watches\"\nplural(\"box\")    // => \"boxes\"\n```\n\nIf you do have special cases then you can pass them as the second\nargument.  This is a simple lookup table mapping singular forms to\ntheir plural forms for words that you might need to pluralise that\nthe basic function can't handle.\n\n```js\nconst specialCases = {\n  woman: \"women\",\n  goose: \"geese\",\n  sheep: \"sheep\"\n}\nplural(\"woman\", specialCases) // => \"women\"\n```\n\n**DEPRECATION NOTE**: This function was originally called `pluralise()`\nwith an alias of `pluralize()` for our American friends who like the\nletter z.  It has been renamed to `plural()`.  The `pluralise()`\nand `pluralize()` aliases still exist but will be deprecated in a future\nversion.\n\n## singular(plural)\n\nThis is another **very** simple function for reversing the action\nof the `plural()` function to return the singular form of a plural\nnoun.\n\nIt only works on words with standard endings and plural forms,\nfor the same reasons that `plural()` is limited.\n\n```js\nsingular(\"badgers\")  // => \"badger\"\nsingular(\"doggies\")  // => \"doggy\"\nsingular(\"grasses\")  // => \"grass\"\nsingular(\"lashes\")   // => \"lash\"\nsingular(\"watches\")  // => \"watch\"\nsingular(\"boxes\")    // => \"box\"\n```\n\nIt also supports a second argument for providing special cases to help\nit out with words that have irregular pluralisations.\n\n```js\nconst specialCases = {\n  women: \"woman\",\n  geese: \"goose\",\n  sheep: \"sheep\"\n}\nsingular(\"women\", specialCases) // => \"woman\"\n```\n\n## inflect(n, singular, plural, no='no')\n\nThis function takes a number and a singular noun and attempts to\nconstruct a correct plural form.  It is only likely to work with\nEnglish or languages that work similar to English in using the plural\nform for zero or more than one item (e.g. \"no badger**s**\", \"2 badger**s**\")\nand singular form for exactly one item (e.g. \"1 badger\").\n\n```js\ninflect(0, \"badger\")   // \"no badgers\"\ninflect(1, \"badger\")   // \"1 badger\"\ninflect(2, \"badger\")   // \"2 badgers\"\n```\n\nIt uses the [plural()](#plural-singular-) function\nto construct the plural form.  The plural form can be provided as an optional\nthird argument if that fails to do the right thing.\n\n```js\ninflect(0, \"goose\", \"geese\")   // \"no geese\"\ninflect(1, \"goose\", \"geese\")   // \"1 goose\"\ninflect(2, \"goose\", \"geese\")   // \"2 geese\"\n```\n\nWhen `n` is zero, it will use `no` instead of the number `0`.  An optional\nfourth argument can be provided to change this.\n\n```js\ninflect(0, \"goose\", \"geese\", \"none more\")   // \"none more geese\"\n```\n\n## Inflect(n, singular, plural, no='No')\n\nThis is a wrapper around the [inflect()](#inflect-n--singular--plural--no---39-no--39--)\nfunction which capitalised the first letter, e.g. returning `\"No badgers\"` rather\nthan `\"no badgers\"`.\n\n```js\nInflect(0, \"badger\")   // \"No badgers\"\n```\n\n## format(message, data)\n\nThis implements a minimal template expansion function that inserts\ndata items into a message string.  Placeholders should be embedded\nin the message string in angle brackets.\n\n```js\nconst message = format('Hello <name>!', { name: 'World' });\n// -> Hello World!\n```",
     "static": true,
     "access": "public"
   },
