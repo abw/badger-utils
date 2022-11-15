@@ -23,6 +23,7 @@
             "./manual/objects.md",
             "./manual/sort.md",
             "./manual/timing.md",
+            "./manual/errors.md",
             "./manual/misc.md"
           ]
         }

@@ -26,7 +26,7 @@ expanding a message template using the
 [format()](manual/text.html#format-message--data-) function.
 
 ```js
-failMsg('Failed to <action> record', { action: 'insert' })
+failMsg('Failed to &lt;action&gt; record', { action: 'insert' })
 // -> throws error with message 'Failed to insert record'
 ```
 

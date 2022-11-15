@@ -255,6 +255,6 @@ data items into a message string.  Placeholders should be embedded
 in the message string in angle brackets.
 
 ```js
-const message = format('Hello <name>!', { name: 'World' });
+const message = format('Hello &lt;name&gt;!', { name: 'World' });
 // -> Hello World!
 ```
