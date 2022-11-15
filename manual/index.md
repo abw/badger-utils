@@ -11,6 +11,7 @@ This is the manual for the `badger-utils` Javascript module.
 * [Object Functions](manual/objects.html)
 * [Sorting Functions](manual/sort.html)
 * [Timing Functions](manual/timing.html)
+* [Error Functions](manual/errors.html)
 * [Miscellaneous Functions](manual/misc.html)
 
 # Author

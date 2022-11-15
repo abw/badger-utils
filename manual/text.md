@@ -2,6 +2,15 @@
 
 Various utility functions for working with text.
 
+## splitLines(text)
+
+This function splits a text string into lines.  Any blank lines are ignored.
+
+```js
+splitLines("foo\nbar\n\n\nbaz")
+    // => ["foo", "bar", "baz"]
+```
+
 ## splitList(value)
 
 Function to split a string of words into an array.  Words can
@@ -239,10 +248,13 @@ than `"no badgers"`.
 Inflect(0, "badger")   // "No badgers"
 ```
 
-## splitLines(text)
+## format(message, data)
 
-This function splits a text string into lines.  Any blank lines are ignored.
+This implements a minimal template expansion function that inserts
+data items into a message string.  Placeholders should be embedded
+in the message string in angle brackets.
 
 ```js
-splitLines("foo\nbar\n\n\nbaz")
-    // => ["foo", "bar", "baz"]
+const message = format('Hello <name>!', { name: 'World' });
+// -> Hello World!
+```
