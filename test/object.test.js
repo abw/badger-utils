@@ -1,6 +1,6 @@
 import test from 'ava';
 import {
-  objMap, extract, remove
+  objMap, extract, remove, keys, values, entries
 } from '../src/utils/object.js'
 
 //-----------------------------------------------------------------------------
@@ -184,5 +184,38 @@ test(
     let removed = remove(object, 'aa');
     t.deepEqual(object, { ab: 20, bc: 30, bd: 40 });
     t.is(removed, 10);
+  }
+)
+
+//-----------------------------------------------------------------------------
+// keys()
+//-----------------------------------------------------------------------------
+test(
+  'keys()',
+  t => {
+    let object = { a: 'alpha', b: 'bravo', c: 'charlie' };
+    t.deepEqual(keys(object), ['a', 'b', 'c']);
+  }
+)
+
+//-----------------------------------------------------------------------------
+// values()
+//-----------------------------------------------------------------------------
+test(
+  'values()',
+  t => {
+    let object = { a: 'alpha', b: 'bravo', c: 'charlie' };
+    t.deepEqual(values(object), ['alpha', 'bravo', 'charlie']);
+  }
+)
+
+//-----------------------------------------------------------------------------
+// entries()
+//-----------------------------------------------------------------------------
+test(
+  'entries()',
+  t => {
+    let object = { a: 'alpha', b: 'bravo', c: 'charlie' };
+    t.deepEqual(entries(object), [['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie']]);
   }
 )

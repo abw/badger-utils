@@ -118,4 +118,37 @@ export const remove = (object, key) => {
   return value;
 }
 
+/**
+ * Alias for `Object.keys`.
+ * @param {Object} object - source object
+ * @return {Array} - array of keys
+ * @example
+ * keys(
+ *   { a: 'alpha', b: 'bravo', c: 'charlie' },
+ * ) // => ['a', 'b', 'c']
+ */
+export const keys = Object.keys;
+
+/**
+ * Alias for `Object.values`.
+ * @param {Object} object - source object
+ * @return {Array} - array of values
+ * @example
+ * values(
+ *   { a: 'alpha', b: 'bravo', c: 'charlie' },
+ * ) // => ['alpha', 'bravo', 'charlie']
+ */
+export const values = Object.values;
+
+/**
+ * Alias for `Object.entries`.
+ * @param {Object} object - source object
+ * @return {Array} - array of `[key, value]` arrays
+ * @example
+ * entries(
+ *   { a: 'alpha', b: 'bravo', c: 'charlie' },
+ * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]
+ */
+export const entries = Object.entries;
+
 

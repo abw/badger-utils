@@ -125,3 +125,38 @@ extract(
 // => { a: 20, b: 40 }
 ```
 
+## keys(object)
+
+An alias for `Object.keys` which returns an array of the object's own
+enumerable string-keyed property names.
+
+```js
+keys(
+  { a: 10, b: 20, c: 30 }
+)
+// => ['a', 'b', 'c']
+```
+
+## values(object)
+
+An alias for `Object.values` which returns an array of the object's own
+enumerable string-keyed property values.
+
+```js
+values(
+  { a: 10, b: 20, c: 30 }
+)
+// => [10, 20, 30]
+```
+
+## entries(object)
+
+An alias for `Object.entries` which returns an array of the object's own
+enumerable string-keyed property key-value pairs.
+
+```js
+entries(
+  { a: 10, b: 20, c: 30 }
+)
+// => [['a', 10], ['b', 20], ['c', 30]]
+```
