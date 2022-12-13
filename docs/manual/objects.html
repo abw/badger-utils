@@ -96,6 +96,9 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#objmap-obj--fn-" data-ice="link">objMap(obj, fn)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#remove-object--key-" data-ice="link">remove(object, key)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#extract-object--keys--options-" data-ice="link">extract(object, keys, options)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#keys-object-" data-ice="link">keys(object)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#values-object-" data-ice="link">values(object)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#entries-object-" data-ice="link">entries(object)</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -218,6 +221,24 @@ modified value.</p>
   { value: value =&gt; value * 2 }
 )
 // =&gt; { a: 20, b: 40 }</code></code></pre>
+<h2 id="keys-object-">keys(object)</h2><p>An alias for <code>Object.keys</code> which returns an array of the object's own
+enumerable string-keyed property names.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">keys(
+  { a: 10, b: 20, c: 30 }
+)
+// =&gt; ['a', 'b', 'c']</code></code></pre>
+<h2 id="values-object-">values(object)</h2><p>An alias for <code>Object.values</code> which returns an array of the object's own
+enumerable string-keyed property values.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">values(
+  { a: 10, b: 20, c: 30 }
+)
+// =&gt; [10, 20, 30]</code></code></pre>
+<h2 id="entries-object-">entries(object)</h2><p>An alias for <code>Object.entries</code> which returns an array of the object's own
+enumerable string-keyed property key-value pairs.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">entries(
+  { a: 10, b: 20, c: 30 }
+)
+// =&gt; [['a', 10], ['b', 20], ['c', 30]]</code></code></pre>
 </div>
 </div>
 

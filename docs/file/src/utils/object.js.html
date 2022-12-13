@@ -80,7 +80,10 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-splitList">splitList</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-debounce">debounce</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sleep">sleep</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-entries">entries</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-keys">keys</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-objSubset">objSubset</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-values">values</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span></span></li>
@@ -211,6 +214,39 @@ export const remove = (object, key) =&gt; {
   delete object[key];
   return value;
 }
+
+/**
+ * Alias for `Object.keys`.
+ * @param {Object} object - source object
+ * @return {Array} - array of keys
+ * @example
+ * keys(
+ *   { a: 'alpha', b: 'bravo', c: 'charlie' },
+ * ) // =&gt; ['a', 'b', 'c']
+ */
+export const keys = Object.keys;
+
+/**
+ * Alias for `Object.values`.
+ * @param {Object} object - source object
+ * @return {Array} - array of values
+ * @example
+ * values(
+ *   { a: 'alpha', b: 'bravo', c: 'charlie' },
+ * ) // =&gt; ['alpha', 'bravo', 'charlie']
+ */
+export const values = Object.values;
+
+/**
+ * Alias for `Object.entries`.
+ * @param {Object} object - source object
+ * @return {Array} - array of `[key, value]` arrays
+ * @example
+ * entries(
+ *   { a: 'alpha', b: 'bravo', c: 'charlie' },
+ * ) // =&gt; [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]
+ */
+export const entries = Object.entries;
 
 
 </code></pre>

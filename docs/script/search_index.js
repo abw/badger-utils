@@ -72,6 +72,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~entries",
+    "variable/index.html#static-variable-entries",
+    "<span>entries</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
+  ],
+  [
     "@abw/badger-utils~extract",
     "function/index.html#static-function-extract",
     "<span>extract</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -216,6 +222,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~keys",
+    "variable/index.html#static-variable-keys",
+    "<span>keys</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
+  ],
+  [
     "@abw/badger-utils~multisort",
     "function/index.html#static-function-multiSort",
     "<span>multiSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -358,6 +370,12 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-stringSort",
     "<span>stringSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
+  ],
+  [
+    "@abw/badger-utils~values",
+    "variable/index.html#static-variable-values",
+    "<span>values</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "variable"
   ],
   [
     "src/.external-ecmascript.js~array",

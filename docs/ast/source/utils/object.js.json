@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 3198,
+  "end": 4014,
   "loc": {
     "start": {
       "line": 1,
@@ -9,16 +9,16 @@
       "index": 0
     },
     "end": {
-      "line": 122,
+      "line": 155,
       "column": 0,
-      "index": 3198
+      "index": 4014
     }
   },
   "errors": [],
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 3198,
+    "end": 4014,
     "loc": {
       "start": {
         "line": 1,
@@ -26,9 +26,9 @@
         "index": 0
       },
       "end": {
-        "line": 122,
+        "line": 155,
         "column": 0,
-        "index": 3198
+        "index": 4014
       }
     },
     "sourceType": "module",
@@ -4854,8 +4854,47 @@
               }
             }
           ],
-          "trailingComments": []
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Alias for `Object.keys`.\n * @param {Object} object - source object\n * @return {Array} - array of keys\n * @example\n * keys(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['a', 'b', 'c']\n ",
+              "start": 3197,
+              "end": 3404,
+              "loc": {
+                "start": {
+                  "line": 121,
+                  "column": 0,
+                  "index": 3197
+                },
+                "end": {
+                  "line": 129,
+                  "column": 3,
+                  "index": 3404
+                }
+              }
+            }
+          ]
         },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Alias for `Object.keys`.\n * @param {Object} object - source object\n * @return {Array} - array of keys\n * @example\n * keys(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['a', 'b', 'c']\n ",
+            "start": 3197,
+            "end": 3404,
+            "loc": {
+              "start": {
+                "line": 121,
+                "column": 0,
+                "index": 3197
+              },
+              "end": {
+                "line": 129,
+                "column": 3,
+                "index": 3404
+              }
+            }
+          }
+        ],
         "leadingComments": [
           {
             "type": "CommentBlock",
@@ -4872,6 +4911,600 @@
                 "line": 114,
                 "column": 3,
                 "index": 3085
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 3405,
+        "end": 3437,
+        "loc": {
+          "start": {
+            "line": 130,
+            "column": 0,
+            "index": 3405
+          },
+          "end": {
+            "line": 130,
+            "column": 32,
+            "index": 3437
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 3412,
+          "end": 3437,
+          "loc": {
+            "start": {
+              "line": 130,
+              "column": 7,
+              "index": 3412
+            },
+            "end": {
+              "line": 130,
+              "column": 32,
+              "index": 3437
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 3418,
+              "end": 3436,
+              "loc": {
+                "start": {
+                  "line": 130,
+                  "column": 13,
+                  "index": 3418
+                },
+                "end": {
+                  "line": 130,
+                  "column": 31,
+                  "index": 3436
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 3418,
+                "end": 3422,
+                "loc": {
+                  "start": {
+                    "line": 130,
+                    "column": 13,
+                    "index": 3418
+                  },
+                  "end": {
+                    "line": 130,
+                    "column": 17,
+                    "index": 3422
+                  },
+                  "identifierName": "keys"
+                },
+                "name": "keys"
+              },
+              "init": {
+                "type": "MemberExpression",
+                "start": 3425,
+                "end": 3436,
+                "loc": {
+                  "start": {
+                    "line": 130,
+                    "column": 20,
+                    "index": 3425
+                  },
+                  "end": {
+                    "line": 130,
+                    "column": 31,
+                    "index": 3436
+                  }
+                },
+                "object": {
+                  "type": "Identifier",
+                  "start": 3425,
+                  "end": 3431,
+                  "loc": {
+                    "start": {
+                      "line": 130,
+                      "column": 20,
+                      "index": 3425
+                    },
+                    "end": {
+                      "line": 130,
+                      "column": 26,
+                      "index": 3431
+                    },
+                    "identifierName": "Object"
+                  },
+                  "name": "Object"
+                },
+                "computed": false,
+                "property": {
+                  "type": "Identifier",
+                  "start": 3432,
+                  "end": 3436,
+                  "loc": {
+                    "start": {
+                      "line": 130,
+                      "column": 27,
+                      "index": 3432
+                    },
+                    "end": {
+                      "line": 130,
+                      "column": 31,
+                      "index": 3436
+                    },
+                    "identifierName": "keys"
+                  },
+                  "name": "keys"
+                }
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Alias for `Object.keys`.\n * @param {Object} object - source object\n * @return {Array} - array of keys\n * @example\n * keys(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['a', 'b', 'c']\n ",
+              "start": 3197,
+              "end": 3404,
+              "loc": {
+                "start": {
+                  "line": 121,
+                  "column": 0,
+                  "index": 3197
+                },
+                "end": {
+                  "line": 129,
+                  "column": 3,
+                  "index": 3404
+                }
+              }
+            }
+          ],
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Alias for `Object.values`.\n * @param {Object} object - source object\n * @return {Array} - array of values\n * @example\n * values(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['alpha', 'bravo', 'charlie']\n ",
+              "start": 3439,
+              "end": 3666,
+              "loc": {
+                "start": {
+                  "line": 132,
+                  "column": 0,
+                  "index": 3439
+                },
+                "end": {
+                  "line": 140,
+                  "column": 3,
+                  "index": 3666
+                }
+              }
+            }
+          ]
+        },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Alias for `Object.values`.\n * @param {Object} object - source object\n * @return {Array} - array of values\n * @example\n * values(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['alpha', 'bravo', 'charlie']\n ",
+            "start": 3439,
+            "end": 3666,
+            "loc": {
+              "start": {
+                "line": 132,
+                "column": 0,
+                "index": 3439
+              },
+              "end": {
+                "line": 140,
+                "column": 3,
+                "index": 3666
+              }
+            }
+          }
+        ],
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Alias for `Object.keys`.\n * @param {Object} object - source object\n * @return {Array} - array of keys\n * @example\n * keys(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['a', 'b', 'c']\n ",
+            "start": 3197,
+            "end": 3404,
+            "loc": {
+              "start": {
+                "line": 121,
+                "column": 0,
+                "index": 3197
+              },
+              "end": {
+                "line": 129,
+                "column": 3,
+                "index": 3404
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 3667,
+        "end": 3703,
+        "loc": {
+          "start": {
+            "line": 141,
+            "column": 0,
+            "index": 3667
+          },
+          "end": {
+            "line": 141,
+            "column": 36,
+            "index": 3703
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 3674,
+          "end": 3703,
+          "loc": {
+            "start": {
+              "line": 141,
+              "column": 7,
+              "index": 3674
+            },
+            "end": {
+              "line": 141,
+              "column": 36,
+              "index": 3703
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 3680,
+              "end": 3702,
+              "loc": {
+                "start": {
+                  "line": 141,
+                  "column": 13,
+                  "index": 3680
+                },
+                "end": {
+                  "line": 141,
+                  "column": 35,
+                  "index": 3702
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 3680,
+                "end": 3686,
+                "loc": {
+                  "start": {
+                    "line": 141,
+                    "column": 13,
+                    "index": 3680
+                  },
+                  "end": {
+                    "line": 141,
+                    "column": 19,
+                    "index": 3686
+                  },
+                  "identifierName": "values"
+                },
+                "name": "values"
+              },
+              "init": {
+                "type": "MemberExpression",
+                "start": 3689,
+                "end": 3702,
+                "loc": {
+                  "start": {
+                    "line": 141,
+                    "column": 22,
+                    "index": 3689
+                  },
+                  "end": {
+                    "line": 141,
+                    "column": 35,
+                    "index": 3702
+                  }
+                },
+                "object": {
+                  "type": "Identifier",
+                  "start": 3689,
+                  "end": 3695,
+                  "loc": {
+                    "start": {
+                      "line": 141,
+                      "column": 22,
+                      "index": 3689
+                    },
+                    "end": {
+                      "line": 141,
+                      "column": 28,
+                      "index": 3695
+                    },
+                    "identifierName": "Object"
+                  },
+                  "name": "Object"
+                },
+                "computed": false,
+                "property": {
+                  "type": "Identifier",
+                  "start": 3696,
+                  "end": 3702,
+                  "loc": {
+                    "start": {
+                      "line": 141,
+                      "column": 29,
+                      "index": 3696
+                    },
+                    "end": {
+                      "line": 141,
+                      "column": 35,
+                      "index": 3702
+                    },
+                    "identifierName": "values"
+                  },
+                  "name": "values"
+                }
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Alias for `Object.values`.\n * @param {Object} object - source object\n * @return {Array} - array of values\n * @example\n * values(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['alpha', 'bravo', 'charlie']\n ",
+              "start": 3439,
+              "end": 3666,
+              "loc": {
+                "start": {
+                  "line": 132,
+                  "column": 0,
+                  "index": 3439
+                },
+                "end": {
+                  "line": 140,
+                  "column": 3,
+                  "index": 3666
+                }
+              }
+            }
+          ],
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Alias for `Object.entries`.\n * @param {Object} object - source object\n * @return {Array} - array of `[key, value]` arrays\n * @example\n * entries(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]\n ",
+              "start": 3705,
+              "end": 3972,
+              "loc": {
+                "start": {
+                  "line": 143,
+                  "column": 0,
+                  "index": 3705
+                },
+                "end": {
+                  "line": 151,
+                  "column": 3,
+                  "index": 3972
+                }
+              }
+            }
+          ]
+        },
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Alias for `Object.entries`.\n * @param {Object} object - source object\n * @return {Array} - array of `[key, value]` arrays\n * @example\n * entries(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]\n ",
+            "start": 3705,
+            "end": 3972,
+            "loc": {
+              "start": {
+                "line": 143,
+                "column": 0,
+                "index": 3705
+              },
+              "end": {
+                "line": 151,
+                "column": 3,
+                "index": 3972
+              }
+            }
+          }
+        ],
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Alias for `Object.values`.\n * @param {Object} object - source object\n * @return {Array} - array of values\n * @example\n * values(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['alpha', 'bravo', 'charlie']\n ",
+            "start": 3439,
+            "end": 3666,
+            "loc": {
+              "start": {
+                "line": 132,
+                "column": 0,
+                "index": 3439
+              },
+              "end": {
+                "line": 140,
+                "column": 3,
+                "index": 3666
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 3973,
+        "end": 4011,
+        "loc": {
+          "start": {
+            "line": 152,
+            "column": 0,
+            "index": 3973
+          },
+          "end": {
+            "line": 152,
+            "column": 38,
+            "index": 4011
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "VariableDeclaration",
+          "start": 3980,
+          "end": 4011,
+          "loc": {
+            "start": {
+              "line": 152,
+              "column": 7,
+              "index": 3980
+            },
+            "end": {
+              "line": 152,
+              "column": 38,
+              "index": 4011
+            }
+          },
+          "declarations": [
+            {
+              "type": "VariableDeclarator",
+              "start": 3986,
+              "end": 4010,
+              "loc": {
+                "start": {
+                  "line": 152,
+                  "column": 13,
+                  "index": 3986
+                },
+                "end": {
+                  "line": 152,
+                  "column": 37,
+                  "index": 4010
+                }
+              },
+              "id": {
+                "type": "Identifier",
+                "start": 3986,
+                "end": 3993,
+                "loc": {
+                  "start": {
+                    "line": 152,
+                    "column": 13,
+                    "index": 3986
+                  },
+                  "end": {
+                    "line": 152,
+                    "column": 20,
+                    "index": 3993
+                  },
+                  "identifierName": "entries"
+                },
+                "name": "entries"
+              },
+              "init": {
+                "type": "MemberExpression",
+                "start": 3996,
+                "end": 4010,
+                "loc": {
+                  "start": {
+                    "line": 152,
+                    "column": 23,
+                    "index": 3996
+                  },
+                  "end": {
+                    "line": 152,
+                    "column": 37,
+                    "index": 4010
+                  }
+                },
+                "object": {
+                  "type": "Identifier",
+                  "start": 3996,
+                  "end": 4002,
+                  "loc": {
+                    "start": {
+                      "line": 152,
+                      "column": 23,
+                      "index": 3996
+                    },
+                    "end": {
+                      "line": 152,
+                      "column": 29,
+                      "index": 4002
+                    },
+                    "identifierName": "Object"
+                  },
+                  "name": "Object"
+                },
+                "computed": false,
+                "property": {
+                  "type": "Identifier",
+                  "start": 4003,
+                  "end": 4010,
+                  "loc": {
+                    "start": {
+                      "line": 152,
+                      "column": 30,
+                      "index": 4003
+                    },
+                    "end": {
+                      "line": 152,
+                      "column": 37,
+                      "index": 4010
+                    },
+                    "identifierName": "entries"
+                  },
+                  "name": "entries"
+                }
+              }
+            }
+          ],
+          "kind": "const",
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Alias for `Object.entries`.\n * @param {Object} object - source object\n * @return {Array} - array of `[key, value]` arrays\n * @example\n * entries(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]\n ",
+              "start": 3705,
+              "end": 3972,
+              "loc": {
+                "start": {
+                  "line": 143,
+                  "column": 0,
+                  "index": 3705
+                },
+                "end": {
+                  "line": 151,
+                  "column": 3,
+                  "index": 3972
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        },
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Alias for `Object.entries`.\n * @param {Object} object - source object\n * @return {Array} - array of `[key, value]` arrays\n * @example\n * entries(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]\n ",
+            "start": 3705,
+            "end": 3972,
+            "loc": {
+              "start": {
+                "line": 143,
+                "column": 0,
+                "index": 3705
+              },
+              "end": {
+                "line": 151,
+                "column": 3,
+                "index": 3972
               }
             }
           }
@@ -4932,6 +5565,60 @@
           "line": 114,
           "column": 3,
           "index": 3085
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Alias for `Object.keys`.\n * @param {Object} object - source object\n * @return {Array} - array of keys\n * @example\n * keys(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['a', 'b', 'c']\n ",
+      "start": 3197,
+      "end": 3404,
+      "loc": {
+        "start": {
+          "line": 121,
+          "column": 0,
+          "index": 3197
+        },
+        "end": {
+          "line": 129,
+          "column": 3,
+          "index": 3404
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Alias for `Object.values`.\n * @param {Object} object - source object\n * @return {Array} - array of values\n * @example\n * values(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => ['alpha', 'bravo', 'charlie']\n ",
+      "start": 3439,
+      "end": 3666,
+      "loc": {
+        "start": {
+          "line": 132,
+          "column": 0,
+          "index": 3439
+        },
+        "end": {
+          "line": 140,
+          "column": 3,
+          "index": 3666
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\n * Alias for `Object.entries`.\n * @param {Object} object - source object\n * @return {Array} - array of `[key, value]` arrays\n * @example\n * entries(\n *   { a: 'alpha', b: 'bravo', c: 'charlie' },\n * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]\n ",
+      "start": 3705,
+      "end": 3972,
+      "loc": {
+        "start": {
+          "line": 143,
+          "column": 0,
+          "index": 3705
+        },
+        "end": {
+          "line": 151,
+          "column": 3,
+          "index": 3972
         }
       }
     }
