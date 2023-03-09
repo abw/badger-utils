@@ -15,7 +15,7 @@ const copy = hash({ a: 10, b: 20 });  // => { a: 10, b: 20 }
 ```
 
 An array can be passed.  This is passed to the
-[splitHash()](text.html#splithash-value--set-true--hash----) function which
+[splitHash()](manual/text.html#splithash-value--set-true--hash----) function which
 turns it into a hash array.  The elements of the array will be the keys of the
 returned objects with the values set to `true`.
 
@@ -33,7 +33,7 @@ const copy2 = hash('a,b');    // => { a: true, b: true }
 const copy3 = hash('a, b');   // => { a: true, b: true }
 ```
 
-A second argument can be passed an an object containing modification
+A second argument can be passed as an object containing modification
 functions.
 
 The `include` option can be a function used to specify which items you want

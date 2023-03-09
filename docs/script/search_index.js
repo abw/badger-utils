@@ -120,6 +120,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~hash",
+    "function/index.html#static-function-hash",
+    "<span>hash</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~havevalue",
     "function/index.html#static-function-haveValue",
     "<span>haveValue</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",

@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-range">range</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setNumberDefaults">setNumberDefaults</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-extract">extract</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hash">hash</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objMap">objMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-remove">remove</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span></span></li>
@@ -98,6 +99,32 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isArray, isFunction, isObject, isString } from './assert.js';
 import { fail } from './error.js';
 import { splitHash } from './text.js';
+
+export function hash(source, options={}) {
+  return entries(splitHash(source)).reduce(
+    (hash, [key, value]) =&gt; {
+      if (options.include) {
+        if (! options.include(key, value, source, hash)) {
+          return hash;
+        }
+      }
+      if (options.exclude) {
+        if (options.exclude(key, value, source, hash)) {
+          return hash;
+        }
+      }
+      if (options.key) {
+        key = options.key(key, value, source, hash)
+      }
+      if (options.value) {
+        value = options.value(value, key, source, hash)
+      }
+      hash[key] = value;
+      return hash;
+    },
+    { }
+  )
+}
 
 /**
  * Applies a function to each of the values of an object and returns

@@ -1,6 +1,6 @@
 {
-  "coverage": "90.62%",
-  "expectCount": 64,
+  "coverage": "89.23%",
+  "expectCount": 65,
   "actualCount": 58,
   "files": {
     "src/utils/assert.js": {
@@ -31,10 +31,11 @@
       ]
     },
     "src/utils/object.js": {
-      "expectCount": 7,
+      "expectCount": 8,
       "actualCount": 6,
       "undocumentLines": [
-        102
+        5,
+        128
       ]
     },
     "src/utils/sort.js": {

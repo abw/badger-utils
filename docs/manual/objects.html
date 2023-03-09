@@ -93,6 +93,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/objects.html"><a href="manual/objects.html" data-ice="link">Objects</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#hash-source--options-" data-ice="link">hash(source, options)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#objmap-obj--fn-" data-ice="link">objMap(obj, fn)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#remove-object--key-" data-ice="link">remove(object, key)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/objects.html"><a href="manual/objects.html#extract-object--keys--options-" data-ice="link">extract(object, keys, options)</a></li>
@@ -145,6 +146,57 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="objects">Objects</h1><p>Various utility functions for working with objects.</p>
+<h2 id="hash-source--options-">hash(source, options)</h2><p>This function can be used to create a modified version of a plain old
+Javascript object (aka "hash array" or "hash table", hence the name).</p>
+<p>A source object can be passed as the first argument.  A new copy of the
+object is returned.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash({ a: 10, b: 20 });  // =&gt; { a: 10, b: 20 }</code></code></pre>
+<p>An array can be passed.  This is passed to the
+<a href="manual/text.html#splithash-value--set-true--hash----">splitHash()</a> function which
+turns it into a hash array.  The elements of the array will be the keys of the
+returned objects with the values set to <code>true</code>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(['a', 'b']);  // =&gt; { a: true, b: true }</code></code></pre>
+<p>A string can be passed containing words separated by commas and/or spaces.
+The string is split into an array of words and then converted to an object
+as above.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy1 = hash('a b');    // =&gt; { a: true, b: true }
+const copy2 = hash('a,b');    // =&gt; { a: true, b: true }
+const copy3 = hash('a, b');   // =&gt; { a: true, b: true }</code></code></pre>
+<p>A second argument can be passed an an object containing modification
+functions.</p>
+<p>The <code>include</code> option can be a function used to specify which items you want
+to include in the output object.  It is passed a <code>key</code>, <code>value</code>, the <code>input</code>
+object and <code>output</code> object.  It should return <code>true</code> to include the entry
+in the output object, or false to exclude it.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: k =&gt; k === 'a' }   // only include the 'a' key
+);                              // =&gt; { a: 10 }</code></code></pre>
+<p>The <code>exclude</code> option works the same way, but should return <code>true</code> to exclude
+the entry and <code>false</code> to include it.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { exclude: k =&gt; k === 'a' }   // exclude the 'a' key
+);                              // =&gt; { b: 20, c: 30 }</code></code></pre>
+<p>The <code>key</code> option allows you to modify the keys of the object.  It should be
+a function that will be passed the same arguments as for <code>include</code> and
+<code>exclude</code>.  It should return the (potentially) modified key.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { key: k =&gt; k.toUpperCase() } // convert keys to upper case
+);                              // =&gt; { A: 10, B: 20, C: 30 }</code></code></pre>
+<p>The <code>value</code> option allows you to modify the value of the object.  It should
+be a function like the others, but <strong>be warned</strong> that the order of the
+first two arguments is reversed: (<code>value</code>, <code>key</code>, <code>input</code>, <code>output</code>).
+This is to accommodate the usual case where you're only interested in
+modifying the value.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { value: v =&gt; v + 1 }         // add 1 to each value
+);                              // =&gt; { A: 11, B: 21, C: 31 }</code></code></pre>
+<p>These function are applied in the order listed above: <code>include</code>, <code>exclude</code>,
+<code>key</code> and <code>value</code>.  In all cases you can modify the <code>output</code> object, e.g.
+by adding new values, but you should not modify the <code>input</code> object.</p>
 <h2 id="objmap-obj--fn-">objMap(obj, fn)</h2><p>Applies a function to each value of an object and returns a new object.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">objMap(
     { a: 'alpha', b: 'bravo' },
