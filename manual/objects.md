@@ -2,6 +2,90 @@
 
 Various utility functions for working with objects.
 
+## hash(source, options)
+
+This function can be used to create a modified version of a plain old
+Javascript object (aka "hash array" or "hash table", hence the name).
+
+A source object can be passed as the first argument.  A new copy of the
+object is returned.
+
+```js
+const copy = hash({ a: 10, b: 20 });  // => { a: 10, b: 20 }
+```
+
+An array can be passed.  This is passed to the
+[splitHash()](text.html#splithash-value--set-true--hash----) function which
+turns it into a hash array.  The elements of the array will be the keys of the
+returned objects with the values set to `true`.
+
+```js
+const copy = hash(['a', 'b']);  // => { a: true, b: true }
+```
+
+A string can be passed containing words separated by commas and/or spaces.
+The string is split into an array of words and then converted to an object
+as above.
+
+```js
+const copy1 = hash('a b');    // => { a: true, b: true }
+const copy2 = hash('a,b');    // => { a: true, b: true }
+const copy3 = hash('a, b');   // => { a: true, b: true }
+```
+
+A second argument can be passed an an object containing modification
+functions.
+
+The `include` option can be a function used to specify which items you want
+to include in the output object.  It is passed a `key`, `value`, the `input`
+object and `output` object.  It should return `true` to include the entry
+in the output object, or false to exclude it.
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: k => k === 'a' }   // only include the 'a' key
+);                              // => { a: 10 }
+```
+
+The `exclude` option works the same way, but should return `true` to exclude
+the entry and `false` to include it.
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { exclude: k => k === 'a' }   // exclude the 'a' key
+);                              // => { b: 20, c: 30 }
+```
+
+The `key` option allows you to modify the keys of the object.  It should be
+a function that will be passed the same arguments as for `include` and
+`exclude`.  It should return the (potentially) modified key.
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { key: k => k.toUpperCase() } // convert keys to upper case
+);                              // => { A: 10, B: 20, C: 30 }
+```
+
+The `value` option allows you to modify the value of the object.  It should
+be a function like the others, but **be warned** that the order of the
+first two arguments is reversed: (`value`, `key`, `input`, `output`).
+This is to accommodate the usual case where you're only interested in
+modifying the value.
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { value: v => v + 1 }         // add 1 to each value
+);                              // => { A: 11, B: 21, C: 31 }
+```
+
+These function are applied in the order listed above: `include`, `exclude`,
+`key` and `value`.  In all cases you can modify the `output` object, e.g.
+by adding new values, but you should not modify the `input` object.
+
 ## objMap(obj, fn)
 
 Applies a function to each value of an object and returns a new object.

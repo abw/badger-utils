@@ -2,6 +2,32 @@ import { isArray, isFunction, isObject, isString } from './assert.js';
 import { fail } from './error.js';
 import { splitHash } from './text.js';
 
+export function hash(source, options={}) {
+  return entries(splitHash(source)).reduce(
+    (hash, [key, value]) => {
+      if (options.include) {
+        if (! options.include(key, value, source, hash)) {
+          return hash;
+        }
+      }
+      if (options.exclude) {
+        if (options.exclude(key, value, source, hash)) {
+          return hash;
+        }
+      }
+      if (options.key) {
+        key = options.key(key, value, source, hash)
+      }
+      if (options.value) {
+        value = options.value(value, key, source, hash)
+      }
+      hash[key] = value;
+      return hash;
+    },
+    { }
+  )
+}
+
 /**
  * Applies a function to each of the values of an object and returns
  * a new object.

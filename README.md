@@ -1,4 +1,4 @@
-# badger-utils
+# Badger Utils
 
 This contains a number of Javascript utility functions that
 I tend to use in most of my Javascript projects.
