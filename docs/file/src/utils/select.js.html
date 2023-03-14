@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="">
-  <title data-ice="title">Source | Badger Utils</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/utils/select.js | Badger Utils</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -97,159 +97,32 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">59/67</span></h1>
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/select.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isArray, isFunction, isObject, isRegExp, isString } from './assert.js';
+import { fail } from './error.js';
+import { splitHash } from './text.js';
 
-<table class="files-summary" data-ice="files" data-use-coverage="true">
-  <thead>
-    <tr>
-      <td>File</td>
-      <td>Identifier</td>
-      <td class="coverage">Document</td>
-      <td style="display: none;">Size</td>
-      <td style="display: none;">Lines</td>
-      <td style="display: none;">Updated</td>
-    </tr>
-  </thead>
-  <tbody>
-    
-  <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/assert.js.html">src/utils/assert.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-firstValue">firstValue</a></span>
-<span><a href="function/index.html#static-function-hasValue">hasValue</a></span>
-<span><a href="function/index.html#static-function-haveValue">haveValue</a></span>
-<span><a href="function/index.html#static-function-isArray">isArray</a></span>
-<span><a href="function/index.html#static-function-isBoolean">isBoolean</a></span>
-<span><a href="function/index.html#static-function-isFloat">isFloat</a></span>
-<span><a href="function/index.html#static-function-isFunction">isFunction</a></span>
-<span><a href="function/index.html#static-function-isInteger">isInteger</a></span>
-<span><a href="function/index.html#static-function-isNull">isNull</a></span>
-<span><a href="function/index.html#static-function-isNumber">isNumber</a></span>
-<span><a href="function/index.html#static-function-isObject">isObject</a></span>
-<span><a href="function/index.html#static-function-isRegExp">isRegExp</a></span>
-<span><a href="function/index.html#static-function-isString">isString</a></span>
-<span><a href="function/index.html#static-function-isUndefined">isUndefined</a></span>
-<span><a href="function/index.html#static-function-noValue">noValue</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">15/15</span></td>
-      <td style="display: none;" data-ice="size">3569 byte</td>
-      <td style="display: none;" data-ice="lines">138</td>
-      <td style="display: none;" data-ice="updated">2023-03-03 17:00:38 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/error.js.html">src/utils/error.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-fail">fail</a></span>
-<span><a href="function/index.html#static-function-failMsg">failMsg</a></span>
-<span><a href="function/index.html#static-function-rethrow">rethrow</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">3/3</span></td>
-      <td style="display: none;" data-ice="size">677 byte</td>
-      <td style="display: none;" data-ice="lines">32</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/format.js.html">src/utils/format.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-format">format</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">1/1</span></td>
-      <td style="display: none;" data-ice="size">643 byte</td>
-      <td style="display: none;" data-ice="lines">22</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/misc.js.html">src/utils/misc.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-defaultLocale">defaultLocale</a></span>
-<span><a href="function/index.html#static-function-doNothing">doNothing</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">2/2</span></td>
-      <td style="display: none;" data-ice="size">230 byte</td>
-      <td style="display: none;" data-ice="lines">12</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/numbers.js.html#errorLines=8">src/utils/numbers.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-commas">commas</a></span>
-<span><a href="function/index.html#static-function-currency">currency</a></span>
-<span><a href="function/index.html#static-function-formatNumber">formatNumber</a></span>
-<span><a href="function/index.html#static-function-range">range</a></span>
-<span><a href="function/index.html#static-function-setNumberDefaults">setNumberDefaults</a></span></td>
-      <td class="coverage"><span data-ice="coverage">83 %</span><span data-ice="coverageCount" class="coverage-count">5/6</span></td>
-      <td style="display: none;" data-ice="size">2829 byte</td>
-      <td style="display: none;" data-ice="lines">94</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/object.js.html#errorLines=109,4">src/utils/object.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="variable/index.html#static-variable-entries">entries</a></span>
-<span><a href="function/index.html#static-function-extract">extract</a></span>
-<span><a href="function/index.html#static-function-hash">hash</a></span>
-<span><a href="variable/index.html#static-variable-keys">keys</a></span>
-<span><a href="function/index.html#static-function-objMap">objMap</a></span>
-<span><a href="variable/index.html#static-variable-objSubset">objSubset</a></span>
-<span><a href="function/index.html#static-function-remove">remove</a></span>
-<span><a href="variable/index.html#static-variable-values">values</a></span></td>
-      <td class="coverage"><span data-ice="coverage">75 %</span><span data-ice="coverageCount" class="coverage-count">6/8</span></td>
-      <td style="display: none;" data-ice="size">4243 byte</td>
-      <td style="display: none;" data-ice="lines">162</td>
-      <td style="display: none;" data-ice="updated">2023-03-03 17:13:03 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/select.js.html#errorLines=5">src/utils/select.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-selector">selector</a></span></td>
-      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/1</span></td>
-      <td style="display: none;" data-ice="size">573 byte</td>
-      <td style="display: none;" data-ice="lines">23</td>
-      <td style="display: none;" data-ice="updated">2023-03-03 17:08:50 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/sort.js.html">src/utils/sort.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span>
-<span><a href="function/index.html#static-function-descendingOrder">descendingOrder</a></span>
-<span><a href="function/index.html#static-function-integerField">integerField</a></span>
-<span><a href="function/index.html#static-function-integerSort">integerSort</a></span>
-<span><a href="function/index.html#static-function-multiSort">multiSort</a></span>
-<span><a href="function/index.html#static-function-numberField">numberField</a></span>
-<span><a href="function/index.html#static-function-numberSort">numberSort</a></span>
-<span><a href="variable/index.html#static-variable-sortOrders">sortOrders</a></span>
-<span><a href="variable/index.html#static-variable-sortTypes">sortTypes</a></span>
-<span><a href="function/index.html#static-function-stringField">stringField</a></span>
-<span><a href="function/index.html#static-function-stringSort">stringSort</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">11/11</span></td>
-      <td style="display: none;" data-ice="size">7236 byte</td>
-      <td style="display: none;" data-ice="lines">203</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/text.js.html#errorLines=306,307,308,309">src/utils/text.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-Inflect">Inflect</a></span>
-<span><a href="function/index.html#static-function-capitalise">capitalise</a></span>
-<span><a href="function/index.html#static-function-capitaliseWords">capitaliseWords</a></span>
-<span><a href="variable/index.html#static-variable-capitalize">capitalize</a></span>
-<span><a href="variable/index.html#static-variable-capitalizeWords">capitalizeWords</a></span>
-<span><a href="function/index.html#static-function-inflect">inflect</a></span>
-<span><a href="function/index.html#static-function-joinList">joinList</a></span>
-<span><a href="function/index.html#static-function-joinListAnd">joinListAnd</a></span>
-<span><a href="function/index.html#static-function-joinListOr">joinListOr</a></span>
-<span><a href="function/index.html#static-function-plural">plural</a></span>
-<span><a href="variable/index.html#static-variable-pluralise">pluralise</a></span>
-<span><a href="variable/index.html#static-variable-pluralize">pluralize</a></span>
-<span><a href="function/index.html#static-function-singular">singular</a></span>
-<span><a href="function/index.html#static-function-snakeToCamel">snakeToCamel</a></span>
-<span><a href="function/index.html#static-function-snakeToStudly">snakeToStudly</a></span>
-<span><a href="function/index.html#static-function-splitHash">splitHash</a></span>
-<span><a href="function/index.html#static-function-splitLines">splitLines</a></span>
-<span><a href="function/index.html#static-function-splitList">splitList</a></span></td>
-      <td class="coverage"><span data-ice="coverage">77 %</span><span data-ice="coverageCount" class="coverage-count">14/18</span></td>
-      <td style="display: none;" data-ice="size">9472 byte</td>
-      <td style="display: none;" data-ice="lines">310</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-<tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/utils/time.js.html">src/utils/time.js</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-debounce">debounce</a></span>
-<span><a href="function/index.html#static-function-sleep">sleep</a></span></td>
-      <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">2/2</span></td>
-      <td style="display: none;" data-ice="size">857 byte</td>
-      <td style="display: none;" data-ice="lines">27</td>
-      <td style="display: none;" data-ice="updated">2022-12-04 17:20:59 (UTC)</td>
-    </tr>
-</tbody>
-</table>
+export function selector(spec) {
+  if (isFunction(spec)) {
+    return spec;
+  }
+  else if (isRegExp(spec)) {
+    return item =&gt; spec.test(item);
+  }
+  else if (isObject(spec)) {
+    return item =&gt; Boolean(spec[item]);
+  }
+  else if (isArray(spec) || isString(spec)) {
+    const hash = splitHash(spec);
+    return item =&gt; Boolean(hash[item]);
+  }
+  else {
+    fail("Invalid selector() specification: " + spec);
+  }
+}
+
+</code></pre>
+
 </div>
 
 <footer class="footer">

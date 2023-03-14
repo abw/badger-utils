@@ -198,6 +198,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~isregexp",
+    "function/index.html#static-function-isRegExp",
+    "<span>isRegExp</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~isstring",
     "function/index.html#static-function-isString",
     "<span>isString</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -303,6 +309,12 @@ window.esdocSearchIndex = [
     "@abw/badger-utils~rethrow",
     "function/index.html#static-function-rethrow",
     "<span>rethrow</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~selector",
+    "function/index.html#static-function-selector",
+    "<span>selector</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
     "function"
   ],
   [
@@ -699,6 +711,12 @@ window.esdocSearchIndex = [
     "src/utils/object.js",
     "file/src/utils/object.js.html",
     "src/utils/object.js",
+    "file"
+  ],
+  [
+    "src/utils/select.js",
+    "file/src/utils/select.js.html",
+    "src/utils/select.js",
     "file"
   ],
   [

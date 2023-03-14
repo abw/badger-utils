@@ -48,6 +48,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isfloat-value-" data-ice="link">isFloat(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isarray-value-" data-ice="link">isArray(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isfunction-value-" data-ice="link">isFunction(value)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isregexp-value-" data-ice="link">isRegExp(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isobject-value-" data-ice="link">isObject(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isundefined-value-" data-ice="link">isUndefined(value)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/assertions.html"><a href="manual/assertions.html#isnull-value-" data-ice="link">isNull(value)</a></li>
@@ -181,6 +182,9 @@ isArray("42, 43");  // false</code></code></pre>
 <h2 id="isfunction-value-">isFunction(value)</h2><p>Determines if a value is a function.  Returns Boolean <code>true</code> or <code>false</code>.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">isFunction( a =&gt; a + 1 );     // true
 isFunction("badger badger");  // false</code></code></pre>
+<h2 id="isregexp-value-">isRegExp(value)</h2><p>Determines if a value is a RegExp object.  Returns Boolean <code>true</code> or <code>false</code>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">isRegExp(/badger/);         // true
+isRegExp("badger badger");  // false</code></code></pre>
 <h2 id="isobject-value-">isObject(value)</h2><p>Determines if a value is an object.</p>
 <p>Javascript's concept of an object is ambiguous because a number of
 different data types are considered to be objects, including <code>Array</code>

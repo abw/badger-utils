@@ -38,6 +38,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNull">isNull</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isNumber">isNumber</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isObject">isObject</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isRegExp">isRegExp</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-isUndefined">isUndefined</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-noValue">noValue</a></span></span></li>
@@ -56,6 +57,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-hash">hash</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-objMap">objMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-remove">remove</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-selector">selector</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ascendingOrder">ascendingOrder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-descendingOrder">descendingOrder</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-integerField">integerField</a></span></span></li>
@@ -987,6 +989,35 @@ form based on the number passed as the first argument.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isRegExp">isRegExp</a></span></span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Determines if a value is an RegExp object</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-isString">isString</a></span></span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">String</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
         </p>
       </div>
@@ -1373,6 +1404,34 @@ a new object.</p>
         
         <div data-ice="description"><p>Re-throw an existing Error object</p>
 </div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-selector">selector</a></span></span><span class="code" data-ice="signature">(spec: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
       </div>
     </td>
     <td>
@@ -2489,11 +2548,11 @@ const sortByNameDesc = descendingOrder(sortByName);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber88">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber85">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {extract} from '<span><a href="file/src/utils/object.js.html#lineNumber88">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {extract} from '<span><a href="file/src/utils/object.js.html#lineNumber85">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Extracts a subset of items from an object.</p>
@@ -2787,11 +2846,11 @@ const sortByNameDesc = descendingOrder(sortByName);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber125">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber135">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {firstValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber125">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {firstValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber135">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Returns the first argument that has a value</p>
@@ -3036,11 +3095,11 @@ const sortByNameDesc = descendingOrder(sortByName);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber98">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber108">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hasValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber98">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hasValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber108">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Determines if a value is defined and not null</p>
@@ -3110,11 +3169,11 @@ const sortByNameDesc = descendingOrder(sortByName);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber5">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber4">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hash} from '<span><a href="file/src/utils/object.js.html#lineNumber5">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {hash} from '<span><a href="file/src/utils/object.js.html#lineNumber4">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   
@@ -3188,11 +3247,11 @@ const sortByNameDesc = descendingOrder(sortByName);</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber107">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber117">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {haveValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber107">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {haveValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber117">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Determines if all values are defined and not null</p>
@@ -3941,11 +4000,11 @@ const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred</code></pr
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber89">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber99">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isNull} from '<span><a href="file/src/utils/assert.js.html#lineNumber89">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isNull} from '<span><a href="file/src/utils/assert.js.html#lineNumber99">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Determines if a value is <code>null</code></p>
@@ -4089,11 +4148,11 @@ const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred</code></pr
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isObject} from '<span><a href="file/src/utils/assert.js.html#lineNumber69">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isObject} from '<span><a href="file/src/utils/assert.js.html#lineNumber79">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Determines if a value is an Object (but not an Array)</p>
@@ -4128,6 +4187,80 @@ const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred</code></pr
         <tr>
           <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
           <td class="return-desc" data-ice="returnDescription"><p>true if <code>value</code> is an Object or false if not</p>
+</td>
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-isRegExp">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">isRegExp</span><span class="code" data-ice="signature">(value: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber70">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isRegExp} from '<span><a href="file/src/utils/assert.js.html#lineNumber70">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Determines if a value is an RegExp object</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">value</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>value to test</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">Boolean</a></span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>true if <code>value</code> is a RegExp Object or not</p>
 </td>
         </tr>
       </tbody>
@@ -4237,11 +4370,11 @@ const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred</code></pr
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber90">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isUndefined} from '<span><a href="file/src/utils/assert.js.html#lineNumber80">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {isUndefined} from '<span><a href="file/src/utils/assert.js.html#lineNumber90">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Determines if a value is <code>undefined</code></p>
@@ -4709,11 +4842,11 @@ const sorted = people.sort(sortByNameAndAge); // John Jones 32, Jack Smith 30, J
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber116">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/assert.js.html#lineNumber126">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {noValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber116">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {noValue} from '<span><a href="file/src/utils/assert.js.html#lineNumber126">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Determines if a value is undefined or null</p>
@@ -4961,11 +5094,11 @@ const sorted = constants.sort(sortByValue); // phi, e, pi</code></pre>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber40">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {objMap} from '<span><a href="file/src/utils/object.js.html#lineNumber43">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {objMap} from '<span><a href="file/src/utils/object.js.html#lineNumber40">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Applies a function to each of the values of an object and returns
@@ -5245,11 +5378,11 @@ include the last value.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber141">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/utils/object.js.html#lineNumber123">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {remove} from '<span><a href="file/src/utils/object.js.html#lineNumber141">@abw/badger-utils</a></span>'</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {remove} from '<span><a href="file/src/utils/object.js.html#lineNumber123">@abw/badger-utils</a></span>'</code></pre></div>
   
   
   <div data-ice="description"><p>Removes an item from an object and returns the value.</p>
@@ -5386,6 +5519,77 @@ include the last value.</p>
 </tbody>
     </table>
   </div>
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-selector">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">selector</span><span class="code" data-ice="signature">(spec: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/utils/select.js.html#lineNumber5">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {selector} from '<span><a href="file/src/utils/select.js.html#lineNumber5">@abw/badger-utils</a></span>'</code></pre></div>
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">spec</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
 
   
 
