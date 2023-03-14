@@ -81,6 +81,15 @@ isFunction( a => a + 1 );     // true
 isFunction("badger badger");  // false
 ```
 
+## isRegExp(value)
+
+Determines if a value is a RegExp object.  Returns Boolean `true` or `false`.
+
+```js
+isRegExp(/badger/);         // true
+isRegExp("badger badger");  // false
+```
+
 ## isObject(value)
 
 Determines if a value is an object.

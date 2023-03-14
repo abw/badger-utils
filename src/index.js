@@ -4,6 +4,7 @@ export * from './utils/format.js';
 export * from './utils/misc.js';
 export * from './utils/numbers.js';
 export * from './utils/object.js';
+export * from './utils/select.js';
 export * from './utils/sort.js';
 export * from './utils/text.js';
 export * from './utils/time.js';

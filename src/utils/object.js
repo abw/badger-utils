@@ -1,19 +1,16 @@
-import { isArray, isFunction, isObject, isString } from './assert.js';
-import { fail } from './error.js';
+import { selector } from './select.js';
 import { splitHash } from './text.js';
 
 export function hash(source, options={}) {
+  const include = options.include && selector(options.include);
+  const exclude = options.exclude && selector(options.exclude);
   return entries(splitHash(source)).reduce(
     (hash, [key, value]) => {
-      if (options.include) {
-        if (! options.include(key, value, source, hash)) {
-          return hash;
-        }
+      if (include && ! include(key, value, source, hash)) {
+        return hash;
       }
-      if (options.exclude) {
-        if (options.exclude(key, value, source, hash)) {
-          return hash;
-        }
+      if (exclude && exclude(key, value, source, hash)) {
+        return hash;
       }
       if (options.key) {
         key = options.key(key, value, source, hash)
@@ -86,26 +83,10 @@ export function objMap(obj, fn) {
  * ) // => { a: 'alpha', b: 'bravo' }
  */
 export const extract = (object, keys, options={}) => {
-  let matcher;
   let extract = { };
   let actions = { delete: false, ...options };
+  const matcher = selector(keys);
 
-  if (isFunction(keys)) {
-    matcher = keys;
-  }
-  else if (keys instanceof RegExp) {
-    matcher = key => keys.test(key);
-  }
-  else if (isObject(keys)) {
-    matcher = key => keys[key];
-  }
-  else if (isArray(keys) || isString(keys)) {
-    const keysHash = splitHash(keys);
-    matcher = key => keysHash[key];
-  }
-  else {
-    fail("Invalid specification for extract(): " + keys);
-  }
   Object.keys(object).map(
     key => {
       if (matcher(key)) {
@@ -126,6 +107,7 @@ export const extract = (object, keys, options={}) => {
   return extract;
 }
 export const objSubset = extract;
+
 
 /**
  * Removes an item from an object and returns the value.

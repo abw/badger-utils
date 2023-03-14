@@ -53,6 +53,15 @@ test(
   }
 );
 test(
+  'hash() with string include on key',
+  t => {
+    t.deepEqual(
+      hash(ab, { include: 'a' }),
+      { a: 'alpha' }
+    );
+  }
+);
+test(
   'hash() with include on value',
   t => {
     t.deepEqual(
@@ -86,6 +95,15 @@ test(
   t => {
     t.deepEqual(
       hash(ab, { exclude: k => k === 'b' }),
+      { a: 'alpha' }
+    );
+  }
+);
+test(
+  'hash() with exclude string on key',
+  t => {
+    t.deepEqual(
+      hash(ab, { exclude: 'b' }),
       { a: 'alpha' }
     );
   }

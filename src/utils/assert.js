@@ -62,6 +62,16 @@ export function isFunction(value) {
 }
 
 /**
+ * Determines if a value is an RegExp object
+ * @param {Object} value - value to test
+ * @return {Boolean} true if `value` is a RegExp Object or not
+ */
+
+export function isRegExp(value) {
+  return value instanceof RegExp;
+}
+
+/**
  * Determines if a value is an Object (but not an Array)
  * @param {Object} value - value to test
  * @return {Boolean} true if `value` is an Object or false if not

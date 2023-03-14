@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
   isBoolean, isString, isInteger, isFloat, isNumber,
-  isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue,
+  isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue, isRegExp,
 } from '../src/index.js'
 
 // isBoolean()
@@ -107,6 +107,16 @@ test(
 test(
   'isArray() identifies null',
   t => t.is(isArray(null), false)
+);
+
+// isRegExp()
+test(
+  'isRegExp() identifies Regexps',
+  t => t.is(isRegExp(/foo/), true)
+);
+test(
+  'isRegExp() identifies non-RegExp',
+  t => t.is(isRegExp(123), false)
 );
 
 // isObject()
