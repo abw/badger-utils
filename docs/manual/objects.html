@@ -106,6 +106,13 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/select.html"><a href="manual/select.html" data-ice="link">Select</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/select.html"><a href="manual/select.html#selector-spec-" data-ice="link">selector(spec)</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
     <li data-ice="manualNav" class="indent-h1" data-link="manual/sort.html"><a href="manual/sort.html" data-ice="link">Sort</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#stringsort-field-" data-ice="link">stringSort(field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#numbersort-field-" data-ice="link">numberSort(field)</a></li>
@@ -121,7 +128,7 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/timing.html"><a href="manual/timing.html" data-ice="link">Timing Function</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/timing.html"><a href="manual/timing.html" data-ice="link">Timing</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/timing.html"><a href="manual/timing.html#debounce-func--timeout-300-" data-ice="link">debounce(func, timeout=300)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/timing.html"><a href="manual/timing.html#sleep-ms-" data-ice="link">sleep(ms)</a></li>
 </ul>
@@ -138,7 +145,7 @@
 <div data-ice="manual">
     <ul class="manual-toc">
       
-    <li data-ice="manualNav" class="indent-h1" data-link="manual/misc.html"><a href="manual/misc.html" data-ice="link">Miscellaneous Functions</a></li>
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/misc.html"><a href="manual/misc.html" data-ice="link">Miscellaneous</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/misc.html"><a href="manual/misc.html#donothing--" data-ice="link">doNothing()</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/misc.html"><a href="manual/misc.html#defaultlocale--" data-ice="link">defaultLocale()</a></li>
 </ul>
@@ -146,7 +153,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="objects">Objects</h1><p>Various utility functions for working with objects.</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="objects">Objects</h1><p>Functions for working with objects.</p>
 <h2 id="hash-source--options-">hash(source, options)</h2><p>This function can be used to create a modified version of a plain old
 Javascript object (aka "hash array" or "hash table", hence the name).</p>
 <p>A source object can be passed as the first argument.  A new copy of the
@@ -173,12 +180,40 @@ in the output object, or false to exclude it.</p>
   { a: 10, b: 20, c: 30 },
   { include: k =&gt; k === 'a' }   // only include the 'a' key
 );                              // =&gt; { a: 10 }</code></code></pre>
+<p>As well as specifying <code>include</code> as a function, you can use any of the
+selection criteria supported by the
+<a href="manual/select.html#selector-spec-">selector()</a> function.
+For example, you can specify an object containing the keys you want to accept.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: { a: true, b: true } } // include the 'a' and 'b' keys
+);                                  // =&gt; { a: 10, b: 20 }</code></code></pre>
+<p>Or an array:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: ['a', 'b'] }
+);</code></code></pre>
+<p>Or a string of keys delimited by whitespace and/or commas:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: 'a b' }
+);</code></code></pre>
+<p>Or a regular expression:</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: /^a|b$/ }
+);</code></code></pre>
 <p>The <code>exclude</code> option works the same way, but should return <code>true</code> to exclude
 the entry and <code>false</code> to include it.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
   { a: 10, b: 20, c: 30 },
   { exclude: k =&gt; k === 'a' }   // exclude the 'a' key
 );                              // =&gt; { b: 20, c: 30 }</code></code></pre>
+<p>It can also be specified as an object, array, string or regular expression.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { exclude: { a: true } }
+);</code></code></pre>
 <p>The <code>key</code> option allows you to modify the keys of the object.  It should be
 a function that will be passed the same arguments as for <code>include</code> and
 <code>exclude</code>.  It should return the (potentially) modified key.</p>

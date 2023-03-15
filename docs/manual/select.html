@@ -153,22 +153,51 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="timing">Timing</h1><p>Timing-related function.</p>
-<h2 id="debounce-func--timeout-300-">debounce(func, timeout=300)</h2><p>Function to generate a debouncer function which will call the wrapped function after
-a timeout.  If the debouncer function is called again before the wrapped function has
-been called then the debounced will reset the timer.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">function foo() {
-    console.log("foo was called");
-}
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="select">Select</h1><p>Function for selecting things.</p>
+<h2 id="selector-spec-">selector(spec)</h2><p>The <code>selector()</code> function can be used to create a function that will select
+things based on a number of different specifications.  It is used in various
+other utility functions including <a href="manual/objects.html#hash-source--options-">hash()</a>
+and <a href="manual/objects.html#extract-object--keys--options-">extract()</a>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">import { selector } from '@abw/badger-utils'</code></code></pre>
+<p>If passed an object it will return a selection function that will return
+<code>true</code> for items that have a true-like value in the object or false otherwise.
+It uses the <code>Boolean()</code> function to test for trueness.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const select = selector({ foo: true, bar: 1, baz: false })
 
-const callFooSoon = debounce(foo, 1000);
+select('foo')       // true
+select('bar')       // true
+select('baz')       // false
+select('qux')       // false</code></code></pre>
+<p>If passed an array it will convert the array to an object with each item
+in the array being set to <code>true</code>.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const select = selector(['foo', 'bar'])
 
-callFooSoon();  // starts 1s timer
-callFooSoon();  // resets timer
-callFooSoon();  // resets timer
-    // =&gt; foo() will be called once, 1s after last reset</code></code></pre>
-<h2 id="sleep-ms-">sleep(ms)</h2><p>Function which returns a Promise which will resolve after a delay.</p>
-<pre><code class="lang-js"><code class="source-code prettyprint">sleep(1000).then( () =&gt; console.log("Called one second later") )</code></code></pre>
+select('foo')       // true
+select('bar')       // true
+select('baz')       // false
+select('qux')       // false</code></code></pre>
+<p>If passed a string it will split it on whitespace and/or commas and create
+an object as above.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const select = selector('foo bar')  // or 'foo,bar', 'foo, bar'
+
+select('foo')       // true
+select('bar')       // true
+select('baz')       // false
+select('qux')       // false</code></code></pre>
+<p>If passed a regular expression it will return <code>true</code> for candidates that match it.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const select = selector(/^foo|bar$/)
+
+select('foo')       // true
+select('bar')       // true
+select('baz')       // false
+select('qux')       // false</code></code></pre>
+<p>If passed a function then it simply returns the function unchanged.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const select = selector( item =&gt; item === 'foo' || item === 'bar' )
+
+select('foo')       // true
+select('bar')       // true
+select('baz')       // false
+select('qux')       // false</code></code></pre>
 </div>
 </div>
 
