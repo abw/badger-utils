@@ -1,6 +1,6 @@
 # Numbers
 
-Various utility functions for working with numbers.
+Functions for working with numbers.
 
 ## range(from, to, step=1)
 

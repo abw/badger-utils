@@ -1,6 +1,6 @@
 # Sort
 
-Various utility functions for sorting objects.
+Functions for sorting objects.
 
 ## stringSort(field)
 

@@ -1,6 +1,6 @@
-# Timing Function
+# Timing
 
-Various utility functions for working with timers.
+Timing-related function.
 
 ## debounce(func, timeout=300)
 

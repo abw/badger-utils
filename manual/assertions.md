@@ -1,5 +1,7 @@
 # Assertions
 
+Functions for testing the type of a value.
+
 ## isBoolean(value)
 
 Determines if a value is a boolean. Returns `true` if the value is

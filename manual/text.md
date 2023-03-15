@@ -1,6 +1,6 @@
 # Text
 
-Various utility functions for working with text.
+Functions for working with text.
 
 ## splitLines(text)
 

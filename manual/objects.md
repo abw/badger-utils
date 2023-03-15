@@ -1,6 +1,6 @@
 # Objects
 
-Various utility functions for working with objects.
+Functions for working with objects.
 
 ## hash(source, options)
 
@@ -48,6 +48,45 @@ const copy = hash(
 );                              // => { a: 10 }
 ```
 
+As well as specifying `include` as a function, you can use any of the
+selection criteria supported by the
+[selector()](manual/select.html#selector-spec-) function.
+For example, you can specify an object containing the keys you want to accept.
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: { a: true, b: true } } // include the 'a' and 'b' keys
+);                                  // => { a: 10, b: 20 }
+```
+
+Or an array:
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: ['a', 'b'] }
+);
+```
+
+Or a string of keys delimited by whitespace and/or commas:
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: 'a b' }
+);
+```
+
+Or a regular expression:
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { include: /^a|b$/ }
+);
+```
+
 The `exclude` option works the same way, but should return `true` to exclude
 the entry and `false` to include it.
 
@@ -56,6 +95,15 @@ const copy = hash(
   { a: 10, b: 20, c: 30 },
   { exclude: k => k === 'a' }   // exclude the 'a' key
 );                              // => { b: 20, c: 30 }
+```
+
+It can also be specified as an object, array, string or regular expression.
+
+```js
+const copy = hash(
+  { a: 10, b: 20, c: 30 },
+  { exclude: { a: true } }
+);
 ```
 
 The `key` option allows you to modify the keys of the object.  It should be

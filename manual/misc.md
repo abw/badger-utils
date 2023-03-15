@@ -1,6 +1,6 @@
-# Miscellaneous Functions
+# Miscellaneous
 
-Miscellaneous utility functions.
+Miscellaneous functions.
 
 ## doNothing()
 
