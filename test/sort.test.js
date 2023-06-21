@@ -1,7 +1,8 @@
 import test from 'ava';
 import {
-  stringField, numberField, integerField,
-  stringSort, numberSort, integerSort, multiSort, descendingOrder
+  stringField, numberField, integerField, booleanField,
+  stringSort, numberSort, integerSort, booleanSort,
+  multiSort, descendingOrder
 } from '../src/utils/sort.js'
 
 test(
@@ -29,6 +30,23 @@ test(
 test(
   'stringField({ pi: "3.14" }, "pi")',
   t => t.is(stringField({ pi: "3.14" }, "pi"), "3.14")
+);
+
+test(
+  'booleanField({ a: true, b: false }, "a")',
+  t => t.is(booleanField({ a: true, b: false }, "a"), true)
+);
+test(
+  'booleanField({ a: true, b: false }, "b")',
+  t => t.is(booleanField({ a: true, b: false }, "b"), false)
+);
+test(
+  'booleanField({ a: 1, b: 0 }, "a")',
+  t => t.is(booleanField({ a: 1, b: 0 }, "a"), true)
+);
+test(
+  'booleanField({ a: 1, b: 0 }, "b")',
+  t => t.is(booleanField({ a: 1, b: 0 }, "b"), false)
 );
 
 test(
@@ -97,6 +115,25 @@ test(
 );
 
 test(
+  'booleanSort()',
+  t => {
+    const sortByTruth = booleanSort('truth');
+    const truths = [
+      { name: "no",    truth: 0 },
+      { name: "yes",   truth: 1 },
+    ];
+    const sorted = truths.sort(sortByTruth);
+    t.deepEqual(
+      sorted,
+      [
+        { name: "yes",   truth: 1 },
+        { name: "no",    truth: 0 },
+      ]
+    )
+  }
+);
+
+test(
   'multiSort() strings',
   t => {
     const people = [
@@ -155,6 +192,30 @@ test(
         { forename: "Jack", surname: "Smith", age: 30 },
         { forename: "John", surname: "Smith", age: 28 },
         { forename: "John", surname: "Smith", age: 25 },
+      ]
+    )
+  }
+);
+
+test(
+  'multiSort() with booleans and order',
+  t => {
+    const people = [
+      { forename: "John", surname: "Smith", age: 29, premium: true  },
+      { forename: "Jack", surname: "Smith", age: 30, premium: true  },
+      { forename: "John", surname: "Smith", age: 25, premium: false },
+      { forename: "John", surname: "Smith", age: 28, premium: true },
+      { forename: "John", surname: "Jones", age: 32, premium: false },
+    ];
+    const sorted = people.sort(multiSort('premium:bool age:int surname:str forename:str'));
+    t.deepEqual(
+      sorted,
+      [
+        { forename: "John", surname: "Smith", age: 28, premium: true },
+        { forename: "John", surname: "Smith", age: 29, premium: true },
+        { forename: "Jack", surname: "Smith", age: 30, premium: true },
+        { forename: "John", surname: "Smith", age: 25, premium: false },
+        { forename: "John", surname: "Jones", age: 32, premium: false },
       ]
     )
   }

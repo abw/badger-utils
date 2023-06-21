@@ -65,6 +65,25 @@ const sorted = people.sort(sortByAge);
 // ]
 ```
 
+## booleanSort(field)
+
+Function to return a function that will sort an array of objects by
+comparing the `field` property of each as booleans.  True values are sorted
+before false alues.
+
+```js
+const people = [
+  { name: "Shaggy", animal: false },
+  { name: "Scooby", animal: true },
+];
+const sortByAnimal = booleanSort('animal');
+const sorted = people.sort(sortByAnimal);
+// Returns: [
+//   { name: "Scooby", animal: true },
+//   { name: "Shaggy", animal: false },
+// ]
+```
+
 ## multiSort(fields)
 
 This function can be used to compose a sorting function from a number
@@ -157,27 +176,30 @@ const sortByNameAndAge = multiSort([
 ```
 
 For the field types you can use the long names `string` (default),
-`number` and `integer` or their abbreviations `str`, `num` and `int`.
+`number`, `integer` and `boolan`, or their abbreviations `str`, `num`,
+`int` and `bool`.
+
 You can specify the sort order as `ascending` (default) or `descending`
 if verbosity is your thing, or using the shorter `asc` and `desc` forms.
 
 Here are some examples of the mappings from strings to functions to clarify.
 
-| Short Form                 | Expansion                              |
-|----------------------------|----------------------------------------|
-| surname                    | stringSort('surname')                  |
-| surname:str                | stringSort('surname')                  |
-| surname:string             | stringSort('surname')                  |
-| surname:str:desc           | descendingOrder(stringSort('surname')) |
-| surname:string:descending  | descendingOrder(stringSort('surname')) |
-| age:int                    | integerSort('age')                     |
-| age:integer                | integerSort('age')                     |
-| age:int:desc               | descendingOrder(integerSort('age'))    |
-| age:integer:descending     | descendingOrder(integerSort('age'))    |
-| price:num                  | numberSort('age')                      |
-| price:number               | numberSort('price')                    |
-| price:num:desc             | descendingOrder(numberSort('price'))   |
-| price:number:descending    | descendingOrder(numberSort('price'))   |
+| Short Form                 | Expansion                               |
+|----------------------------|-----------------------------------------|
+| surname                    | stringSort('surname')                   |
+| surname:str                | stringSort('surname')                   |
+| surname:string             | stringSort('surname')                   |
+| surname:str:desc           | descendingOrder(stringSort('surname'))  |
+| surname:string:descending  | descendingOrder(stringSort('surname'))  |
+| age:int                    | integerSort('age')                      |
+| age:integer                | integerSort('age')                      |
+| age:int:desc               | descendingOrder(integerSort('age'))     |
+| age:integer:descending     | descendingOrder(integerSort('age'))     |
+| price:num                  | numberSort('age')                       |
+| price:number               | numberSort('price')                     |
+| price:num:desc             | descendingOrder(numberSort('price'))    |
+| price:number:descending    | descendingOrder(numberSort('price'))    |
+| premium:bool:desc          | descendingOrder(booleanSort('premium')) |
 
 
 ## stringField(obj,field)
@@ -208,6 +230,16 @@ and coerce to an integer.
 ```js
 const a = integerField({ a:  10  }, "a");     // 10
 const a = integerField({ a: "10" }, "a");     // 10
+```
+
+## booleanField(obj,field)
+
+Helper function used by `booleanSort()` to extract a field from an object
+and coerce to a boolean.
+
+```js
+const a = booleanField({ a: true }, "a");     // true
+const a = booleanField({ a: 1    }, "a");     // true
 ```
 
 ## descendingOrder(sortFn)

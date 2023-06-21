@@ -3,6 +3,18 @@ import { fail } from "./error.js";
 import { splitList } from "./text.js";
 
 /**
+ * Function to extract a boolean field from an object.
+ * @param {Object} obj - object containing data
+ * @param {String} field - field to return as boolean
+ * @return {Boolean} - Boolean value from object
+ * @example
+ * booleanField({ a: 1 }, "a");     // true
+ */
+export const booleanField = (obj, field) =>
+  Boolean(obj[field]||0)
+
+
+/**
  * Function to extract an integer field from an object.  Uses `parseInt()` to
  * coerce non-integer values (e.g. numbers in strings) to an integer.
  * @param {Object} obj - object containing data
@@ -99,15 +111,37 @@ export const stringSort = field => (a, b) => {
 }
 
 /**
+ * Sort function generator for sorting objects by a boolean field.
+ * Takes a single field name and returns a sort function which will sort
+ * objects by that field.
+ * @param {String} field - field to return as string
+ * @return {Function} - sort function to sort objects by the named boolean field
+ * @example
+ * const words = [
+ *   { name: "no",   truth: false  },
+ *   { name: "yes",  truth: 1 },
+ * ];
+ * const sortByBool = booleanSort('truth');
+ * const sorted = words.sort(sortByBool); // yes, no
+ */
+export const booleanSort = field => (a, b) => {
+  let c = booleanField(a, field)
+  let d = booleanField(b, field)
+  return (c === d) ? 0 : c ? -1 : 1;
+}
+
+/**
  * Lookup table mapping sort types to their functions.
  */
 export const sortTypes = {
   num:      numberSort,
   int:      integerSort,
   str:      stringSort,
+  bool:     booleanSort,
   number:   numberSort,
   integer:  integerSort,
   string:   stringSort,
+  boolean:  booleanSort,
 };
 
 /**
