@@ -12,6 +12,18 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "@abw/badger-utils~booleanfield",
+    "function/index.html#static-function-booleanField",
+    "<span>booleanField</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
+    "@abw/badger-utils~booleansort",
+    "function/index.html#static-function-booleanSort",
+    "<span>booleanSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~capitalise",
     "function/index.html#static-function-capitalise",
     "<span>capitalise</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",

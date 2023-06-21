@@ -117,10 +117,12 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#stringsort-field-" data-ice="link">stringSort(field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#numbersort-field-" data-ice="link">numberSort(field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#integersort-field-" data-ice="link">integerSort(field)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#booleansort-field-" data-ice="link">booleanSort(field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#multisort-fields-" data-ice="link">multiSort(fields)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#stringfield-obj-field-" data-ice="link">stringField(obj,field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#numberfield-obj-field-" data-ice="link">numberField(obj,field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#integerfield-obj-field-" data-ice="link">integerField(obj,field)</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#booleanfield-obj-field-" data-ice="link">booleanField(obj,field)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#descendingorder-sortfn-" data-ice="link">descendingOrder(sortFn)</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/sort.html"><a href="manual/sort.html#ascendingorder-sortfn-" data-ice="link">ascendingOrder(sortFn)</a></li>
 </ul>
@@ -199,6 +201,19 @@ const sorted = people.sort(sortByAge);
 //   { name: "Shaggy", age: 17 },
 //   { name: "Fred",   age: 18 },
 // ]</code></code></pre>
+<h2 id="booleansort-field-">booleanSort(field)</h2><p>Function to return a function that will sort an array of objects by
+comparing the <code>field</code> property of each as booleans.  True values are sorted
+before false alues.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const people = [
+  { name: "Shaggy", animal: false },
+  { name: "Scooby", animal: true },
+];
+const sortByAnimal = booleanSort('animal');
+const sorted = people.sort(sortByAnimal);
+// Returns: [
+//   { name: "Scooby", animal: true },
+//   { name: "Shaggy", animal: false },
+// ]</code></code></pre>
 <h2 id="multisort-fields-">multiSort(fields)</h2><p>This function can be used to compose a sorting function from a number
 of other sorting functions.  For example, suppose you have an array of
 objects that you want to sort by <code>surname</code> first, and if they have the
@@ -269,8 +284,9 @@ const sortByNameAndAge = multiSort([
   descendingOrder(integerSort('forename'))
 ]);</code></code></pre>
 <p>For the field types you can use the long names <code>string</code> (default),
-<code>number</code> and <code>integer</code> or their abbreviations <code>str</code>, <code>num</code> and <code>int</code>.
-You can specify the sort order as <code>ascending</code> (default) or <code>descending</code>
+<code>number</code>, <code>integer</code> and <code>boolan</code>, or their abbreviations <code>str</code>, <code>num</code>,
+<code>int</code> and <code>bool</code>.</p>
+<p>You can specify the sort order as <code>ascending</code> (default) or <code>descending</code>
 if verbosity is your thing, or using the shorter <code>asc</code> and <code>desc</code> forms.</p>
 <p>Here are some examples of the mappings from strings to functions to clarify.</p>
 <table>
@@ -332,6 +348,10 @@ if verbosity is your thing, or using the shorter <code>asc</code> and <code>desc
 <td>price:number:descending</td>
 <td>descendingOrder(numberSort('price'))</td>
 </tr>
+<tr>
+<td>premium:bool:desc</td>
+<td>descendingOrder(booleanSort('premium'))</td>
+</tr>
 </tbody></table>
 <h2 id="stringfield-obj-field-">stringField(obj,field)</h2><p>Helper function used by <code>stringSort()</code> to extract a field from an object
 and coerce to a string.</p>
@@ -345,6 +365,10 @@ const a = numberField({ a: "3.14" }, "pi");     // 3.14</code></code></pre>
 and coerce to an integer.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">const a = integerField({ a:  10  }, "a");     // 10
 const a = integerField({ a: "10" }, "a");     // 10</code></code></pre>
+<h2 id="booleanfield-obj-field-">booleanField(obj,field)</h2><p>Helper function used by <code>booleanSort()</code> to extract a field from an object
+and coerce to a boolean.</p>
+<pre><code class="lang-js"><code class="source-code prettyprint">const a = booleanField({ a: true }, "a");     // true
+const a = booleanField({ a: 1    }, "a");     // true</code></code></pre>
 <h2 id="descendingorder-sortfn-">descendingOrder(sortFn)</h2><p>Helper function used by <code>multiSort()</code> to convert a sort function that sorts
 by ascending order into one that sorts by descending order.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">const ageAsc  = integerSort('age');
