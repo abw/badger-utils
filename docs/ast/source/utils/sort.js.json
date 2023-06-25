@@ -4382,9 +4382,9 @@
                               "name": "c"
                             },
                             "consequent": {
-                              "type": "UnaryExpression",
+                              "type": "NumericLiteral",
                               "start": 4537,
-                              "end": 4539,
+                              "end": 4538,
                               "loc": {
                                 "start": {
                                   "line": 130,
@@ -4393,26 +4393,48 @@
                                 },
                                 "end": {
                                   "line": 130,
-                                  "column": 31,
-                                  "index": 4539
+                                  "column": 30,
+                                  "index": 4538
+                                }
+                              },
+                              "extra": {
+                                "rawValue": 1,
+                                "raw": "1"
+                              },
+                              "value": 1
+                            },
+                            "alternate": {
+                              "type": "UnaryExpression",
+                              "start": 4541,
+                              "end": 4543,
+                              "loc": {
+                                "start": {
+                                  "line": 130,
+                                  "column": 33,
+                                  "index": 4541
+                                },
+                                "end": {
+                                  "line": 130,
+                                  "column": 35,
+                                  "index": 4543
                                 }
                               },
                               "operator": "-",
                               "prefix": true,
                               "argument": {
                                 "type": "NumericLiteral",
-                                "start": 4538,
-                                "end": 4539,
+                                "start": 4542,
+                                "end": 4543,
                                 "loc": {
                                   "start": {
                                     "line": 130,
-                                    "column": 30,
-                                    "index": 4538
+                                    "column": 34,
+                                    "index": 4542
                                   },
                                   "end": {
                                     "line": 130,
-                                    "column": 31,
-                                    "index": 4539
+                                    "column": 35,
+                                    "index": 4543
                                   }
                                 },
                                 "extra": {
@@ -4421,28 +4443,6 @@
                                 },
                                 "value": 1
                               }
-                            },
-                            "alternate": {
-                              "type": "NumericLiteral",
-                              "start": 4542,
-                              "end": 4543,
-                              "loc": {
-                                "start": {
-                                  "line": 130,
-                                  "column": 34,
-                                  "index": 4542
-                                },
-                                "end": {
-                                  "line": 130,
-                                  "column": 35,
-                                  "index": 4543
-                                }
-                              },
-                              "extra": {
-                                "rawValue": 1,
-                                "raw": "1"
-                              },
-                              "value": 1
                             }
                           }
                         }

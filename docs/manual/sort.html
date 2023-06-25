@@ -202,17 +202,17 @@ const sorted = people.sort(sortByAge);
 //   { name: "Fred",   age: 18 },
 // ]</code></code></pre>
 <h2 id="booleansort-field-">booleanSort(field)</h2><p>Function to return a function that will sort an array of objects by
-comparing the <code>field</code> property of each as booleans.  True values are sorted
-before false alues.</p>
+comparing the <code>field</code> property of each as booleans.  False values are
+sorted before true values.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">const people = [
-  { name: "Shaggy", animal: false },
   { name: "Scooby", animal: true },
+  { name: "Shaggy", animal: false },
 ];
 const sortByAnimal = booleanSort('animal');
 const sorted = people.sort(sortByAnimal);
 // Returns: [
-//   { name: "Scooby", animal: true },
 //   { name: "Shaggy", animal: false },
+//   { name: "Scooby", animal: true },
 // ]</code></code></pre>
 <h2 id="multisort-fields-">multiSort(fields)</h2><p>This function can be used to compose a sorting function from a number
 of other sorting functions.  For example, suppose you have an array of

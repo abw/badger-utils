@@ -229,7 +229,7 @@ export const stringSort = field =&gt; (a, b) =&gt; {
 export const booleanSort = field =&gt; (a, b) =&gt; {
   let c = booleanField(a, field)
   let d = booleanField(b, field)
-  return (c === d) ? 0 : c ? -1 : 1;
+  return (c === d) ? 0 : c ? 1 : -1;
 }
 
 /**
