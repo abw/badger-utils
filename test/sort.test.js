@@ -119,15 +119,15 @@ test(
   t => {
     const sortByTruth = booleanSort('truth');
     const truths = [
-      { name: "no",    truth: 0 },
       { name: "yes",   truth: 1 },
+      { name: "no",    truth: 0 },
     ];
     const sorted = truths.sort(sortByTruth);
     t.deepEqual(
       sorted,
       [
-        { name: "yes",   truth: 1 },
         { name: "no",    truth: 0 },
+        { name: "yes",   truth: 1 },
       ]
     )
   }
@@ -207,7 +207,7 @@ test(
       { forename: "John", surname: "Smith", age: 28, premium: true },
       { forename: "John", surname: "Jones", age: 32, premium: false },
     ];
-    const sorted = people.sort(multiSort('premium:bool age:int surname:str forename:str'));
+    const sorted = people.sort(multiSort('premium:bool:desc age:int surname:str forename:str'));
     t.deepEqual(
       sorted,
       [

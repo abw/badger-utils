@@ -68,19 +68,19 @@ const sorted = people.sort(sortByAge);
 ## booleanSort(field)
 
 Function to return a function that will sort an array of objects by
-comparing the `field` property of each as booleans.  True values are sorted
-before false alues.
+comparing the `field` property of each as booleans.  False values are
+sorted before true values.
 
 ```js
 const people = [
-  { name: "Shaggy", animal: false },
   { name: "Scooby", animal: true },
+  { name: "Shaggy", animal: false },
 ];
 const sortByAnimal = booleanSort('animal');
 const sorted = people.sort(sortByAnimal);
 // Returns: [
-//   { name: "Scooby", animal: true },
 //   { name: "Shaggy", animal: false },
+//   { name: "Scooby", animal: true },
 // ]
 ```
 
