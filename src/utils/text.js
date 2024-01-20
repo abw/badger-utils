@@ -4,6 +4,7 @@ import { commas } from "./numbers.js";
 /**
  * Split a comma/whitespace delimited string into an Array
  * @param {String} value - string to split
+ * @param {Regex} [regex] - optional pattern to split on
  * @return {Array} array of split strings
  * @example
  * const strings = splitList('one two three')

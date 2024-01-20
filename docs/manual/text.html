@@ -165,6 +165,8 @@ an array then the array is returned unmodified.</p>
 <pre><code class="lang-js"><code class="source-code prettyprint">splitList("foo bar baz")    // ["foo", "bar", "baz"]
 splitList("foo,bar,baz")    // ["foo", "bar", "baz"]
 splitList("foo, bar, baz")  // ["foo", "bar", "baz"]</code></code></pre>
+<p>An optional regular expression can be passed as a second argument if you
+want to split using a different pattern.</p>
 <h2 id="splithash-value--set-true--hash----">splitHash(value, set=true, hash={})</h2><p>Function to split a string of whitespace delimited words, or an array of
 words, into an object which can be used as a hash table for quick lookups.
 The input is first passed to the <a href="#splitlist-value-">splitList()</a> function.

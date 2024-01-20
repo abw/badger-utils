@@ -106,6 +106,7 @@ import { commas } from "./numbers.js";
 /**
  * Split a comma/whitespace delimited string into an Array
  * @param {String} value - string to split
+ * @param {Regex} [regex] - optional pattern to split on
  * @return {Array} array of split strings
  * @example
  * const strings = splitList('one two three')
@@ -114,13 +115,13 @@ import { commas } from "./numbers.js";
  * @example
  * const strings = splitList('one, two, three')
  */
-export function splitList(value) {
+export function splitList(value, regex=/,\s*|\s+/) {
   if (noValue(value)) {
     return [ ];
   }
   else if (isString(value)) {
     return value.length
-      ? value.split(/,\s*|\s+/)
+      ? value.split(regex)
       : [ ]
   }
   else if (isArray(value)) {

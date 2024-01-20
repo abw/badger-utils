@@ -54,10 +54,10 @@
       "expectCount": 18,
       "actualCount": 14,
       "undocumentLines": [
-        306,
         307,
         308,
-        309
+        309,
+        310
       ]
     },
     "src/utils/time.js": {
