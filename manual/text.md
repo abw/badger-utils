@@ -23,6 +23,9 @@ splitList("foo,bar,baz")    // ["foo", "bar", "baz"]
 splitList("foo, bar, baz")  // ["foo", "bar", "baz"]
 ```
 
+An optional regular expression can be passed as a second argument if you
+want to split using a different pattern.
+
 ## splitHash(value, set=true, hash={})
 
 Function to split a string of whitespace delimited words, or an array of

@@ -104,6 +104,17 @@ test(
   }
 )
 
+test(
+  'splitList text with commas and custom regex',
+  t => {
+    const list = splitList("foo,bar baz,wiz\nwaz,woz", /\s+/);
+    t.is( list.length, 3);
+    t.is( list[0], 'foo,bar');
+    t.is( list[1], 'baz,wiz');
+    t.is( list[2], 'waz,woz');
+  }
+)
+
 // joinList
 test(
   'joinList with default spaces',

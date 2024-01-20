@@ -12,13 +12,13 @@ import { commas } from "./numbers.js";
  * @example
  * const strings = splitList('one, two, three')
  */
-export function splitList(value) {
+export function splitList(value, regex=/,\s*|\s+/) {
   if (noValue(value)) {
     return [ ];
   }
   else if (isString(value)) {
     return value.length
-      ? value.split(/,\s*|\s+/)
+      ? value.split(regex)
       : [ ]
   }
   else if (isArray(value)) {
