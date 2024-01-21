@@ -1,4 +1,4 @@
-import { isFunction } from '@abw/badger-utils'
+import { isFunction } from './assert.js'
 
 /**
  * Function to call a function or return a non-function value.
