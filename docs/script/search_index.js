@@ -252,6 +252,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "@abw/badger-utils~maybefunction",
+    "function/index.html#static-function-maybeFunction",
+    "<span>maybeFunction</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
+    "function"
+  ],
+  [
     "@abw/badger-utils~multisort",
     "function/index.html#static-function-multiSort",
     "<span>multiSort</span> <span class=\"search-result-import-path\">@abw/badger-utils</span>",
@@ -705,6 +711,12 @@ window.esdocSearchIndex = [
     "src/utils/format.js",
     "file/src/utils/format.js.html",
     "src/utils/format.js",
+    "file"
+  ],
+  [
+    "src/utils/function.js",
+    "file/src/utils/function.js.html",
+    "src/utils/function.js",
     "file"
   ],
   [

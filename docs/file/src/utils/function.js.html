@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl">
-  <title data-ice="title">Home | Badger Utils</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/utils/function.js | Badger Utils</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -100,98 +100,27 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="badger-utils">Badger Utils</h1><p>This is a collection of various useful utility functions that I've written
-over the years.</p>
-<p>Many of them are wrappers for simple code snippets that exist only to make
-my code more self-documenting and/or easier to read.  Some are more
-complicated and are the kind of things that I prefer not to copy-and-paste
-into different projects.  You'll find similar functions in other libraries
-like <a href="https://underscorejs.org/">underscore</a> and <a href="https://lodash.com/">Lodash</a>.
-These just happen to be the ones I tend to use all the time.</p>
-<h2 id="installation">Installation</h2><p>Install <code>badger-utils</code> using your favourite package manager.</p>
-<h3 id="npm">npm</h3><pre><code><code class="source-code prettyprint">npm add @abw/badger-utils</code></code></pre><h3 id="pnpm">pnpm</h3><pre><code><code class="source-code prettyprint">pnpm add @abw/badger-utils</code></code></pre><h3 id="yarn">yarn</h3><pre><code><code class="source-code prettyprint">yarn add @abw/badger-utils</code></code></pre><h2 id="documentation">Documentation</h2><p>Read the <a href="https://abw.github.io/badger-utils/docs/manual/index.html">manual</a>
-for an overview of the function and examples of use, or the
-<a href="https://abw.github.io/badger-utils/docs/">API documentation</a> if you just want
-the nitty-gritty.</p>
-<h2 id="assertions">Assertions</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isboolean-value-">isBoolean(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isstring-value-">isString(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isnumber-value-">isNumber(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isinteger-value-">isInteger(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isfloat-value-">isFloat(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isarray-value-">isArray(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isfunction-value-">isFunction(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isregexp-value-">isRegExp(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isobject-value-">isObject(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isundefined-value-">isUndefined(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#isnull-value-">isNull(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#hasvalue-value-">hasValue(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#novalue-value-">noValue(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#havevalue----values-">haveValue(...values)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/assertions.html#firstvalue----values-">firstValue(...values)</a></li>
-</ul>
-<h2 id="numbers">Numbers</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/numbers.html#range-from--to--step-1-">range(from, to, step=1)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/numbers.html#formatnumber-number--options-">formatNumber(number, options)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/numbers.html#currency-number--options-">currency(number, options)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/numbers.html#commas-n-">commas(n)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/numbers.html#setnumberdefaults-defaults-">setNumberDefaults(defaults)</a></li>
-</ul>
-<h2 id="text">Text</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#splitlines-text-">splitLines(text)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#splitlist-value-">splitList(value)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#splithash-value--set-true--hash----">splitHash(value, set=true, hash={})</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#joinlist-array--joint---39----39---lastjoint-joint-">joinList(array, joint=' ', lastJoint=joint)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#joinlistand-array--joint---39-----39---lastjoint---39--and---39--">joinListAnd(array, joint=', ', lastJoint=' and ')</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#joinlistor-array--joint---39-----39---lastjoint---39--or---39--">joinListOr(array, joint=', ', lastJoint=' or ')</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#capitalise-word----capitalize-word-">capitalise(word) / capitalize(word)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#capitalisewords-string----capitalizewords-string-">capitaliseWords(string) / capitalizeWords(string)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#snaketostudly-snake-">snakeToStudly(snake)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#snaketocamel-snake-">snakeToCamel(snake)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#plural-singular-">plural(singular)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#singular-plural-">singular(plural)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#inflect-n--singular--plural--no---39-no--39--">inflect(n, singular, plural, no='no')</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#inflect-n--singular--plural--no---39-no--39--">Inflect(n, singular, plural, no='No')</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/text.html#format-message--data-">format(message, data)</a></li>
-</ul>
-<h2 id="objects">Objects</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#hash-source--options-">hash(source, options)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#objmap-obj--fn-">objMap(obj, fn)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#remove-object--key-">remove(object, key)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#extract-object--keys--options-">extract(object, keys, options)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#keys-object-">keys(object)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#values-object-">values(object)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/objects.html#entries-object-">entries(object)</a></li>
-</ul>
-<h2 id="select">Select</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/select.html#selector-spec-">selector(spec)</a></li>
-</ul>
-<h2 id="sort">Sort</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#stringsort-field-">stringSort(field)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#numbersort-field-">numberSort(field)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#integersort-field-">integerSort(field)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#multisort-fields-">multiSort(fields)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#stringfield-obj-field-">stringField(obj,field)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#numberfield-obj-field-">numberField(obj,field)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#integerfield-obj-field-">integerField(obj,field)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#descendingorder-sortfn-">descendingOrder(sortFn)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/sort.html#ascendingorder-sortfn-">ascendingOrder(sortFn)</a></li>
-</ul>
-<h2 id="timing">Timing</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/timing.html#debounce-func--timeout-300-">debounce(func, timeout=300)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/timing.html#sleep-ms-">sleep(ms)</a></li>
-</ul>
-<h2 id="errors">Errors</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/errors.html#fail-message-">fail(message)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/errors.html#failmsg-message--data-">failMsg(message, data)</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/errors.html#rethrow-error-">rethrow(error)</a></li>
-</ul>
-<h2 id="miscellaneous">Miscellaneous</h2><ul>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/misc.html#donothing--">doNothing()</a></li>
-<li><a href="https://abw.github.io/badger-utils/docs/manual/misc.html#defaultlocale--">defaultLocale()</a></li>
-</ul>
-<h2 id="author">Author</h2><p>Andy Wardley <a href="mailto:abw@wardley.org">abw@wardley.org</a></p>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">src/utils/function.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { isFunction } from '@abw/badger-utils'
+
+/**
+ * Function to call a function or return a non-function value.
+ * @param {Function|*} fn - a function or other value
+ * @param {...*} args - additional argument to pass to a function
+ * @returns {*} - the value or return from the function
+ * @example
+ * maybeFunction('Hello World!');  // Hello World!
+ * @example
+ * maybeFunction(() =&gt; 'Hello World!');  // Hello World!
+ * @example
+ * maybeFunction(arg =&gt; `Hello ${arg.name}!`, { name: 'World' });  // Hello World!
+ */
+
+export const maybeFunction = (fn, ...args) =&gt;
+  isFunction(fn)
+    ? fn(...args)
+    : fn</code></pre>
+
 </div>
 
 <footer class="footer">

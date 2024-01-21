@@ -19,6 +19,7 @@ These just happen to be the ones I tend to use all the time.
 * [Numbers](manual/numbers.html)
 * [Text](manual/text.html)
 * [Objects](manual/objects.html)
+* [Functions](manual/functions.html)
 * [Select](manual/select.html)
 * [Sort](manual/sort.html)
 * [Timing](manual/timing.html)
