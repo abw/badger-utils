@@ -16,9 +16,20 @@ export default defineConfig({
       {
         text: 'Documentation',
         items: [
-          { text: 'Getting Started', link: '/installation' },
+          { text: 'Getting Started', link: '/getting-started' },
+          { text: 'Assertions', link: '/assertions' },
+          { text: 'Numbers', link: '/numbers' },
+          { text: 'Text', link: '/text' },
+          { text: 'Objects', link: '/objects' },
+          { text: 'Functions', link: '/functions' },
+          { text: 'Select', link: '/select' },
+          { text: 'Sort', link: '/sort' },
+          { text: 'Timing', link: '/timing' },
+          { text: 'Errors', link: '/errors' },
+          { text: 'Miscellaneous', link: '/misc' },
         ]
-      }
+      },
+      { text: 'Reference', link: '/reference' },
     ],
     sidebar: [
       { text: 'Getting Started', link: '/getting-started' },
