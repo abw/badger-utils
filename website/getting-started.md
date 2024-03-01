@@ -19,7 +19,7 @@ yarn add @abw/badger-utils
 
 ## Basic Use
 
-Import any of the function using ESM syntax.
+Import any of the functions using ESM syntax.
 
 ```js
 import { isString, objMap } from '@abw/badger-utils'
