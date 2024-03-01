@@ -2,7 +2,7 @@
 
 Functions for throwing errors.
 
-## fail(message)
+## fail(message) {#fail}
 
 This function throws an error with a message constructed by
 concatenating all arguments passed to it.
@@ -19,18 +19,19 @@ be used in an expression.
 const x = params.x || fail('No x specified');
 ```
 
-## failMsg(message, data)
+## failMsg(message, data) {#failMsg}
 
 This function throws an error with a message generated from
 expanding a message template using the
-[format()](manual/text.html#format-message--data-) function.
+[`format()`](text#format) function.
 
 ```js
-failMsg('Failed to &lt;action&gt; record', { action: 'insert' })
+failMsg('Failed to <action> record', { action: 'insert' })
 // -> throws error with message 'Failed to insert record'
 ```
 
-## rethrow(error)
+## rethrow(error) {#rethrow}
 
-Function to rethrow an error. The benefit of using this function over `throw` is that it can be used in an expression.
+Function to rethrow an error. The benefit of using this function over `throw`
+is that it can be used in an expression.
 

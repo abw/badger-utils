@@ -2,7 +2,7 @@
 
 Functions for working with objects.
 
-## hash(source, options)
+## hash(source, options) {#hash}
 
 This function can be used to create a modified version of a plain old
 Javascript object (aka "hash array" or "hash table", hence the name).
@@ -14,10 +14,9 @@ object is returned.
 const copy = hash({ a: 10, b: 20 });  // => { a: 10, b: 20 }
 ```
 
-An array can be passed.  This is passed to the
-[splitHash()](manual/text.html#splithash-value--set-true--hash----) function which
-turns it into a hash array.  The elements of the array will be the keys of the
-returned objects with the values set to `true`.
+An array can be passed.  This is passed to the [`splitHash()`](text#splitHash)
+function which turns it into a hash array.  The elements of the array will be
+the keys of the returned objects with the values set to `true`.
 
 ```js
 const copy = hash(['a', 'b']);  // => { a: true, b: true }
@@ -50,7 +49,7 @@ const copy = hash(
 
 As well as specifying `include` as a function, you can use any of the
 selection criteria supported by the
-[selector()](manual/select.html#selector-spec-) function.
+[`selector()`](select.html#selector) function.
 For example, you can specify an object containing the keys you want to accept.
 
 ```js
@@ -134,7 +133,7 @@ These function are applied in the order listed above: `include`, `exclude`,
 `key` and `value`.  In all cases you can modify the `output` object, e.g.
 by adding new values, but you should not modify the `input` object.
 
-## objMap(obj, fn)
+## objMap(obj, fn) {#objMap}
 
 Applies a function to each value of an object and returns a new object.
 
@@ -146,7 +145,7 @@ objMap(
 // => { a: 'ALPHA', b: 'BRAVO' }
 ```
 
-## remove(object, key)
+## remove(object, key) {#remove}
 
 Removes an item from an object and returns the corresponding value.
 
@@ -157,7 +156,7 @@ let removed = remove(source, 'a');
 // removed = 'alpha'
 ```
 
-## extract(object, keys, options)
+## extract(object, keys, options) {#extract}
 
 Extracts a subset of the keys and values from an object and returns a new object.
 
@@ -182,8 +181,8 @@ extract(
 // => { a: 'alpha', c: 'charlie', e: 'echo' }
 ```
 
-If the keys are all simple word strings (e.g. don't contain any non-word characters
-or spaces) then they can be specified as a string.
+If the keys are all simple word strings (e.g. don't contain any non-word
+characters or spaces) then they can be specified as a string.
 
 ```js
 extract(
@@ -257,7 +256,7 @@ extract(
 // => { a: 20, b: 40 }
 ```
 
-## keys(object)
+## keys(object) {#keys}
 
 An alias for `Object.keys` which returns an array of the object's own
 enumerable string-keyed property names.
@@ -269,7 +268,7 @@ keys(
 // => ['a', 'b', 'c']
 ```
 
-## values(object)
+## values(object) {#values}
 
 An alias for `Object.values` which returns an array of the object's own
 enumerable string-keyed property values.
@@ -281,7 +280,7 @@ values(
 // => [10, 20, 30]
 ```
 
-## entries(object)
+## entries(object) {#entries}
 
 An alias for `Object.entries` which returns an array of the object's own
 enumerable string-keyed property key-value pairs.

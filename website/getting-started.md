@@ -1,24 +1,21 @@
 # Getting Started
 
-- [Installation](#installation)
-- [Basic Use](#basic-use)
-
 ## Installation
 
 Use your favourite package manager to install the module
 from `@abw/badger-utils`.
 
-### npm
-
-    npm install @abw/badger-utils
-
-### pnpm
-
-    pnpm add @abw/badger-utils
-
-### yarn
-
-    yarn add @abw/badger-utils
+::: code-group
+```shell [npm]
+npm install @abw/badger-utils
+```
+```shell [pnpm]
+pnpm add @abw/badger-utils
+```
+```shell [yarn]
+yarn add @abw/badger-utils
+```
+:::
 
 ## Basic Use
 
@@ -33,3 +30,9 @@ Or via `require()` if you're still using Common JS format.
 ```js
 const { isString, ObjMap } = require('@abw/badger-utils')
 ```
+
+## Do the Happy Badger Dance
+
+You are now all set to do the Happy Badger Dance
+
+<img src="/images/happy_badger_dance.gif" width="100%"/>

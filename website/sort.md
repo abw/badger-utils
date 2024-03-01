@@ -1,11 +1,13 @@
 # Sort
 
-Functions for sorting objects.
+Functions for sorting arrays of objects.
 
-## stringSort(field)
+## stringSort(field) {#stringSort}
 
-Function to return a function that will sort an array of objects by
-comparing the `field` property of each object as lower case strings.
+Factory function which returns a function that will sort an array of objects
+by comparing the `field` property of each object as lower case strings.
+
+For example, consider this array of object that we want to sort.
 
 ```js
 const constants = [
@@ -13,7 +15,19 @@ const constants = [
   { name: "e",    value: 2.718 },
   { name: "phi",  value: 1.618 },
 ];
+```
+
+The `stringSort()` function can be used to generate a function that will
+sort the array using the `name` property of each object.
+
+```js
 const sortByName = stringSort('name');
+```
+
+We can then pass that to the array `sort()` function and our work here
+is done.
+
+```js
 const sorted = constants.sort(sortByName);
 // Returns: [
 //   { name: "e",    value: 2.718 },
@@ -22,11 +36,10 @@ const sorted = constants.sort(sortByName);
 // ]
 ```
 
-## numberSort(field)
+## numberSort(field) {#numberSort}
 
-Function to return a function that will sort an array of objects by
-comparing the `field` property of each as floating point
-numbers.
+Factory function which returns a function that will sort an array of objects
+by comparing the `field` property of each as floating point numbers.
 
 ```js
 const constants = [
@@ -43,10 +56,10 @@ const sorted = constants.sort(sortByValue);
 // ]
 ```
 
-## integerSort(field)
+## integerSort(field) {#integerSort}
 
-Function to return a function that will sort an array of objects by
-comparing the `field` property of each as integers.
+Factory function which returns a function that will sort an array of objects
+by comparing the `field` property of each as integers.
 
 ```js
 const people = [
@@ -65,10 +78,10 @@ const sorted = people.sort(sortByAge);
 // ]
 ```
 
-## booleanSort(field)
+## booleanSort(field) {#booleanSort}
 
-Function to return a function that will sort an array of objects by
-comparing the `field` property of each as booleans.  False values are
+Factory function which returns a function that will sort an array of objects
+by comparing the `field` property of each as booleans.  False values are
 sorted before true values.
 
 ```js
@@ -84,7 +97,7 @@ const sorted = people.sort(sortByAnimal);
 // ]
 ```
 
-## multiSort(fields)
+## multiSort(fields) {#multiSort}
 
 This function can be used to compose a sorting function from a number
 of other sorting functions.  For example, suppose you have an array of
@@ -176,7 +189,7 @@ const sortByNameAndAge = multiSort([
 ```
 
 For the field types you can use the long names `string` (default),
-`number`, `integer` and `boolan`, or their abbreviations `str`, `num`,
+`number`, `integer` and `boolean`, or their abbreviations `str`, `num`,
 `int` and `bool`.
 
 You can specify the sort order as `ascending` (default) or `descending`
@@ -202,61 +215,61 @@ Here are some examples of the mappings from strings to functions to clarify.
 | premium:bool:desc          | descendingOrder(booleanSort('premium')) |
 
 
-## stringField(obj,field)
+## stringField(obj,field) {#stringField}
 
-Helper function used by `stringSort()` to extract a field from an object
-and coerce to a string.
+Helper function used by [`stringSort()`](#stringSort) to extract a field
+from an object and coerce it to a string.
 
 ```js
 const a = stringField({ a: "ten" }, "a");     // "ten"
 const a = stringField({ a: "10"  }, "a");     // "10"
 ```
 
-## numberField(obj,field)
+## numberField(obj,field) {#numberField}
 
-Helper function used by `numberSort()` to extract a field from an object
-and coerce to a floating point number.
+Helper function used by [`numberSort()`](#numberSort) to extract a field
+from an object and coerce it to a floating point number.
 
 ```js
 const a = numberField({ pi: 3.14  }, "pi");     // 3.14
 const a = numberField({ a: "3.14" }, "pi");     // 3.14
 ```
 
-## integerField(obj,field)
+## integerField(obj,field) {#integerField}
 
-Helper function used by `integerSort()` to extract a field from an object
-and coerce to an integer.
+Helper function used by [`integerSort()`](#integerSort) to extract a field
+from an object and coerce it to an integer.
 
 ```js
 const a = integerField({ a:  10  }, "a");     // 10
 const a = integerField({ a: "10" }, "a");     // 10
 ```
 
-## booleanField(obj,field)
+## booleanField(obj,field) {#booleanField}
 
-Helper function used by `booleanSort()` to extract a field from an object
-and coerce to a boolean.
+Helper function used by [`booleanSort()`](#booleanSort) to extract a field
+from an object and coerce it to a boolean.
 
 ```js
 const a = booleanField({ a: true }, "a");     // true
 const a = booleanField({ a: 1    }, "a");     // true
 ```
 
-## descendingOrder(sortFn)
+## descendingOrder(sortFn) {#descendingOrder}
 
-Helper function used by `multiSort()` to convert a sort function that sorts
-by ascending order into one that sorts by descending order.
+Helper function used by [`multiSort()`](#multiSort) to convert a sort function
+that sorts by ascending order into one that sorts by descending order.
 
 ```js
 const ageAsc  = integerSort('age');
 const ageDesc = descendingOrder(ageAsc);
 ```
 
-## ascendingOrder(sortFn)
+## ascendingOrder(sortFn) {#ascendingOrder}
 
-Helper function used by `multiSort()` provided for completeness.  Given that
-sort functions sort in ascending order by default, this function simply returns
-the function passed to it.
+Helper function used by [`multiSort()`](#multiSort) provided for completeness.
+Given that sort functions sort in ascending order by default, this function
+simply returns the function passed to it.
 
 ```js
 const ageAsc1 = integerSort('age');

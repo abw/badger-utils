@@ -2,12 +2,12 @@
 
 Function for selecting things.
 
-## selector(spec)
+## selector(spec) {#selector}
 
 The `selector()` function can be used to create a function that will select
 things based on a number of different specifications.  It is used in various
-other utility functions including [hash()](manual/objects.html#hash-source--options-)
-and [extract()](manual/objects.html#extract-object--keys--options-).
+other utility functions including [`hash()`](objects#hash)
+and [`extract()`](objects#extract).
 
 ```js
 import { selector } from '@abw/badger-utils'

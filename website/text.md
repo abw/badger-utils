@@ -2,7 +2,7 @@
 
 Functions for working with text.
 
-## splitLines(text)
+## splitLines(text) {#splitLines}
 
 This function splits a text string into lines.  Any blank lines are ignored.
 
@@ -11,7 +11,7 @@ splitLines("foo\nbar\n\n\nbaz")
     // => ["foo", "bar", "baz"]
 ```
 
-## splitList(value)
+## splitList(value) {#splitList}
 
 Function to split a string of words into an array.  Words can
 be delimited by commas and/or spaces. If the argument is already
@@ -26,11 +26,11 @@ splitList("foo, bar, baz")  // ["foo", "bar", "baz"]
 An optional regular expression can be passed as a second argument if you
 want to split using a different pattern.
 
-## splitHash(value, set=true, hash={})
+## splitHash(value, set=true, hash={}) {#splitHash}
 
 Function to split a string of whitespace delimited words, or an array of
 words, into an object which can be used as a hash table for quick lookups.
-The input is first passed to the [splitList()](#splitlist-value-) function.
+The input is first passed to the [`splitList()`](#splitList) function.
 It returns an object where the keys are the words extracted from the input
 and the values are set to be `true`.
 
@@ -60,7 +60,7 @@ let stuff = { foo: "foo" }
 splitHash("bar baz", k => k, stuff)    // { foo: "foo", bar: "bar", baz: "baz" }
 ```
 
-## joinList(array, joint=' ', lastJoint=joint)
+## joinList(array, joint=' ', lastJoint=joint) {#joinList}
 
 Function to join an array of strings into a single string.  The
 default delimiter is a single space.
@@ -84,9 +84,9 @@ joinList(["Tom", "Dick", "Harry"], ", ", " and ")
     // "Tom, Dick and Harry"
 ```
 
-## joinListAnd(array, joint=', ', lastJoint=' and ')
+## joinListAnd(array, joint=', ', lastJoint=' and ') {#joinListAnd}
 
-A wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)
+A wrapper around the [`JoinList()`](#joinList)
 function which defaults the `joint` to `', '` and the `lastJoint` to `' and '`
 
 ```js
@@ -94,9 +94,9 @@ joinListAnd(["Tom", "Dick", "Harry"])
     // "Tom, Dick and Harry"
 ```
 
-## joinListOr(array, joint=', ', lastJoint=' or ')
+## joinListOr(array, joint=', ', lastJoint=' or ') {#joinListOr}
 
-A wrapper around the [JoinList()](#joinlist-array--joint---39----39---lastjoint-joint-)
+A wrapper around the [`JoinList()`](#joinList)
 function which defaults the `joint` to `', '` and the `lastJoint` to `' or '`
 
 ```js
@@ -104,7 +104,7 @@ joinListAnd(["Tom", "Dick", "Harry"])
     // "Tom, Dick or Harry"
 ```
 
-## capitalise(word) / capitalize(word)
+## capitalise(word) / capitalize(word) {#capitalise}
 
 This function (provided with spellings in both British and American English)
 capitalises a word.  The first character will be convert to upper case and
@@ -115,7 +115,7 @@ capitalise("badger")    // => Badger
 capitalise("BADGER")    // => Badger
 ```
 
-## capitaliseWords(string) / capitalizeWords(string)
+## capitaliseWords(string) / capitalizeWords(string) {#capitaliseWords}
 
 This function (provided with spellings in both British and American English)
 capitalises all words in a string.
@@ -125,16 +125,16 @@ capitalise("badger mushroom snake")    // => Badger Mushroom Snake
 capitalise("BADGER MUSHROOM SNAKE")    // => Badger Mushroom Snake
 ```
 
-## snakeToStudly(snake)
+## snakeToStudly(snake) {#snakeToStudly}
 
 This function converts a snake case string (e.g. `badger_mushroom_snake`)
-to studly caps (e.g. `BadgerMushroomSnake`)
+to studly caps, also known as Pascal case (e.g. `BadgerMushroomSnake`).
 
 ```js
 snakeToStudly("badger_mushroom_snake") // => BadgerMushroomSnake
 ```
 
-## snakeToCamel(snake)
+## snakeToCamel(snake) {#snakeToCamel}
 
 This function converts a snake case string (e.g. `badger_mushroom_snake`)
 to camel case (e.g. `badgerMushroomSnake`)
@@ -143,7 +143,7 @@ to camel case (e.g. `badgerMushroomSnake`)
 snakeToCamel("badger_mushroom_snake") // => badgerMushroomSnake
 ```
 
-## plural(singular)
+## plural(singular) {#plural}
 
 This is a **very** simple function for pluralising English words.
 
@@ -173,21 +173,21 @@ const specialCases = {
 }
 plural("woman", specialCases) // => "women"
 ```
+::: danger DEPRECATION NOTE
+This function was originally called `pluralise()` with an alias of
+`pluralize()` for our American friends who like the letter z.  It has been
+renamed to `plural()`.  The `pluralise()` and `pluralize()` aliases still
+exist but will be deprecated in a future version.
+:::
 
-**DEPRECATION NOTE**: This function was originally called `pluralise()`
-with an alias of `pluralize()` for our American friends who like the
-letter z.  It has been renamed to `plural()`.  The `pluralise()`
-and `pluralize()` aliases still exist but will be deprecated in a future
-version.
-
-## singular(plural)
+## singular(plural) {#singular}
 
 This is another **very** simple function for reversing the action
-of the `plural()` function to return the singular form of a plural
+of the [`plural()`](#plural) function to return the singular form of a plural
 noun.
 
 It only works on words with standard endings and plural forms,
-for the same reasons that `plural()` is limited.
+for the same reasons that [`plural()`](#plural) is limited.
 
 ```js
 singular("badgers")  // => "badger"
@@ -210,7 +210,7 @@ const specialCases = {
 singular("women", specialCases) // => "woman"
 ```
 
-## inflect(n, singular, plural, no='no')
+## inflect(n, singular, plural, no='no') {#inflect}
 
 This function takes a number and a singular noun and attempts to
 construct a correct plural form.  It is only likely to work with
@@ -224,7 +224,7 @@ inflect(1, "badger")   // "1 badger"
 inflect(2, "badger")   // "2 badgers"
 ```
 
-It uses the [plural()](#plural-singular-) function
+It uses the [`plural()`](#plural) function
 to construct the plural form.  The plural form can be provided as an optional
 third argument if that fails to do the right thing.
 
@@ -241,23 +241,23 @@ fourth argument can be provided to change this.
 inflect(0, "goose", "geese", "none more")   // "none more geese"
 ```
 
-## Inflect(n, singular, plural, no='No')
+## Inflect(n, singular, plural, no='No') {#Inflect}
 
-This is a wrapper around the [inflect()](#inflect-n--singular--plural--no---39-no--39--)
-function which capitalised the first letter, e.g. returning `"No badgers"` rather
-than `"no badgers"`.
+This is a wrapper around the [`inflect()`](#inflect)
+function which capitalises the first letter, e.g. returning `"No badgers"`
+rather than `"no badgers"`.
 
 ```js
 Inflect(0, "badger")   // "No badgers"
 ```
 
-## format(message, data)
+## format(message, data) {#format}
 
 This implements a minimal template expansion function that inserts
 data items into a message string.  Placeholders should be embedded
 in the message string in angle brackets.
 
 ```js
-const message = format('Hello &lt;name&gt;!', { name: 'World' });
+const message = format('Hello <name>!', { name: 'World' });
 // -> Hello World!
 ```

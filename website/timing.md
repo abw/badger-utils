@@ -2,11 +2,11 @@
 
 Timing-related function.
 
-## debounce(func, timeout=300)
+## debounce(func, timeout=300) {#debounce}
 
-Function to generate a debouncer function which will call the wrapped function after
-a timeout.  If the debouncer function is called again before the wrapped function has
-been called then the debounced will reset the timer.
+Function to generate a debouncer function which will call the wrapped
+function after a timeout.  If the debouncer function is called again before
+the wrapped function has been called then the debounced will reset the timer.
 
 ```js
 function foo() {
@@ -21,7 +21,7 @@ callFooSoon();  // resets timer
     // => foo() will be called once, 1s after last reset
 ```
 
-## sleep(ms)
+## sleep(ms) {#sleep}
 
 Function which returns a Promise which will resolve after a delay.
 

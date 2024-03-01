@@ -2,7 +2,7 @@
 
 Functions for working with numbers.
 
-## range(from, to, step=1)
+## range(from, to, step=1) {#range}
 
 Returns an array of sequential numbers from the starting value, `from`, up to
 **and including** to the end value, `to`.
@@ -35,7 +35,7 @@ range(4, -4, -2); // [4, 2, 0, -2, -4]
 range(4, -4, 2);  // [4, 2, 0, -2, -4]
 ```
 
-## formatNumber(number, options)
+## formatNumber(number, options) {#formatNumber}
 
 This function is for formatting numbers.  It is implemented as a
 wrapper around the
@@ -67,9 +67,9 @@ formatNumber(12345, { locale: 'en-GB', style: 'currency', currency: 'GBP' })
   // => £12,345.00
 ```
 
-## currency(number, options)
+## currency(number, options) {#currency}
 
-This is a wrapper around the [formatNumber()](#formatnumber-n--options-) function
+This is a wrapper around the [`formatNumber()`](#formatNumber) function
 for formatting currencies.
 
 ```js
@@ -77,7 +77,7 @@ currency(12345, { locale: 'en-GB', currency: 'GBP' }) // £12,345.00
 currency(12345, { locale: 'en-US', currency: 'USD' }) // $12,345.00
 ```
 
-## commas(n)
+## commas(n) {#commas}
 
 This function will add commas as thousand separators in a number.
 
@@ -92,9 +92,9 @@ commas(12345, ' '); // 12 345
 ```
 
 For locale-specific number formatting it is recommended that you use
-[formatNumber()](#formatnumber-n--options-).
+[`formatNumber()`](#formatNumber).
 
-## setNumberDefaults(defaults)
+## setNumberDefaults(defaults) {#setNumberDefaults}
 
 This function can be used to set the default options for various number
 formatting functions.

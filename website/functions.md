@@ -2,7 +2,7 @@
 
 Functions for working with functions.
 
-## maybeFunction(fn, args)
+## maybeFunction(fn, args) {#maybeFunction}
 
 This function can be used to call a function or return a value that isn't
 a function.
