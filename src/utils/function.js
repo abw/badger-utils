@@ -17,3 +17,15 @@ export const maybeFunction = (fn, ...args) =>
   isFunction(fn)
     ? fn(...args)
     : fn
+
+/**
+ * No-op function which does nothing.  Nothing at all.
+ */
+export function doNothing() {
+  // speak again Cordelia
+}
+
+/**
+ * Identity function which returns the argument passed to it.
+ */
+export const identity = value => value

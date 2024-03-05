@@ -1,7 +1,7 @@
 import test from 'ava';
 import {
   isBoolean, isString, isInteger, isFloat, isNumber,
-  isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue, isRegExp,
+  isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue, isRegExp, isEmpty,
 } from '../src/index.js'
 
 // isBoolean()
@@ -235,3 +235,20 @@ test(
   t => t.is(firstValue("", 1, 2, 3), "")
 );
 
+// isEmpty()
+test(
+  'isEmpty on empty object',
+  t => t.true(isEmpty({ }))
+);
+test(
+  'isEmpty on empty array',
+  t => t.true(isEmpty([ ]))
+);
+test(
+  'isEmpty on non-empty object',
+  t => t.false(isEmpty({ a: 10 }))
+);
+test(
+  'isEmpty on non-empty array',
+  t => t.false(isEmpty([ 10 ]))
+);
