@@ -136,3 +136,22 @@ export function firstValue(...values) {
   return values.find( value => hasValue(value) );
 }
 
+/**
+ * Determines if an object or array is empty.
+ * @param {Object|Array} object - source object or array
+ * @return {Boolean} - true if object or array is empty
+ * @example
+ * isEmpty({ }) // true
+ * @example
+ * isEmpty([ ]) // true
+ * @example
+ * isEmpty({ a: 10 }) // false
+ * @example
+ * isEmpty([ 10 ]) // false
+ */
+export const isEmpty = obj =>
+  isArray(obj)
+    ? obj.length === 0
+    : Object.keys(obj).length === 0;
+
+

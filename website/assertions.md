@@ -199,3 +199,16 @@ firstValues(undefined, 1, 2); // 1
 firstValues(null, 2, 3);      // 2
 firstValues(false, 3, 4);     // false
 ```
+
+## isEmpty(value) {#isEmpty}
+
+Determines if an array or object value is empty.  For an array it's equivalent
+to `value.length === 0`.  For an object it's `Object.keys(value).length === 0`.
+Returns Boolean `true` or `false`.
+
+```js
+isEmpty([ ])            // true
+isEmpty({ })            // true
+isEmpty([ 10 ])         // false
+isEmpty({ a: 10 })      // false
+```
