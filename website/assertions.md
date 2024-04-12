@@ -117,6 +117,23 @@ isObject([10, 20]);          // false
 isObject(null);              // false
 ```
 
+## isSimple(value) {#isSimple}
+
+Determines if a value is a "simple" scalar value, e.g. a string, number or
+boolean value.
+
+```js
+isSimple('eleven');        // true
+isSimple(11);              // true
+isSimple(11.0);            // true
+isSimple(true);            // true
+isSimple(false);           // true
+isSimple({ });             // false
+isSimple([ ]);             // false
+isSimple(null);            // false
+```
+
+
 ## isUndefined(value) {#isUndefined}
 
 Determines if a value has the `undefined` value.  Returns Boolean `true` or

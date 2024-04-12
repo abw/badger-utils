@@ -83,6 +83,16 @@ export function isObject(value) {
 }
 
 /**
+ * Determines if a value is a "simple" scalar value, e.g. a string, number or boolean.
+ * @param {any} value - value to test
+ * @return {Boolean} true if `value` is a string, number or boolean
+ */
+
+export function isSimple(value) {
+  return isString(value) || isNumber(value) || isBoolean(value)
+}
+
+/**
  * Determines if a value is `undefined`
  * @param {any} value - value to test
  * @return {Boolean} true if `value` is `undefined` or false if not

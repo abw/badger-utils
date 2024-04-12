@@ -2,6 +2,7 @@ import test from 'ava';
 import {
   isBoolean, isString, isInteger, isFloat, isNumber,
   isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue, isRegExp, isEmpty,
+  isSimple,
 } from '../src/index.js'
 
 // isBoolean()
@@ -251,4 +252,42 @@ test(
 test(
   'isEmpty on non-empty array',
   t => t.false(isEmpty([ 10 ]))
+);
+
+// isSimple()
+test(
+  'isSimple string',
+  t => t.true(isSimple('hello'))
+);
+test(
+  'isSimple integer',
+  t => t.true(isSimple(11))
+);
+test(
+  'isSimple float',
+  t => t.true(isSimple(23.45))
+);
+test(
+  'isSimple true',
+  t => t.true(isSimple(true))
+);
+test(
+  'isSimple false',
+  t => t.true(isSimple(false))
+);
+test(
+  'isSimple object',
+  t => t.false(isSimple({ }))
+);
+test(
+  'isSimple array',
+  t => t.false(isSimple([ ]))
+);
+test(
+  'isSimple function',
+  t => t.false(isSimple(() => 23))
+);
+test(
+  'isSimple null',
+  t => t.false(isSimple(null))
 );
