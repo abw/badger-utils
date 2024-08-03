@@ -1,16 +1,16 @@
-import { selector } from './select.js';
-import { splitHash } from './text.js';
+import { selector } from './select.js'
+import { splitHash } from './text.js'
 
 export function hash(source, options={}) {
-  const include = options.include && selector(options.include);
-  const exclude = options.exclude && selector(options.exclude);
+  const include = options.include && selector(options.include)
+  const exclude = options.exclude && selector(options.exclude)
   return entries(splitHash(source)).reduce(
     (hash, [key, value]) => {
       if (include && ! include(key, value, source, hash)) {
-        return hash;
+        return hash
       }
       if (exclude && exclude(key, value, source, hash)) {
-        return hash;
+        return hash
       }
       if (options.key) {
         key = options.key(key, value, source, hash)
@@ -18,8 +18,8 @@ export function hash(source, options={}) {
       if (options.value) {
         value = options.value(value, key, source, hash)
       }
-      hash[key] = value;
-      return hash;
+      hash[key] = value
+      return hash
     },
     { }
   )
@@ -44,7 +44,7 @@ export function objMap(obj, fn) {
       return result
     },
     {}
-  );
+  )
 }
 
 /**
@@ -83,30 +83,30 @@ export function objMap(obj, fn) {
  * ) // => { a: 'alpha', b: 'bravo' }
  */
 export const extract = (object, keys, options={}) => {
-  let extract = { };
-  let actions = { delete: false, ...options };
-  const matcher = selector(keys);
+  let extract = { }
+  let actions = { delete: false, ...options }
+  const matcher = selector(keys)
 
   Object.keys(object).map(
     key => {
       if (matcher(key)) {
-        let value = object[key];
+        let value = object[key]
         if (actions.delete) {
-          delete object[key];
+          delete object[key]
         }
         if (actions.key) {
-          key = actions.key(key);
+          key = actions.key(key)
         }
         if (actions.value) {
-          value = actions.value(value);
+          value = actions.value(value)
         }
-        extract[key] = value;
+        extract[key] = value
       }
     }
   )
-  return extract;
+  return extract
 }
-export const objSubset = extract;
+export const objSubset = extract
 
 
 /**
@@ -121,9 +121,9 @@ export const objSubset = extract;
  * ) // => { a: 'alpha', b: 'bravo' }
  */
 export const remove = (object, key) => {
-  const value = object[key];
-  delete object[key];
-  return value;
+  const value = object[key]
+  delete object[key]
+  return value
 }
 
 /**
@@ -135,7 +135,7 @@ export const remove = (object, key) => {
  *   { a: 'alpha', b: 'bravo', c: 'charlie' },
  * ) // => ['a', 'b', 'c']
  */
-export const keys = Object.keys;
+export const keys = Object.keys
 
 /**
  * Alias for `Object.values`.
@@ -146,7 +146,7 @@ export const keys = Object.keys;
  *   { a: 'alpha', b: 'bravo', c: 'charlie' },
  * ) // => ['alpha', 'bravo', 'charlie']
  */
-export const values = Object.values;
+export const values = Object.values
 
 /**
  * Alias for `Object.entries`.
@@ -157,5 +157,5 @@ export const values = Object.values;
  *   { a: 'alpha', b: 'bravo', c: 'charlie' },
  * ) // => [ ['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie'] ]
  */
-export const entries = Object.entries;
+export const entries = Object.entries
 

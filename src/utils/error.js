@@ -1,4 +1,4 @@
-import { format } from "./format.js";
+import { format } from './format.js'
 
 /**
  * Throws a new Error object
@@ -6,7 +6,7 @@ import { format } from "./format.js";
  * @throws {Error}
  */
 export function fail(...message) {
-  throw new Error(message.join(''));
+  throw new Error(message.join(''))
 }
 
 /**
@@ -18,7 +18,7 @@ export function fail(...message) {
 export function failMsg(message, data) {
   throw new Error(
     format(message, data)
-  );
+  )
 }
 
 /**
@@ -27,6 +27,6 @@ export function failMsg(message, data) {
  * @throws {Error}
  */
 export function rethrow(error) {
-  throw error;
+  throw error
 }
 

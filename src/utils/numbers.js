@@ -1,5 +1,5 @@
-import { noValue } from "./assert.js";
-import { defaultLocale } from "./misc.js";
+import { noValue } from './assert.js'
+import { defaultLocale } from './misc.js'
 
 // this is an ugly hack to provide backwards compatibility
 // with some of my older utility functions that are very much
@@ -10,7 +10,7 @@ let numberDefaults = {
   currency:     'GBP',
   currencySign: '£',
   thousands:    ',',
-};
+}
 
 /**
  * Function to set the default options for formatting numbers.
@@ -21,7 +21,7 @@ let numberDefaults = {
  * @param {String} [defaults.thousands] - default separator for thousands, e.g. `,`
  */
 export function setNumberDefaults(defaults={}) {
-  numberDefaults = { ...numberDefaults, ...defaults };
+  numberDefaults = { ...numberDefaults, ...defaults }
 }
 
 /**
@@ -32,8 +32,8 @@ export function setNumberDefaults(defaults={}) {
  * @param {Integer} [step=1] - step number
  */
 export const range = (first, last, step=1) => {
-  const down = last < first;
-  const walk = down ? -Math.abs(step) : step;
+  const down = last < first
+  const walk = down ? -Math.abs(step) : step
   return Array(1 + Math.floor(Math.abs((last - first) / step)))
     .fill(first)
     .map((x, y) => x + y * walk)
@@ -67,7 +67,7 @@ export function currency(number, options={}) {
       currency: numberDefaults.currency,
       ...options
     }
-  );
+  )
 }
 
 /**
@@ -81,14 +81,14 @@ export function currency(number, options={}) {
  */
 export function commas(n, thousands=numberDefaults.thousands) {
   if (noValue(n)) {
-    return '';
+    return ''
   }
   var bits  = n.toString().split('.'),
-    rgx   = /(\d+)(\d{3})/;
+    rgx   = /(\d+)(\d{3})/
 
   while (rgx.test(bits[0])) {
-    bits[0] = bits[0].replace(rgx, `$1${thousands}$2`);
+    bits[0] = bits[0].replace(rgx, `$1${thousands}$2`)
   }
-  return bits.join('.');
+  return bits.join('.')
 }
 

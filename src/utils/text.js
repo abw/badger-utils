@@ -1,5 +1,5 @@
-import { isString, isArray, noValue, isObject, isFunction, hasValue } from "./assert.js";
-import { commas } from "./numbers.js";
+import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert.js'
+import { commas } from './numbers.js'
 
 /**
  * Split a comma/whitespace delimited string into an Array
@@ -15,7 +15,7 @@ import { commas } from "./numbers.js";
  */
 export function splitList(value, regex=/,\s*|\s+/) {
   if (noValue(value)) {
-    return [ ];
+    return [ ]
   }
   else if (isString(value)) {
     return value.length
@@ -23,9 +23,9 @@ export function splitList(value, regex=/,\s*|\s+/) {
       : [ ]
   }
   else if (isArray(value)) {
-    return value;
+    return value
   }
-  return [value];
+  return [value]
 }
 
 
@@ -45,20 +45,20 @@ export function splitList(value, regex=/,\s*|\s+/) {
 export function splitHash(value, set=true, hash={ }) {
   // if it's already a hash object then return it unchanged
   if (isObject(value)) {
-    return value;
+    return value
   }
   // split a string into an array (or leave an array unchanged)
-  const items = splitList(value);
+  const items = splitList(value)
 
   return items.reduce(
     (result, key) => {
       result[key] = isFunction(set)
         ? set(key)
-        : set;
+        : set
       return result
     },
     hash
-  );
+  )
 }
 
 
@@ -69,12 +69,12 @@ export function splitHash(value, set=true, hash={ }) {
 */
 export function splitLines(text) {
   if (! isString(text) || text.length === 0) {
-    return [ ];
+    return [ ]
   }
   var lines = text.split(/\s*\n+\s*/).filter(
     function(item) { return item.length > 0 }
-  );
-  return lines;
+  )
+  return lines
 }
 
 /**
@@ -91,11 +91,11 @@ export function splitLines(text) {
  * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three
  */
 export function joinList(array, joint=' ', lastJoint=joint) {
-  let copy = [...array];
-  const last = copy.pop();
+  let copy = [...array]
+  const last = copy.pop()
   return copy.length
     ? [copy.join(joint), last].join(lastJoint)
-    : last;
+    : last
 }
 
 /**
@@ -108,7 +108,7 @@ export function joinList(array, joint=' ', lastJoint=joint) {
  * joinListAnd(['one', 'two', 'three']);   // one, two and three
  */
 export function joinListAnd(array, joint=', ', lastJoint=' and ') {
-  return joinList(array, joint, lastJoint);
+  return joinList(array, joint, lastJoint)
 }
 
 /**
@@ -121,7 +121,7 @@ export function joinListAnd(array, joint=', ', lastJoint=' and ') {
  * joinListOr(['one', 'two', 'three']);   // one, two or three
  */
 export function joinListOr(array, joint=', ', lastJoint=' or ') {
-  return joinList(array, joint, lastJoint);
+  return joinList(array, joint, lastJoint)
 }
 
 /**
@@ -134,7 +134,7 @@ export function joinListOr(array, joint=', ', lastJoint=' or ') {
  * capitalise('BADGER');   // Badger
  */
 export function capitalise(word) {
-  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
 
 /**
@@ -151,7 +151,7 @@ export function capitaliseWords(string) {
     // /(?:^|\s)\S/g,
     /(\w+)/g,
     capitalise
-  );
+  )
 }
 
 /**
@@ -167,7 +167,7 @@ export function snakeToStudly(snake) {
   return snake.split('/').map(
     // each segment can be like foo_bar which we convert to FooBar
     segment => segment.split('_').map(capitalise).join('')
-  ).join('/');
+  ).join('/')
 }
 
 /**
@@ -183,7 +183,7 @@ export function snakeToCamel(snake) {
   return snake.split('/').map(
     // each segment can be like foo_bar which we convert to fooBar
     segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')
-  ).join('/');
+  ).join('/')
 }
 
 /**
@@ -203,25 +203,25 @@ export function snakeToCamel(snake) {
  * plural('woman');   // womans
  */
 export function plural(singular, specialCases={}) {
-  const special = specialCases[singular];
+  const special = specialCases[singular]
   if (hasValue(special)) {
     return special
   }
-  let found;
+  let found
 
   if (singular.match(/(ss?|sh|ch|x)$/)) {
     // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes
-    return singular + 'es';
+    return singular + 'es'
   }
   else if ((found = singular.match(/(.*?[^aeiou])y$/))) {
     // doggy/doggies
-    return found[1] + 'ies';
+    return found[1] + 'ies'
   }
   else if (singular.match(/([^s\d\W])$/)) {
     // cat/cats
-    return singular + 's';
+    return singular + 's'
   }
-  return singular;
+  return singular
 }
 
 /**
@@ -241,7 +241,7 @@ export function plural(singular, specialCases={}) {
  * singular('women');     // women - FAIL!
  */
 export function singular(plural, specialCases={}) {
-  const special = specialCases[plural];
+  const special = specialCases[plural]
   if (hasValue(special)) {
     return special
   }
@@ -250,12 +250,12 @@ export function singular(plural, specialCases={}) {
     return plural.replace(/es$/, '')
   }
   else if (plural.match(/([^aeiou])ies$/)) {
-    return plural.replace(/ies$/, 'y');
+    return plural.replace(/ies$/, 'y')
   }
   else if (plural.match(/([^s\d\W])s$/)) {
-    return plural.replace(/s$/, '');
+    return plural.replace(/s$/, '')
   }
-  return plural;
+  return plural
 }
 
 /**
@@ -286,7 +286,7 @@ export function singular(plural, specialCases={}) {
 export function inflect(n, singularForm, pluralForm, no='no') {
   return (n ? commas(n) : no)
     + ' '
-    + (n === 1 ? singularForm : (pluralForm || plural(singularForm)));
+    + (n === 1 ? singularForm : (pluralForm || plural(singularForm)))
 }
 
 /**
@@ -298,14 +298,14 @@ export function inflect(n, singularForm, pluralForm, no='no') {
  * @param {String} [no='No'] - optional word to use when `n` is 0
  */
 export function Inflect(n, singular, plural, no='No') {
-  return inflect(n, singular, plural, no);
+  return inflect(n, singular, plural, no)
 }
 
 
 
 // for the yanks
-export const capitalize = capitalise;
-export const capitalizeWords = capitaliseWords;
-export const pluralise = plural;
-export const pluralize = plural;
+export const capitalize = capitalise
+export const capitalizeWords = capitaliseWords
+export const pluralise = plural
+export const pluralize = plural
 

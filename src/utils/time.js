@@ -7,14 +7,14 @@
  * @return {Function} debounced function
  */
 export function debounce(func, timeout=300) {
-  let timer;
+  let timer
   return (...args) => {
-    clearTimeout(timer);
+    clearTimeout(timer)
     timer = setTimeout(
       () => func.apply(this, args),
       timeout
-    );
-  };
+    )
+  }
 }
 
 /**

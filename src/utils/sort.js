@@ -1,6 +1,6 @@
-import { isFunction, isString } from "./assert.js";
-import { fail } from "./error.js";
-import { splitList } from "./text.js";
+import { isFunction, isString } from './assert.js'
+import { fail } from './error.js'
+import { splitList } from './text.js'
 
 /**
  * Function to extract a boolean field from an object.
@@ -67,7 +67,7 @@ export const stringField = (obj, field) =>
  * const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred
  */
 export const integerSort = field => (a, b) => {
-  return integerField(a, field) - integerField(b, field);
+  return integerField(a, field) - integerField(b, field)
 }
 
 /**
@@ -86,7 +86,7 @@ export const integerSort = field => (a, b) => {
  * const sorted = constants.sort(sortByValue); // phi, e, pi
  */
 export const numberSort = field => (a, b) => {
-  return numberField(a, field) - numberField(b, field);
+  return numberField(a, field) - numberField(b, field)
 }
 
 /**
@@ -105,9 +105,9 @@ export const numberSort = field => (a, b) => {
  * const sorted = constants.sort(sortByName); // e, phi, pi
  */
 export const stringSort = field => (a, b) => {
-  let c = stringField(a, field).toLowerCase();
-  let d = stringField(b, field).toLowerCase();
-  return c > d ? 1 : d > c ? -1 : 0;
+  let c = stringField(a, field).toLowerCase()
+  let d = stringField(b, field).toLowerCase()
+  return c > d ? 1 : d > c ? -1 : 0
 }
 
 /**
@@ -127,7 +127,7 @@ export const stringSort = field => (a, b) => {
 export const booleanSort = field => (a, b) => {
   let c = booleanField(a, field)
   let d = booleanField(b, field)
-  return (c === d) ? 0 : c ? 1 : -1;
+  return (c === d) ? 0 : c ? 1 : -1
 }
 
 /**
@@ -142,7 +142,7 @@ export const sortTypes = {
   integer:  integerSort,
   string:   stringSort,
   boolean:  booleanSort,
-};
+}
 
 /**
  * Do-nothing function provided for completeness.  It expects to be passed a sort
@@ -176,7 +176,7 @@ export const sortOrders = {
   desc:       descendingOrder,
   ascending:  ascendingOrder,
   descending: descendingOrder,
-};
+}
 
 
 /**
@@ -205,34 +205,34 @@ export const sortOrders = {
  * const sorted = people.sort(sortByNameAndAge); // John Jones 32, Jack Smith 30, John Smith 28, John Smith 25
  */
 export const multiSort = spec => {
-  const sorts = splitList(spec);
+  const sorts = splitList(spec)
   const funcs = sorts.map(
     sort => {
       if (isFunction(sort)) {
-        return sort;
+        return sort
       }
       else if (isString(sort)) {
         const match = sort.match(/^(\w+)(?::(\w+))?(?::(\w+))?$/)
-          || fail(`Invalid sort field: ${sort}`);
+          || fail(`Invalid sort field: ${sort}`)
         const sorter = sortTypes[match[2] || 'string']
-          || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`);
+          || fail(`Invalid sort type "${match[2]}" in sort field: ${sort}`)
         const order = sortOrders[match[3] || 'asc']
-          || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`);
-        return order(sorter(match[1]));
+          || fail(`Invalid sort order "${match[3]}" in sort field: ${sort}`)
+        return order(sorter(match[1]))
       }
       else {
-        fail(`Invalid sort field: ${sort}`);
+        fail(`Invalid sort field: ${sort}`)
       }
     }
-  );
+  )
   return (a, b) => {
     for (let i = 0; i < funcs.length; i++) {
-      const sortFunc = funcs[i];
-      const cmp = sortFunc(a, b);
+      const sortFunc = funcs[i]
+      const cmp = sortFunc(a, b)
       if (cmp !== 0) {
-        return cmp;
+        return cmp
       }
     }
-    return 0;
+    return 0
   }
 }

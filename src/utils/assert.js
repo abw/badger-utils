@@ -4,7 +4,7 @@
  * @return {Boolean} true if `value` is a string or false if not
  */
 export function isBoolean(value) {
-  return typeof value === 'boolean';
+  return typeof value === 'boolean'
 }
 
 /**
@@ -13,7 +13,7 @@ export function isBoolean(value) {
  * @return {Boolean} true if `value` is a string or false if not
  */
 export function isString(value) {
-  return typeof value === 'string';
+  return typeof value === 'string'
 }
 
 /**
@@ -22,7 +22,7 @@ export function isString(value) {
  * @return {Boolean} true if `value` is a number or false if not
  */
 export function isNumber(value) {
-  return typeof value === 'number';
+  return typeof value === 'number'
 }
 
 /**
@@ -31,7 +31,7 @@ export function isNumber(value) {
  * @return {Boolean} true if `value` is an integer or false if not
  */
 export function isInteger(value) {
-  return Number.isInteger(value);
+  return Number.isInteger(value)
 }
 
 /**
@@ -40,7 +40,7 @@ export function isInteger(value) {
  * @return {Boolean} true if `value` is an integer or false if not
  */
 export function isFloat(value) {
-  return isNumber(value) && ! isInteger(value);
+  return isNumber(value) && ! isInteger(value)
 }
 
 /**
@@ -49,7 +49,7 @@ export function isFloat(value) {
  * @return {Boolean} true if `value` is an Array or false if not
  */
 export function isArray(value) {
-  return Array.isArray(value);
+  return Array.isArray(value)
 }
 
 /**
@@ -68,7 +68,7 @@ export function isFunction(value) {
  */
 
 export function isRegExp(value) {
-  return value instanceof RegExp;
+  return value instanceof RegExp
 }
 
 /**
@@ -77,9 +77,9 @@ export function isRegExp(value) {
  * @return {Boolean} true if `value` is an Object or false if not
  */
 export function isObject(value) {
-  return typeof value === "object"
+  return typeof value === 'object'
     && ! isArray(value)
-    && ! isNull(value);
+    && ! isNull(value)
 }
 
 /**
@@ -98,7 +98,7 @@ export function isSimple(value) {
  * @return {Boolean} true if `value` is `undefined` or false if not
  */
 export function isUndefined(value) {
-  return typeof value === 'undefined';
+  return typeof value === 'undefined'
 }
 
 /**
@@ -107,7 +107,7 @@ export function isUndefined(value) {
  * @return {Boolean} true if `value` is `null` or false if not
  */
 export function isNull(value) {
-  return value === null;
+  return value === null
 }
 
 /**
@@ -116,7 +116,7 @@ export function isNull(value) {
  * @return {Boolean} true if `value` is not `undefined` or `null`
  */
 export function hasValue(value) {
-  return ! (isUndefined(value) || isNull(value));
+  return ! (isUndefined(value) || isNull(value))
 }
 
 /**
@@ -125,7 +125,7 @@ export function hasValue(value) {
  * @return {Boolean} true if all values are not `undefined` or `null`
  */
 export function haveValue(...values) {
-  return values.every( value => hasValue(value) );
+  return values.every( value => hasValue(value) )
 }
 
 /**
@@ -134,7 +134,7 @@ export function haveValue(...values) {
  * @return {Boolean} true if `value` is `undefined` or `null`
  */
 export function noValue(value) {
-  return ! hasValue(value);
+  return ! hasValue(value)
 }
 
 /**
@@ -143,7 +143,7 @@ export function noValue(value) {
  * @return {any} first argument that has a value that is not `undefined` or `null`
  */
 export function firstValue(...values) {
-  return values.find( value => hasValue(value) );
+  return values.find( value => hasValue(value) )
 }
 
 /**
@@ -162,6 +162,6 @@ export function firstValue(...values) {
 export const isEmpty = obj =>
   isArray(obj)
     ? obj.length === 0
-    : Object.keys(obj).length === 0;
+    : Object.keys(obj).length === 0
 
 
