@@ -1,213 +1,231 @@
-import test from 'ava';
+import test from './library/ava-vitest.js';
 import {
-  isBoolean, isString, isInteger, isFloat, isNumber,
-  isObject, isArray, isUndefined, isNull, hasValue, noValue, firstValue, isRegExp, isEmpty,
+  isBoolean, isString, isInteger, isFloat, isNumber, isObject, isArray,
+  isUndefined, isNull, hasValue, haveValue, noValue, firstValue, isRegExp, isEmpty,
   isSimple,
 } from '../src/index.js'
 
 // isBoolean()
 test(
   'isBoolean() identifies true',
-  t => t.is(isBoolean(true), true)
+  t => t.true(isBoolean(true))
 );
 test(
   'isBoolean() identifies false',
-  t => t.is(isBoolean(false), true)
+  t => t.true(isBoolean(false))
 );
 test(
   'isBoolean() identifies number',
-  t => t.is(isBoolean(1), false)
+  t => t.false(isBoolean(1))
 );
 
 // isString()
 test(
   'isString() identifies string',
-  t => t.is(isString("foo"), true)
+  t => t.true(isString("foo"))
 );
 test(
   'isString() identifies number',
-  t => t.is(isString(123), false)
+  t => t.false(isString(123))
 );
 test(
   'isString() identifies undefined',
-  t => t.is(isString(), false)
+  t => t.false(isString())
 );
 
 // isNumber()
 test(
   'isNumber() identifies integer',
-  t => t.is(isNumber(42), true)
+  t => t.true(isNumber(42))
 );
 test(
   'isNumber() identifies float',
-  t => t.is(isNumber(42.43), true)
+  t => t.true(isNumber(42.43))
 );
 test(
   'isNumber() identifies string',
-  t => t.is(isNumber('42'), false)
+  t => t.false(isNumber('42'))
 );
 test(
   'isNumber() identifies undefined',
-  t => t.is(isNumber(), false)
+  t => t.false(isNumber())
 );
 
 // isInteger()
 test(
   'isInteger() identifies integer',
-  t => t.is(isInteger(42), true)
+  t => t.true(isInteger(42))
 );
 test(
   'isInteger() identifies float',
-  t => t.is(isInteger(42.43), false)
+  t => t.false(isInteger(42.43))
 );
 test(
   'isInteger() identifies float with zero decimal part',
-  t => t.is(isInteger(42.0), true)
+  t => t.true(isInteger(42.0))
 );
 test(
   'isInteger() identifies string',
-  t => t.is(isInteger('42'), false)
+  t => t.false(isInteger('42'))
 );
 test(
   'isInteger() identifies undefined',
-  t => t.is(isInteger(), false)
+  t => t.false(isInteger())
 );
 
 
 // isFloat()
 test(
   'isFloat() identifies integer',
-  t => t.is(isFloat(42), false)
+  t => t.false(isFloat(42))
 );
 test(
   'isFloat() identifies float',
-  t => t.is(isFloat(42.43), true)
+  t => t.true(isFloat(42.43))
 );
 test(
   'isFloat() identifies float with zero decimal part',
-  t => t.is(isFloat(42.0), false)
+  t => t.false(isFloat(42.0))
 );
 test(
   'isFloat() identifies string',
-  t => t.is(isFloat('42'), false)
+  t => t.false(isFloat('42'))
 );
 test(
   'isFloat() identifies undefined',
-  t => t.is(isFloat(), false)
+  t => t.false(isFloat())
 );
 
 // isArray()
 test(
   'isArray() identifies arrays',
-  t => t.is(isArray([1,2,3]), true)
+  t => t.true(isArray([1,2,3]))
 );
 test(
   'isArray() identifies non-arrays',
-  t => t.is(isArray(123), false)
+  t => t.false(isArray(123))
 );
 test(
   'isArray() identifies null',
-  t => t.is(isArray(null), false)
+  t => t.false(isArray(null))
 );
 
 // isRegExp()
 test(
   'isRegExp() identifies Regexps',
-  t => t.is(isRegExp(/foo/), true)
+  t => t.true(isRegExp(/foo/))
 );
 test(
   'isRegExp() identifies non-RegExp',
-  t => t.is(isRegExp(123), false)
+  t => t.false(isRegExp(123))
 );
 
 // isObject()
 test(
   'isObject() identifies class instance',
-  t => t.is(isObject(new Date()), true)
+  t => t.true(isObject(new Date()))
 );
 test(
   'isObject() identifies "hash table"',
-  t => t.is(isObject({ b: 'badger' }), true)
+  t => t.true(isObject({ b: 'badger' }))
 );
 test(
   'isObject() identifies array',
-  t => t.is(isObject([10, 20]), false)
+  t => t.false(isObject([10, 20]))
 );
 test(
   'isObject() identifies null',
-  t => t.is(isObject(null), false)
+  t => t.false(isObject(null))
 );
 
 // isUndefined()
 test(
   'isUndefined identifies undefined',
-  t => t.is(isUndefined(undefined), true)
+  t => t.true(isUndefined(undefined))
 );
 test(
   'isUndefined identifies null',
-  t => t.is(isUndefined(null), false)
+  t => t.false(isUndefined(null))
 );
 test(
   'isUndefined identifies nothing',
-  t => t.is(isUndefined(), true)
+  t => t.true(isUndefined())
 );
 
 // isNull()
 test(
   'isNull identifies undefined',
-  t => t.is(isNull(undefined), false)
+  t => t.false(isNull(undefined))
 );
 test(
   'isNull identifies null',
-  t => t.is(isNull(null), true)
+  t => t.true(isNull(null))
 );
 test(
   'isNull identifies nothing',
-  t => t.is(isNull(), false)
+  t => t.false(isNull())
 );
 
 // hasValue()
 test(
   'hasValue identifies nothing = false',
-  t => t.is(hasValue(), false)
+  t => t.false(hasValue())
 );
 test(
   'hasValue identifies undefined = false',
-  t => t.is(hasValue(undefined), false)
+  t => t.false(hasValue(undefined))
 );
 test(
   'hasValue identifies null = false',
-  t => t.is(hasValue(null), false)
+  t => t.false(hasValue(null))
 );
 test(
   'hasValue identifies false = true',
-  t => t.is(hasValue(false), true)
+  t => t.true(hasValue(false))
 );
 test(
   'hasValue identifies 0 = true',
-  t => t.is(hasValue(0), true)
+  t => t.true(hasValue(0))
+);
+
+// haveValue()
+test(
+  'haveValue(false, null) = false',
+  t => t.false(haveValue(false, null))
+);
+test(
+  'haveValue(true, null) = false',
+  t => t.false(haveValue(true, null))
+);
+test(
+  'haveValue(true, true) = true',
+  t => t.true(haveValue(true, true))
+);
+test(
+  'haveValue(1, 2) = true',
+  t => t.true(haveValue(1, 2))
 );
 
 // noValue()
 test(
   'noValue identifies nothing = true',
-  t => t.is(noValue(), true)
+  t => t.true(noValue())
 );
 test(
   'noValue identifies undefined = true',
-  t => t.is(noValue(undefined), true)
+  t => t.true(noValue(undefined))
 );
 test(
   'noValue identifies null = true',
-  t => t.is(noValue(null), true)
+  t => t.true(noValue(null))
 );
 test(
   'noValue identifies false = false',
-  t => t.is(noValue(false), false)
+  t => t.false(noValue(false))
 );
 test(
   'noValue identifies 0 = true',
-  t => t.is(noValue(0), false)
+  t => t.false(noValue(0))
 );
 
 // firstValue()
@@ -229,7 +247,7 @@ test(
 );
 test(
   'firstValue returns false',
-  t => t.is(firstValue(false, 1, 2, 3), false)
+  t => t.false(firstValue(false, 1, 2, 3))
 );
 test(
   'firstValue returns empty string',

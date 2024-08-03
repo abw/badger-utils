@@ -1,5 +1,5 @@
-import test from 'ava';
-import { selector } from '../src/index.js';
+import test from './library/ava-vitest.js'
+import { selector } from '../src/index.js'
 
 //----------------------------------------------------------------------------
 // selector()
@@ -45,4 +45,13 @@ test(
     t.true( select('food') )
     t.false( select('bar') )
   }
+)
+test(
+  'selector(null)',
+  t => t.throws(
+    () => selector(null),
+    {
+      message: 'Invalid selector() specification: null'
+    }
+  )
 )

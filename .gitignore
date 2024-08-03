@@ -4,3 +4,4 @@ node_modules
 dist
 OLD-docs
 website/.vitepress/cache
+tmp

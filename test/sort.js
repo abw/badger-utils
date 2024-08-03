@@ -1,4 +1,4 @@
-import test from 'ava';
+import test from './library/ava-vitest.js'
 import {
   stringField, numberField, integerField, booleanField,
   stringSort, numberSort, integerSort, booleanSort,
@@ -13,6 +13,10 @@ test(
   'integerField({ a: "10" }, "a")',
   t => t.is(integerField({ a: "10" }, "a"), 10)
 );
+test(
+  'integerField({ a: "10" }, "b")',
+  t => t.is(integerField({ a: "10" }, "b"), 0)
+);
 
 test(
   'numberField({ pi: 3.14 }, "pi")',
@@ -22,6 +26,10 @@ test(
   'numberField({ pi: "3.14" }, "pi")',
   t => t.is(numberField({ pi: "3.14" }, "pi"), 3.14)
 );
+test(
+  'numberField({ pi: "3.14" }, "e")',
+  t => t.is(numberField({ pi: "3.14" }, "e"), 0)
+);
 
 test(
   'stringField({ pi: 3.14 }, "pi")',
@@ -30,6 +38,10 @@ test(
 test(
   'stringField({ pi: "3.14" }, "pi")',
   t => t.is(stringField({ pi: "3.14" }, "pi"), "3.14")
+);
+test(
+  'stringField({ pi: "3.14" }, "e")',
+  t => t.is(stringField({ pi: "3.14" }, "e"), "")
 );
 
 test(
@@ -251,26 +263,39 @@ test(
 
 test(
   'multiSort() invalid type',
-  t => {
-    const error = t.throws(
-      () => multiSort('surname:strong')
-    )
-    t.is(
-      error.message,
-      'Invalid sort type "strong" in sort field: surname:strong'
-    )
-  }
+  t => t.throws(
+    () => multiSort('surname:strong'),
+    {
+      message: 'Invalid sort type "strong" in sort field: surname:strong'
+    }
+  )
 );
 
 test(
   'multiSort() invalid order',
-  t => {
-    const error = t.throws(
-      () => multiSort('surname:str:des')
-    )
-    t.is(
-      error.message,
-      'Invalid sort order "des" in sort field: surname:str:des'
-    )
-  }
+  t => t.throws(
+    () => multiSort('surname:str:des'),
+    {
+      message: 'Invalid sort order "des" in sort field: surname:str:des'
+    }
+  )
+);
+
+test(
+  'multiSort() invalid sort field 99',
+  t => t.throws(
+    () => multiSort([99]),
+    {
+      message: 'Invalid sort field: 99'
+    }
+  )
+);
+test(
+  'multiSort() invalid sort field -',
+  t => t.throws(
+    () => multiSort('-'),
+    {
+      message: 'Invalid sort field: -'
+    }
+  )
 );

@@ -1,4 +1,4 @@
-import test from 'ava';
+import test from './library/ava-vitest.js'
 import { debounce, sleep } from '../src/index.js'
 
 test(

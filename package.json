@@ -36,8 +36,8 @@
     "build:docs": "vitepress build website",
     "build:types": "tsc",
     "build:types-npx": "npx -p typescript tsc src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir dist",
-    "lint": "eslint 'src/**/*'",
-    "test": "ava",
+    "lint": "eslint 'src/**/*' 'test/**/*'",
+    "test": "vitest --ui --coverage",
     "pretest": "$npm_execpath build:lib"
   },
   "keywords": [
@@ -48,11 +48,13 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
-    "ava": "^6.1.2",
+    "@vitest/coverage-v8": "^2.0.5",
+    "@vitest/ui": "^2.0.5",
     "eslint": "^8.57.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.17.2",
     "typescript": "^5.4.5",
-    "vitepress": "1.0.0-rc.44"
+    "vitepress": "1.0.0-rc.44",
+    "vitest": "^2.0.5"
   }
 }

@@ -1,7 +1,6 @@
-import test from 'ava';
+import test from './library/ava-vitest.js';
 import {
   range, commas, formatNumber, currency
-  // price, priceOrPOA, priceOrZero, pounds, range
 } from '../src/index.js'
 
 //-----------------------------------------------------------------------------
@@ -163,6 +162,10 @@ test(
 test(
   'commas(12345.67, " ")',
   t => t.is(commas(12345.67, " "), '12 345.67')
+);
+test(
+  'commas()',
+  t => t.is(commas(), '')
 );
 
 //-----------------------------------------------------------------------------

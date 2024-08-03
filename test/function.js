@@ -1,5 +1,5 @@
-import test from 'ava';
-import { maybeFunction, identity } from '../src/utils/function.js';
+import test from './library/ava-vitest.js'
+import { maybeFunction, identity, doNothing } from '../src/utils/function.js'
 
 test(
   'maybeFunction() should call function',
@@ -39,4 +39,9 @@ test(
 test(
   'areEqual(true, 1, Boolean) should return true',
   t => t.true(areEqual(true, 1, Boolean))
+)
+
+test(
+  'doNothing(1, 2, 3)',
+  t => t.is(doNothing(1, 2, 3), undefined)
 )

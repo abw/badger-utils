@@ -1,5 +1,5 @@
-import test from 'ava';
-import { format } from '../src/utils/format.js';
+import test from './library/ava-vitest.js'
+import { format } from '../src/utils/format.js'
 
 test( 'format()',
   t => t.is(
@@ -32,14 +32,14 @@ test( 'format() with empty string',
 )
 
 test( 'format() with error from unbraced variable',
-  t => {
-    const error = t.throws(
-      () => format(
-        'The <animal> sat on the <badger>',
-        { animal: 'cat', place: 'mat' }
-      ),
-    );
-    t.is( error.message, 'Invalid variable expansion <badger> in message format: The <animal> sat on the <badger>' );
-  }
+  t => t.throws(
+    () => format(
+      'The <animal> sat on the <badger>',
+      { animal: 'cat', place: 'mat' }
+    ),
+    {
+      message: 'Invalid variable expansion <badger> in message format: The <animal> sat on the <badger>'
+    }
+  )
 )
 

@@ -1,8 +1,9 @@
-import test from 'ava';
+import test from './library/ava-vitest.js'
 import {
   capitalise, capitaliseWords, snakeToStudly, snakeToCamel,
   splitList, joinList, joinListAnd, joinListOr, splitLines, splitHash,
-  plural, singular, inflect
+  plural, singular, inflect,
+  Inflect
 } from '../src/index.js'
 
 // capitalise
@@ -60,6 +61,13 @@ test(
     const list = splitList(undefined);
     t.is( list.length, 0);
   }
+)
+test(
+  'splitList number',
+  t => t.deepEqual(
+    splitList(9),
+    [9]
+  )
 )
 test(
   'splitList empty string',
@@ -123,6 +131,10 @@ test(
 test(
   'joinList with commas',
   t => t.is(joinList(["foo", "bar", "baz"], ", "), "foo, bar, baz")
+)
+test(
+  'joinList with one element',
+  t => t.is(joinList(["foo"]), "foo")
 )
 test(
   'joinList with commas and "and"',
@@ -262,6 +274,10 @@ test(
   t => t.is( plural('woman'), 'womans' )
 );
 test(
+  "plural('-')",
+  t => t.is( plural('-'), '-' )
+);
+test(
   "plural('woman') with special case",
   t => t.is( plural('woman', { woman: 'women' }), 'women' )
 );
@@ -332,5 +348,9 @@ test(
 test(
   'inflect(0, "black", "black", "none, none more")',
   t => t.is( inflect(0, 'black', 'black', 'none, none more'), 'none, none more black' )
+);
+test(
+  'Inflect(0, "dog")',
+  t => t.is( Inflect(0, 'dog'), 'No dogs' )
 );
 
