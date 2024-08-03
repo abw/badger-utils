@@ -29,7 +29,8 @@
   "scripts": {
     "dev": "vitepress dev website",
     "preview": "vitepress preview website",
-    "build": "$npm_execpath build:lib && $npm_execpath build:types && $npm_execpath build:docs",
+    "build": "$npm_execpath build:lib && $npm_execpath build:docs",
+    "OLD-build": "$npm_execpath build:lib && $npm_execpath build:types && $npm_execpath build:docs",
     "build:clean": "rimraf dist",
     "build:rollup": "rollup -c",
     "build:lib": "$npm_execpath build:clean && $npm_execpath build:rollup",
@@ -48,11 +49,13 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@vitest/coverage-v8": "^2.0.5",
     "@vitest/ui": "^2.0.5",
     "eslint": "^8.57.0",
     "rimraf": "^5.0.5",
     "rollup": "^4.17.2",
+    "tslib": "^2.6.3",
     "typescript": "^5.4.5",
     "vitepress": "1.0.0-rc.44",
     "vitest": "^2.0.5"

@@ -3,7 +3,7 @@ import {
   isBoolean, isString, isInteger, isFloat, isNumber, isObject, isArray,
   isUndefined, isNull, hasValue, haveValue, noValue, firstValue, isRegExp, isEmpty,
   isSimple,
-} from '../src/index.js'
+} from '../src/index'
 
 // isBoolean()
 test(

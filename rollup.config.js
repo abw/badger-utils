@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import terser from '@rollup/plugin-terser'
+import typescript from "@rollup/plugin-typescript";
 import pkg from './package.json' assert { type: 'json' }
 
 // Silence circular dependency warnings
@@ -21,7 +22,7 @@ const onwarn = (warning, warn) => {
 export default [
   // browser-friendly UMD build
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: {
       name: 'badger-utils',
       file: pkg.browser,
@@ -32,18 +33,20 @@ export default [
     onwarn,
     plugins: [
       resolve(),
-      commonjs()
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
     ]
   },
 
   // CommonJS (for Node) and ES module (for bundlers) build.
   {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     plugins: [
       resolve({
         extensions: ['.js', '.jsx'],
       }),
-      commonjs()
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
     ],
     external: [
     ],

@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { maybeFunction, identity, doNothing } from '../src/utils/function.js'
+import { maybeFunction, identity, doNothing } from '../src/index'
 
 test(
   'maybeFunction() should call function',

@@ -1,7 +1,7 @@
 import test from './library/ava-vitest.js'
 import {
   setNumberDefaults, currency
-} from '../src/index.js'
+} from '../src/index'
 
 test(
   "currency(12345, { locale: 'en-GB', currency: 'GBP' })",

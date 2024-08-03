@@ -1,5 +1,5 @@
-import { noValue } from './assert.js'
-import { defaultLocale } from './misc.js'
+import { noValue } from './assert'
+import { defaultLocale } from './misc'
 
 // this is an ugly hack to provide backwards compatibility
 // with some of my older utility functions that are very much
@@ -20,7 +20,14 @@ let numberDefaults = {
  * @param {String} [defaults.currencySign] - default currency sign, e.g. `£`
  * @param {String} [defaults.thousands] - default separator for thousands, e.g. `,`
  */
-export function setNumberDefaults(defaults={}) {
+export function setNumberDefaults(
+  defaults: {
+    locale?: string,
+    currency?: string,
+    currencySign?: string,
+    thousands?: string
+  }
+): void {
   numberDefaults = { ...numberDefaults, ...defaults }
 }
 
@@ -31,12 +38,16 @@ export function setNumberDefaults(defaults={}) {
  * @param {Integer} last - last number
  * @param {Integer} [step=1] - step number
  */
-export const range = (first, last, step=1) => {
+export const range = (first: number, last: number, step: number=1): number[] => {
   const down = last < first
   const walk = down ? -Math.abs(step) : step
   return Array(1 + Math.floor(Math.abs((last - first) / step)))
     .fill(first)
     .map((x, y) => x + y * walk)
+}
+
+interface FormatNumberOptions extends Intl.NumberFormatOptions {
+  locale?: string
 }
 
 /**
@@ -45,9 +56,12 @@ export const range = (first, last, step=1) => {
  * @param {Object} [options] - configuration options
  * @param {Object} [options.locale] - locale
  */
-export function formatNumber(number, options={}) {
+export function formatNumber(
+  number: number,
+  options: FormatNumberOptions = { }
+): string {
   return new Intl.NumberFormat(
-    options.locale || numberDefaults.locale,
+    options.locale,
     options
   ).format(number)
 }
@@ -59,7 +73,10 @@ export function formatNumber(number, options={}) {
  * @param {Object} [options.locale] - locale
  * @param {Object} [options.currency] - currency code, e.g. `GBP` or `USD`
  */
-export function currency(number, options={}) {
+export function currency(
+  number: number,
+  options: FormatNumberOptions = { }
+): string {
   return formatNumber(
     number,
     {
@@ -79,7 +96,10 @@ export function currency(number, options={}) {
  * commas(12345.67)       // 12,345.67
  * commas(12345.67, ' ')  // 12 345.67
  */
-export function commas(n, thousands=numberDefaults.thousands) {
+export function commas(
+  n: number,
+  thousands: string = numberDefaults.thousands
+): string {
   if (noValue(n)) {
     return ''
   }

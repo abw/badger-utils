@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { selector } from '../src/index.js'
+import { selector } from '../src/index'
 
 //----------------------------------------------------------------------------
 // selector()

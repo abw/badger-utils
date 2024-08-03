@@ -8,7 +8,7 @@ export default defineConfig({
     outputFile: './tmp/test/index.html',
     coverage: {
       provider: 'v8',
-      include: ['src/**/*.js'],
+      include: ['src/**/*.ts'],
       reportsDirectory: './tmp/coverage'
     },
   },

@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { debounce, sleep } from '../src/index.js'
+import { debounce, sleep } from '../src/index'
 
 test(
   'sleep()',

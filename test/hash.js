@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { hash } from '../src/utils/object.js'
+import { hash } from '../src/index'
 
 const ab = { a: 'alpha', b: 'bravo' }
 const cd = ['c', 'd']

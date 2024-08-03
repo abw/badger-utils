@@ -1,7 +1,7 @@
 import test from './library/ava-vitest.js'
 import {
   objMap, extract, remove, keys, values, entries
-} from '../src/utils/object.js'
+} from '../src/index'
 
 //----------------------------------------------------------------------------
 // objMap()

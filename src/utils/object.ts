@@ -1,11 +1,44 @@
-import { selector } from './select.js'
-import { splitHash } from './text.js'
+import { selector, SelectSpec } from './select'
+import { splitHash, HashSource } from './text'
 
-export function hash(source, options={}) {
+
+type HashKeyFunction = (
+  key: string,
+  value: any,
+  source: HashSource,
+  hash: object
+) => string
+
+type HashValueFunction = (
+  value: any,
+  key: string,
+  source: HashSource,
+  hash: object
+) => string
+
+type ObjMapFunction = (
+  value: any,
+  key: string
+) => any
+
+// type ExtractFunction = (key: string) => any
+// type ExtractKeys = object | string[] | string | RegExp | ExtractFunction
+type KeyFunction = (key: string) => string
+type ValueFunction = (value: any) => any
+
+export function hash(
+  source: string|object|any[],
+  options: {
+    include?: any,
+    exclude?: any,
+    key?: HashKeyFunction,
+    value?: HashValueFunction,
+  } = { }
+): object {
   const include = options.include && selector(options.include)
   const exclude = options.exclude && selector(options.exclude)
   return entries(splitHash(source)).reduce(
-    (hash, [key, value]) => {
+    (hash: object, [key, value]) => {
       if (include && ! include(key, value, source, hash)) {
         return hash
       }
@@ -18,8 +51,10 @@ export function hash(source, options={}) {
       if (options.value) {
         value = options.value(value, key, source, hash)
       }
-      hash[key] = value
-      return hash
+      return {
+        ...hash,
+        [key]: value
+      }
     },
     { }
   )
@@ -37,13 +72,13 @@ export function hash(source, options={}) {
  *   v => v.toUpperCase()
  * )                        // returns { a: 'ALPHA', b: 'BRAVO' }
  */
-export function objMap(obj, fn) {
+export function objMap(obj: object, fn: ObjMapFunction): object {
   return Object.keys(obj).reduce(
-    (result, key) => {
-      result[key] = fn(obj[key], key)
-      return result
-    },
-    {}
+    (result: object, key: string) => ({
+      ...result,
+      [key]: fn(obj[key as keyof object], key)
+    }),
+    { }
   )
 }
 
@@ -82,7 +117,15 @@ export function objMap(obj, fn) {
  *   key => key === 'a' || key === 'b'
  * ) // => { a: 'alpha', b: 'bravo' }
  */
-export const extract = (object, keys, options={}) => {
+export const extract = (
+  object: object,
+  keys: SelectSpec,
+  options: {
+    key?: KeyFunction,
+    value?: ValueFunction,
+    delete?: boolean
+  } = { }
+): object => {
   let extract = { }
   let actions = { delete: false, ...options }
   const matcher = selector(keys)
@@ -90,9 +133,9 @@ export const extract = (object, keys, options={}) => {
   Object.keys(object).map(
     key => {
       if (matcher(key)) {
-        let value = object[key]
+        let value: any = object[key as keyof object]
         if (actions.delete) {
-          delete object[key]
+          delete object[key as keyof object]
         }
         if (actions.key) {
           key = actions.key(key)
@@ -100,7 +143,11 @@ export const extract = (object, keys, options={}) => {
         if (actions.value) {
           value = actions.value(value)
         }
-        extract[key] = value
+        extract = {
+          ...extract,
+          [key]: value
+        }
+        // extract[key as keyof object] = value
       }
     }
   )
@@ -120,9 +167,9 @@ export const objSubset = extract
  *   'a'
  * ) // => { a: 'alpha', b: 'bravo' }
  */
-export const remove = (object, key) => {
-  const value = object[key]
-  delete object[key]
+export const remove = (object: { }, key: string): any => {
+  const value = object[key as keyof object]
+  delete object[key as keyof object]
   return value
 }
 

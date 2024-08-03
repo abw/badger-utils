@@ -1,12 +1,16 @@
 {
   "include": ["src/**/*"],
   "compilerOptions": {
-    "allowJs": true,
+    "strict": true,
+    // "allowJs": true,
     "declaration": true,
+    "target": "ES2020",
+    "module": "ES2022",
     "emitDeclarationOnly": true,
     "outDir": "dist",
     "sourceMap": true,
     "sourceRoot": "dist",
-    "declarationMap": true
+    "declarationMap": true,
+    "moduleResolution": "node",
   }
 }

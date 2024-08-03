@@ -1,7 +1,7 @@
 import test from './library/ava-vitest.js'
 import {
   range, commas, formatNumber, currency
-} from '../src/index.js'
+} from '../src/index'
 
 //-----------------------------------------------------------------------------
 // range()

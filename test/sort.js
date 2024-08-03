@@ -3,7 +3,7 @@ import {
   stringField, numberField, integerField, booleanField,
   stringSort, numberSort, integerSort, booleanSort,
   multiSort, descendingOrder
-} from '../src/utils/sort.js'
+} from '../src/index'
 
 test(
   'integerField({ a: 10 }, "a")',

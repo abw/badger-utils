@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { fail, failMsg, rethrow } from '../src/utils/error.js'
+import { fail, failMsg, rethrow } from '../src/index'
 
 test( 'fail()',
   t => t.throws(

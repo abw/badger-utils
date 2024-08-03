@@ -1,4 +1,4 @@
-import { isFunction } from './assert.js'
+import { isFunction } from './assert'
 
 /**
  * Function to call a function or return a non-function value.
@@ -13,7 +13,7 @@ import { isFunction } from './assert.js'
  * maybeFunction(arg => `Hello ${arg.name}!`, { name: 'World' });  // Hello World!
  */
 
-export const maybeFunction = (fn, ...args) =>
+export const maybeFunction = (fn: any, ...args: any[]): any =>
   isFunction(fn)
     ? fn(...args)
     : fn
@@ -28,4 +28,4 @@ export function doNothing() {
 /**
  * Identity function which returns the argument passed to it.
  */
-export const identity = value => value
+export const identity = (value: any) => value

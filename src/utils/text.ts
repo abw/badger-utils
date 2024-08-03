@@ -1,5 +1,9 @@
-import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert.js'
-import { commas } from './numbers.js'
+import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert'
+import { commas } from './numbers'
+
+export type ListSource = string | any[]
+export type HashSource = object | ListSource
+
 
 /**
  * Split a comma/whitespace delimited string into an Array
@@ -13,17 +17,20 @@ import { commas } from './numbers.js'
  * @example
  * const strings = splitList('one, two, three')
  */
-export function splitList(value, regex=/,\s*|\s+/) {
+export function splitList(
+  value: ListSource,
+  regex=/,\s*|\s+/
+): any[] {
   if (noValue(value)) {
     return [ ]
   }
   else if (isString(value)) {
     return value.length
-      ? value.split(regex)
+      ? (value as string).split(regex)
       : [ ]
   }
   else if (isArray(value)) {
-    return value
+    return value as any[]
   }
   return [value]
 }
@@ -42,13 +49,17 @@ export function splitList(value, regex=/,\s*|\s+/) {
  * @example
  * const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }
  */
-export function splitHash(value, set=true, hash={ }) {
+export function splitHash(
+  value: HashSource,
+  set: any=true,
+  hash={ }
+): object {
   // if it's already a hash object then return it unchanged
   if (isObject(value)) {
-    return value
+    return value as object
   }
   // split a string into an array (or leave an array unchanged)
-  const items = splitList(value)
+  const items = splitList(value as string)
 
   return items.reduce(
     (result, key) => {
@@ -61,13 +72,12 @@ export function splitHash(value, set=true, hash={ }) {
   )
 }
 
-
 /**
  * Split a string into an Array of lines.
  * @param {String} text - string to split
  * @return {Array} array of lines
 */
-export function splitLines(text) {
+export function splitLines(text: string): string[] {
   if (! isString(text) || text.length === 0) {
     return [ ]
   }
@@ -90,7 +100,11 @@ export function splitLines(text) {
  * @example
  * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three
  */
-export function joinList(array, joint=' ', lastJoint=joint) {
+export function joinList(
+  array: any[],
+  joint: string=' ',
+  lastJoint: string=joint
+): string {
   let copy = [...array]
   const last = copy.pop()
   return copy.length
@@ -107,7 +121,11 @@ export function joinList(array, joint=' ', lastJoint=joint) {
  * @example
  * joinListAnd(['one', 'two', 'three']);   // one, two and three
  */
-export function joinListAnd(array, joint=', ', lastJoint=' and ') {
+export function joinListAnd(
+  array: any[],
+  joint: string=', ',
+  lastJoint: string=' and '
+): string {
   return joinList(array, joint, lastJoint)
 }
 
@@ -120,7 +138,11 @@ export function joinListAnd(array, joint=', ', lastJoint=' and ') {
  * @example
  * joinListOr(['one', 'two', 'three']);   // one, two or three
  */
-export function joinListOr(array, joint=', ', lastJoint=' or ') {
+export function joinListOr(
+  array: any[],
+  joint: string=', ',
+  lastJoint: string=' or '
+): string {
   return joinList(array, joint, lastJoint)
 }
 
@@ -133,7 +155,7 @@ export function joinListOr(array, joint=', ', lastJoint=' or ') {
  * @example
  * capitalise('BADGER');   // Badger
  */
-export function capitalise(word) {
+export function capitalise(word: string): string {
   return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
 }
 
@@ -146,7 +168,7 @@ export function capitalise(word) {
  * @example
  * capitaliseWords('BADGER FUN');   // Badger Fun
  */
-export function capitaliseWords(string) {
+export function capitaliseWords(string: string): string {
   return string.replace(
     // /(?:^|\s)\S/g,
     /(\w+)/g,
@@ -163,7 +185,7 @@ export function capitaliseWords(string) {
  * @example
  * snakeToStudly('happy_badger/dance');   // HappyBadger/Dance
  */
-export function snakeToStudly(snake) {
+export function snakeToStudly(snake: string): string {
   return snake.split('/').map(
     // each segment can be like foo_bar which we convert to FooBar
     segment => segment.split('_').map(capitalise).join('')
@@ -179,7 +201,7 @@ export function snakeToStudly(snake) {
  * @example
  * snakeToCamel('happy_badger/dance');   // happyBadger/dance
  */
-export function snakeToCamel(snake) {
+export function snakeToCamel(snake: string): string {
   return snake.split('/').map(
     // each segment can be like foo_bar which we convert to fooBar
     segment => segment.split('_').map((i, n) => n ? capitalise(i) : i).join('')
@@ -202,12 +224,15 @@ export function snakeToCamel(snake) {
  * @example
  * plural('woman');   // womans
  */
-export function plural(singular, specialCases={}) {
-  const special = specialCases[singular]
+export function plural(
+  singular: string,
+  specialCases: object={}
+): string {
+  const special = specialCases[singular as keyof object]
   if (hasValue(special)) {
-    return special
+    return special as string
   }
-  let found
+  let found: RegExpMatchArray | null
 
   if (singular.match(/(ss?|sh|ch|x)$/)) {
     // e.g. grass/grasses, lash/lashes, watch/watches, box, boxes
@@ -240,8 +265,11 @@ export function plural(singular, specialCases={}) {
  * @example
  * singular('women');     // women - FAIL!
  */
-export function singular(plural, specialCases={}) {
-  const special = specialCases[plural]
+export function singular(
+  plural: string,
+  specialCases: object = {}
+): string {
+  const special = specialCases[plural as keyof object]
   if (hasValue(special)) {
     return special
   }
@@ -283,7 +311,12 @@ export function singular(plural, specialCases={}) {
  * @example
  * inflect(0, 'black', 'black', 'none, none more')     // none, none more black
  */
-export function inflect(n, singularForm, pluralForm, no='no') {
+export function inflect(
+  n: number,
+  singularForm: string,
+  pluralForm?: string,
+  no: string = 'no'
+): string {
   return (n ? commas(n) : no)
     + ' '
     + (n === 1 ? singularForm : (pluralForm || plural(singularForm)))
@@ -297,7 +330,12 @@ export function inflect(n, singularForm, pluralForm, no='no') {
  * @param {String} [plural] - optional plural form
  * @param {String} [no='No'] - optional word to use when `n` is 0
  */
-export function Inflect(n, singular, plural, no='No') {
+export function Inflect(
+  n: number,
+  singular: string,
+  plural?: string,
+  no: string = 'No'
+) {
   return inflect(n, singular, plural, no)
 }
 

@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { format } from '../src/utils/format.js'
+import { format } from '../src/index'
 
 test( 'format()',
   t => t.is(

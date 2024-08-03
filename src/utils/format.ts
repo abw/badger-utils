@@ -1,5 +1,5 @@
-import { noValue } from './assert.js'
-import { fail } from './error.js'
+import { noValue } from './assert'
+import { fail } from './error'
 
 /**
  * Function to format strings by inserting values into placeholder locations.
@@ -9,11 +9,11 @@ import { fail } from './error.js'
  * @example
  * format('Hello <name>!', { name: 'World'});  // Hello World!
  */
-export const format = (msg, data) =>
+export const format = (msg: string, data: object): string =>
   msg.replace(
     /<(\w+)>/g,
     (_, key) => {
-      const val = data[key]
+      const val = data[key as keyof object]
       if (noValue(val)) {
         fail(`Invalid variable expansion <${key}> in message format: ${msg}`)
       }

@@ -1,5 +1,5 @@
 import test from './library/ava-vitest.js'
-import { multiply, divide, add, subtract, clamp } from '../src/utils/maths.js'
+import { multiply, divide, add, subtract, clamp } from '../src/index'
 
 test(
   'multiply(3.0, 2.2)',

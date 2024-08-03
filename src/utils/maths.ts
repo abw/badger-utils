@@ -2,7 +2,7 @@
 // https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
 // This code was adapted from Sinful.js, see:
 // https://github.com/guipn/sinful.js/blob/master/sinful.js#L37
-const multiplier = x => {
+const multiplier = (x: number): number => {
   const parts = x.toString().split('.')
   return parts.length < 2
     ? 1
@@ -12,7 +12,7 @@ const multiplier = x => {
 // Given a variable number of arguments, returns the maximum
 // multiplier that must be used to normalize an operation involving
 // all of them.
-const correctionFactor = (...args) =>
+const correctionFactor = (...args: number[]): number =>
   args.reduce(
     (prev, next) => {
       const mp = multiplier(prev)
@@ -29,7 +29,7 @@ const correctionFactor = (...args) =>
  * @example
  * multiply(3.0, 2.2, 2.0);  // 13.2
  */
-export const multiply = (...args) =>
+export const multiply = (...args: number[]): number =>
   args.reduce(
     (sum, value) => {
       const cf = correctionFactor(sum, value)
@@ -45,7 +45,7 @@ export const multiply = (...args) =>
  * @example
  * divide(13.2, 2.0, 1.1);  // 6
  */
-export const divide = (...args) =>
+export const divide = (...args: number[]): number =>
   args.reduce(
     (sum, value) => {
       const cf = correctionFactor(sum, value)
@@ -60,7 +60,7 @@ export const divide = (...args) =>
  * @example
  * add(1.1, 6.6, 0.1);  // 7.8
  */
-export const add = (...args) => {
+export const add = (...args: number[]): number => {
   const cf = correctionFactor.apply(null, args)
   return args.reduce(
     (sum, value) => sum + cf * value,
@@ -75,7 +75,7 @@ export const add = (...args) => {
  * @example
  * sub(7.8, 0.1, 2.4);  // 5.3
  */
-export const subtract = (...args) => {
+export const subtract = (...args: number[]): number => {
   const cf = correctionFactor.apply(null, args)
   const [first, ...rest] = args
   return rest.reduce(
@@ -93,7 +93,7 @@ export const subtract = (...args) => {
  * @example
  * clamp(1.1, 0, 1);  // 1
  */
-export const clamp = (n, min, max) =>
+export const clamp = (n: number, min: number, max: number): number =>
   Math.min(Math.max(n, min), max)
 
 

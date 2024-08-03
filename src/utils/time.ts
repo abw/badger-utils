@@ -6,12 +6,13 @@
  * @param {Integer} [timeout=300] - timeout in milliseconds
  * @return {Function} debounced function
  */
-export function debounce(func, timeout=300) {
-  let timer
-  return (...args) => {
+export function debounce(func: Function, timeout: number = 300): Function {
+  let timer: ReturnType<typeof setTimeout>
+  return (...args: any[]) => {
     clearTimeout(timer)
     timer = setTimeout(
-      () => func.apply(this, args),
+      // () => func.apply(this, args),
+      () => func(...args),
       timeout
     )
   }
@@ -22,6 +23,6 @@ export function debounce(func, timeout=300) {
  * @param {Integer} ms - delay in millseconds
  * @return {Promise} - promise which will resolve after the delay
  */
-export function sleep(ms) {
+export function sleep(ms: number): Promise<any> {
   return new Promise(r => setTimeout(r, ms))
 }

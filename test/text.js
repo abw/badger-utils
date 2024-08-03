@@ -4,7 +4,7 @@ import {
   splitList, joinList, joinListAnd, joinListOr, splitLines, splitHash,
   plural, singular, inflect,
   Inflect
-} from '../src/index.js'
+} from '../src/index'
 
 // capitalise
 test(

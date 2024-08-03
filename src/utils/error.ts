@@ -1,11 +1,11 @@
-import { format } from './format.js'
+import { format } from './format'
 
 /**
  * Throws a new Error object
  * @param {String[]} message - error message string(s)
  * @throws {Error}
  */
-export function fail(...message) {
+export function fail(...message: string[]): never {
   throw new Error(message.join(''))
 }
 
@@ -15,7 +15,7 @@ export function fail(...message) {
  * @param {Object} data - data items to embed in message
  * @throws {Error}
  */
-export function failMsg(message, data) {
+export function failMsg(message: string, data: object): never {
   throw new Error(
     format(message, data)
   )
@@ -26,7 +26,7 @@ export function failMsg(message, data) {
  * @param {Error} error - error object
  * @throws {Error}
  */
-export function rethrow(error) {
+export function rethrow(error: Error): never {
   throw error
 }
 
