@@ -133,7 +133,6 @@ isSimple([ ]);             // false
 isSimple(null);            // false
 ```
 
-
 ## isUndefined(value) {#isUndefined}
 
 Determines if a value has the `undefined` value.  Returns Boolean `true` or
@@ -161,6 +160,19 @@ for a value being either `undefined` or `null`.
 isNull(null);      // true
 isNull(undefined); // false
 isNull(0);         // false
+```
+
+## isEmpty(value) {#isEmpty}
+
+Determines if an array or object value is empty.  For an array it's equivalent
+to `value.length === 0`.  For an object it's `Object.keys(value).length === 0`.
+Returns Boolean `true` or `false`.
+
+```js
+isEmpty([ ])            // true
+isEmpty({ })            // true
+isEmpty([ 10 ])         // false
+isEmpty({ a: 10 })      // false
 ```
 
 ## hasValue(value) {#hasValue}
@@ -217,15 +229,3 @@ firstValues(null, 2, 3);      // 2
 firstValues(false, 3, 4);     // false
 ```
 
-## isEmpty(value) {#isEmpty}
-
-Determines if an array or object value is empty.  For an array it's equivalent
-to `value.length === 0`.  For an object it's `Object.keys(value).length === 0`.
-Returns Boolean `true` or `false`.
-
-```js
-isEmpty([ ])            // true
-isEmpty({ })            // true
-isEmpty([ 10 ])         // false
-isEmpty({ a: 10 })      // false
-```
