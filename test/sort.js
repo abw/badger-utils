@@ -1,9 +1,15 @@
 import test from './library/ava-vitest.js'
 import {
-  stringField, numberField, integerField, booleanField,
+  getField, stringField, numberField, integerField, booleanField,
   stringSort, numberSort, integerSort, booleanSort,
   multiSort, descendingOrder
 } from '../src/utils/sort.js'
+
+test(
+  'field({ a: { b: { c: 10 } } }, "a.b.c")',
+  t => t.is(getField({ a: { b: { c: '10' } } }, data => data.a.b.c), '10')
+)
+
 
 test(
   'integerField({ a: 10 }, "a")',
@@ -17,6 +23,11 @@ test(
   'integerField({ a: "10" }, "b")',
   t => t.is(integerField({ a: '10' }, 'b'), 0)
 )
+test(
+  'integerField({ a: { b: { c: 10 } } }, "a.b.c")',
+  t => t.is(integerField({ a: { b: { c: '10' } } }, data => data.a.b.c), 10)
+)
+
 
 test(
   'numberField({ pi: 3.14 }, "pi")',
@@ -30,6 +41,10 @@ test(
   'numberField({ pi: "3.14" }, "e")',
   t => t.is(numberField({ pi: '3.14' }, 'e'), 0)
 )
+test(
+  'numberField({ a: { b: { c: "3.14" } } }, "a.b.c")',
+  t => t.is(numberField({ a: { b: { c: '3.14' } } }, data => data.a.b.c), 3.14)
+)
 
 test(
   'stringField({ pi: 3.14 }, "pi")',
@@ -42,6 +57,10 @@ test(
 test(
   'stringField({ pi: "3.14" }, "e")',
   t => t.is(stringField({ pi: '3.14' }, 'e'), '')
+)
+test(
+  'stringField({ a: { b: { c: "3.14" } } }, "a.b.c")',
+  t => t.is(stringField({ a: { b: { c: '3.14' } } }, data => data.a.b.c), '3.14')
 )
 
 test(
@@ -59,6 +78,10 @@ test(
 test(
   'booleanField({ a: 1, b: 0 }, "b")',
   t => t.is(booleanField({ a: 1, b: 0 }, 'b'), false)
+)
+test(
+  'booleanField({ a: { b: { c: true } } }, "a.b.c")',
+  t => t.is(booleanField({ a: { b: { c: true } } }, data => data.a.b.c), true)
 )
 
 test(
@@ -79,6 +102,28 @@ test(
         { name: 'Daphne', age: 16 },
         { name: 'Shaggy', age: 17 },
         { name: 'Fred',   age: 18 },
+      ]
+    )
+  }
+)
+test(
+  'integerSort() with nested data and function',
+  t => {
+    const sortByAge = integerSort( person => person.dob.year )
+    const people = [
+      { name: 'Fred',   dob: { year: 1967 } },
+      { name: 'Shaggy', dob: { year: 1965 } },
+      { name: 'Daphne', dob: { year: 1966 } },
+      { name: 'Velma',  dob: { year: 1968 } },
+    ]
+    const sorted = people.sort(sortByAge) // Shaggy, Daphne, Fred, Velma
+    t.deepEqual(
+      sorted,
+      [
+        { name: 'Shaggy', dob: { year: 1965 } },
+        { name: 'Daphne', dob: { year: 1966 } },
+        { name: 'Fred',   dob: { year: 1967 } },
+        { name: 'Velma',  dob: { year: 1968 } },
       ]
     )
   }
@@ -106,6 +151,27 @@ test(
 )
 
 test(
+  'numberSort() with nested data and function',
+  t => {
+    const sortByValue = numberSort( row => row.approx.value )
+    const constants = [
+      { name: 'pi',   approx: { value: 3.14  } },
+      { name: 'e',    approx: { value: 2.718 } },
+      { name: 'phi',  approx: { value: 1.618 } },
+    ]
+    const sorted = constants.sort(sortByValue)
+    t.deepEqual(
+      sorted,
+      [
+        { name: 'phi',  approx: { value: 1.618 } },
+        { name: 'e',    approx: { value: 2.718 } },
+        { name: 'pi',   approx: { value: 3.14  } },
+      ]
+    )
+  }
+)
+
+test(
   'stringSort()',
   t => {
     const sortByName = stringSort('name')
@@ -127,6 +193,27 @@ test(
 )
 
 test(
+  'stringSort() with nested data and function',
+  t => {
+    const sortByName = stringSort( row => row.greek.letter )
+    const constants = [
+      { greek: { letter: 'pi'  }, value: 3.14  },
+      { greek: { letter: 'e'   }, value: 2.718 },
+      { greek: { letter: 'phi' }, value: 1.618 },
+    ]
+    const sorted = constants.sort(sortByName)
+    t.deepEqual(
+      sorted,
+      [
+        { greek: { letter: 'e'   }, value: 2.718 },
+        { greek: { letter: 'phi' }, value: 1.618 },
+        { greek: { letter: 'pi'  }, value: 3.14  },
+      ]
+    )
+  }
+)
+
+test(
   'booleanSort()',
   t => {
     const sortByTruth = booleanSort('truth')
@@ -138,8 +225,27 @@ test(
     t.deepEqual(
       sorted,
       [
-        { name: 'no',    truth: 0 },
-        { name: 'yes',   truth: 1 },
+        { name: 'no',  truth: 0 },
+        { name: 'yes', truth: 1 },
+      ]
+    )
+  }
+)
+
+test(
+  'booleanSort() with nested data and function',
+  t => {
+    const sortByTruth = booleanSort( row => row.truth.is.out.there )
+    const truths = [
+      { name: 'yes',   truth: { is: { out: { there: 1 } } } },
+      { name: 'no',    truth: { is: { out: { there: 0 } } } },
+    ]
+    const sorted = truths.sort(sortByTruth)
+    t.deepEqual(
+      sorted,
+      [
+        { name: 'no',    truth: { is: { out: { there: 0 } } } },
+        { name: 'yes',   truth: { is: { out: { there: 1 } } } },
       ]
     )
   }
@@ -260,6 +366,36 @@ test(
   }
 )
 
+test(
+  'multiSort() with nested data and function',
+  t => {
+    const people = [
+      { name: { forename: 'John', surname: 'Smith', }, age: 29, premium: true  },
+      { name: { forename: 'Jack', surname: 'Smith', }, age: 30, premium: true  },
+      { name: { forename: 'John', surname: 'Smith', }, age: 25, premium: false },
+      { name: { forename: 'John', surname: 'Smith', }, age: 28, premium: true },
+      { name: { forename: 'John', surname: 'Jones', }, age: 32, premium: false },
+    ]
+    const sorted = people.sort(
+      multiSort([
+        'premium:bool:desc',
+        'age:int',
+        stringSort( row => row.name.surname ),
+        stringSort( row => row.name.forename )
+      ])
+    )
+    t.deepEqual(
+      sorted,
+      [
+        { name: { forename: 'John', surname: 'Smith', }, age: 28, premium: true },
+        { name: { forename: 'John', surname: 'Smith', }, age: 29, premium: true  },
+        { name: { forename: 'Jack', surname: 'Smith', }, age: 30, premium: true  },
+        { name: { forename: 'John', surname: 'Smith', }, age: 25, premium: false },
+        { name: { forename: 'John', surname: 'Jones', }, age: 32, premium: false },
+      ]
+    )
+  }
+)
 
 test(
   'multiSort() invalid type',

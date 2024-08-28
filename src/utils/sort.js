@@ -3,6 +3,20 @@ import { fail } from './error.js'
 import { splitList } from './text.js'
 
 /**
+ * Function to extract a field from an object.
+ * @param {Object} obj - object containing data
+ * @param {String|Function} field - field to return
+ * @return {Any} - value from object
+ * @example
+ * booleanField({ a: 1 }, "a");     // true
+ */
+export const getField = (obj, field) =>
+  isFunction(field)
+    ? field(obj)
+    : obj[field]
+
+
+/**
  * Function to extract a boolean field from an object.
  * @param {Object} obj - object containing data
  * @param {String} field - field to return as boolean
@@ -11,7 +25,7 @@ import { splitList } from './text.js'
  * booleanField({ a: 1 }, "a");     // true
  */
 export const booleanField = (obj, field) =>
-  Boolean(obj[field]||0)
+  Boolean(getField(obj, field)||0)
 
 
 /**
@@ -24,7 +38,7 @@ export const booleanField = (obj, field) =>
  * integerField({ a: "10" }, "a");     // 10
  */
 export const integerField = (obj, field) =>
-  parseInt(obj[field]||0)
+  parseInt(getField(obj, field)||0)
 
 /**
  * Function to extract a number field from an object.  Uses `parseFloat()` to
@@ -36,7 +50,7 @@ export const integerField = (obj, field) =>
  * numberField({ pi: "3.14" }, "pi");     // 3.14
  */
 export const numberField = (obj, field) =>
-  parseFloat(obj[field]||0)
+  parseFloat(getField(obj, field)||0)
 
 /**
  * Function to extract a string field from an object.  Uses `toString()` to
@@ -48,7 +62,7 @@ export const numberField = (obj, field) =>
  * numberField({ pi: 3.14 }, "pi");     // "3.14"
  */
 export const stringField = (obj, field) =>
-  (obj[field]||'').toString()
+  (getField(obj, field)||'').toString()
 
 /**
  * Sort function generator for sorting objects by an integer field.
