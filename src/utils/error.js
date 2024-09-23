@@ -2,7 +2,7 @@ import { format } from './format.js'
 
 /**
  * Throws a new Error object
- * @param {String[]} message - error message string(s)
+ * @param {string[]} message - error message string(s)
  * @throws {Error}
  */
 export function fail(...message) {
@@ -11,7 +11,7 @@ export function fail(...message) {
 
 /**
  * Throws a new Error object with a message generated from a format string.
- * @param {String} message - message format
+ * @param {string} message - message format
  * @param {Object} data - data items to embed in message
  * @throws {Error}
  */
