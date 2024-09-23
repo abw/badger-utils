@@ -6,13 +6,9 @@
   "module": "dist/badger-utils.js",
   "main": "dist/badger-utils.cjs.js",
   "browser": "dist/badger-utils.umd.js",
-  "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": {
-        "default": "./dist/badger-utils.cjs.js",
-        "types": "./dist/index.d.ts"
-      },
+      "require": "./dist/badger-utils.cjs.js",
       "import": {
         "default": "./dist/badger-utils.js",
         "types": "./dist/index.d.ts"
