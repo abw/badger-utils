@@ -1,6 +1,6 @@
 {
   "name": "@abw/badger-utils",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Javascript utility modules",
   "type": "module",
   "module": "dist/badger-utils.js",
@@ -9,8 +9,14 @@
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/badger-utils.cjs.js",
-      "import": "./dist/badger-utils.js"
+      "require": {
+        "default": "./dist/badger-utils.cjs.js",
+        "types": "./dist/index.d.ts"
+      },
+      "import": {
+        "default": "./dist/badger-utils.js",
+        "types": "./dist/index.d.ts"
+      }
     }
   },
   "author": "Andy Wardley",
