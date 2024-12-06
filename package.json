@@ -10,8 +10,8 @@
     ".": {
       "require": "./dist/badger-utils.cjs.js",
       "import": {
-        "default": "./dist/badger-utils.js",
-        "types": "./dist/index.d.ts"
+        "types": "./dist/index.d.ts",
+        "default": "./dist/badger-utils.js"
       }
     }
   },
