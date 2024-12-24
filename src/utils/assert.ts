@@ -159,7 +159,7 @@ export function firstValue(...values: any[]): any {
  * @example
  * isEmpty([ 10 ]) // false
  */
-export const isEmpty = (obj : object | any[]) =>
+export const isEmpty = (obj : object | any[]): boolean =>
   isArray(obj)
     ? (obj as any[]).length === 0
     : Object.keys(obj).length === 0

@@ -2,10 +2,10 @@
 
 Functions for working with numbers.
 
-## range(from, to, step=1) {#range}
+## range(first, last, step=1) {#range}
 
-Returns an array of sequential numbers from the starting value, `from`, up to
-**and including** to the end value, `to`.
+Returns an array of sequential numbers from the starting value, `first`, up to
+**and including** to the end value, `last`.
 
 ```js
 range(1, 3);  // [1, 2, 3]
