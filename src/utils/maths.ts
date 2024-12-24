@@ -25,7 +25,7 @@ const correctionFactor = (...args: number[]): number =>
 /**
  * Function to multiply numbers using fixed floating point maths.
  * @param {...number} args - numbers to multiply
- * @returns {Number} - the product of the numbers
+ * @returns {number} - the product of the numbers
  * @example
  * multiply(3.0, 2.2, 2.0);  // 13.2
  */
@@ -41,7 +41,7 @@ export const multiply = (...args: number[]): number =>
 /**
  * Function to divide numbers using fixed floating point maths.
  * @param {...number} args - numbers to divide
- * @returns {Number} - the result of dividing the numbers
+ * @returns {number} - the result of dividing the numbers
  * @example
  * divide(13.2, 2.0, 1.1);  // 6
  */
@@ -56,7 +56,7 @@ export const divide = (...args: number[]): number =>
 /**
  * Function to add numbers using fixed floating point maths.
  * @param {...number} args - numbers to add
- * @returns {Number} - the result of adding the numbers
+ * @returns {number} - the result of adding the numbers
  * @example
  * add(1.1, 6.6, 0.1);  // 7.8
  */
@@ -71,7 +71,7 @@ export const add = (...args: number[]): number => {
 /**
  * Function to subtract numbers using fixed floating point maths.
  * @param {...number} args - numbers to subtract
- * @returns {Number} - the result of adding the numbers
+ * @returns {number} - the result of adding the numbers
  * @example
  * sub(7.8, 0.1, 2.4);  // 5.3
  */
@@ -86,10 +86,10 @@ export const subtract = (...args: number[]): number => {
 
 /**
  * Function to clamp a number to a min, max range
- * @param {Number} n - number to clamp
- * @param {Number} min - minimum value of n
- * @param {Number} max - maximum value of n
- * @returns {Number} - the number n clamped to the min, max range
+ * @param {number} n - number to clamp
+ * @param {number} min - minimum value of n
+ * @param {number} max - maximum value of n
+ * @returns {number} - the number n clamped to the min, max range
  * @example
  * clamp(1.1, 0, 1);  // 1
  */

@@ -7,8 +7,8 @@ export type HashSource = object | ListSource
 
 /**
  * Split a comma/whitespace delimited string into an Array
- * @param {String} value - string to split
- * @param {Regex} [regex] - optional pattern to split on
+ * @param {string} value - string to split
+ * @param {RegExp} [regex] - optional pattern to split on
  * @return {Array} array of split strings
  * @example
  * const strings = splitList('one two three')
@@ -38,8 +38,8 @@ export function splitList(
 
 /**
  * Split a comma/whitespace delimited string or Array into a hash object
- * @param {String} value - string to split
- * @param {Boolean|String|Number|Function} [set=true] - value to set for each key
+ * @param {string} value - string to split
+ * @param {boolean|string|number|Function} [set=true] - value to set for each key
  * @param {Object} [hash={}] - object to set keys in
  * @return {Object} hash object mapping keys to values
  * @example
@@ -74,7 +74,7 @@ export function splitHash(
 
 /**
  * Split a string into an Array of lines.
- * @param {String} text - string to split
+ * @param {string} text - string to split
  * @return {Array} array of lines
 */
 export function splitLines(text: string): string[] {
@@ -90,9 +90,9 @@ export function splitLines(text: string): string[] {
 /**
  * Join an Array into a single string
  * @param {Array} array - array to join
- * @param {String} [joint=' '] - delimiter to join strings
- * @param {String} [lastJoint=joint] - delimiter for final item
- * @return {String} joined string
+ * @param {string} [joint=' '] - delimiter to join strings
+ * @param {string} [lastJoint=joint] - delimiter for final item
+ * @return {string} joined string
  * @example
  * joinList(['one', 'two', 'three']);   // one two three
  * @example
@@ -115,9 +115,9 @@ export function joinList(
 /**
  * Join an Array into a single string using commas for delimiters and ` and ` for the final item
  * @param {Array} array - array to join
- * @param {String} [joint=', '] - delimiter to join strings
- * @param {String} [lastJoint=' and '] - delimiter for final item
- * @return {String} joined string
+ * @param {string} [joint=', '] - delimiter to join strings
+ * @param {string} [lastJoint=' and '] - delimiter for final item
+ * @return {string} joined string
  * @example
  * joinListAnd(['one', 'two', 'three']);   // one, two and three
  */
@@ -132,9 +132,9 @@ export function joinListAnd(
 /**
  * Join an Array into a single string using commas for delimiters and ` or ` for the final item
  * @param {Array} array - array to join
- * @param {String} [joint=', '] - delimiter to join strings
- * @param {String} [lastJoint=' or '] - delimiter for final item
- * @return {String} joined string
+ * @param {string} [joint=', '] - delimiter to join strings
+ * @param {string} [lastJoint=' or '] - delimiter for final item
+ * @return {string} joined string
  * @example
  * joinListOr(['one', 'two', 'three']);   // one, two or three
  */
@@ -148,8 +148,8 @@ export function joinListOr(
 
 /**
  * Capitalise a string by converting the first character to upper case and other characters to lower case
- * @param {String} word - word to capitalise
- * @return {String} capitalised string
+ * @param {string} word - word to capitalise
+ * @return {string} capitalised string
  * @example
  * capitalise('badger');   // Badger
  * @example
@@ -161,8 +161,8 @@ export function capitalise(word: string): string {
 
 /**
  * Capitalise all words in a string by converting the first character of each word to upper case
- * @param {String} string - words to capitalise
- * @return {String} capitalised string
+ * @param {string} string - words to capitalise
+ * @return {string} capitalised string
  * @example
  * capitaliseWords('badger fun');   // Badger Fun
  * @example
@@ -178,8 +178,8 @@ export function capitaliseWords(string: string): string {
 
 /**
  * Convert a snake case string to studly caps
- * @param {String} snake - word to capitalise
- * @return {String} capitalised string
+ * @param {string} snake - word to capitalise
+ * @return {string} capitalised string
  * @example
  * snakeToStudly('happy_badger_dance');   // HappyBadgerDance
  * @example
@@ -194,8 +194,8 @@ export function snakeToStudly(snake: string): string {
 
 /**
  * Convert a snake case string to camel case
- * @param {String} snake - word to capitalise
- * @return {String} capitalised string
+ * @param {string} snake - word to capitalise
+ * @return {string} capitalised string
  * @example
  * snakeToCamel('happy_badger_dance');   // happyBadgerDance
  * @example
@@ -212,9 +212,9 @@ export function snakeToCamel(snake: string): string {
  * A very primitive function to pluralise the singular form of a words.  It only
  * works on words with standard endings and plural forms, because pluralising
  * words is notoriously difficult.
- * @param {String} singular - word to pluralise
+ * @param {string} singular - word to pluralise
  * @param {Object} [specialCases={}] - special cases
- * @return {String} plural form
+ * @return {string} plural form
  * @example
  * plural('box');     // boxes
  * @example
@@ -253,9 +253,9 @@ export function plural(
  * A very primitive function to return the singular form of a plural noun.  It
  * only works on words with standard endings and plural forms that, using the
  * reverse algorithm of {@link plural()}.
- * @param {String} plural - plural form
+ * @param {string} plural - plural form
  * @param {Object} [specialCases={}] - special cases
- * @return {String} singular form
+ * @return {string} singular form
  * @example
  * singular('boxes');     // box
  * @example
@@ -292,10 +292,10 @@ export function singular(
  * which only works on words with standard pluralisations.  The third argument can be provided
  * as the plural form where necessary.  The optional 4th argument can be used to provide a different
  * word for the case where n is 0.  The default is "no", e.g. "no badgers" when n is 0.
- * @param {Integer} n - number of items
- * @param {String} singularForm - singular form
- * @param {String} [pluralForm] - optional plural form
- * @param {String} [no='no'] - optional word to use when `n` is 0
+ * @param {number} n - number of items
+ * @param {string} singularForm - singular form
+ * @param {string} [pluralForm] - optional plural form
+ * @param {string} [no='no'] - optional word to use when `n` is 0
  * @example
  * inflect(0, 'cat')     // no cats
  * @example
@@ -325,10 +325,10 @@ export function inflect(
 /**
  * Wrapper around {@link inflect()} which uses the word "No" instead of "no" for the
  * zero case, i.e. Inflect() is the capitalized form of inflect()
- * @param {Integer} n - number of items
- * @param {String} singular - singular form
- * @param {String} [plural] - optional plural form
- * @param {String} [no='No'] - optional word to use when `n` is 0
+ * @param {number} n - number of items
+ * @param {string} singular - singular form
+ * @param {string} [plural] - optional plural form
+ * @param {string} [no='No'] - optional word to use when `n` is 0
  */
 export function Inflect(
   n: number,

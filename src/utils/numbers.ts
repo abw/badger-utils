@@ -15,10 +15,10 @@ let numberDefaults = {
 /**
  * Function to set the default options for formatting numbers.
  * @param {Object} defaults - default options
- * @param {String} [defaults.locale] - default locale
- * @param {String} [defaults.currency] - default currency, e.g. `GBP`
- * @param {String} [defaults.currencySign] - default currency sign, e.g. `£`
- * @param {String} [defaults.thousands] - default separator for thousands, e.g. `,`
+ * @param {string} [defaults.locale] - default locale
+ * @param {string} [defaults.currency] - default currency, e.g. `GBP`
+ * @param {string} [defaults.currencySign] - default currency sign, e.g. `£`
+ * @param {string} [defaults.thousands] - default separator for thousands, e.g. `,`
  */
 export function setNumberDefaults(
   defaults: {
@@ -34,9 +34,9 @@ export function setNumberDefaults(
 /**
  * Function to create an array with a range of numbers.  Note that this will
  * include the last value.
- * @param {Integer} first - first number
- * @param {Integer} last - last number
- * @param {Integer} [step=1] - step number
+ * @param {number} first - first number
+ * @param {number} last - last number
+ * @param {number} [step=1] - step number
  */
 export const range = (first: number, last: number, step: number=1): number[] => {
   const down = last < first
@@ -52,9 +52,9 @@ interface FormatNumberOptions extends Intl.NumberFormatOptions {
 
 /**
  * Function to format a number with various options.
- * @param {Number} number - number to format
+ * @param {number} number - number to format
  * @param {Object} [options] - configuration options
- * @param {Object} [options.locale] - locale
+ * @param {string} [options.locale] - locale
  */
 export function formatNumber(
   number: number,
@@ -68,10 +68,10 @@ export function formatNumber(
 
 /**
  * Function to format a number as a currency.
- * @param {Number} number - number to format
+ * @param {number} number - number to format
  * @param {Object} [options] - configuration options
- * @param {Object} [options.locale] - locale
- * @param {Object} [options.currency] - currency code, e.g. `GBP` or `USD`
+ * @param {string} [options.locale] - locale
+ * @param {string} [options.currency] - currency code, e.g. `GBP` or `USD`
  */
 export function currency(
   number: number,
@@ -89,8 +89,8 @@ export function currency(
 
 /**
  * Function to add commas as thousand separators in a number.
- * @param {Integer} n - number of items
- * @param {String} [thousands=','] - optional thousands separator instead of a comma
+ * @param {number} n - number of items
+ * @param {string} [thousands=','] - optional thousands separator instead of a comma
  * @example
  * commas(12345)          // 12,345
  * commas(12345.67)       // 12,345.67

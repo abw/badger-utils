@@ -36,6 +36,35 @@ const sorted = constants.sort(sortByName);
 // ]
 ```
 
+You can pass a function to the `stringSort()` function to access nested data.
+For example, consider this contrived example where the value we want to
+sort on isn't a simple `name` field, but instead is the nested `greek.letter`.
+
+```js
+const constants = [
+  { greek: { letter: "pi"  }, value: 3.14  },
+  { greek: { letter: "e"   }, value: 2.718 },
+  { greek: { letter: "phi" }, value: 1.618 },
+];
+```
+Here we can pass a function to the `stringSort` function which receives
+a row of data and returns the corresponding value.
+
+```js
+const sortByGreekLetter = stringSort( row => row.greek.letter );
+```
+
+This function will then sort the rows correctly:
+
+```js
+const sorted = constants.sort(sortByGreekLetter);
+// Returns: [
+//   { greek: { letter: "e"   }, value: 2.718 },
+//   { greek: { letter: "pi"  }, value: 3.14  },
+//   { greek: { letter: "phi" }, value: 1.618 },
+// ]
+```
+
 ## numberSort(field) {#numberSort}
 
 Factory function which returns a function that will sort an array of objects
@@ -53,6 +82,24 @@ const sorted = constants.sort(sortByValue);
 //   { name: "phi",  value: 1.618 },
 //   { name: "e",    value: 2.718 },
 //   { name: "pi",   value: 3.14  },
+// ]
+```
+
+You can also pass a function to the `numberSort()` function to access
+nested data.
+
+```js
+const constants = [
+  { name: "pi",   approximate: { value: 3.14  } },
+  { name: "e",    approximate: { value: 2.718 } },
+  { name: "phi",  approximate: { value: 1.618 } },
+];
+const sortByApproximateValue = numberSort( row => row.approximate.value );
+const sorted = constants.sort(sortByApproximateValue);
+// Returns: [
+//   { name: "phi",  approximate: { value: 1.618 } },
+//   { name: "e",    approximate: { value: 2.718 } },
+//   { name: "pi",   approximate: { value: 3.14  } },
 // ]
 ```
 
@@ -78,6 +125,26 @@ const sorted = people.sort(sortByAge);
 // ]
 ```
 
+As with the other sorting functions, you can pass a function to access
+nested data.
+
+```js
+const people = [
+  { name: 'Fred',   dob: { year: 1967 } },
+  { name: 'Shaggy', dob: { year: 1965 } },
+  { name: 'Daphne', dob: { year: 1966 } },
+  { name: 'Velma',  dob: { year: 1968 } },
+];
+const sortByYearOfBirth = integerSort( row => row.dob.year );
+const sorted = people.sort(sortByYearOfBirth);
+// Returns: [
+//   { name: 'Shaggy', dob: { year: 1965 } },
+//   { name: 'Daphne', dob: { year: 1966 } },
+//   { name: 'Fred',   dob: { year: 1967 } },
+//   { name: 'Velma',  dob: { year: 1968 } },
+// ]
+```
+
 ## booleanSort(field) {#booleanSort}
 
 Factory function which returns a function that will sort an array of objects
@@ -96,6 +163,22 @@ const sorted = people.sort(sortByAnimal);
 //   { name: "Scooby", animal: true },
 // ]
 ```
+
+This also supports the passing of a function to access nested data.
+
+```js
+const people = [
+  { name: "Scooby", is: { an: { animal: true  } } },
+  { name: "Shaggy", is: { an: { animal: false } } },
+];
+const sortByAnimal = booleanSort( row => row.is.an.animal );
+const sorted = people.sort(sortByAnimal);
+// Returns: [
+//   { name: "Shaggy", is: { an: { animal: false } } },
+//   { name: "Scooby", is: { an: { animal: true  } } },
+// ]
+```
+
 
 ## multiSort(fields) {#multiSort}
 
@@ -218,41 +301,49 @@ Here are some examples of the mappings from strings to functions to clarify.
 ## stringField(obj,field) {#stringField}
 
 Helper function used by [`stringSort()`](#stringSort) to extract a field
-from an object and coerce it to a string.
+from an object and coerce it to a string.  It accepts either a string as
+the field name or a function to return the field value.
 
 ```js
-const a = stringField({ a: "ten" }, "a");     // "ten"
-const a = stringField({ a: "10"  }, "a");     // "10"
+const a = stringField({ a: "ten" }, "a");                 // "ten"
+const a = stringField({ a: "10"  }, "a");                 // "10"
+const a = stringField({ a: { b: 10 } }, row => row.a.b);  // "10"
 ```
 
 ## numberField(obj,field) {#numberField}
 
 Helper function used by [`numberSort()`](#numberSort) to extract a field
-from an object and coerce it to a floating point number.
+from an object and coerce it to a floating point number.  It accepts either
+a string as the field name or a function to return the field value.
 
 ```js
-const a = numberField({ pi: 3.14  }, "pi");     // 3.14
-const a = numberField({ a: "3.14" }, "pi");     // 3.14
+const a = numberField({ pi: 3.14  }, "pi");                   // 3.14
+const a = numberField({ a: "3.14" }, "pi");                   // 3.14
+const a = numberField({ a: { b: "3.14" } }, row => row.a.b);  // 3.14
 ```
 
 ## integerField(obj,field) {#integerField}
 
 Helper function used by [`integerSort()`](#integerSort) to extract a field
-from an object and coerce it to an integer.
+from an object and coerce it to an integer.  It accepts either
+a string as the field name or a function to return the field value.
 
 ```js
-const a = integerField({ a:  10  }, "a");     // 10
-const a = integerField({ a: "10" }, "a");     // 10
+const a = integerField({ a:  10  }, "a");                   // 10
+const a = integerField({ a: "10" }, "a");                   // 10
+const a = integerField({ a: { b: "10" } }, row => row.a.b); // 10
 ```
 
 ## booleanField(obj,field) {#booleanField}
 
 Helper function used by [`booleanSort()`](#booleanSort) to extract a field
-from an object and coerce it to a boolean.
+from an object and coerce it to a boolean.  It accepts either
+a string as the field name or a function to return the field value.
 
 ```js
-const a = booleanField({ a: true }, "a");     // true
-const a = booleanField({ a: 1    }, "a");     // true
+const a = booleanField({ a: true }, "a");                 // true
+const a = booleanField({ a: 1    }, "a");                 // true
+const a = booleanField({ a: { b: 1 } }, row => row.a.b);  // true
 ```
 
 ## descendingOrder(sortFn) {#descendingOrder}

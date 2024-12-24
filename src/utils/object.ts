@@ -85,9 +85,9 @@ export function objMap(obj: object, fn: ObjMapFunction): object {
 /**
  * Extracts a subset of items from an object.
  * @param {Object} object - source object
- * @param {Object|Array|String|RegExp|Function} keys - keys to extract
+ * @param {Object|Array|string|RegExp|Function} keys - keys to extract
  * @param {Object} [options] -
- * @param {Boolean} [options.delete=false] - delete keys from source object
+ * @param {boolean} [options.delete=false] - delete keys from source object
  * @param {Function} [options.key] - function to transform key
  * @param {Function} [options.value] - function to transform value
  * @return {Object} - new object with extracted values
@@ -159,8 +159,8 @@ export const objSubset = extract
 /**
  * Removes an item from an object and returns the value.
  * @param {Object} object - source object
- * @param {String} key - item to remove
- * @return {Any} - value of removed item
+ * @param {string} key - item to remove
+ * @return {any} - value of removed item
  * @example
  * remove(
  *   { a: 'alpha', b: 'bravo', c: 'charlie' },

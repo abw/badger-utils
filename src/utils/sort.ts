@@ -5,58 +5,72 @@ import { splitList } from './text'
 export type ObjectSortFunction = (a: object, b: object) => number
 
 /**
+ * Function to extract a field from an object.
+ * @param {Object} obj - object containing data
+ * @param {string|Function} field - field to return
+ * @return {any} - value from object
+ * @example
+ * booleanField({ a: 1 }, "a");     // true
+ */
+export const getField = (obj, field) =>
+  isFunction(field)
+    ? field(obj)
+    : obj[field]
+
+
+/**
  * Function to extract a boolean field from an object.
  * @param {Object} obj - object containing data
- * @param {String} field - field to return as boolean
- * @return {Boolean} - Boolean value from object
+ * @param {string|Function} field - field to return as boolean
+ * @return {boolean} - Boolean value from object
  * @example
  * booleanField({ a: 1 }, "a");     // true
  */
 export const booleanField = (obj: any, field: string): boolean =>
-  Boolean(obj[field]||0)
+  Boolean(getField(obj, field)||0)
 
 
 /**
  * Function to extract an integer field from an object.  Uses `parseInt()` to
  * coerce non-integer values (e.g. numbers in strings) to an integer.
  * @param {Object} obj - object containing data
- * @param {String} field - field to return as integer
- * @return {Integer} - integer value from object
+ * @param {string|Function} field - field to return as integer
+ * @return {number} - integer value from object
  * @example
  * integerField({ a: "10" }, "a");     // 10
  */
 export const integerField = (obj: any, field: string): number =>
-  parseInt(obj[field]||0)
+  parseInt(getField(obj, field)||0)
 
 /**
  * Function to extract a number field from an object.  Uses `parseFloat()` to
  * coerce non-number values (e.g. numbers in strings) to floats.
  * @param {Object} obj - object containing data
- * @param {String} field - field to return as float
- * @return {Float} - floating point number from object
+ * @param {string|Function} field - field to return as float
+ * @return {number} - floating point number from object
  * @example
  * numberField({ pi: "3.14" }, "pi");     // 3.14
  */
 export const numberField = (obj: any, field: string): number =>
-  parseFloat(obj[field]||0)
+  parseFloat(getField(obj, field)||0)
 
 /**
  * Function to extract a string field from an object.  Uses `toString()` to
  * coerce non-string values (e.g. numbers) to strings.
  * @param {Object} obj - object containing data
- * @param {String} field - field to return as string
- * @return {Float} - string value from object
+ * @param {string|Function} field - field to return as string
+ * @return {number} - string value from object
  * @example
  * numberField({ pi: 3.14 }, "pi");     // "3.14"
  */
 export const stringField = (obj: any, field: string): string =>
-  (obj[field]||'').toString()
+  (getField(obj, field)||'').toString()
 
 /**
  * Sort function generator for sorting objects by an integer field.
  * Takes a single field name and returns a sort function which will sort
  * objects by that field.
- * @param {String} field - field to return as string
+ * @param {string|Function} field - field to return as string
  * @return {Function} - sort function to sort objects by the named integer field
  * @example
  * const people = [
@@ -75,7 +89,7 @@ export const integerSort = (field: string): ObjectSortFunction =>
  * Sort function generator for sorting objects by a number field.
  * Takes a single field name and returns a sort function which will sort
  * objects by that field.
- * @param {String} field - field to return as string
+ * @param {string|Function} field - field to return as string
  * @return {Function} - sort function to sort objects by the named number field
  * @example
  * const constants = [
@@ -93,7 +107,7 @@ export const numberSort = (field: string): ObjectSortFunction =>
  * Sort function generator for sorting objects by a string field.
  * Takes a single field name and returns a sort function which will sort
  * objects by that field.
- * @param {String} field - field to return as string
+ * @param {string|Function} field - field to return as string
  * @return {Function} - sort function to sort objects by the named string field
  * @example
  * const constants = [
@@ -115,7 +129,7 @@ export const stringSort = (field: string): ObjectSortFunction =>
  * Sort function generator for sorting objects by a boolean field.
  * Takes a single field name and returns a sort function which will sort
  * objects by that field.
- * @param {String} field - field to return as string
+ * @param {string|Function} field - field to return as string
  * @return {Function} - sort function to sort objects by the named boolean field
  * @example
  * const words = [
@@ -195,7 +209,7 @@ export const sortOrders: any = {
  * `string` (default), `integer` or `number` and the sort order can be `asc`
  * (default) for ascending order or `desc` for descending.
  * Returns a function which sorts an array of object by those fields.
- * @param {String} spec - sort specification
+ * @param {string} spec - sort specification
  * @return {Function} - sort function to sort objects by the named string field
  * @example
  * const people = [

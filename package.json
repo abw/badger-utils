@@ -6,11 +6,13 @@
   "module": "dist/badger-utils.js",
   "main": "dist/badger-utils.cjs",
   "browser": "dist/badger-utils.umd.js",
-  "types": "dist/badger-utils.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/badger-utils.cjs",
-      "import": "./dist/badger-utils.js"
+      "require": "./dist/badger-utils.cjs.js",
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/badger-utils.js"
+      }
     }
   },
   "author": "Andy Wardley",
@@ -18,7 +20,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://abw.github.io/badger-utils/",
+  "homepage": "https://badgerpower.com/badger-utils/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/abw/badger-utils.git"
