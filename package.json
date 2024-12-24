@@ -1,11 +1,12 @@
 {
   "name": "@abw/badger-utils",
-  "version": "1.2.0-ts-alpha",
+  "version": "1.2.0-ts-alpha2",
   "description": "Javascript utility modules",
   "type": "module",
   "module": "dist/badger-utils.js",
   "main": "dist/badger-utils.cjs",
   "browser": "dist/badger-utils.umd.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "require": "./dist/badger-utils.cjs.js",
