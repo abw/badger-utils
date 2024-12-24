@@ -1,5 +1,4 @@
 import { noValue } from './assert'
-import { fail } from './error'
 
 /**
  * Function to format strings by inserting values into placeholder locations.
@@ -15,7 +14,7 @@ export const format = (msg: string, data: object): string =>
     (_, key) => {
       const val = data[key as keyof object]
       if (noValue(val)) {
-        fail(`Invalid variable expansion <${key}> in message format: ${msg}`)
+        throw new Error(`Invalid variable expansion <${key}> in message format: ${msg}`)
       }
       return val
     }
