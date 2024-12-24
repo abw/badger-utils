@@ -398,6 +398,25 @@ test(
 )
 
 test(
+  'multiSort() none more differences',
+  t => {
+    const people = [
+      { forename: 'John', surname: 'Smith', age: 28 },
+      { forename: 'John', surname: 'Smith', age: 28 },
+    ]
+    const sorted = people.sort(multiSort('surname:string forename:string:asc age:integer:desc'))
+    t.deepEqual(
+      sorted,
+      [
+        { forename: 'John', surname: 'Smith', age: 28 },
+        { forename: 'John', surname: 'Smith', age: 28 },
+      ]
+    )
+  }
+)
+
+
+test(
   'multiSort() invalid type',
   t => t.throws(
     () => multiSort('surname:strong'),
