@@ -1,35 +1,35 @@
 import { selector, SelectSpec } from './select'
 import { splitHash, HashSource } from './text'
 
-type HashKeyFunction = (
+export type HashKeyFunction = (
   key: string,
   value: any,
   source: HashSource,
   hash: object
 ) => string
 
-type HashValueFunction = (
+export type HashValueFunction = (
   value: any,
   key: string,
   source: HashSource,
   hash: object
 ) => string
 
-type ObjMapFunction = (
+export type ObjMapFunction = (
   value: any,
   key: string
 ) => any
 
 // type ExtractFunction = (key: string) => any
 // type ExtractKeys = object | string[] | string | RegExp | ExtractFunction
-type KeyFunction = (key: string) => string
-type ValueFunction = (value: any) => any
+export type KeyFunction = (key: string) => string
+export type ValueFunction = (value: any) => any
 
 export function hash(
   source: string|object|any[],
   options: {
-    include?: any,
-    exclude?: any,
+    include?: SelectSpec,
+    exclude?: SelectSpec,
     key?: HashKeyFunction,
     value?: HashValueFunction,
   } = { }
