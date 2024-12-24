@@ -3,6 +3,7 @@ import { fail } from './error'
 import { splitList } from './text'
 
 export type ObjectSortFunction = (a: object, b: object) => number
+export type FieldSelectFunction = (obj: object) => any
 
 /**
  * Function to extract a field from an object.
@@ -12,10 +13,13 @@ export type ObjectSortFunction = (a: object, b: object) => number
  * @example
  * booleanField({ a: 1 }, "a");     // true
  */
-export const getField = (obj, field) =>
+export const getField = (
+  obj: {[index: string]: any},
+  field: string | FieldSelectFunction
+): any =>
   isFunction(field)
-    ? field(obj)
-    : obj[field]
+    ? (field as FieldSelectFunction)(obj)
+    : obj[field as string]
 
 
 /**

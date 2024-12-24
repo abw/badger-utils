@@ -2,8 +2,37 @@ import { isArray, isFunction, isObject, isRegExp, isString } from './assert'
 import { fail } from './error'
 import { splitHash } from './text'
 
-export type SelectFunction = (key: string, value?: any, source?: any, hash?: any) => boolean
+export type SelectFunction = (
+  key: string,
+  value?: any,
+  source?: any,
+  hash?: any
+) => boolean
+
 export type SelectSpec = object | string[] | string | RegExp | SelectFunction
+
+/**
+ * Generate a function to select items.
+ * @param {Function|RegExp|Object|Array|string} spec - selection specification
+ * @return {Function} - function to select an item
+ * @example
+ * selector(
+ *   'foo bar'
+ * )
+ * @example
+ * selector(
+ *   ['foo', 'bar']
+ * )
+ * @example
+ * selector(
+ *   /^(foo|bar)$/
+ * )
+ * @example
+ * selector({
+ *   foo: true,
+ *   bar: true
+ * )
+ */
 
 export function selector(spec: SelectSpec): SelectFunction {
   if (isFunction(spec)) {

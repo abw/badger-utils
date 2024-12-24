@@ -1,7 +1,6 @@
 import { selector, SelectSpec } from './select'
 import { splitHash, HashSource } from './text'
 
-
 type HashKeyFunction = (
   key: string,
   value: any,
@@ -154,7 +153,6 @@ export const extract = (
   return extract
 }
 export const objSubset = extract
-
 
 /**
  * Removes an item from an object and returns the value.
