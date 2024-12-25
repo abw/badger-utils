@@ -1,7 +1,7 @@
-import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert'
 import { commas } from './numbers'
+import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert'
 
-export type ListSource = string | any[]
+export type ListSource = null | undefined | string | number | any[]
 export type HashSource = object | ListSource
 
 
@@ -19,13 +19,13 @@ export type HashSource = object | ListSource
  */
 export function splitList(
   value: ListSource,
-  regex=/,\s*|\s+/
+  regex: RegExp=/,\s*|\s+/
 ): any[] {
   if (noValue(value)) {
     return [ ]
   }
   else if (isString(value)) {
-    return value.length
+    return (value as string).length
       ? (value as string).split(regex)
       : [ ]
   }
@@ -52,7 +52,7 @@ export function splitList(
 export function splitHash(
   value: HashSource,
   set: any=true,
-  hash={ }
+  hash: object={ }
 ): object {
   // if it's already a hash object then return it unchanged
   if (isObject(value)) {
@@ -77,11 +77,11 @@ export function splitHash(
  * @param {string} text - string to split
  * @return {Array} array of lines
 */
-export function splitLines(text: string): string[] {
-  if (! isString(text) || text.length === 0) {
+export function splitLines(text: ListSource): string[] {
+  if (! isString(text) || (text as string).length === 0) {
     return [ ]
   }
-  var lines = text.split(/\s*\n+\s*/).filter(
+  var lines = (text as string).split(/\s*\n+\s*/).filter(
     function(item) { return item.length > 0 }
   )
   return lines

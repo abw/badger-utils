@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import {
   capitalise, capitaliseWords, snakeToStudly, snakeToCamel,
   splitList, joinList, joinListAnd, joinListOr, splitLines, splitHash,

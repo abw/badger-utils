@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import { hash } from '../src/index'
 
 const ab = { a: 'alpha', b: 'bravo' }

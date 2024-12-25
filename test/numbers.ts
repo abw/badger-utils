@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import {
   range, commas, formatNumber, currency
 } from '../src/index'
@@ -165,6 +165,7 @@ test(
 )
 test(
   'commas()',
+  // @ts-ignore
   t => t.is(commas(), '')
 )
 

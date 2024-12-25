@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import { fail, failMsg, rethrow } from '../src/index'
 
 test( 'fail()',

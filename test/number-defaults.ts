@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import {
   setNumberDefaults, currency
 } from '../src/index'

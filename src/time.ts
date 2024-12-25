@@ -1,3 +1,5 @@
+type DebounceFunction = (...args: any[]) => void
+
 /**
  * Function to generate a debouncer function which will call the wrapped function after
  * a timeout.  If the debouncer function is called again before the wrapped function has
@@ -6,12 +8,11 @@
  * @param {number} [timeout=300] - timeout in milliseconds
  * @return {Function} debounced function
  */
-export function debounce(func: Function, timeout: number = 300): Function {
+export function debounce(func: Function, timeout: number = 300): DebounceFunction {
   let timer: ReturnType<typeof setTimeout>
   return (...args: any[]) => {
     clearTimeout(timer)
     timer = setTimeout(
-      // () => func.apply(this, args),
       () => func(...args),
       timeout
     )

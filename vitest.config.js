@@ -2,8 +2,8 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   test: {
-    include: ['test/**/*.js'],
-    exclude: ['test/library/*.js'],
+    include: ['test/**/*.[jt]s'],
+    exclude: ['test/library/*.ts'],
     reporters: ['html'],
     outputFile: './tmp/test/index.html',
     coverage: {

@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import { selector } from '../src/index'
 
 //----------------------------------------------------------------------------
@@ -49,6 +49,7 @@ test(
 test(
   'selector(null)',
   t => t.throws(
+    // @ts-ignore
     () => selector(null),
     {
       message: 'Invalid selector() specification: null'

@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import {
   getField, stringField, numberField, integerField, booleanField,
   stringSort, numberSort, integerSort, booleanSort,
@@ -7,81 +7,139 @@ import {
 
 test(
   'field({ a: { b: { c: 10 } } }, "a.b.c")',
-  t => t.is(getField({ a: { b: { c: '10' } } }, data => data.a.b.c), '10')
+  t => t.is(
+    // @ts-ignore
+    getField({ a: { b: { c: '10' } } }, data => data.a.b.c),
+    '10'
+  )
 )
-
 
 test(
   'integerField({ a: 10 }, "a")',
-  t => t.is(integerField({ a: 10 }, 'a'), 10)
+  t => t.is(
+    integerField({ a: 10 }, 'a'),
+    10
+  )
 )
 test(
   'integerField({ a: "10" }, "a")',
-  t => t.is(integerField({ a: '10' }, 'a'), 10)
+  t => t.is(
+    integerField({ a: '10' }, 'a'),
+    10
+  )
 )
 test(
   'integerField({ a: "10" }, "b")',
-  t => t.is(integerField({ a: '10' }, 'b'), 0)
+  t => t.is(
+    integerField({ a: '10' }, 'b'),
+    0
+  )
 )
 test(
   'integerField({ a: { b: { c: 10 } } }, "a.b.c")',
-  t => t.is(integerField({ a: { b: { c: '10' } } }, data => data.a.b.c), 10)
+  t => t.is(
+    // @ts-ignore
+    integerField({ a: { b: { c: '10' } } }, (data: object) => data.a.b.c),
+    10
+  )
 )
 
 
 test(
   'numberField({ pi: 3.14 }, "pi")',
-  t => t.is(numberField({ pi: 3.14 }, 'pi'), 3.14)
+  t => t.is(
+    numberField({ pi: 3.14 }, 'pi'),
+    3.14
+  )
 )
 test(
   'numberField({ pi: "3.14" }, "pi")',
-  t => t.is(numberField({ pi: '3.14' }, 'pi'), 3.14)
+  t => t.is(
+    numberField({ pi: '3.14' }, 'pi'),
+    3.14
+  )
 )
 test(
   'numberField({ pi: "3.14" }, "e")',
-  t => t.is(numberField({ pi: '3.14' }, 'e'), 0)
+  t => t.is(
+    numberField({ pi: '3.14' }, 'e'),
+    0
+  )
 )
 test(
   'numberField({ a: { b: { c: "3.14" } } }, "a.b.c")',
-  t => t.is(numberField({ a: { b: { c: '3.14' } } }, data => data.a.b.c), 3.14)
+  t => t.is(
+    // @ts-ignore
+    numberField({ a: { b: { c: '3.14' } } }, (data: object) => data.a.b.c),
+    3.14
+  )
 )
 
 test(
   'stringField({ pi: 3.14 }, "pi")',
-  t => t.is(stringField({ pi: 3.14 }, 'pi'), '3.14')
+  t => t.is(
+    stringField({ pi: 3.14 }, 'pi'),
+    '3.14'
+  )
 )
 test(
   'stringField({ pi: "3.14" }, "pi")',
-  t => t.is(stringField({ pi: '3.14' }, 'pi'), '3.14')
+  t => t.is(
+    stringField({ pi: '3.14' }, 'pi'),
+    '3.14'
+  )
 )
 test(
   'stringField({ pi: "3.14" }, "e")',
-  t => t.is(stringField({ pi: '3.14' }, 'e'), '')
+  t => t.is(
+    stringField({ pi: '3.14' }, 'e'),
+    ''
+  )
 )
 test(
   'stringField({ a: { b: { c: "3.14" } } }, "a.b.c")',
-  t => t.is(stringField({ a: { b: { c: '3.14' } } }, data => data.a.b.c), '3.14')
+  t => t.is(
+    // @ts-ignore
+    stringField({ a: { b: { c: '3.14' } } }, (data: object) => data.a.b.c),
+    '3.14'
+  )
 )
 
 test(
   'booleanField({ a: true, b: false }, "a")',
-  t => t.is(booleanField({ a: true, b: false }, 'a'), true)
+  t => t.is(
+    booleanField({ a: true, b: false }, 'a'),
+    true
+  )
 )
 test(
   'booleanField({ a: true, b: false }, "b")',
-  t => t.is(booleanField({ a: true, b: false }, 'b'), false)
+  t => t.is(
+    booleanField({ a: true, b: false }, 'b'),
+    false
+  )
 )
 test(
   'booleanField({ a: 1, b: 0 }, "a")',
-  t => t.is(booleanField({ a: 1, b: 0 }, 'a'), true)
+  t => t.is(
+    booleanField({ a: 1, b: 0 }, 'a'),
+    true
+  )
 )
 test(
   'booleanField({ a: 1, b: 0 }, "b")',
-  t => t.is(booleanField({ a: 1, b: 0 }, 'b'), false)
+  t => t.is(
+    booleanField({ a: 1, b: 0 }, 'b'),
+    false
+  )
 )
 test(
   'booleanField({ a: { b: { c: true } } }, "a.b.c")',
-  t => t.is(booleanField({ a: { b: { c: true } } }, data => data.a.b.c), true)
+  t => t.is(
+    // @ts-ignore
+    booleanField({ a: { b: { c: true } } }, (data: object) => data.a.b.c),
+    true
+  )
 )
 
 test(
@@ -109,6 +167,7 @@ test(
 test(
   'integerSort() with nested data and function',
   t => {
+    // @ts-ignore
     const sortByAge = integerSort( person => person.dob.year )
     const people = [
       { name: 'Fred',   dob: { year: 1967 } },
@@ -153,6 +212,7 @@ test(
 test(
   'numberSort() with nested data and function',
   t => {
+    // @ts-ignore
     const sortByValue = numberSort( row => row.approx.value )
     const constants = [
       { name: 'pi',   approx: { value: 3.14  } },
@@ -195,6 +255,7 @@ test(
 test(
   'stringSort() with nested data and function',
   t => {
+    // @ts-ignore
     const sortByName = stringSort( row => row.greek.letter )
     const constants = [
       { greek: { letter: 'pi'  }, value: 3.14  },
@@ -235,6 +296,7 @@ test(
 test(
   'booleanSort() with nested data and function',
   t => {
+    // @ts-ignore
     const sortByTruth = booleanSort( row => row.truth.is.out.there )
     const truths = [
       { name: 'yes',   truth: { is: { out: { there: 1 } } } },
@@ -439,6 +501,7 @@ test(
 test(
   'multiSort() invalid sort field 99',
   t => t.throws(
+    // @ts-ignore
     () => multiSort([99]),
     {
       message: 'Invalid sort field: 99'

@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import {
   isBoolean, isString, isInteger, isFloat, isNumber, isObject, isArray,
   isUndefined, isNull, hasValue, haveValue, noValue, firstValue, isRegExp, isEmpty,
@@ -30,6 +30,7 @@ test(
 )
 test(
   'isString() identifies undefined',
+  // @ts-ignore
   t => t.false(isString())
 )
 
@@ -48,6 +49,7 @@ test(
 )
 test(
   'isNumber() identifies undefined',
+  // @ts-ignore
   t => t.false(isNumber())
 )
 
@@ -70,6 +72,7 @@ test(
 )
 test(
   'isInteger() identifies undefined',
+  // @ts-ignore
   t => t.false(isInteger())
 )
 
@@ -93,6 +96,7 @@ test(
 )
 test(
   'isFloat() identifies undefined',
+  // @ts-ignore
   t => t.false(isFloat())
 )
 
@@ -149,6 +153,7 @@ test(
 )
 test(
   'isUndefined identifies nothing',
+  // @ts-ignore
   t => t.true(isUndefined())
 )
 
@@ -163,12 +168,14 @@ test(
 )
 test(
   'isNull identifies nothing',
+  // @ts-ignore
   t => t.false(isNull())
 )
 
 // hasValue()
 test(
   'hasValue identifies nothing = false',
+  // @ts-ignore
   t => t.false(hasValue())
 )
 test(
@@ -209,6 +216,7 @@ test(
 // noValue()
 test(
   'noValue identifies nothing = true',
+  // @ts-ignore
   t => t.true(noValue())
 )
 test(

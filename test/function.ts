@@ -1,10 +1,10 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import { maybeFunction, identity, doNothing } from '../src/index'
 
 test(
   'maybeFunction() should call function',
   t => t.is(
-    maybeFunction((a, b) => a + b, 10, 20),
+    maybeFunction((a: number, b: number) => a + b, 10, 20),
     30
   )
 )
@@ -43,5 +43,6 @@ test(
 
 test(
   'doNothing(1, 2, 3)',
+  // @ts-ignore
   t => t.is(doNothing(1, 2, 3), undefined)
 )

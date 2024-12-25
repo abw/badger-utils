@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import {
   objMap, extract, remove, keys, values, entries
 } from '../src/index'

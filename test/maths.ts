@@ -1,4 +1,4 @@
-import test from './library/ava-vitest.js'
+import test from './library/ava-vitest'
 import { multiply, divide, add, subtract, clamp } from '../src/index'
 
 test(

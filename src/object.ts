@@ -24,6 +24,7 @@ export type ObjMapFunction = (
 // type ExtractKeys = object | string[] | string | RegExp | ExtractFunction
 export type KeyFunction = (key: string) => string
 export type ValueFunction = (value: any) => any
+export type StringIndexedObject = { [key: string]: any }
 
 export function hash(
   source: string|object|any[],
@@ -71,7 +72,10 @@ export function hash(
  *   v => v.toUpperCase()
  * )                        // returns { a: 'ALPHA', b: 'BRAVO' }
  */
-export function objMap(obj: object, fn: ObjMapFunction): object {
+export function objMap(
+  obj: object,
+  fn: ObjMapFunction
+): { [index: string]: any } {
   return Object.keys(obj).reduce(
     (result: object, key: string) => ({
       ...result,
