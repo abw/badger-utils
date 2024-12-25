@@ -1,6 +1,6 @@
 {
   "name": "@abw/badger-utils",
-  "version": "1.2.0-ts-beta",
+  "version": "1.2.0-ts-beta2",
   "description": "Javascript utility modules",
   "type": "module",
   "module": "dist/badger-utils.js",
