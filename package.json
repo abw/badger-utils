@@ -3,24 +3,24 @@
   "version": "1.2.0-ts-beta2",
   "description": "Javascript utility modules",
   "type": "module",
+  "main": "dist/badger-utils.umd.cjs",
   "module": "dist/badger-utils.js",
-  "main": "dist/badger-utils.cjs",
-  "browser": "dist/badger-utils.umd.js",
+  "browser": "dist/badger-utils.umd.cjs",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/badger-utils.cjs.js",
+      "require": "./dist/badger-utils.umd.cjs",
       "import": {
         "types": "./dist/index.d.ts",
         "default": "./dist/badger-utils.js"
       }
     }
   },
-  "author": "Andy Wardley",
-  "license": "MIT",
   "files": [
     "dist"
   ],
+  "author": "Andy Wardley",
+  "license": "MIT",
   "homepage": "https://badgerpower.com/badger-utils/",
   "repository": {
     "type": "git",
@@ -33,13 +33,8 @@
     "dev": "vitepress dev website",
     "preview": "vitepress preview website",
     "build": "$npm_execpath build:lib && $npm_execpath build:docs",
-    "OLD-build": "$npm_execpath build:lib && $npm_execpath build:types && $npm_execpath build:docs",
-    "build:clean": "rimraf dist",
-    "build:rollup": "rollup -c",
-    "build:lib": "$npm_execpath build:clean && $npm_execpath build:rollup",
+    "build:lib": "tsc && vite build",
     "build:docs": "vitepress build website",
-    "build:types": "tsc",
-    "build:types-npx": "npx -p typescript tsc src/**/*.js --declaration --allowJs --emitDeclarationOnly --outDir dist",
     "lint": "eslint 'src/**/*' 'test/**/*'",
     "test": "vitest --ui --coverage",
     "pretest": "$npm_execpath build:lib"
@@ -49,17 +44,14 @@
     "utility"
   ],
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.7",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "@rollup/plugin-typescript": "^11.1.6",
     "@vitest/coverage-v8": "^2.0.5",
     "@vitest/ui": "^2.0.5",
     "eslint": "^8.57.0",
-    "rimraf": "^5.0.5",
     "rollup": "^4.17.2",
     "tslib": "^2.6.3",
     "typescript": "^5.4.5",
+    "vite": "^6.0.6",
+    "vite-plugin-dts": "^4.4.0",
     "vitepress": "1.0.0-rc.44",
     "vitest": "^2.0.5"
   }
