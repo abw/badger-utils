@@ -14,6 +14,12 @@ https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
 These functions were adapted from the code in
 [Sinful.js](https://github.com/guipn/sinful.js/blob/master/sinful.js).
 
+::: warning Deprecation Warning
+These functions have been moved into a separate
+[@abw/badger-maths](https://badgerpower.com/badger-maths) distribution.
+They will be removed from `badger-utils` at some point in the near future.
+:::
+
 ## add(n1, n2, ...) {#add}
 
 Adds two or more numbers
