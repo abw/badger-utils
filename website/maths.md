@@ -16,7 +16,7 @@ These functions were adapted from the code in
 
 ::: warning Deprecation Warning
 These functions have been moved into a separate
-[@abw/badger-maths](https://badgerpower.com/badger-maths) distribution.
+[@abw/badger-maths](https://badgerpower.com/badger-maths/) distribution.
 They will be removed from `badger-utils` at some point in the near future.
 :::
 
