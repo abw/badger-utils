@@ -1,6 +1,6 @@
 {
   "name": "@abw/badger-utils",
-  "version": "1.2.0-ts-beta3",
+  "version": "1.2.0",
   "description": "Javascript utility modules",
   "type": "module",
   "main": "dist/badger-utils.umd.cjs",
