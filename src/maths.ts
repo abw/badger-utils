@@ -2,6 +2,8 @@
 // https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
 // This code was adapted from Sinful.js, see:
 // https://github.com/guipn/sinful.js/blob/master/sinful.js#L37
+// NOTE: this has now been moved into badger-maths and will be removed
+// from here at some point in the future
 const multiplier = (x: number): number => {
   const parts = x.toString().split('.')
   return parts.length < 2
