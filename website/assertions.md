@@ -207,14 +207,70 @@ noValue(0);         // true
 noValue(false);     // true
 ```
 
-## haveValue(...values) {#haveValues}
+## hasValues(values) {#hasValues}
+
+Determines if all the elements in an array have defined and non-null
+value (via [`hasValue()`](#hasValue)). Returns Boolean `true` or `false`.
+
+```js
+hasValues([0, 1, 2]);         // true
+hasValues([0, 1, null]);      // false
+hasValues([0, 1, undefined]); // false
+```
+
+## haveValue(...values) {#haveValue}
 
 Determines if all the values passed as arguments have defined and non-null
 value (via [`hasValue()`](#hasValue)). Returns Boolean `true` or `false`.
 
 ```js
 haveValue(0, 1, 2);         // true
+haveValue(0, 1, null);      // false
 haveValue(0, 1, undefined); // false
+```
+
+Note the subtle difference between this function which checks all the
+arguments passed, and [`hasValues()`](#hasValues) which checks all the elements
+in a single array.
+
+If you're using Typescript then the [`hasValues()`](#hasValues) is probably
+the better choice.
+
+Consider this example.  The type for the `a` parameter is an array of elements
+which can be numbers, null or undefined values.  The `hasValues(a)` function
+asserts that all elements in `a` are NOT null or undefined. Typescript can
+then infer that it must be an array of numbers and thus, it's safe to run the
+`a.reduce(...)` code to sum them.
+
+```js
+function addSomeNumbers(a: Array<number | null | undefined>): number {
+  return hasValues(a)
+    ? a.reduce(               // Typescript can infer that a must be an
+        (sum, n) => sum + n,  // array of numbers because hasValues(s)
+        0                     // asserts that, so it's safe to sum them
+      )
+    : 42
+}
+```
+
+When using `haveValue()`, Typescript can't make that inference so you'll need
+to provide additional assertions to reassure it that you know what you're
+doing.
+
+In this example, we can see that if `haveValue(a, b)` returns true then `a`
+and `b` must both be numbers and it's safe to add them together.  However,
+Typescript can't infer that so you must add the `as number` type assertion
+when adding `a` to `b`.
+
+```js
+function addTwoNumbers(
+  a: number | null | undefined,
+  b: number | null | undefined,
+): number {
+  return haveValue(a, b)
+    ? (a as number) + (b as number)
+    : 42
+}
 ```
 
 ## firstValue(...values) {#firstValue}
