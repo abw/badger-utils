@@ -1,5 +1,5 @@
 import test from './library/ava-vitest'
-import { maybeFunction, identity, doNothing } from '../src/index'
+import { maybeFunction, identity, doNothing, isFunction } from '../src/index'
 
 test(
   'maybeFunction() should call function',
@@ -24,8 +24,25 @@ test(
     10
   )
 )
+test(
+  'identity() should return typed value',
+  t => {
+    //function theNumber(a: number): number {
+    //  return identity(a)
+    //}
+    const a = identity( (b: number): number => b + 1 )
+    const b = a(10)
+    t.is(b, 11)
+    const c = identity(10)
+    t.is(c, 10)
+    const d = isFunction(c)
+      ? c(20)
+      : 42
+    t.is(d, 42)
+  }
+)
 
-function areEqual(a, b, coerce=identity) {
+function areEqual(a: any, b: any, coerce: (x: any) => any = identity) {
   return coerce(a) === coerce(b)
 }
 test(

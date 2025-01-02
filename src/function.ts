@@ -28,4 +28,4 @@ export function doNothing() {
 /**
  * Identity function which returns the argument passed to it.
  */
-export const identity = (value: any) => value
+export const identity = <T>(value: T) => value

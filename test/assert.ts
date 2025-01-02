@@ -523,12 +523,12 @@ test(
 test(
   'firstValue() asserts valued type',
   t => {
-    function maybe(a: Array<number | null>): number {
-      return firstValue(a)// || 42
+    function maybe(...a: any[]): number {
+      return firstValue(...a) || 42
     }
-    t.is( maybe([5]), 5 )
-    t.is( maybe([null, 6]), 6 )
-    t.is( maybe([null, null]), 42 )
+    t.is( maybe(5), 5 )
+    t.is( maybe(null, 6), 6 )
+    t.is( maybe(null, null), 42 )
   }
 )
 
