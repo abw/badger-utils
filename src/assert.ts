@@ -88,7 +88,7 @@ export function isObject(value: any): value is object {
  * @return {boolean} true if `value` is a string, number or boolean
  */
 
-export function isSimple(value: any): boolean {
+export function isSimple(value: any): value is string | number | boolean {
   return isString(value) || isNumber(value) || isBoolean(value)
 }
 
