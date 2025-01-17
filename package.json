@@ -35,7 +35,7 @@
     "build": "$npm_execpath build:lib && $npm_execpath build:docs",
     "build:lib": "tsc && vite build",
     "build:docs": "vitepress build website",
-    "lint": "eslint 'src/**/*' 'test/**/*'",
+    "lint": "eslint",
     "test": "vitest --ui --coverage",
     "pretest": "$npm_execpath build:lib"
   },

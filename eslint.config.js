@@ -3,39 +3,39 @@ import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
-  { ignores: ['dist'] },
+  { ignores: ['dist', 'tmp', 'website/.vitepress'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],
-    files: ['{src,test}/**/*.{ts,tsx}'],
+    files: ['src/**/*.{ts,tsx}', 'test/**/*.{ts,tsx}'],
     languageOptions: {
       globals: globals.browser,
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
     },
     rules: {
-      "indent": [
-        "error",
+      'indent': [
+        'error',
         2,
         {
-          "offsetTernaryExpressions": true,
-          "SwitchCase": 1
+          'offsetTernaryExpressions': true,
+          'SwitchCase': 1
         }
       ],
-      "linebreak-style": [
-        "error",
-        "unix"
+      'linebreak-style': [
+        'error',
+        'unix'
       ],
-      "quotes": [
-        "warn",
-        "single",
+      'quotes': [
+        'warn',
+        'single',
         {
-          "avoidEscape": true,
-          "allowTemplateLiterals": true
+          'avoidEscape': true,
+          'allowTemplateLiterals': true
         }
       ],
-      "semi": [
-        "error",
-        "never"
+      'semi': [
+        'error',
+        'never'
       ]
     },
   },
