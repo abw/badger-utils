@@ -11,7 +11,7 @@ test(
         sleep(200).then( () => { t.is(n, 1); n++ } )
         sleep(300).then( () => { t.is(n, 2); n++ } )
         sleep(400).then( () => { t.is(n, 3); n++ } )
-        sleep(500).then(resolve)
+        sleep(500).then( a => resolve(a as void) )
       }
     )
   }
@@ -43,7 +43,7 @@ test(
         // then n should be 120 at t=900
         sleep(900).then( () => t.is(n, 120) )
         // resolve the promise and end the test at t=1000
-        sleep(1000).then(resolve)
+        sleep(1000).then( a => resolve(a as void) )
       }
     )
   }

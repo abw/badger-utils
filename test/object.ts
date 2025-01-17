@@ -9,7 +9,7 @@ import {
 test(
   'objMap() uppercase',
   t => {
-    const out = objMap({ a: 'alpha', b: 'bravo' }, v => v.toUpperCase())
+    const out = objMap({ a: 'alpha', b: 'bravo' }, v => (v as string).toUpperCase())
     t.is(out.a, 'ALPHA')
     t.is(out.b, 'BRAVO')
   }
@@ -152,7 +152,7 @@ test(
       /_ex_vat$/,
       {
         key:    key => key.replace(/_ex_vat$/, '_inc_vat'),
-        value:  value => value * 1.2,
+        value:  value => (value as number) * 1.2,
       }
     )
     t.deepEqual(

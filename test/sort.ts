@@ -8,6 +8,7 @@ import {
 test(
   'field({ a: { b: { c: 10 } } }, "a.b.c")',
   t => t.is(
+    // @ts-expect-error - CBA to define data type
     getField({ a: { b: { c: '10' } } }, data => data.a.b.c),
     '10'
   )
@@ -37,6 +38,7 @@ test(
 test(
   'integerField({ a: { b: { c: 10 } } }, "a.b.c")',
   t => t.is(
+    // @ts-expect-error - CBA to define data type
     integerField({ a: { b: { c: '10' } } }, data => data.a.b.c),
     10
   )
@@ -67,6 +69,7 @@ test(
 test(
   'numberField({ a: { b: { c: "3.14" } } }, "a.b.c")',
   t => t.is(
+    // @ts-expect-error - CBA to define data type
     numberField({ a: { b: { c: '3.14' } } }, data => data.a.b.c),
     3.14
   )
@@ -96,6 +99,7 @@ test(
 test(
   'stringField({ a: { b: { c: "3.14" } } }, "a.b.c")',
   t => t.is(
+    // @ts-expect-error - CBA to define data type
     stringField({ a: { b: { c: '3.14' } } }, data => data.a.b.c),
     '3.14'
   )
@@ -132,6 +136,7 @@ test(
 test(
   'booleanField({ a: { b: { c: true } } }, "a.b.c")',
   t => t.is(
+    // @ts-expect-error - CBA to define data type
     booleanField({ a: { b: { c: true } } }, data => data.a.b.c),
     true
   )
@@ -162,6 +167,7 @@ test(
 test(
   'integerSort() with nested data and function',
   t => {
+    // @ts-expect-error - CBA to define data type
     const sortByAge = integerSort( person => person.dob.year )
     const people = [
       { name: 'Fred',   dob: { year: 1967 } },
@@ -206,6 +212,7 @@ test(
 test(
   'numberSort() with nested data and function',
   t => {
+    // @ts-expect-error - CBA to define data type
     const sortByValue = numberSort( row => row.approx.value )
     const constants = [
       { name: 'pi',   approx: { value: 3.14  } },
@@ -248,6 +255,7 @@ test(
 test(
   'stringSort() with nested data and function',
   t => {
+    // @ts-expect-error - CBA to define data type
     const sortByName = stringSort( row => row.greek.letter )
     const constants = [
       { greek: { letter: 'pi'  }, value: 3.14  },
@@ -288,6 +296,7 @@ test(
 test(
   'booleanSort() with nested data and function',
   t => {
+    // @ts-expect-error - CBA to define data type
     const sortByTruth = booleanSort( row => row.truth.is.out.there )
     const truths = [
       { name: 'yes',   truth: { is: { out: { there: 1 } } } },
@@ -433,7 +442,9 @@ test(
       multiSort([
         'premium:bool:desc',
         'age:int',
+        // @ts-expect-error - CBA to define data type
         stringSort( row => row.name.surname ),
+        // @ts-expect-error - CBA to define data type
         stringSort( row => row.name.forename )
       ])
     )

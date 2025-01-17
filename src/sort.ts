@@ -60,7 +60,7 @@ export const integerField = (
     ? value
     : isString(value)
       ? parseInt(value) || 0
-      : fail(`${field} cannot be coerced to an integer: ${value}`)
+      : 0
 }
 
 /**
@@ -81,7 +81,7 @@ export const numberField = (
     ? value
     : isString(value)
       ? parseFloat(value) || 0
-      : fail(`${field} cannot be coerced to a number: ${value}`)
+      : 0
 }
 
 /**
