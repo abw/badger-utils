@@ -42,7 +42,7 @@ test(
   }
 )
 
-function areEqual(a: any, b: any, coerce: (x: any) => any = identity) {
+function areEqual(a: unknown, b: unknown, coerce: (x: unknown) => unknown = identity) {
   return coerce(a) === coerce(b)
 }
 test(
@@ -60,6 +60,5 @@ test(
 
 test(
   'doNothing(1, 2, 3)',
-  // @ts-ignore
   t => t.is(doNothing(1, 2, 3), undefined)
 )

@@ -3,31 +3,32 @@ import { splitHash, HashSource } from './text'
 
 export type HashKeyFunction = (
   key: string,
-  value: any,
+  value: unknown,
   source: HashSource,
   hash: object
 ) => string
 
 export type HashValueFunction = (
-  value: any,
+  value: unknown,
   key: string,
   source: HashSource,
   hash: object
 ) => string
 
 export type ObjMapFunction = (
-  value: any,
+  value: unknown,
   key: string
-) => any
+) => unknown
 
-// type ExtractFunction = (key: string) => any
+// type ExtractFunction = (key: string) => unknown
 // type ExtractKeys = object | string[] | string | RegExp | ExtractFunction
 export type KeyFunction = (key: string) => string
-export type ValueFunction = (value: any) => any
-export type StringIndexedObject = { [key: string]: any }
+export type ValueFunction = (value: unknown) => unknown
+export type StringIndexedObject = Record<string, unknown>
+// export type StringIndexedObject = { [key: string]: unknown }
 
 export function hash(
-  source: string|object|any[],
+  source: string|object|unknown[],
   options: {
     include?: SelectSpec,
     exclude?: SelectSpec,
@@ -75,7 +76,7 @@ export function hash(
 export function objMap(
   obj: object,
   fn: ObjMapFunction
-): { [index: string]: any } {
+): { [index: string]: unknown } {
   return Object.keys(obj).reduce(
     (result: object, key: string) => ({
       ...result,
@@ -130,13 +131,13 @@ export const extract = (
   } = { }
 ): object => {
   let extract = { }
-  let actions = { delete: false, ...options }
+  const actions = { delete: false, ...options }
   const matcher = selector(keys)
 
   Object.keys(object).map(
     key => {
       if (matcher(key)) {
-        let value: any = object[key as keyof object]
+        let value: unknown = object[key as keyof object]
         if (actions.delete) {
           delete object[key as keyof object]
         }
@@ -169,7 +170,7 @@ export const objSubset = extract
  *   'a'
  * ) // => { a: 'alpha', b: 'bravo' }
  */
-export const remove = (object: { }, key: string): any => {
+export const remove = (object: object, key: string): unknown => {
   const value = object[key as keyof object]
   delete object[key as keyof object]
   return value

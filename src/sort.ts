@@ -1,25 +1,27 @@
 import { fail } from './error'
 import { splitList } from './text'
 import { StringIndexedObject } from './object'
-import { isFunction, isString } from './assert'
+import { isFloat, isFunction, isInteger, isString } from './assert'
 
-export type ObjectSortFunction = (a: object, b: object) => number
-export type FieldSelectFunction = (obj: StringIndexedObject) => any
+export type ObjectSortFunction = (a: StringIndexedObject, b: StringIndexedObject) => number
+export type FieldSelectFunction = (obj: StringIndexedObject) => unknown
 export type FieldSelector = string | FieldSelectFunction
 export type SortSelector = string | ObjectSortFunction
+export type FieldSortFunction = (field: FieldSelector) => ObjectSortFunction
+export type FieldSortOrderFunction = (fn: ObjectSortFunction) => ObjectSortFunction
 
 /**
  * Function to extract a field from an object.
  * @param {Object} obj - object containing data
  * @param {string|Function} field - field to return
- * @return {any} - value from object
+ * @return {unknown} - value from object
  * @example
  * booleanField({ a: 1 }, "a");     // true
  */
 export const getField = (
   obj: StringIndexedObject,
   field: FieldSelector
-): any =>
+): unknown =>
   isFunction(field)
     ? (field as FieldSelectFunction)(obj)
     : obj[field as string]
@@ -52,8 +54,14 @@ export const booleanField = (
 export const integerField = (
   obj: StringIndexedObject,
   field: FieldSelector
-): number =>
-  parseInt(getField(obj, field)||0)
+): number => {
+  const value = getField(obj, field)
+  return isInteger(value)
+    ? value
+    : isString(value)
+      ? parseInt(value) || 0
+      : fail(`${field} cannot be coerced to an integer: ${value}`)
+}
 
 /**
  * Function to extract a number field from an object.  Uses `parseFloat()` to
@@ -67,8 +75,14 @@ export const integerField = (
 export const numberField = (
   obj: StringIndexedObject,
   field: FieldSelector
-): number =>
-  parseFloat(getField(obj, field)||0)
+): number => {
+  const value = getField(obj, field)
+  return isFloat(value)
+    ? value
+    : isString(value)
+      ? parseFloat(value) || 0
+      : fail(`${field} cannot be coerced to a number: ${value}`)
+}
 
 /**
  * Function to extract a string field from an object.  Uses `toString()` to
@@ -102,7 +116,8 @@ export const stringField = (
  * const sorted = people.sort(sortByAge); // Velma, Daphne, Shaggy, Fred
  */
 export const integerSort = (field: FieldSelector): ObjectSortFunction =>
-  (a: object, b: object): number => integerField(a, field) - integerField(b, field)
+  (a, b): number =>
+    integerField(a, field) - integerField(b, field)
 
 /**
  * Sort function generator for sorting objects by a number field.
@@ -120,7 +135,7 @@ export const integerSort = (field: FieldSelector): ObjectSortFunction =>
  * const sorted = constants.sort(sortByValue); // phi, e, pi
  */
 export const numberSort = (field: FieldSelector): ObjectSortFunction =>
-  (a: object, b: object): number => numberField(a, field) - numberField(b, field)
+  (a, b): number => numberField(a, field) - numberField(b, field)
 
 /**
  * Sort function generator for sorting objects by a string field.
@@ -138,9 +153,9 @@ export const numberSort = (field: FieldSelector): ObjectSortFunction =>
  * const sorted = constants.sort(sortByName); // e, phi, pi
  */
 export const stringSort = (field: FieldSelector): ObjectSortFunction =>
-  (a: object, b: object) => {
-    let c = stringField(a, field).toLowerCase()
-    let d = stringField(b, field).toLowerCase()
+  (a, b) => {
+    const c = stringField(a, field).toLowerCase()
+    const d = stringField(b, field).toLowerCase()
     return c > d ? 1 : d > c ? -1 : 0
   }
 
@@ -160,15 +175,15 @@ export const stringSort = (field: FieldSelector): ObjectSortFunction =>
  */
 export const booleanSort = (field: FieldSelector): ObjectSortFunction =>
   (a, b) => {
-    let c = booleanField(a, field)
-    let d = booleanField(b, field)
+    const c = booleanField(a, field)
+    const d = booleanField(b, field)
     return (c === d) ? 0 : c ? 1 : -1
   }
 
 /**
  * Lookup table mapping sort types to their functions.
  */
-export const sortTypes: any = {
+export const sortTypes: Record<string, FieldSortFunction> = {
   num:      numberSort,
   int:      integerSort,
   str:      stringSort,
@@ -202,12 +217,12 @@ export const ascendingOrder = (fn: ObjectSortFunction): ObjectSortFunction => fn
  * const sortByNameDesc = descendingOrder(sortByName);
  */
 export const descendingOrder = (fn: ObjectSortFunction): ObjectSortFunction =>
-  (a: object, b: object) => fn(b, a)
+  (a, b) => fn(b, a)
 
 /**
  * Lookup table mapping sort orders to their functions.
  */
-export const sortOrders: any = {
+export const sortOrders: Record<string, FieldSortOrderFunction> = {
   asc:        ascendingOrder,
   desc:       descendingOrder,
   ascending:  ascendingOrder,
@@ -264,7 +279,7 @@ export const multiSort = (spec: string | SortSelector[]): ObjectSortFunction => 
   return (a, b) => {
     for (let i = 0; i < funcs.length; i++) {
       const sortFunc = funcs[i]
-      const cmp = sortFunc(a, b)
+      const cmp = sortFunc(a, b) as number
       if (cmp !== 0) {
         return cmp
       }

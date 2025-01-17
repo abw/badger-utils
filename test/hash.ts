@@ -57,14 +57,20 @@ test(
 test(
   'hash() with include on source - true',
   t => t.deepEqual(
-    hash({ a: 'alpha', yes: true }, { include: (k, v, s) => s.yes }),
+    hash(
+      { a: 'alpha', yes: true },
+      { include: (k, v, s) => (s as { yes: boolean }).yes }
+    ),
     { a: 'alpha', yes: true }
   )
 )
 test(
   'hash() with include on source - false',
   t => t.deepEqual(
-    hash({ a: 'alpha', yes: false }, { include: (k, v, s) => s.yes }),
+    hash(
+      { a: 'alpha', yes: false },
+      { include: (k, v, s) => (s as { yes: boolean }).yes }
+    ),
     { }
   )
 )
@@ -94,14 +100,20 @@ test(
 test(
   'hash() with exclude on source - true',
   t => t.deepEqual(
-    hash({ a: 'alpha', yes: false }, { exclude: (k, v, s) => s.yes }),
+    hash(
+      { a: 'alpha', yes: false },
+      { exclude: (k, v, s) => (s as { yes: boolean }).yes }
+    ),
     { a: 'alpha', yes: false }
   )
 )
 test(
   'hash() with exclude on source - false',
   t => t.deepEqual(
-    hash({ a: 'alpha', yes: true }, { exclude: (k, v, s) => s.yes }),
+    hash(
+      { a: 'alpha', yes: true },
+      { exclude: (k, v, s) => (s as { yes: boolean }).yes }
+    ),
     { }
   )
 )
@@ -119,7 +131,7 @@ test(
 test(
   'hash() with value',
   t => t.deepEqual(
-    hash(ab, { value: v => v.toUpperCase() }),
+    hash(ab, { value: v => (v as string).toUpperCase() }),
     { a: 'ALPHA', b: 'BRAVO' }
   )
 )

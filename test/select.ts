@@ -49,7 +49,7 @@ test(
 test(
   'selector(null)',
   t => t.throws(
-    // @ts-ignore
+    // @ts-expect-error - null is an invalid argument
     () => selector(null),
     {
       message: 'Invalid selector() specification: null'

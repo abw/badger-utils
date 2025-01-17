@@ -13,7 +13,7 @@ import { isFunction } from './assert'
  * maybeFunction(arg => `Hello ${arg.name}!`, { name: 'World' });  // Hello World!
  */
 
-export const maybeFunction = (fn: any, ...args: any[]): any =>
+export const maybeFunction = (fn: unknown, ...args: unknown[]): unknown =>
   isFunction(fn)
     ? fn(...args)
     : fn
@@ -21,7 +21,8 @@ export const maybeFunction = (fn: any, ...args: any[]): any =>
 /**
  * No-op function which does nothing.  Nothing at all.
  */
-export function doNothing() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function doNothing(...args: unknown[]) {
   // speak again Cordelia
 }
 

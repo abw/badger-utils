@@ -47,7 +47,7 @@ test(
 )
 test(
   'isString() identifies undefined',
-  // @ts-ignore
+  // @ts-expect-error - isString() expects a value but we want to check undefined
   t => t.false(isString())
 )
 test(
@@ -81,7 +81,7 @@ test(
 )
 test(
   'isNumber() identifies undefined',
-  // @ts-ignore
+  // @ts-expect-error - isNumber() expects a value
   t => t.false(isNumber())
 )
 test(
@@ -96,7 +96,7 @@ test(
       }
     }
     t.is( addOne(5), 6 )
-    t.is( addOne("6"), 7 )
+    t.is( addOne('6'), 7 )
   }
 )
 
@@ -119,7 +119,7 @@ test(
 )
 test(
   'isInteger() identifies undefined',
-  // @ts-ignore
+  // @ts-expect-error - isInteger() expects a value
   t => t.false(isInteger())
 )
 test(
@@ -134,7 +134,7 @@ test(
       }
     }
     t.is( addOne(5), 6 )
-    t.is( addOne("6"), 7 )
+    t.is( addOne('6'), 7 )
   }
 )
 
@@ -157,7 +157,7 @@ test(
 )
 test(
   'isFloat() identifies undefined',
-  // @ts-ignore
+  // @ts-expect-error - isFloat() expects a value
   t => t.false(isFloat())
 )
 test(
@@ -172,7 +172,7 @@ test(
       }
     }
     t.is( addOne(5), 6 )
-    t.is( addOne("6"), 7 )
+    t.is( addOne('6'), 7 )
   }
 )
 
@@ -313,7 +313,7 @@ test(
 )
 test(
   'isUndefined identifies nothing',
-  // @ts-ignore
+  // @ts-expect-error - isUndefined() expects a value
   t => t.true(isUndefined())
 )
 test(
@@ -340,7 +340,7 @@ test(
 )
 test(
   'isNull identifies nothing',
-  // @ts-ignore
+  // @ts-expect-error - isNull() expects a value
   t => t.false(isNull())
 )
 test(
@@ -359,7 +359,7 @@ test(
 // hasValue()
 test(
   'hasValue identifies nothing = false',
-  // @ts-ignore
+  // @ts-expect-error - hasValue() expects a value
   t => t.false(hasValue())
 )
 test(
@@ -461,7 +461,7 @@ test(
 // noValue()
 test(
   'noValue identifies nothing = true',
-  // @ts-ignore
+  // @ts-expect-error - noValue() expects a value
   t => t.true(noValue())
 )
 test(
@@ -523,8 +523,11 @@ test(
 test(
   'firstValue() asserts valued type',
   t => {
-    function maybe(...a: any[]): number {
-      return firstValue(...a) || 42
+    function maybe(...a: Array<number | null>): number {
+      const first = firstValue(...a)
+      return isNumber(first)
+        ? first
+        : 42
     }
     t.is( maybe(5), 5 )
     t.is( maybe(null, 6), 6 )

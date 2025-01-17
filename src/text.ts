@@ -1,7 +1,8 @@
 import { commas } from './numbers'
 import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert'
+import { StringIndexedObject } from './object'
 
-export type ListSource = null | undefined | string | number | any[]
+export type ListSource = null | undefined | string | number | unknown[]
 export type HashSource = object | ListSource
 
 
@@ -20,7 +21,7 @@ export type HashSource = object | ListSource
 export function splitList(
   value: ListSource,
   regex: RegExp=/,\s*|\s+/
-): any[] {
+): unknown[] {
   if (noValue(value)) {
     return [ ]
   }
@@ -30,7 +31,7 @@ export function splitList(
       : [ ]
   }
   else if (isArray(value)) {
-    return value as any[]
+    return value as unknown[]
   }
   return [value]
 }
@@ -51,8 +52,8 @@ export function splitList(
  */
 export function splitHash(
   value: HashSource,
-  set: any=true,
-  hash: object={ }
+  set: unknown = true,
+  hash: StringIndexedObject = { }
 ): object {
   // if it's already a hash object then return it unchanged
   if (isObject(value)) {
@@ -62,8 +63,8 @@ export function splitHash(
   const items = splitList(value as string)
 
   return items.reduce(
-    (result, key) => {
-      result[key] = isFunction(set)
+    (result: StringIndexedObject, key) => {
+      result[key as string] = isFunction(set)
         ? set(key)
         : set
       return result
@@ -81,7 +82,7 @@ export function splitLines(text: ListSource): string[] {
   if (! isString(text) || (text as string).length === 0) {
     return [ ]
   }
-  var lines = (text as string).split(/\s*\n+\s*/).filter(
+  const lines = (text as string).split(/\s*\n+\s*/).filter(
     function(item) { return item.length > 0 }
   )
   return lines
@@ -101,12 +102,12 @@ export function splitLines(text: ListSource): string[] {
  * joinList(['one', 'two', 'three'], ', ', ' and ');   // one, two and three
  */
 export function joinList(
-  array: any[],
+  array: string[],
   joint: string=' ',
   lastJoint: string=joint
 ): string {
-  let copy = [...array]
-  const last = copy.pop()
+  const copy = [...array]
+  const last = copy.pop() ?? ''
   return copy.length
     ? [copy.join(joint), last].join(lastJoint)
     : last
@@ -122,7 +123,7 @@ export function joinList(
  * joinListAnd(['one', 'two', 'three']);   // one, two and three
  */
 export function joinListAnd(
-  array: any[],
+  array: string[],
   joint: string=', ',
   lastJoint: string=' and '
 ): string {
@@ -139,7 +140,7 @@ export function joinListAnd(
  * joinListOr(['one', 'two', 'three']);   // one, two or three
  */
 export function joinListOr(
-  array: any[],
+  array: string[],
   joint: string=', ',
   lastJoint: string=' or '
 ): string {

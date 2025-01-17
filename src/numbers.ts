@@ -103,7 +103,7 @@ export function commas(
   if (noValue(n)) {
     return ''
   }
-  var bits  = n.toString().split('.'),
+  const bits  = n.toString().split('.'),
     rgx   = /(\d+)(\d{3})/
 
   while (rgx.test(bits[0])) {

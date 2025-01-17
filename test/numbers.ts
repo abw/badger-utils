@@ -1,7 +1,5 @@
 import test from './library/ava-vitest'
-import {
-  range, commas, formatNumber, currency
-} from '../src/index'
+import { range, commas, formatNumber, currency } from '../src/index'
 
 //-----------------------------------------------------------------------------
 // range()
@@ -165,7 +163,7 @@ test(
 )
 test(
   'commas()',
-  // @ts-ignore
+  // @ts-expect-error - commas() expects arguments
   t => t.is(commas(), '')
 )
 

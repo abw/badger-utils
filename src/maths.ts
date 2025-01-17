@@ -28,6 +28,7 @@ const correctionFactor = (...args: number[]): number =>
  * Function to multiply numbers using fixed floating point maths.
  * @param {...number} args - numbers to multiply
  * @returns {number} - the product of the numbers
+ * @deprecated Moved into \@abw/badger-maths
  * @example
  * multiply(3.0, 2.2, 2.0);  // 13.2
  */
@@ -44,6 +45,7 @@ export const multiply = (...args: number[]): number =>
  * Function to divide numbers using fixed floating point maths.
  * @param {...number} args - numbers to divide
  * @returns {number} - the result of dividing the numbers
+ * @deprecated Moved into \@abw/badger-maths
  * @example
  * divide(13.2, 2.0, 1.1);  // 6
  */
@@ -59,11 +61,12 @@ export const divide = (...args: number[]): number =>
  * Function to add numbers using fixed floating point maths.
  * @param {...number} args - numbers to add
  * @returns {number} - the result of adding the numbers
+ * @deprecated Moved into \@abw/badger-maths
  * @example
  * add(1.1, 6.6, 0.1);  // 7.8
  */
 export const add = (...args: number[]): number => {
-  const cf = correctionFactor.apply(null, args)
+  const cf = correctionFactor(...args)
   return args.reduce(
     (sum, value) => sum + cf * value,
     0
@@ -74,11 +77,12 @@ export const add = (...args: number[]): number => {
  * Function to subtract numbers using fixed floating point maths.
  * @param {...number} args - numbers to subtract
  * @returns {number} - the result of adding the numbers
+ * @deprecated Moved into \@abw/badger-maths
  * @example
  * sub(7.8, 0.1, 2.4);  // 5.3
  */
 export const subtract = (...args: number[]): number => {
-  const cf = correctionFactor.apply(null, args)
+  const cf = correctionFactor(...args)
   const [first, ...rest] = args
   return rest.reduce(
     (sum, value) => sum - cf * value,
@@ -92,6 +96,7 @@ export const subtract = (...args: number[]): number => {
  * @param {number} min - minimum value of n
  * @param {number} max - maximum value of n
  * @returns {number} - the number n clamped to the min, max range
+ * @deprecated Moved into \@abw/badger-maths
  * @example
  * clamp(1.1, 0, 1);  // 1
  */

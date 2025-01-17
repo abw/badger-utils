@@ -3,7 +3,7 @@
  * @param {boolean} value - value to test
  * @return {boolean} true if `value` is a string or false if not
  */
-export function isBoolean(value: any): value is boolean {
+export function isBoolean(value: unknown): value is boolean {
   return typeof value === 'boolean'
 }
 
@@ -12,7 +12,7 @@ export function isBoolean(value: any): value is boolean {
  * @param {string} value - value to test
  * @return {boolean} true if `value` is a string or false if not
  */
-export function isString(value: any): value is string {
+export function isString(value: unknown): value is string {
   return typeof value === 'string'
 }
 
@@ -21,7 +21,7 @@ export function isString(value: any): value is string {
  * @param {number} value - value to test
  * @return {boolean} true if `value` is a number or false if not
  */
-export function isNumber(value: any): value is number {
+export function isNumber(value: unknown): value is number {
   return typeof value === 'number'
 }
 
@@ -30,7 +30,7 @@ export function isNumber(value: any): value is number {
  * @param {number} value - value to test
  * @return {boolean} true if `value` is an integer or false if not
  */
-export function isInteger(value: any): value is number {
+export function isInteger(value: unknown): value is number {
   return Number.isInteger(value)
 }
 
@@ -39,7 +39,7 @@ export function isInteger(value: any): value is number {
  * @param {number} value - value to test
  * @return {boolean} true if `value` is an integer or false if not
  */
-export function isFloat(value: any): value is number {
+export function isFloat(value: unknown): value is number {
   return isNumber(value) && ! isInteger(value)
 }
 
@@ -48,7 +48,7 @@ export function isFloat(value: any): value is number {
  * @param {Array} value - value to test
  * @return {boolean} true if `value` is an Array or false if not
  */
-export function isArray(value: any): value is any[] {
+export function isArray(value: unknown): value is unknown[] {
   return Array.isArray(value)
 }
 
@@ -57,7 +57,7 @@ export function isArray(value: any): value is any[] {
  * @param {Function} value - value to test
  * @return {boolean} true if `value` is a Function or false if not
  */
-export function isFunction(value: any): value is (...args: any[]) => any {
+export function isFunction(value: unknown): value is (...args: unknown[]) => unknown {
   return typeof value === 'function'
 }
 
@@ -67,7 +67,7 @@ export function isFunction(value: any): value is (...args: any[]) => any {
  * @return {boolean} true if `value` is a RegExp Object or not
  */
 
-export function isRegExp(value: any): value is RegExp {
+export function isRegExp(value: unknown): value is RegExp {
   return value instanceof RegExp
 }
 
@@ -76,7 +76,7 @@ export function isRegExp(value: any): value is RegExp {
  * @param {Object} value - value to test
  * @return {boolean} true if `value` is an Object or false if not
  */
-export function isObject(value: any): value is object {
+export function isObject(value: unknown): value is object {
   return typeof value === 'object'
     && ! isArray(value)
     && ! isNull(value)
@@ -88,7 +88,7 @@ export function isObject(value: any): value is object {
  * @return {boolean} true if `value` is a string, number or boolean
  */
 
-export function isSimple(value: any): value is string | number | boolean {
+export function isSimple(value: unknown): value is string | number | boolean {
   return isString(value) || isNumber(value) || isBoolean(value)
 }
 
@@ -97,7 +97,7 @@ export function isSimple(value: any): value is string | number | boolean {
  * @param {any} value - value to test
  * @return {boolean} true if `value` is `undefined` or false if not
  */
-export function isUndefined(value: any): value is undefined {
+export function isUndefined(value: unknown): value is undefined {
   return typeof value === 'undefined'
 }
 
@@ -106,7 +106,7 @@ export function isUndefined(value: any): value is undefined {
  * @param {any} value - value to test
  * @return {boolean} true if `value` is `null` or false if not
  */
-export function isNull(value: any): value is null {
+export function isNull(value: unknown): value is null {
   return value === null
 }
 
@@ -124,7 +124,7 @@ export function hasValue<T>(value: T | undefined | null): value is T {
  * @param values - values to test
  * @return {boolean} true if all values are not `undefined` or `null`
  */
-export function haveValue(...values: any[]): boolean {
+export function haveValue(...values: unknown[]): boolean {
   return hasValues(values)
 }
 
@@ -144,7 +144,7 @@ export function hasValues<T extends unknown[]>(values: T):
  * @param {any} value - value to test
  * @return {boolean} true if `value` is `undefined` or `null`
  */
-export function noValue(value:any): value is undefined | null {
+export function noValue(value: unknown): value is undefined | null {
   return ! hasValue(value)
 }
 
@@ -153,7 +153,7 @@ export function noValue(value:any): value is undefined | null {
  * @param {any[]} values - values to test
  * @return {any} first argument that has a value that is not `undefined` or `null`
  */
-export function firstValue(...values: any[]): any {
+export function firstValue(...values: unknown[]): unknown {
   return values.find( value => hasValue(value) )
 }
 
@@ -170,7 +170,7 @@ export function firstValue(...values: any[]): any {
  * @example
  * isEmpty([ 10 ]) // false
  */
-export const isEmpty = (obj : object | any[]): boolean =>
+export const isEmpty = (obj : object | unknown[]): boolean =>
   isArray(obj)
     ? obj.length === 0
     : Object.keys(obj).length === 0

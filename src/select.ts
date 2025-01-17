@@ -4,9 +4,9 @@ import { splitHash } from './text'
 
 export type SelectFunction = (
   key: string,
-  value?: any,
-  source?: any,
-  hash?: any
+  value?: unknown,
+  source?: unknown,
+  hash?: unknown
 ) => boolean
 
 export type SelectSpec = object | string[] | string | RegExp | SelectFunction

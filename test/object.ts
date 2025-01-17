@@ -180,8 +180,8 @@ test(
 test(
   'remove()',
   t => {
-    let object = { aa: 10, ab: 20, bc: 30, bd: 40 }
-    let removed = remove(object, 'aa')
+    const object = { aa: 10, ab: 20, bc: 30, bd: 40 }
+    const removed = remove(object, 'aa')
     t.deepEqual(object, { ab: 20, bc: 30, bd: 40 })
     t.is(removed, 10)
   }
@@ -193,7 +193,7 @@ test(
 test(
   'keys()',
   t => {
-    let object = { a: 'alpha', b: 'bravo', c: 'charlie' }
+    const object = { a: 'alpha', b: 'bravo', c: 'charlie' }
     t.deepEqual(keys(object), ['a', 'b', 'c'])
   }
 )
@@ -204,7 +204,7 @@ test(
 test(
   'values()',
   t => {
-    let object = { a: 'alpha', b: 'bravo', c: 'charlie' }
+    const object = { a: 'alpha', b: 'bravo', c: 'charlie' }
     t.deepEqual(values(object), ['alpha', 'bravo', 'charlie'])
   }
 )
@@ -215,7 +215,7 @@ test(
 test(
   'entries()',
   t => {
-    let object = { a: 'alpha', b: 'bravo', c: 'charlie' }
+    const object = { a: 'alpha', b: 'bravo', c: 'charlie' }
     t.deepEqual(entries(object), [['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie']])
   }
 )

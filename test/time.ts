@@ -22,7 +22,7 @@ test(
     return new Promise(
       resolve => {
         let n = 0
-        let f = debounce(
+        const f = debounce(
           () => {
             t.is(n, 20)
             n += 100

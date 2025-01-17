@@ -8,7 +8,6 @@ import {
 test(
   'field({ a: { b: { c: 10 } } }, "a.b.c")',
   t => t.is(
-    // @ts-ignore
     getField({ a: { b: { c: '10' } } }, data => data.a.b.c),
     '10'
   )
@@ -38,8 +37,7 @@ test(
 test(
   'integerField({ a: { b: { c: 10 } } }, "a.b.c")',
   t => t.is(
-    // @ts-ignore
-    integerField({ a: { b: { c: '10' } } }, (data: object) => data.a.b.c),
+    integerField({ a: { b: { c: '10' } } }, data => data.a.b.c),
     10
   )
 )
@@ -69,8 +67,7 @@ test(
 test(
   'numberField({ a: { b: { c: "3.14" } } }, "a.b.c")',
   t => t.is(
-    // @ts-ignore
-    numberField({ a: { b: { c: '3.14' } } }, (data: object) => data.a.b.c),
+    numberField({ a: { b: { c: '3.14' } } }, data => data.a.b.c),
     3.14
   )
 )
@@ -99,8 +96,7 @@ test(
 test(
   'stringField({ a: { b: { c: "3.14" } } }, "a.b.c")',
   t => t.is(
-    // @ts-ignore
-    stringField({ a: { b: { c: '3.14' } } }, (data: object) => data.a.b.c),
+    stringField({ a: { b: { c: '3.14' } } }, data => data.a.b.c),
     '3.14'
   )
 )
@@ -136,8 +132,7 @@ test(
 test(
   'booleanField({ a: { b: { c: true } } }, "a.b.c")',
   t => t.is(
-    // @ts-ignore
-    booleanField({ a: { b: { c: true } } }, (data: object) => data.a.b.c),
+    booleanField({ a: { b: { c: true } } }, data => data.a.b.c),
     true
   )
 )
@@ -167,7 +162,6 @@ test(
 test(
   'integerSort() with nested data and function',
   t => {
-    // @ts-ignore
     const sortByAge = integerSort( person => person.dob.year )
     const people = [
       { name: 'Fred',   dob: { year: 1967 } },
@@ -212,7 +206,6 @@ test(
 test(
   'numberSort() with nested data and function',
   t => {
-    // @ts-ignore
     const sortByValue = numberSort( row => row.approx.value )
     const constants = [
       { name: 'pi',   approx: { value: 3.14  } },
@@ -255,7 +248,6 @@ test(
 test(
   'stringSort() with nested data and function',
   t => {
-    // @ts-ignore
     const sortByName = stringSort( row => row.greek.letter )
     const constants = [
       { greek: { letter: 'pi'  }, value: 3.14  },
@@ -296,7 +288,6 @@ test(
 test(
   'booleanSort() with nested data and function',
   t => {
-    // @ts-ignore
     const sortByTruth = booleanSort( row => row.truth.is.out.there )
     const truths = [
       { name: 'yes',   truth: { is: { out: { there: 1 } } } },
@@ -501,7 +492,7 @@ test(
 test(
   'multiSort() invalid sort field 99',
   t => t.throws(
-    // @ts-ignore
+    // @ts-expect-error - invalid sort field
     () => multiSort([99]),
     {
       message: 'Invalid sort field: 99'
