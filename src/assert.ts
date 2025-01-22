@@ -1,7 +1,9 @@
+import { UnknownFunction, Nothing } from './types'
+
 /**
  * Determines if a value is a boolean
- * @param {boolean} value - value to test
- * @return {boolean} true if `value` is a string or false if not
+ * @param value - value to test
+ * @return true if `value` is a string or false if not
  */
 export function isBoolean(value: unknown): value is boolean {
   return typeof value === 'boolean'
@@ -9,8 +11,8 @@ export function isBoolean(value: unknown): value is boolean {
 
 /**
  * Determines if a value is a string
- * @param {string} value - value to test
- * @return {boolean} true if `value` is a string or false if not
+ * @param value - value to test
+ * @return true if `value` is a string or false if not
  */
 export function isString(value: unknown): value is string {
   return typeof value === 'string'
@@ -18,8 +20,8 @@ export function isString(value: unknown): value is string {
 
 /**
  * Determines if a value is a number
- * @param {number} value - value to test
- * @return {boolean} true if `value` is a number or false if not
+ * @param value - value to test
+ * @return true if `value` is a number or false if not
  */
 export function isNumber(value: unknown): value is number {
   return typeof value === 'number'
@@ -27,8 +29,8 @@ export function isNumber(value: unknown): value is number {
 
 /**
  * Determines if a value is an Integer
- * @param {number} value - value to test
- * @return {boolean} true if `value` is an integer or false if not
+ * @param value - value to test
+ * @return true if `value` is an integer or false if not
  */
 export function isInteger(value: unknown): value is number {
   return Number.isInteger(value)
@@ -36,8 +38,8 @@ export function isInteger(value: unknown): value is number {
 
 /**
  * Determines if a value is a floating point number
- * @param {number} value - value to test
- * @return {boolean} true if `value` is an integer or false if not
+ * @param value - value to test
+ * @return true if `value` is an integer or false if not
  */
 export function isFloat(value: unknown): value is number {
   return isNumber(value) && ! isInteger(value)
@@ -45,8 +47,8 @@ export function isFloat(value: unknown): value is number {
 
 /**
  * Determines if a value is an array
- * @param {Array} value - value to test
- * @return {boolean} true if `value` is an Array or false if not
+ * @param value - value to test
+ * @return true if `value` is an Array or false if not
  */
 export function isArray(value: unknown): value is unknown[] {
   return Array.isArray(value)
@@ -54,17 +56,17 @@ export function isArray(value: unknown): value is unknown[] {
 
 /**
  * Determines if a value is a Function
- * @param {Function} value - value to test
- * @return {boolean} true if `value` is a Function or false if not
+ * @param value - value to test
+ * @return true if `value` is a Function or false if not
  */
-export function isFunction(value: unknown): value is (...args: unknown[]) => unknown {
+export function isFunction<T=UnknownFunction>(value: unknown): value is T {
   return typeof value === 'function'
 }
 
 /**
  * Determines if a value is an RegExp object
- * @param {Object} value - value to test
- * @return {boolean} true if `value` is a RegExp Object or not
+ * @param value - value to test
+ * @return true if `value` is a RegExp Object or not
  */
 
 export function isRegExp(value: unknown): value is RegExp {
@@ -73,8 +75,8 @@ export function isRegExp(value: unknown): value is RegExp {
 
 /**
  * Determines if a value is an Object (but not an Array)
- * @param {Object} value - value to test
- * @return {boolean} true if `value` is an Object or false if not
+ * @param value - value to test
+ * @return true if `value` is an Object or false if not
  */
 export function isObject(value: unknown): value is object {
   return typeof value === 'object'
@@ -84,8 +86,8 @@ export function isObject(value: unknown): value is object {
 
 /**
  * Determines if a value is a "simple" scalar value, e.g. a string, number or boolean.
- * @param {any} value - value to test
- * @return {boolean} true if `value` is a string, number or boolean
+ * @param value - value to test
+ * @return true if `value` is a string, number or boolean
  */
 
 export function isSimple(value: unknown): value is string | number | boolean {
@@ -94,8 +96,8 @@ export function isSimple(value: unknown): value is string | number | boolean {
 
 /**
  * Determines if a value is `undefined`
- * @param {any} value - value to test
- * @return {boolean} true if `value` is `undefined` or false if not
+ * @param value - value to test
+ * @return true if `value` is `undefined` or false if not
  */
 export function isUndefined(value: unknown): value is undefined {
   return typeof value === 'undefined'
@@ -103,8 +105,8 @@ export function isUndefined(value: unknown): value is undefined {
 
 /**
  * Determines if a value is `null`
- * @param {any} value - value to test
- * @return {boolean} true if `value` is `null` or false if not
+ * @param value - value to test
+ * @return true if `value` is `null` or false if not
  */
 export function isNull(value: unknown): value is null {
   return value === null
@@ -112,17 +114,17 @@ export function isNull(value: unknown): value is null {
 
 /**
  * Determines if a value is defined and not null
- * @param {any} value - value to test
- * @return {boolean} true if `value` is not `undefined` or `null`
+ * @param value - value to test
+ * @return true if `value` is not `undefined` or `null`
  */
-export function hasValue<T>(value: T | undefined | null): value is T {
+export function hasValue<T>(value: T | Nothing): value is T {
   return ! (isUndefined(value) || isNull(value))
 }
 
 /**
  * Determines if all values are defined and not null
  * @param values - values to test
- * @return {boolean} true if all values are not `undefined` or `null`
+ * @return true if all values are not `undefined` or `null`
  */
 export function haveValue(...values: unknown[]): boolean {
   return hasValues(values)
@@ -131,7 +133,7 @@ export function haveValue(...values: unknown[]): boolean {
 /**
  * Determines if all values in an array are defined and not null
  * @param values - array of values to test
- * @return {boolean} true if all values in array are not `undefined` or `null`
+ * @return true if all values in array are not `undefined` or `null`
  */
 
 export function hasValues<T extends unknown[]>(values: T):
@@ -141,8 +143,8 @@ export function hasValues<T extends unknown[]>(values: T):
 
 /**
  * Determines if a value is undefined or null
- * @param {any} value - value to test
- * @return {boolean} true if `value` is `undefined` or `null`
+ * @param value - value to test
+ * @return true if `value` is `undefined` or `null`
  */
 export function noValue(value: unknown): value is undefined | null {
   return ! hasValue(value)
@@ -150,17 +152,17 @@ export function noValue(value: unknown): value is undefined | null {
 
 /**
  * Returns the first argument that has a value
- * @param {any[]} values - values to test
- * @return {any} first argument that has a value that is not `undefined` or `null`
+ * @param values - values to test
+ * @return first argument that has a value that is not `undefined` or `null`
  */
-export function firstValue(...values: unknown[]): unknown {
-  return values.find( value => hasValue(value) )
+export function firstValue<T>(...values: Array<T|Nothing>): T | undefined {
+  return values.find( value => hasValue<T>(value) )
 }
 
 /**
  * Determines if an object or array is empty.
- * @param {Object|Array} object - source object or array
- * @return {boolean} - true if object or array is empty
+ * @param object - source object or array
+ * @return true if object or array is empty
  * @example
  * isEmpty({ }) // true
  * @example
