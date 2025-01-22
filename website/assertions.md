@@ -88,6 +88,27 @@ isFunction( a => a + 1 );     // true
 isFunction("badger badger");  // false
 ```
 
+If you're using Typescript you can use a type generic to narrow the type
+of the function assertion.  In this example we use `isFunction<ReturnNumber>`.
+When the function returns `true`, it establishes that `a` is not only a
+function, but also has the type of `ReturnNumber` and can safely be called as
+`a(10)`.
+
+```ts
+type ReturnNumber = (n: number) => number
+
+const addOne: ReturnNumber = n => n + 1
+
+const someNumber = (a: number | ReturnNumber): number =>
+  isFunction<ReturnNumber>(a)
+    ? a(10)
+    : a
+
+someNumber(10)      // => 10
+someNumber(addOne)  // => 11
+
+```
+
 ## isRegExp(value) {#isRegExp}
 
 Determines if a value is a RegExp object.  Returns Boolean `true` or `false`.
@@ -285,3 +306,25 @@ firstValues(null, 2, 3);      // 2
 firstValues(false, 3, 4);     // false
 ```
 
+If you're using Typescript then you can add a generic type which will assert
+that the return value either has this type or is `undefined`.
+
+Typescript is smart enough to infer the type from the first argument that
+isn't `null` or `undefined`. In this example it's safe to set the type of
+`a` to `number | undefined`.
+
+```ts
+const a: number | undefined = firstValue(
+  null, 1, 2, 3, undefined
+)
+```
+
+However if the arguments contained mixed types then you'll need give
+Typescript a hint about what types the arguments can safely have.  In this
+example we use the `number|string` generic type on `firstValue` to do that.
+
+```ts
+const a: number | string | undefined = firstValue<number|string>(
+  null, 1, 'two', 3, undefined
+)
+```
