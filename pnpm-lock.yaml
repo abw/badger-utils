@@ -35,6 +35,9 @@ devDependencies:
   vite-plugin-dts:
     specifier: ^4.4.0
     version: 4.4.0(rollup@4.17.2)(typescript@5.4.5)(vite@6.0.6)
+  vite-tsconfig-paths:
+    specifier: ^5.1.4
+    version: 5.1.4(typescript@5.4.5)(vite@6.0.6)
   vitepress:
     specifier: 1.5.0
     version: 1.5.0(@algolia/client-search@5.19.0)(search-insights@2.17.3)(typescript@5.4.5)
@@ -2784,6 +2787,10 @@ packages:
     engines: {node: '>=18'}
     dev: true
 
+  /globrex@0.1.2:
+    resolution: {integrity: sha512-uHJgbwAMwNFf5mLst7IWLNg14x1CkeqglJb/K3doi4dw6q2IvAAmM/Y81kevy83wP+Sst+nutFTYOGg3d1lsxg==}
+    dev: true
+
   /graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
     dev: true
@@ -3722,6 +3729,19 @@ packages:
       typescript: 5.4.5
     dev: true
 
+  /tsconfck@3.1.4(typescript@5.4.5):
+    resolution: {integrity: sha512-kdqWFGVJqe+KGYvlSO9NIaWn9jT1Ny4oKVzAJsKii5eoE9snzTJzL4+MMVOMn+fikWGFmKEylcXL710V/kIPJQ==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    peerDependencies:
+      typescript: ^5.0.0
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      typescript: 5.4.5
+    dev: true
+
   /tslib@2.6.3:
     resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
     dev: true
@@ -3869,6 +3889,23 @@ packages:
       - '@types/node'
       - rollup
       - supports-color
+    dev: true
+
+  /vite-tsconfig-paths@5.1.4(typescript@5.4.5)(vite@6.0.6):
+    resolution: {integrity: sha512-cYj0LRuLV2c2sMqhqhGpaO3LretdtMn/BVX4cPLanIZuwwrkVl+lK84E/miEXkCHWXuq65rhNN4rXsBcOB3S4w==}
+    peerDependencies:
+      vite: '*'
+    peerDependenciesMeta:
+      vite:
+        optional: true
+    dependencies:
+      debug: 4.4.0
+      globrex: 0.1.2
+      tsconfck: 3.1.4(typescript@5.4.5)
+      vite: 6.0.6
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /vite@5.2.10:
