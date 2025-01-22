@@ -1,21 +1,5 @@
-import test from './library/ava-vitest'
-import { maybeFunction, identity, doNothing, isFunction } from '../src/index'
-
-test(
-  'maybeFunction() should call function',
-  t => t.is(
-    maybeFunction((a: number, b: number) => a + b, 10, 20),
-    30
-  )
-)
-
-test(
-  'maybeFunction() should return non-function value',
-  t => t.is(
-    maybeFunction('nope', 20, 30),
-    'nope'
-  )
-)
+import test from '../library/ava-vitest'
+import { identity, isFunction } from '@/src/index'
 
 test(
   'identity() should return value',
@@ -42,6 +26,29 @@ test(
   }
 )
 
+test(
+  'identity() should accept type',
+  t => {
+    type Item = {
+      name: string,
+      price: number
+    }
+    // type FilterItems = (items: Item[]) => Item[]
+    const sumItems = (items: Item[], filter=identity): number =>
+      filter(items).reduce(
+        (sum, item) => sum + item.price,
+        0
+      )
+    const items = [
+      { name: 'nuts', price: 1.23 },
+      { name: 'berries', price: 2.34 },
+      { name: 'carriage', price: 3.45 }
+    ]
+    const total = sumItems(items)
+    t.is(total, 7.02)
+  }
+)
+
 function areEqual(a: unknown, b: unknown, coerce: (x: unknown) => unknown = identity) {
   return coerce(a) === coerce(b)
 }
@@ -56,9 +63,4 @@ test(
 test(
   'areEqual(true, 1, Boolean) should return true',
   t => t.true(areEqual(true, 1, Boolean))
-)
-
-test(
-  'doNothing(1, 2, 3)',
-  t => t.is(doNothing(1, 2, 3), undefined)
 )
