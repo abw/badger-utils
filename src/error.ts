@@ -26,7 +26,7 @@ export function failMsg(message: string, data: object): never {
  * @param {Error} error - error object
  * @throws {Error}
  */
-export function rethrow(error: Error): never {
+export function rethrow(error: unknown): never {
   throw error
 }
 

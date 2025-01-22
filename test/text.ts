@@ -219,7 +219,7 @@ test(
 test(
   'splitHash(["a", "b"], v => v)',
   t => t.deepEqual(
-    splitHash(['a', 'b'], v => v),
+    splitHash(['a', 'b'], (v: unknown) => v),
     { a: 'a', b: 'b' }
   )
 )
@@ -227,7 +227,7 @@ test(
 test(
   'splitHash(["a", "b"], v => `=${v}=)',
   t => t.deepEqual(
-    splitHash(['a', 'b'], v => `=${v}=`),
+    splitHash(['a', 'b'], (v: unknown) => `=${v}=`),
     { a: '=a=', b: '=b=' }
   )
 )

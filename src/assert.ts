@@ -156,7 +156,7 @@ export function noValue(value: unknown): value is undefined | null {
  * @return first argument that has a value that is not `undefined` or `null`
  */
 export function firstValue<T>(...values: Array<T|Nothing>): T | undefined {
-  return values.find( value => hasValue<T>(value) )
+  return values.find( value => hasValue<T>(value) ) ?? undefined
 }
 
 /**

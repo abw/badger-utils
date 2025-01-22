@@ -26,7 +26,7 @@ const t: TestWrapper = {
     }
     catch (e) {
       if (expected.message) {
-        expect(e.message).toBe(expected.message)
+        expect((e as Error).message).toBe(expected.message)
       }
       return e
     }
