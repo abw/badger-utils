@@ -49,7 +49,7 @@ test(
     }
     t.is( maybe(5), 5 )
     t.is( maybe(null, 6), 6 )
-    t.is( maybe(null, null), 42 )
+    t.is( maybe(null, null, 42), 42 )
   }
 )
 
