@@ -1,23 +1,6 @@
-import test from './library/ava-vitest'
-import {
-  objMap, extract, remove, keys, values, entries
-} from '../src/index'
+import test from '../library/ava-vitest'
+import { extract } from '../../src/index'
 
-//----------------------------------------------------------------------------
-// objMap()
-//----------------------------------------------------------------------------
-test(
-  'objMap() uppercase',
-  t => {
-    const out = objMap({ a: 'alpha', b: 'bravo' }, v => (v as string).toUpperCase())
-    t.is(out.a, 'ALPHA')
-    t.is(out.b, 'BRAVO')
-  }
-)
-
-//----------------------------------------------------------------------------
-// extract()
-//----------------------------------------------------------------------------
 test(
   'extract() with hash',
   t => {
@@ -173,49 +156,3 @@ test(
   }
 )
 
-
-//----------------------------------------------------------------------------
-// remove()
-//----------------------------------------------------------------------------
-test(
-  'remove()',
-  t => {
-    const object = { aa: 10, ab: 20, bc: 30, bd: 40 }
-    const removed = remove(object, 'aa')
-    t.deepEqual(object, { ab: 20, bc: 30, bd: 40 })
-    t.is(removed, 10)
-  }
-)
-
-//----------------------------------------------------------------------------
-// keys()
-//----------------------------------------------------------------------------
-test(
-  'keys()',
-  t => {
-    const object = { a: 'alpha', b: 'bravo', c: 'charlie' }
-    t.deepEqual(keys(object), ['a', 'b', 'c'])
-  }
-)
-
-//----------------------------------------------------------------------------
-// values()
-//----------------------------------------------------------------------------
-test(
-  'values()',
-  t => {
-    const object = { a: 'alpha', b: 'bravo', c: 'charlie' }
-    t.deepEqual(values(object), ['alpha', 'bravo', 'charlie'])
-  }
-)
-
-//----------------------------------------------------------------------------
-// entries()
-//----------------------------------------------------------------------------
-test(
-  'entries()',
-  t => {
-    const object = { a: 'alpha', b: 'bravo', c: 'charlie' }
-    t.deepEqual(entries(object), [['a', 'alpha'], ['b', 'bravo'], ['c', 'charlie']])
-  }
-)

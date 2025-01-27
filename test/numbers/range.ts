@@ -1,9 +1,6 @@
-import test from './library/ava-vitest'
-import { range, commas, formatNumber, currency } from '../src/index'
+import test from '../library/ava-vitest'
+import { range } from '../../src/index'
 
-//-----------------------------------------------------------------------------
-// range()
-//-----------------------------------------------------------------------------
 test(
   'range(0, 1)',
   t => {
@@ -128,54 +125,3 @@ test(
     t.is(r[4], -4)
   }
 )
-
-
-//-----------------------------------------------------------------------------
-// formatNumber()
-//-----------------------------------------------------------------------------
-test(
-  "formatNumber(12345, { locale: 'en-GB'}",
-  t => t.is( formatNumber(12345, { locale: 'en-GB' }), '12,345' )
-)
-test(
-  "formatNumber(12345, { locale: 'en-GB', style: 'currency', 'currency: 'GBP' }",
-  t => t.is( formatNumber(12345, { locale: 'en-GB', style: 'currency', currency: 'GBP' }), '£12,345.00' )
-)
-
-//-----------------------------------------------------------------------------
-// commas()
-//-----------------------------------------------------------------------------
-test(
-  'commas(123)',
-  t => t.is(commas(123), '123')
-)
-test(
-  'commas(12345)',
-  t => t.is(commas(12345), '12,345')
-)
-test(
-  'commas(12345.67)',
-  t => t.is(commas(12345.67), '12,345.67')
-)
-test(
-  'commas(12345.67, " ")',
-  t => t.is(commas(12345.67, ' '), '12 345.67')
-)
-test(
-  'commas()',
-  // @ts-expect-error - commas() expects arguments
-  t => t.is(commas(), '')
-)
-
-//-----------------------------------------------------------------------------
-// currency
-//-----------------------------------------------------------------------------
-test(
-  "currency(12345, { locale: 'en-GB', currency: 'GBP' })",
-  t => t.is(currency(12345, { locale: 'en-GB', currency: 'GBP' }), '£12,345.00')
-)
-test(
-  "currency(12345, { locale: 'en-US', currency: 'USD' })",
-  t => t.is(currency(12345, { locale: 'en-US', currency: 'USD' }), '$12,345.00')
-)
-
