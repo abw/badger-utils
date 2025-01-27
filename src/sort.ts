@@ -1,7 +1,7 @@
 import { fail } from './error'
 import { splitList } from './text'
 import { StringIndexedObject } from './object'
-import { isFloat, isFunction, isInteger, isString } from './assert'
+import { isFunction, isInteger, isNumber, isString } from './assert'
 
 export type ObjectSortFunction = (a: StringIndexedObject, b: StringIndexedObject) => number
 export type FieldSelectFunction = (obj: StringIndexedObject) => unknown
@@ -77,7 +77,7 @@ export const numberField = (
   field: FieldSelector
 ): number => {
   const value = getField(obj, field)
-  return isFloat(value)
+  return isNumber(value)
     ? value
     : isString(value)
       ? parseFloat(value) || 0
