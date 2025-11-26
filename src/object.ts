@@ -1,34 +1,9 @@
 import { selector, SelectSpec } from './select'
-import { splitHash, HashSource } from './text'
-
-export type HashKeyFunction = (
-  key: string,
-  value: unknown,
-  source: HashSource,
-  hash: object
-) => string
-
-export type HashValueFunction = (
-  value: unknown,
-  key: string,
-  source: HashSource,
-  hash: object
-) => string
-
-export type ObjMapFunction = (
-  value: unknown,
-  key: string
-) => unknown
-
-// type ExtractFunction = (key: string) => unknown
-// type ExtractKeys = object | string[] | string | RegExp | ExtractFunction
-export type KeyFunction = (key: string) => string
-export type ValueFunction = (value: unknown) => unknown
-export type StringIndexedObject = Record<string, unknown>
-// export type StringIndexedObject = { [key: string]: unknown }
+import { splitHash } from './text'
+import { HashKeyFunction, HashSource, HashValueFunction, KeyFunction, ObjMapFunction, ValueFunction } from './types'
 
 export function hash(
-  source: string|object|unknown[],
+  source: HashSource,
   options: {
     include?: SelectSpec,
     exclude?: SelectSpec,
@@ -50,6 +25,7 @@ export function hash(
         key = options.key(key, value, source, hash)
       }
       if (options.value) {
+        // @ts-expect-error: value can return any type and I hate TS
         value = options.value(value, key, source, hash)
       }
       return {

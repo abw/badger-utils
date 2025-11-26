@@ -13,7 +13,7 @@ test(
   'splitList number',
   t => t.deepEqual(
     splitList(9),
-    [9]
+    ['9']
   )
 )
 

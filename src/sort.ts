@@ -1,7 +1,7 @@
 import { fail } from './error'
 import { splitList } from './text'
-import { StringIndexedObject } from './object'
-import { isFunction, isInteger, isNumber, isString } from './assert'
+import { StringIndexedObject } from './types'
+import { isArray, isFunction, isInteger, isNumber, isString } from './assert'
 
 export type ObjectSortFunction = (a: StringIndexedObject, b: StringIndexedObject) => number
 export type FieldSelectFunction = (obj: StringIndexedObject) => unknown
@@ -256,7 +256,12 @@ export const sortOrders: Record<string, FieldSortOrderFunction> = {
  * const sorted = people.sort(sortByNameAndAge); // John Jones 32, Jack Smith 30, John Smith 28, John Smith 25
  */
 export const multiSort = (spec: string | SortSelector[]): ObjectSortFunction => {
-  const sorts = splitList(spec)
+  const sorts = isString(spec)
+    ? splitList(spec)
+    : isArray(spec)
+      ? spec
+      : [spec]
+
   const funcs = sorts.map(
     sort => {
       if (isFunction(sort)) {

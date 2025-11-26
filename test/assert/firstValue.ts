@@ -8,7 +8,8 @@ test(
 )
 test(
   'firstValue returns 0 after undefined',
-  t => t.is(firstValue(undefined, 0, 1, 2), 0)
+  t => t.is(firstValue<number|undefined>(undefined, 0, 1, 2), 0)
+  // t => t.is(firstValue(undefined, 0, 1, 2), 0)
 )
 test(
   'firstValue returns 1',
@@ -16,7 +17,8 @@ test(
 )
 test(
   'firstValue returns 1 after null',
-  t => t.is(firstValue(null, 1, 2, 3), 1)
+  t => t.is(firstValue<number|null>(null, 1, 2, 3), 1)
+  // t => t.is(firstValue(null, 1, 2, 3), 1)
 )
 test(
   'firstValue returns false',
@@ -56,7 +58,7 @@ test(
 test(
   'firstValue with inferred type',
   t => {
-    const a: number | undefined = firstValue(null, 1, 2, 3, undefined)
+    const a: number | undefined = firstValue<number|undefined|null>(null, 1, 2, 3, undefined)
     t.is(a, 1)
   }
 )

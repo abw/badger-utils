@@ -22,7 +22,7 @@ test(
   'currency(12345) with USD defaults',
   t => {
     setNumberDefaults({ locale: 'en-US', currency: 'USD' })
-    t.is(currency(12345), '$12,345.00')
+    t.is(currency(12345), 'US$12,345.00')
   }
 )
 

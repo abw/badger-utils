@@ -1,10 +1,6 @@
 import { commas } from './numbers'
 import { isString, isArray, noValue, isObject, isFunction, hasValue } from './assert'
-import { StringIndexedObject } from './object'
-
-export type ListSource = null | undefined | string | number | unknown[]
-export type HashSource = object | ListSource
-
+import { StringIndexedObject, HashSource, ListSource } from './types'
 
 /**
  * Split a comma/whitespace delimited string into an Array
@@ -18,22 +14,22 @@ export type HashSource = object | ListSource
  * @example
  * const strings = splitList('one, two, three')
  */
-export function splitList(
-  value: ListSource,
+export function splitList<T = ListSource>(
+  value: T,
   regex: RegExp=/,\s*|\s+/
-): unknown[] {
+): string[] {
   if (noValue(value)) {
     return [ ]
   }
   else if (isString(value)) {
-    return (value as string).length
-      ? (value as string).split(regex)
+    return value.length
+      ? value.split(regex)
       : [ ]
   }
   else if (isArray(value)) {
-    return value as unknown[]
+    return value.map(String)
   }
-  return [value]
+  return [String(value)]
 }
 
 
@@ -50,20 +46,21 @@ export function splitList(
  * @example
  * const items = splitList('one two', i => i)  // { one: 'one', two: 'two' }
  */
-export function splitHash(
+export function splitHash<T=boolean>(
   value: HashSource,
-  set: unknown = true,
-  hash: StringIndexedObject = { }
-): object {
+  set: boolean | T | ((key: string) => T) = true,
+  hash: StringIndexedObject<T> = { }
+): StringIndexedObject<T> {
   // if it's already a hash object then return it unchanged
   if (isObject(value)) {
-    return value as object
+    return value as StringIndexedObject<T>
   }
   // split a string into an array (or leave an array unchanged)
-  const items = splitList(value as string)
+  const items = splitList(value)
 
   return items.reduce(
-    (result: StringIndexedObject, key) => {
+    (result: StringIndexedObject<T>, key) => {
+      // @ts-expect-error: 'T' could be instantiated with an arbitrary type which could be unrelated to 'boolean | T'.ts(2322)
       result[key as string] = isFunction(set)
         ? set(key)
         : set

@@ -117,7 +117,7 @@ export function isNull(value: unknown): value is null {
  * @param value - value to test
  * @return true if `value` is not `undefined` or `null`
  */
-export function hasValue<T>(value: T | Nothing): value is T {
+export function hasValue<T=unknown>(value: T | Nothing): value is T {
   return ! (isUndefined(value) || isNull(value))
 }
 
@@ -155,8 +155,8 @@ export function noValue(value: unknown): value is undefined | null {
  * @param values - values to test
  * @return first argument that has a value that is not `undefined` or `null`
  */
-export function firstValue<T>(...values: Array<T|Nothing>): T | undefined {
-  return values.find( value => hasValue<T>(value) ) ?? undefined
+export function firstValue<T=unknown>(...values: T[]): T {
+  return values.find( value => hasValue(value) ) ?? undefined
 }
 
 /**
