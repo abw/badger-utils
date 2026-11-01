@@ -1,6 +1,6 @@
 # Timing
 
-Timing-related function.
+Timing-related functions.
 
 ## debounce(func, timeout=300) {#debounce}
 
@@ -19,6 +19,27 @@ callFooSoon();  // starts 1s timer
 callFooSoon();  // resets timer
 callFooSoon();  // resets timer
     // => foo() will be called once, 1s after last reset
+```
+
+## throttle(func, limit=300) {#throttle}
+
+Function to generate a throttling function which will only call the wrapped
+function at most once during the specified time limit, no matter how many
+times it is called.
+
+```js
+function foo() {
+    console.log("foo was called");
+}
+
+const callFooOnce = throttle(foo, 200);
+
+callFooOnce();  // function is called
+callFooOnce();  // function is not called
+callFooOnce();  // function is not called
+
+// Wait until the time window has elapsed and the function will be called again
+sleep(300).then(callFooOnce)
 ```
 
 ## sleep(ms) {#sleep}

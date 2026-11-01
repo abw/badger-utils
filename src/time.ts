@@ -30,3 +30,25 @@ export function debounce(
 export function sleep(ms: number): Promise<unknown> {
   return new Promise(r => setTimeout(r, ms))
 }
+
+/**
+ * Function to generate a throttling function which will call the wrapped
+ * function at most once during a specified time interval, no matter how many
+ * times the throttling function is called.
+ * @param {Function} func - function to be throttled
+ * @param {number} [limit=300] - limit in milliseconds
+ * @return {Function} throttled function
+ */
+export function throttle(
+  func: (...args: unknown[]) => void,
+  limit: number = 300
+): DebounceFunction {
+  let inThrottle: boolean
+  return (...args) => {
+    if (!inThrottle) {
+      func(...args)
+      inThrottle = true
+      setTimeout(() => (inThrottle = false), limit)
+    }
+  }
+}

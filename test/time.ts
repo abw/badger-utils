@@ -1,5 +1,5 @@
 import test from './library/ava-vitest'
-import { debounce, sleep } from '../src/index'
+import { debounce, sleep, throttle } from '../src/index'
 
 test(
   'sleep()',
@@ -44,6 +44,38 @@ test(
         sleep(900).then( () => t.is(n, 120) )
         // resolve the promise and end the test at t=1000
         sleep(1000).then( a => resolve(a as void) )
+      }
+    )
+  }
+)
+
+test(
+  'throttle()',
+  async t => {
+    let n = 1
+    const incremement = throttle(
+      () => {
+        n++
+      },
+      200
+    )
+    // call the throttled function many times
+    incremement()
+    incremement()
+    incremement()
+    incremement()
+    incremement()
+    // it should only have been called once
+    t.is(n, 2)
+    // wait a short while (to allow the throttle to reset), then do it again
+    sleep(300).then(
+      () => {
+        incremement()
+        incremement()
+        incremement()
+        incremement()
+        incremement()
+        t.is(n, 3)
       }
     )
   }
